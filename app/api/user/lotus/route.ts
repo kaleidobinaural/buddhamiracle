@@ -4,7 +4,7 @@ import { auth } from '@/auth';
 import { getSupabaseAdmin } from '@/lib/supabase';
 
 // Simple endpoint: returns the current user's lotus count.
-// Called on chat page mount to display the 🪷 badge.
+// Called on chat page mount to display the lotus badge.
 export async function GET() {
   const session = await auth();
   const userEmail = session?.user?.email;

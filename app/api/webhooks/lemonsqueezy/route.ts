@@ -6,8 +6,8 @@ import crypto from 'crypto';
 // ============================================================
 // Lemon Squeezy Webhook — Charges lotus credits on purchase.
 // Products must be registered in Lemon Squeezy dashboard:
-//   • LEMONSQUEEZY_PRODUCT_ID_20  → grants 20 🪷
-//   • LEMONSQUEEZY_PRODUCT_ID_60  → grants 60 🪷
+//   • LEMONSQUEEZY_PRODUCT_ID_20  → grants 20 lotus
+//   • LEMONSQUEEZY_PRODUCT_ID_60  → grants 60 lotus
 // ============================================================
 
 const LOTUS_PACKAGES: Record<string, number> = {
@@ -124,6 +124,6 @@ export async function POST(req: NextRequest) {
     event_type: eventName,
   }]);
 
-  console.log(`[Webhook] ✅ Granted ${lotusToGrant} 🪷 to ${customerEmail} (product: ${productId})`);
+  console.log(`[Webhook] ✅ Granted ${lotusToGrant} lotus to ${customerEmail} (product: ${productId})`);
   return NextResponse.json({ received: true, granted: lotusToGrant });
 }

@@ -6,7 +6,7 @@ import { getSupabaseAdmin } from '@/lib/supabase';
 // ============================================================
 // eBook API — Temple of Light
 // ============================================================
-// Cost  : 5 🪷 lotus petals (deducted ONLY after confirmed complete story)
+// Cost  : 5 lotus lotus petals (deducted ONLY after confirmed complete story)
 // Lang  : Universal — all languages via Unicode script detection
 // Done? : [STORY_COMPLETE] marker (English, language-agnostic) +
 //         min-char count + sentence-ender — triple check
@@ -23,7 +23,7 @@ type ScriptFamily = 'cjk' | 'rtl' | 'indic' | 'southeast_asian' | 'latin';
 
 interface LangDetectResult {
   family: ScriptFamily;
-  langHint: string; // e.g. "Korean (한국어)" — passed verbatim to Gemini
+  langHint: string; // e.g. "Korean ()" — passed verbatim to Gemini
   isRtl: boolean;
 }
 
@@ -52,7 +52,7 @@ function detectScriptFamily(messages: { role: string; content: string }[]): Lang
   // CJK
   if ((counts.korean + counts.chinese + counts.japanese) / total > 0.2) {
     if (counts.korean >= counts.chinese && counts.korean >= counts.japanese)
-      return { family: 'cjk', langHint: 'Korean (한국어)', isRtl: false };
+      return { family: 'cjk', langHint: 'Korean ()', isRtl: false };
     if (counts.japanese > counts.chinese)
       return { family: 'cjk', langHint: 'Japanese (日本語)', isRtl: false };
     return { family: 'cjk', langHint: 'Chinese (中文)', isRtl: false };
@@ -121,7 +121,7 @@ const SENTENCE_ENDERS = new Set([
   '\u0964', '\u0965',        // Devanagari । ॥
   '\u201d', '\u2019',        // Closing quotes
   '\u300d', '\u300f',        // Japanese 」』
-  // NOTE: Korean formal prose ALWAYS ends with 다./다!/다? —
+  // NOTE: Korean formal prose ALWAYS ends with ./!/? —
   // a story ending with a bare Hangul syllable is cut-off, not complete.
   // Do NOT accept bare Hangul syllables as valid endings.
 ]);
@@ -384,7 +384,7 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean): string {
           ${storyHtml}
         </main>
         <div class="ornament">
-          <span class="orn-inner"><span>☸</span><span>✦</span><span>🪷</span><span>✦</span><span>☸</span></span>
+          <span class="orn-inner"><span>☸</span><span>✦</span><span>lotus</span><span>✦</span><span>☸</span></span>
         </div>
         <footer class="footer">
           <div class="footer-sym">☸</div>
@@ -441,7 +441,7 @@ export async function POST(req: NextRequest) {
     if (!isAdmin && (limitData.lotus_count ?? 0) < EBOOK_COST) {
       return NextResponse.json(
         {
-          error: `You need ${EBOOK_COST} 🪷 lotus petals. You have ${limitData.lotus_count ?? 0}.`,
+          error: `You need ${EBOOK_COST} lotus lotus petals. You have ${limitData.lotus_count ?? 0}.`,
           lotus_count: limitData.lotus_count ?? 0,
         },
         { status: 402 },

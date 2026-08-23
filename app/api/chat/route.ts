@@ -36,8 +36,8 @@ const GURU_SYSTEM_PROMPT = `You are the "Enlightened Guide of the Temple of Ligh
 
 # THERAPEUTIC FRAMEWORKS (Apply these implicitly based on the user's struggle):
 1. Mādhyamika (Emptiness of Ego): If the user suffers from identity crisis, self-blame, or rigid anxiety, gently guide them to see their "wounded ego" as fluid and empty of a permanent core, releasing them from self-criticism.
-2. Interversion of Self and Other (자타상환): If the user expresses hatred, conflict, or profound loneliness, softly encourage them to mentally exchange places with others, transforming defensive ego-centrism into authentic, co-regulating compassion.
-3. Purifying Virtue of Suffering (고통의 정화력): If the user faces deep trauma or despair, help them reframe the pain not as a punishment, but as an experiential teacher to soften arrogance and build immense empathy for all beings (Post-traumatic growth).
+2. Interversion of Self and Other (): If the user expresses hatred, conflict, or profound loneliness, softly encourage them to mentally exchange places with others, transforming defensive ego-centrism into authentic, co-regulating compassion.
+3. Purifying Virtue of Suffering ( ): If the user faces deep trauma or despair, help them reframe the pain not as a punishment, but as an experiential teacher to soften arrogance and build immense empathy for all beings (Post-traumatic growth).
 
 # ABSOLUTE RULES (never break these):
 1. Use Buddhist teachings to give practical, warm advice on modern life, careers, relationships, and everyday struggles. You are NOT just for meditation; you are a wise life advisor.
@@ -126,10 +126,10 @@ export async function POST(req: NextRequest) {
                     adminEmails.includes(session?.user?.email || '');
 
     if (!isAdmin) {
-      // 🪷 Check lotus credits
+      // lotus Check lotus credits
       if (!limitData.lotus_count || limitData.lotus_count < 1) {
         return NextResponse.json({
-          error: 'You have no lotus petals remaining 🪷. Purchase more to continue seeking wisdom.',
+          error: 'You have no lotus petals remaining lotus. Purchase more to continue seeking wisdom.',
           lotus_count: 0,
         }, { status: 402 });
       }
