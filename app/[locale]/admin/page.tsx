@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { auth } from "@/auth";
 import AdminDashboardClient from './AdminDashboardClient';
 import { getTranslations } from "next-intl/server";

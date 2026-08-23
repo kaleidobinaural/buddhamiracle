@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { signIn } from "@/auth"
 import type { Metadata } from 'next';
 import Link from 'next/link';

@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import ProfileClient from './ProfileClient';
