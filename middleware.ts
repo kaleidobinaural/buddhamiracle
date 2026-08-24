@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 import createMiddleware from 'next-intl/middleware';
 import { auth } from "./auth";
 import { locales, defaultLocale } from './i18n/config';
