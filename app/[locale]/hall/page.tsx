@@ -6,7 +6,8 @@ import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import BuddhaHall from '@/components/BuddhaHall';
+import dynamic from 'next/dynamic';
+const BuddhaHall = dynamic(() => import('@/components/BuddhaHall'), { ssr: false });
 
 export default function HallPage() {
   const router = useRouter();
