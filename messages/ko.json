@@ -143,6 +143,9 @@
     "comingSoon": "🔔 {count} 연꽃 공양 - 준비 중입니다!",
     "lotusModeNote": "🪷 획득한 연꽃을 사원 커뮤니티에 다시 공양하는 것은 불교의 아름다운 미덕인 <em>보시(Dana)</em>의 실천입니다.",
     "needMoreLotus": "연꽃이 더 필요하신가요?",
-    "purchaseLotus": "연꽃 구매하기"
+    "purchaseLotus": "연꽃 구매하기",
+    "paypalNote": "PayPal 결제는 안전하게 처리됩니다. 금융 정보는 저희 서버에 저장되지 않습니다. 결제 확인 후 연꽃이 적립됩니다.",
+    "virtualNote": "가상의 연꽃 공양은 사원 커뮤니티 정신을 지지합니다. 금융 거래가 아닙니다.",
+    "returnToTemple": "← 사원으로 돌아가기"
   }
 }

@@ -93,7 +93,13 @@ export default function DharmaPage() {
             source: item.metadata?.source || 'Eternal Dharma',
           }));
           setScriptures(formattedData);
-          const random = formattedData[Math.floor(Math.random() * formattedData.length)];
+          // ★ DATE-BASED QUOTE: same quote for ALL users on the same day
+          // Uses day-of-year as deterministic seed — no randomness per user
+          const now = new Date();
+          const startOfYear = new Date(now.getFullYear(), 0, 0);
+          const dayOfYear = Math.floor((now.getTime() - startOfYear.getTime()) / 86400000);
+          const dailyIndex = dayOfYear % formattedData.length;
+          const random = formattedData[dailyIndex];
           setTodayQuote(random);
         }
       } catch (err) {
@@ -130,12 +136,19 @@ export default function DharmaPage() {
   const visibleScriptures = filteredScriptures.slice(0, visibleCount);
   const hasMore = visibleCount < filteredScriptures.length;
 
-  // Background Translation logic
+  // Background Translation logic — todayQuote is ALWAYS translated first
   useEffect(() => {
     if (locale === 'en' || scriptures.length === 0) return;
 
-    const itemsToCheck = [...visibleScriptures];
-    if (todayQuote) itemsToCheck.push(todayQuote);
+    // ★ PRIORITY: todayQuote goes to the FRONT of the translation queue
+    const itemsToCheck: Scripture[] = [];
+    if (todayQuote && !todayQuote.translations?.[locale] && !translatingIds.has(todayQuote.id)) {
+      itemsToCheck.push(todayQuote); // highest priority
+    }
+    // Then visible scriptures (excluding todayQuote to avoid duplicate)
+    visibleScriptures.forEach(item => {
+      if (item.id !== todayQuote?.id) itemsToCheck.push(item);
+    });
 
     // Filter items that don't have the current locale translation and are not currently translating
     const missing = itemsToCheck.filter(
@@ -147,6 +160,8 @@ export default function DharmaPage() {
     const missingIds = missing.map(m => m.id);
     setTranslatingIds(prev => new Set([...prev, ...missingIds]));
 
+    // Translate sequentially (not all at once) to avoid overwhelming the API
+    // todayQuote is first in the array so it always resolves first
     missing.forEach(async (item) => {
       try {
         const res = await fetch('/api/translate-scripture', {

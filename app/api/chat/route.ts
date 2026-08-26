@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
     const dynamicPersona = personaData?.value ? `${personaData.value}\n\n` : '';
     const enrichedSystemPrompt = `${dynamicPersona}${GURU_SYSTEM_PROMPT}\n\nRELEVANT SCRIPTURAL CONTEXT:\n${retrievedContext || 'No specific scripture found. Speak from general Dharma wisdom.'}`;
 
-    const modelId = 'gemini-3.6-flash';
+    const modelId = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
 
     let geminiRes: Response | undefined;

@@ -241,11 +241,11 @@ export default function DonatePage() {
           <div className="note-divider" />
           <p>
             {mode === 'real'
-              ? 'PayPal payments are processed securely. Your financial data is never stored on our servers. Lotus petals are credited after payment confirmation.'
-              : 'Virtual lotus offerings support the temple community spirit. They are not financial transactions.'}
+              ? tDonate('paypalNote')
+              : tDonate('virtualNote')}
           </p>
           <Link href="/" className="btn-ghost return-btn" id="donate-return-btn">
-            ← Return to Temple
+            {tDonate('returnToTemple')}
           </Link>
         </div>
       </div>

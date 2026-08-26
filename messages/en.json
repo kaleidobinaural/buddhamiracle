@@ -143,6 +143,9 @@
     "comingSoon": "🔔 Virtual offering of {count} lotus petals — coming soon!",
     "lotusModeNote": "🪷 Your lotus petals were received with gratitude. Offering them back to the temple community is a beautiful act of <em>dana</em> — the Buddhist virtue of generosity.",
     "needMoreLotus": "Need more lotus petals?",
-    "purchaseLotus": "Purchase Lotus Petals"
+    "purchaseLotus": "Purchase Lotus Petals",
+    "paypalNote": "PayPal payments are processed securely. Your financial data is never stored on our servers. Lotus petals are credited after payment confirmation.",
+    "virtualNote": "Virtual lotus offerings support the temple community spirit. They are not financial transactions.",
+    "returnToTemple": "← Return to Temple"
   }
 }

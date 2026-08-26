@@ -269,7 +269,8 @@ async function callGemini(
   prompt: string,
   maxOutputTokens: number,
 ): Promise<string | null> {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
+  const modelId = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
