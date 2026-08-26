@@ -183,6 +183,11 @@ Transform the raw conversation below into a beautifully written, self-contained 
 LANGUAGE: Write entirely in ${langHint}.
 TARGET LENGTH: ${charMin}–${charMax} characters (count every character including spaces).
 
+OUTPUT FORMAT — Follow this EXACTLY:
+Line 1: TITLE: [A poetic, evocative title in ${langHint} that captures the essence of the conversation — max 8 words]
+Line 2: (blank line)
+Line 3+: The story begins here...
+
 CHARACTERS:
 - The Guru: Ancient, serene. Speaks in Dharma metaphors and calm wisdom.
 - Bori (young novice monk): The Guru's companion. Warm, curious, represents the reader's inner child.
@@ -196,6 +201,7 @@ RULES:
 - Never copy the conversation word-for-word. Always retell and transform.
 - Do NOT invent scripture quotes. Use paraphrase: "The teachings whisper..."
 - Maintain literary elegance and spiritual authenticity.
+- The TITLE line must always be in ${langHint}, even if ${langHint} uses non-Latin script.
 
 ━━━ TECHNICAL COMPLETION MARKER (READ CAREFULLY) ━━━
 After the very last sentence of the CLOSING VERSE, you MUST write the following marker
@@ -217,7 +223,20 @@ RAW CONVERSATION:
 ${conversationText}
 ---
 
-Now write the complete Wisdom Story in ${langHint}, ending with [STORY_COMPLETE]:`;
+Now write the TITLE line first, then the complete Wisdom Story in ${langHint}, ending with [STORY_COMPLETE]:`;
+}
+
+// Extract the TITLE: line from the raw Gemini response, returns {title, storyBody}
+function extractTitle(raw: string, langHint: string): { title: string; storyBody: string } {
+  const lines = raw.split('\n');
+  const titleLineIndex = lines.findIndex(l => /^TITLE:/i.test(l.trim()));
+  if (titleLineIndex !== -1) {
+    const title = lines[titleLineIndex].replace(/^TITLE:\s*/i, '').trim();
+    const storyBody = lines.slice(titleLineIndex + 1).join('\n').trim();
+    return { title: title || 'Wisdom Story', storyBody };
+  }
+  // Fallback: no TITLE line found
+  return { title: 'Wisdom Story', storyBody: raw };
 }
 
 function buildContinuationPrompt(
@@ -276,7 +295,7 @@ async function callGemini(
 // RTL layout supported for Arabic / Hebrew.
 // Pure CSS + inline SVG — no external image dependencies.
 // ─────────────────────────────────────────────────────────
-function buildEbookHtml(story: string, date: string, isRtl: boolean): string {
+function buildEbookHtml(story: string, date: string, isRtl: boolean, title: string = 'Wisdom Story'): string {
   const storyHtml = story
     .split(/\n{2,}/)
     .filter(p => p.trim())
@@ -369,7 +388,7 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean): string {
             <circle cx="60" cy="60" r="5" fill="#FAF0CC" opacity=".85"/>
           </svg>
         </div>
-        <h1 class="title">Wisdom Story</h1>
+        <h1 class="title">${title}</h1>
         <div class="rule">
           <div class="rule-line"></div>
           <span class="rule-gem">✦</span>
@@ -500,8 +519,9 @@ export async function POST(req: NextRequest) {
       year: 'numeric', month: 'long', day: 'numeric',
     });
 
-    // check.strippedText has [STORY_COMPLETE] already removed — safe for HTML
-    const htmlContent = buildEbookHtml(check.strippedText, date, isRtl);
+    // Extract title from stripped text, then build HTML with dynamic title
+    const { title, storyBody } = extractTitle(check.strippedText, langHint);
+    const htmlContent = buildEbookHtml(storyBody, date, isRtl, title);
 
     return NextResponse.json({ html: htmlContent, lotus_count: newLotusCount });
 
