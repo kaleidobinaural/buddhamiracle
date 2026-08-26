@@ -1,13 +1,11 @@
 'use client';
-export const runtime = 'edge';
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
-const BuddhaHall = dynamic(() => import('@/components/BuddhaHall'), { ssr: false });
+import BuddhaHall from '@/components/BuddhaHall';
 
 export default function HallPage() {
   const router = useRouter();

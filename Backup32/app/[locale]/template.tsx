@@ -1,0 +1,17 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function Template({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      style={{ width: '100%', minHeight: '100%' }}
+    >
+      {children}
+    </motion.div>
+  );
+}

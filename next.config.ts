@@ -16,6 +16,7 @@ const withPWA = withPWAInit({
 const nextConfig: NextConfig = {
   // ★ SECURITY: Disable source maps in production to protect business logic
   productionBrowserSourceMaps: false,
+  output: 'standalone',
   turbopack: {
     resolveAlias: {
       'next-intl': 'next-intl',

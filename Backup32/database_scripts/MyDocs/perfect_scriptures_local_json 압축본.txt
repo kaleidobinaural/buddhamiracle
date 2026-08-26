@@ -1,0 +1,92 @@
+[
+  {
+    "id": "90cfb47c-c13f-5e9b-8b5d-2baf97f0c990",
+    "content": "Intention shapes experiences; intention is first, they’re made by intention. If with corrupt intent you speak or act, suffering follows you, like a wheel, the ox’s foot.",
+    "metadata": {
+      "original_id": "dhammapada_dhp1",
+      "source": "Dhammapada",
+      "chapter": "dhp1-20",
+      "section_or_verse": "dhp1",
+      "translator_original": "Bhikkhu Sujato",
+      "translator_notes": [],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["general_wisdom"]
+    },
+    "embedding": null
+  },
+  {
+    "id": "3ccf241c-1657-57ed-b4c1-e8718778798e",
+    "content": "“They abused me, they hit me! They beat me, they robbed me!” For those who bear such a grudge, hatred is never laid to rest.",
+    "metadata": {
+      "original_id": "dhammapada_dhp3",
+      "source": "Dhammapada",
+      "chapter": "dhp1-20",
+      "section_or_verse": "dhp3",
+      "translator_original": "Bhikkhu Sujato",
+      "translator_notes": [],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["anger_resentment"]
+    },
+    "embedding": null
+  },
+  {
+    "id": "13a2ed9f-9366-57ae-9224-4348995f8d9f",
+    "content": "“I’ve boiled my rice and drawn my milk,” said Dhaniya the rancher, “I stay with my family along the bank of the Mahī... My fire is quenched: so rain forth, heavens, if you wish.”",
+    "metadata": {
+      "original_id": "suttanipata_snp1.2",
+      "source": "SuttaNipata",
+      "chapter": "unknown",
+      "section_or_verse": "snp1.2",
+      "translator_original": "Bhikkhu Sujato",
+      "translator_notes": ["The Buddha directly counters the kindled Vedic fire with Nibbana as the quenching of the flame."],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["anger_resentment", "peace_tranquillity"]
+    },
+    "embedding": null
+  },
+  {
+    "id": "e421da89-ab75-59bd-ba02-688c771ff208",
+    "content": "Thus have I heard concerning our Lord Buddha:—",
+    "metadata": {
+      "original_id": "diamondsutra_ch_1_p1",
+      "source": "DiamondSutra",
+      "chapter": "[Chapter 1]",
+      "section_or_verse": "Ch_1_p1",
+      "translator_original": "William Gemmell",
+      "translator_notes": ["Thus have I heard forms the Sruti or sacred revelation of the followers of the Vedas."],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["general_wisdom"]
+    },
+    "embedding": null
+  },
+  {
+    "id": "dbe3ea40-808e-508e-85ac-1b7cf8ddeb88",
+    "content": "Avalokiteshvara, the Bodhisattva of Compassion, saw clearly that the five aggregates of human existence are empty, and so released himself from suffering. Form is emptiness, emptiness is Form.",
+    "metadata": {
+      "original_id": "heartsutra_p0",
+      "source": "HeartSutra",
+      "chapter": "Single Chapter",
+      "section_or_verse": "Paragraph 0",
+      "translator_original": "Max Müller",
+      "translator_notes": [],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["grief_sorrow", "peace_tranquillity"]
+    },
+    "embedding": null
+  },
+  {
+    "id": "78ee2368-a49d-5c33-8bce-f43bc583593c",
+    "content": "Having respectfully bowed to the Buddhas, their spiritual heirs, the Body of the Law, and all venerable guides, I shall briefly set forth the spiritual practice of the Bodhisattvas.",
+    "metadata": {
+      "original_id": "bodhicaryavatara_ch1_p1",
+      "source": "Bodhicaryavatara",
+      "chapter": "Chapter 1",
+      "section_or_verse": "CH1_P1",
+      "translator_original": "Louis Finot / Modernized",
+      "translator_notes": ["Dharmakāya represents absolute reality or the ultimate nature of truth."],
+      "lay_vs_monastic": "lay",
+      "target_emotions": ["general_wisdom"]
+    },
+    "embedding": null
+  }
+]
