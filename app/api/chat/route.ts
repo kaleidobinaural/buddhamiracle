@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { messages } = body;
+    const { messages, locale } = body;
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
@@ -148,7 +148,12 @@ export async function POST(req: NextRequest) {
       .single();
 
     const dynamicPersona = personaData?.value ? `${personaData.value}\n\n` : '';
-    const enrichedSystemPrompt = `${dynamicPersona}${GURU_SYSTEM_PROMPT}\n\nRELEVANT SCRIPTURAL CONTEXT:\n${retrievedContext || 'No specific scripture found. Speak from general Dharma wisdom.'}`;
+    
+    const localeMap: Record<string, string> = { en: 'English', ko: 'Korean', ja: 'Japanese', zh: 'Chinese', es: 'Spanish', fr: 'French' };
+    const targetLang = localeMap[locale || 'en'] || 'English';
+    const langInstruction = `\n\nCRITICAL LANGUAGE RULE: You MUST respond exclusively in ${targetLang}. DO NOT mix languages.`;
+    
+    const enrichedSystemPrompt = `${dynamicPersona}${GURU_SYSTEM_PROMPT}${langInstruction}\n\nRELEVANT SCRIPTURAL CONTEXT:\n${retrievedContext || 'No specific scripture found. Speak from general Dharma wisdom.'}`;
 
     const modelId = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;

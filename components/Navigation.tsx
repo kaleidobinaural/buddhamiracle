@@ -82,17 +82,23 @@ export default function Navigation() {
           <div className="nav-actions">
             {/* Language Switcher */}
             <div className="locale-switcher">
-              <button
+              <select
                 className="btn-ghost locale-btn"
-                onClick={() => {
-                  const nextLocale = locale === 'en' ? 'ko' : 'en';
-                  // next-intl router handles locale prefix automatically & safely
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko)(\/|$)/, '/') || '/';
+                value={locale}
+                onChange={(e) => {
+                  const nextLocale = e.target.value;
+                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                 }}
+                style={{ appearance: 'auto', cursor: 'pointer', paddingRight: '12px' }}
               >
-                {locale === 'en' ? 'KO' : 'EN'}
-              </button>
+                <option value="en">EN</option>
+                <option value="ko">KO</option>
+                <option value="ja">JA</option>
+                <option value="zh">ZH</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+              </select>
             </div>
 
             {session?.user && lotusCount !== null && (
@@ -190,18 +196,24 @@ export default function Navigation() {
                 Privacy Policy
               </Link>
               {/* Language switcher — hidden from top bar on mobile, available here */}
-              <button
+              <select
                 className="mobile-nav-link bloom-9"
-                style={{ fontSize: '1rem', color: '#555', background: 'none', border: 'none', cursor: 'pointer', marginTop: '4px' }}
-                onClick={() => {
-                  const nextLocale = locale === 'en' ? 'ko' : 'en';
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko)(\/|$)/, '/') || '/';
+                style={{ fontSize: '1rem', color: '#555', background: 'none', border: 'none', cursor: 'pointer', marginTop: '4px', appearance: 'auto', paddingLeft: '0' }}
+                value={locale}
+                onChange={(e) => {
+                  const nextLocale = e.target.value;
+                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                   setMobileOpen(false);
                 }}
               >
-                {locale === 'en' ? '🌐 한국어로 전환' : '🌐 Switch to English'}
-              </button>
+                <option value="en">🌐 English</option>
+                <option value="ko">🌐 한국어</option>
+                <option value="ja">🌐 日本語</option>
+                <option value="zh">🌐 中文</option>
+                <option value="es">🌐 Español</option>
+                <option value="fr">🌐 Français</option>
+              </select>
             </div>
           </div>
         </nav>

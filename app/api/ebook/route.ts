@@ -26,7 +26,16 @@ interface LangDetectResult {
   isRtl: boolean;
 }
 
-function detectScriptFamily(messages: { role: string; content: string }[]): LangDetectResult {
+function detectScriptFamily(messages: { role: string; content: string }[], locale?: string): LangDetectResult {
+  if (locale) {
+    if (locale === 'ko') return { family: 'cjk', langHint: 'Korean', isRtl: false };
+    if (locale === 'ja') return { family: 'cjk', langHint: 'Japanese', isRtl: false };
+    if (locale === 'zh') return { family: 'cjk', langHint: 'Chinese', isRtl: false };
+    if (locale === 'es') return { family: 'latin', langHint: 'Spanish', isRtl: false };
+    if (locale === 'fr') return { family: 'latin', langHint: 'French', isRtl: false };
+    if (locale === 'en') return { family: 'latin', langHint: 'English', isRtl: false };
+  }
+
   const text = messages
     .filter(m => m.role === 'user')
     .map(m => m.content)
@@ -434,7 +443,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { messages } = body;
+    const { messages, locale } = body;
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json({ error: 'No conversation to transform.' }, { status: 400 });
     }
@@ -468,7 +477,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Detect language & character target
-    const { family, langHint, isRtl } = detectScriptFamily(messages);
+    const { family, langHint, isRtl } = detectScriptFamily(messages, locale);
     const charTarget = CHAR_TARGETS[family];
 
     // ── 1st generation (8,192 tokens — vastly exceeds any story length)
