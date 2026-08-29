@@ -24,7 +24,8 @@
     "wishRoof": "Techo de los Deseos",
     "hall": "Santuario",
     "dharma": "Biblioteca del Dharma",
-    "donate": "Donar"
+    "donate": "Donar",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Biblioteca del Dharma",
@@ -109,7 +110,11 @@
     "rankCelestial": "Patrono Celestial",
     "rankDevout": "Devoto Apoyador",
     "btnReturn": "Volver a la Sala",
-    "devotion": "Devoción: {amount} Puntos de Alma"
+    "devotion": "Devoción: {amount} Puntos de Alma",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Santuario de Luz",
@@ -131,7 +136,6 @@
     "realTier2Desc": "Ofrece un loto. Tu nombre se une al Pilar de la Serenidad en la pared del templo.",
     "realTier3Name": "Un Mala",
     "realTier3Desc": "Ofrece un mala de oraciones. Recibe 1,080 pétalos de loto y tu nombre quedará grabado eternamente en el Muro de Colaboradores.",
-
     "lotusTier1Name": "Incienso",
     "lotusTier1Desc": "Una pequeña ofrenda de presencia. Tu energía se une al campo colectivo.",
     "lotusTier2Name": "Campana de Oración",
@@ -148,5 +152,9 @@
     "paypalNote": "Los pagos de PayPal se procesan de forma segura. Tus datos financieros nunca se almacenan en nuestros servidores. Los pétalos de loto se acreditan después de la confirmación del pago.",
     "virtualNote": "Las ofrendas virtuales de loto apoyan el espíritu de la comunidad del templo. No son transacciones financieras.",
     "returnToTemple": "← Volver al Templo"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

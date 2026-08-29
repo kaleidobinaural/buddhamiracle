@@ -24,7 +24,8 @@
     "wishRoof": "Mái Nguyện Ước",
     "hall": "Chánh Điện",
     "dharma": "Thư Viện Pháp",
-    "donate": "Cúng Nhường"
+    "donate": "Cúng Nhường",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Thư Viện Phật Pháp",
@@ -109,7 +110,11 @@
     "rankCelestial": "Hộ Pháp Thiên Giới",
     "rankDevout": "Tín Chủ Thành Tâm",
     "btnReturn": "Trở Về Điện Công Đức",
-    "devotion": "Tâm Nguyện: {amount} Điểm Tâm Thức"
+    "devotion": "Tâm Nguyện: {amount} Điểm Tâm Thức",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -147,5 +152,9 @@
     "paypalNote": "Thanh toán qua PayPal được xử lý bảo mật. Thông tin tài chính của bạn không bao giờ lưu trữ trên máy chủ của chúng tôi. Cánh hoa sen sẽ được cộng sau khi xác nhận thanh toán.",
     "virtualNote": "Các cúng nhường hoa sen ảo mang ý nghĩa tinh thần cho cộng đồng ngôi đền. Đây không phải là giao dịch tài chính.",
     "returnToTemple": "← Trở Về Đền"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

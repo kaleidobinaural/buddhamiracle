@@ -24,7 +24,8 @@
     "wishRoof": "ဆုတောင်းခေါင်မိုး",
     "hall": "စန့်ချူရီ",
     "dharma": "ဓမ္မ စာကြည့်တိုက်",
-    "donate": "လှူဒါန်းရန်"
+    "donate": "လှူဒါန်းရန်",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "ဓမ္မ စာကြည့်တိုက်",
@@ -109,7 +110,11 @@
     "rankCelestial": "နတ်ဒေဝါ အလှူရှင်",
     "rankDevout": "သဒ္ဓါထက်သန်သော ထောက်ပံ့သူ",
     "btnReturn": "ခန်းမသို့ ပြန်သွားရန်",
-    "devotion": "သဒ္ဓါတရား: {amount} ဝိညာဉ်အမှတ်"
+    "devotion": "သဒ္ဓါတရား: {amount} ဝိညာဉ်အမှတ်",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",
@@ -147,5 +152,9 @@
     "paypalNote": "PayPal ငွေပေးချေမှုများကို ဘေးကင်းလုံခြုံစွာ လွှဲပြောင်းဆောင်ရွက်ပါသည်။ သင်၏ ငွေရေးကြေးရေး အချက်အလက်များကို ကျွန်ုပ်တို့၏ ဆာဗာများတွင် ဘယ်တော့မှ သိမ်းဆည်းမည်မဟုတ်ပါ။ ငွေပေးချေမှု အတည်ပြုပြီးပါက ကြာပွင့်ဖတ်များကို ထည့်သွင်းပေးမည်ဖြစ်သည်။",
     "virtualNote": "အတုအယောင် ကြာပွင့် လှူဒါန်းမှုများသည် ကျောင်းတော်၏ အသိုင်းအဝိုင်း စိတ်ဓာတ်ကို ပံ့ပိုးပေးပါသည်။ ၎င်းတို့သည် ငွေကြေးဆိုင်ရာ လွှဲပြောင်းမှုများ မဟုတ်ပါ။",
     "returnToTemple": "← ကျောင်းတော်သို့ ပြန်သွားပါ"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

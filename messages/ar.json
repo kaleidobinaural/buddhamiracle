@@ -24,7 +24,8 @@
     "wishRoof": "سقف الأمنيات",
     "hall": "الملاذ",
     "dharma": "مكتبة الدرما",
-    "donate": "تبرع"
+    "donate": "تبرع",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "مكتبة الدرما",
@@ -109,7 +110,11 @@
     "rankCelestial": "راعي سماوي",
     "rankDevout": "داعم مخلص",
     "btnReturn": "العودة إلى القاعة",
-    "devotion": "الالتزام: {amount} نقطة روحية"
+    "devotion": "الالتزام: {amount} نقطة روحية",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "ملاذ النور",
@@ -147,5 +152,9 @@
     "paypalNote": "تتم معالجة مدفوعات PayPal بأمان. لا يتم تخزين بياناتك المالية على خوادمنا أبداً. تُضاف بتلات اللوتس بعد تأكيد الدفع.",
     "virtualNote": "تدعم القرابين الافتراضية من بتلات اللوتس روح مجتمع المعبد. وهي ليست معاملات مالية.",
     "returnToTemple": "← العودة إلى المعبد"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

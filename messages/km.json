@@ -24,7 +24,8 @@
     "wishRoof": "ដំបូលបំណងប្រាថ្នា",
     "hall": "ទីសក្ការៈ",
     "dharma": "បណ្ណាល័យព្រះធម៌",
-    "donate": "បរិច្ចាគ"
+    "donate": "បរិច្ចាគ",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "បណ្ណាល័យព្រះធម៌",
@@ -109,7 +110,11 @@
     "rankCelestial": "ឧបត្ថម្ភកៈសួគ៌ា",
     "rankDevout": "អ្នកទ្រទ្រង់ដ៏ជ្រះថ្លា",
     "btnReturn": "ត្រឡប់ទៅកាន់សាល",
-    "devotion": "ការជ្រះថ្លា៖ {amount} ពិន្ទុវិញ្ញាណ"
+    "devotion": "ការជ្រះថ្លា៖ {amount} ពិន្ទុវិញ្ញាណ",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",
@@ -147,5 +152,9 @@
     "paypalNote": "ការទូទាត់តាម PayPal ត្រូវបានប្រព្រឹត្តទៅដោយសុវត្ថិភាព។ ទិន្នន័យហិរញ្ញវត្ថុរបស់អ្នកមិនត្រូវបានរក្សាទុកនៅលើម៉ាស៊ីនបម្រើរបស់យើងឡើយ។ ស្រទាប់ផ្កាឈូកនឹងត្រូវបញ្ជូនជូនបន្ទាប់ពីការបញ្ជាក់ការទូទាត់។",
     "virtualNote": "ការបូជាផ្កាឈូកនិម្មិត គឺដើម្បីគាំទ្រស្មារតីសហគមន៍ប្រាសាទ។ ពួកវាមិនមែនជាប្រតិបត្តិការហិរញ្ញវត្ថុទេ។",
     "returnToTemple": "← ត្រឡប់ទៅកាន់ប្រាសាទ"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

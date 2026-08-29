@@ -24,7 +24,8 @@
     "wishRoof": "祈愿屋脊",
     "hall": "圣殿",
     "dharma": "佛法藏经阁",
-    "donate": "供养"
+    "donate": "供养",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "佛法藏经阁",
@@ -109,7 +110,11 @@
     "rankCelestial": "天界护法",
     "rankDevout": "虔诚护持者",
     "btnReturn": "返回殿堂",
-    "devotion": "虔诚值：{amount} 灵魂点"
+    "devotion": "虔诚值：{amount} 灵魂点",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "光明圣殿",
@@ -147,5 +152,9 @@
     "paypalNote": "PayPal支付安全处理。您的财务数据绝不会存储在我们的服务器上。莲花瓣将在支付确认后入账。",
     "virtualNote": "虚拟莲花供养旨在支持殿堂社区精神。它们并非金融交易。",
     "returnToTemple": "← 返回殿堂"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

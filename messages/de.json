@@ -24,7 +24,8 @@
     "wishRoof": "Dach der Wünsche",
     "hall": "Heiligtum",
     "dharma": "Dharma-Bibliothek",
-    "donate": "Spenden"
+    "donate": "Spenden",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Dharma-Bibliothek",
@@ -109,7 +110,11 @@
     "rankCelestial": "Himmlischer Patron",
     "rankDevout": "Hingebungsvoller Unterstützer",
     "btnReturn": "Zurück zur Halle",
-    "devotion": "Hingabe: {amount} Seelenpunkte"
+    "devotion": "Hingabe: {amount} Seelenpunkte",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Heiligtum des Lichts",
@@ -147,5 +152,9 @@
     "paypalNote": "PayPal-Zahlungen werden sicher verarbeitet. Deine Finanzdaten werden niemals auf unseren Servern gespeichert. Die Lotosblütenblätter werden nach Zahlungsbestätigung gutgeschrieben.",
     "virtualNote": "Virtuelle Lotos-Gaben unterstützen den Gemeinschaftsgeist des Tempels. Es handelt sich nicht um Finanztransaktionen.",
     "returnToTemple": "← Zurück zum Tempel"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

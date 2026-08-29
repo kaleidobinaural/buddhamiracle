@@ -24,7 +24,8 @@
     "wishRoof": "Wish Roof",
     "hall": "Sanctuary",
     "dharma": "Dharma Library",
-    "donate": "Donate"
+    "donate": "Donate",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Dharma Library",
@@ -109,7 +110,11 @@
     "rankCelestial": "Celestial Patron",
     "rankDevout": "Devout Supporter",
     "btnReturn": "Return to Hall",
-    "devotion": "Devotion: {amount} Soul Points"
+    "devotion": "Devotion: {amount} Soul Points",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Sanctuary of Light",
@@ -147,5 +152,9 @@
     "paypalNote": "PayPal payments are processed securely. Your financial data is never stored on our servers. Lotus petals are credited after payment confirmation.",
     "virtualNote": "Virtual lotus offerings support the temple community spirit. They are not financial transactions.",
     "returnToTemple": "← Return to Temple"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

@@ -53,6 +53,7 @@ export default function Navigation() {
     { href: '/wish-roof', key: 'wishRoof' },
     { href: '/hall', key: 'hall' },
     { href: '/dharma', key: 'dharma' },
+    { href: '/store', key: 'store' },
   ];
 
   return (

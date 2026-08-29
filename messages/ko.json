@@ -24,7 +24,8 @@
     "wishRoof": "소원 지붕",
     "hall": "신성한 불당",
     "dharma": "경전 서재",
-    "donate": "공양하기"
+    "donate": "공양하기",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "법의 서재",
@@ -109,7 +110,11 @@
     "rankCelestial": "천상의 수호자",
     "rankDevout": "경건한 후원자",
     "btnReturn": "회랑으로 돌아가기",
-    "devotion": "헌신: {amount} 소울 포인트"
+    "devotion": "헌신: {amount} 소울 포인트",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "빛의 성소",
@@ -147,5 +152,9 @@
     "paypalNote": "PayPal 결제는 안전하게 처리됩니다. 금융 정보는 저희 서버에 저장되지 않습니다. 결제 확인 후 연꽃이 적립됩니다.",
     "virtualNote": "가상의 연꽃 공양은 사원 커뮤니티 정신을 지지합니다. 금융 거래가 아닙니다.",
     "returnToTemple": "← 사원으로 돌아가기"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

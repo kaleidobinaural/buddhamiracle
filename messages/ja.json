@@ -24,7 +24,8 @@
     "wishRoof": "願いの屋根",
     "hall": "聖域",
     "dharma": "法（ダルマ）の書庫",
-    "donate": "寄進"
+    "donate": "寄進",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "法（ダルマ）の書庫",
@@ -109,7 +110,11 @@
     "rankCelestial": "天上の守護者",
     "rankDevout": "篤信の支援者",
     "btnReturn": "殿堂に戻る",
-    "devotion": "献身: {amount} ソウルポイント"
+    "devotion": "献身: {amount} ソウルポイント",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "光の聖域",
@@ -131,7 +136,6 @@
     "realTier2Desc": "蓮を捧げましょう。あなたの名前は寺院の壁にある静寂の柱に加わります。",
     "realTier3Name": "数珠 (Mala)",
     "realTier3Desc": "祈りの数珠を捧げてください。蓮の花1,080個を受け取り、あなたの名前が支援者の壁に永遠に刻まれます。",
-
     "lotusTier1Name": "お香",
     "lotusTier1Desc": "ささやかな存在の供物。あなたのエネルギーは集合的な場に加わります。",
     "lotusTier2Name": "祈りの鐘",
@@ -148,5 +152,9 @@
     "paypalNote": "PayPalでの支払いは安全に処理されます。あなたの金融データが当社のサーバーに保存されることはありません。蓮の花びらは支払い確認後に付与されます。",
     "virtualNote": "仮想の蓮の供物は、寺院コミュニティの精神を支えます。これらは金銭的な取引ではありません。",
     "returnToTemple": "← 寺院に戻る"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

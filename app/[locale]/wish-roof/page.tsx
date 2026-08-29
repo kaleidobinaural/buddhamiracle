@@ -310,7 +310,7 @@ export default function WishRoofPage() {
           </div>
         )}
 
-        <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`}>
+        <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { minHeight: `${Math.max(100, Math.ceil(wishes.length / 5) * 40)}vh` } : {}}>
           {isLoading ? (
             <div className="loading-state">{t('loading')}</div>
           ) : wishes.length === 0 ? (
@@ -318,7 +318,7 @@ export default function WishRoofPage() {
           ) : (
             wishes.map((wish, index) => {
               const left = (index * 137.5) % 90; 
-              const top = (index * 223.1) % 80;
+              const top = (index * 223.1) % 95;
               const scale = 0.5 + (index % 6) * 0.12;
               const opacity = 0.6 + (index % 10) * 0.04; // Increased min opacity
               
@@ -557,7 +557,7 @@ export default function WishRoofPage() {
         .btn-view.active { background: var(--primary-gold); color: #000; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3); }
 
         /* Modes */
-        .lantern-display.sky-mode { position: relative; width: 100%; height: 80vh; margin-top: 40px; }
+        .lantern-display.sky-mode { position: relative; width: 100%; margin-top: 40px; }
         .lantern-display.grid-mode { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 50px; justify-items: center; }
 
         .lantern-wrapper { transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }

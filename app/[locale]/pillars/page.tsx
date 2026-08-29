@@ -176,8 +176,8 @@ export default function PillarsPage() {
                 <>
                   <div className="pillar-section-header founder">
                     <span className="pillar-section-icon">🏛️</span>
-                    <h2 className="pillar-section-title">Founders&apos; Hall</h2>
-                    <p className="pillar-section-desc">Those who built the foundation of this sanctuary</p>
+                    <h2 className="pillar-section-title">{t('foundersHall')}</h2>
+                    <p className="pillar-section-desc">{t('foundersDesc')}</p>
                   </div>
                   <Swiper
                     effect={'coverflow'}
@@ -228,8 +228,8 @@ export default function PillarsPage() {
                 <>
                   <div className="pillar-section-header supporter">
                     <span className="pillar-section-icon">📿</span>
-                    <h2 className="pillar-section-title">Supporter&apos;s Wall</h2>
-                    <p className="pillar-section-desc">Hearts who continue to sustain this sacred space</p>
+                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                    <p className="pillar-section-desc">{t('supportersDesc')}</p>
                   </div>
                   <Swiper
                     effect={'coverflow'}

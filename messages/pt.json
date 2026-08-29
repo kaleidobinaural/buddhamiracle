@@ -24,7 +24,8 @@
     "wishRoof": "Teto dos Desejos",
     "hall": "Santuário",
     "dharma": "Biblioteca do Dharma",
-    "donate": "Doar"
+    "donate": "Doar",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Biblioteca do Dharma",
@@ -109,7 +110,11 @@
     "rankCelestial": "Patrono Celestial",
     "rankDevout": "Apoiador Devoto",
     "btnReturn": "Voltar ao Salão",
-    "devotion": "Devoção: {amount} Pontos de Alma"
+    "devotion": "Devoção: {amount} Pontos de Alma",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Santuário da Luz",
@@ -147,5 +152,9 @@
     "paypalNote": "Os pagamentos via PayPal são processados com segurança. Seus dados financeiros nunca são armazenados em nossos servidores. As pétalas de lótus são creditadas após a confirmação do pagamento.",
     "virtualNote": "Oferendas virtuais de lótus apoiam o espírito comunitário do templo. Elas não são transações financeiras.",
     "returnToTemple": "← Voltar ao Templo"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

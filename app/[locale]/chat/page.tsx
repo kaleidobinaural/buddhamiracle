@@ -272,9 +272,9 @@ export default function ChatPage() {
         {/* Input Area */}
         {status === 'unauthenticated' ? (
           <div className="chat-input-area unauth-state">
-            <p>You must step into the light to speak with the Guru.</p>
+            <p>{t('unauthMessage')}</p>
             <Link href="/api/auth/signin" className="btn-gold-glow-v2 mt-4 inline-block px-6 py-2">
-              Sign In to Seek Wisdom
+              {t('signIn')}
             </Link>
           </div>
         ) : (

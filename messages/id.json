@@ -24,7 +24,8 @@
     "wishRoof": "Atap Harapan",
     "hall": "Tempat Suci",
     "dharma": "Perpustakaan Dharma",
-    "donate": "Berdana"
+    "donate": "Berdana",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Perpustakaan Dharma",
@@ -109,7 +110,11 @@
     "rankCelestial": "Pelindung Surgawi",
     "rankDevout": "Pendukung Setia",
     "btnReturn": "Kembali ke Ruangan",
-    "devotion": "Ketaatan: {amount} Poin Jiwa"
+    "devotion": "Ketaatan: {amount} Poin Jiwa",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
@@ -147,5 +152,9 @@
     "paypalNote": "Pembayaran PayPal diproses secara aman. Data keuangan Anda tidak pernah disimpan di server kami. Kelopak teratai dikreditkan setelah konfirmasi pembayaran.",
     "virtualNote": "Persembahan teratai virtual mendukung semangat komunitas kuil. Ini bukan transaksi keuangan.",
     "returnToTemple": "← Kembali ke Kuil"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

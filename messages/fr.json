@@ -24,7 +24,8 @@
     "wishRoof": "Toit des Vœux",
     "hall": "Sanctuaire",
     "dharma": "Bibliothèque du Dharma",
-    "donate": "Faire une Offrande"
+    "donate": "Faire une Offrande",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "Bibliothèque du Dharma",
@@ -109,7 +110,11 @@
     "rankCelestial": "Mécène Céleste",
     "rankDevout": "Soutien Dévoué",
     "btnReturn": "Retour au Hall",
-    "devotion": "Dévotion : {amount} Points d'Âme"
+    "devotion": "Dévotion : {amount} Points d'Âme",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -131,7 +136,6 @@
     "realTier2Desc": "Offrez un lotus. Votre nom rejoint le Pilier de Sérénité sur le mur du temple.",
     "realTier3Name": "Un Mala",
     "realTier3Desc": "Offrez un mala de prières. Recevez 1 080 pétales de lotus et votre nom sera éternellement gravé sur le Mur des Bienfaiteurs.",
-
     "lotusTier1Name": "Encens",
     "lotusTier1Desc": "Une petite offrande de présence. Votre énergie rejoint le champ collectif.",
     "lotusTier2Name": "Cloche de Prière",
@@ -148,5 +152,9 @@
     "paypalNote": "Les paiements PayPal sont traités en toute sécurité. Vos données financières ne sont jamais stockées sur nos serveurs. Les pétales de lotus sont crédités après confirmation du paiement.",
     "virtualNote": "Les offrandes virtuelles de lotus soutiennent l'esprit de la communauté du temple. Ce ne sont pas des transactions financières.",
     "returnToTemple": "← Retour au Temple"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }

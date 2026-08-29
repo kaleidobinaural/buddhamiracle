@@ -24,7 +24,8 @@
     "wishRoof": "หลังคาคำอธิษฐาน",
     "hall": "วิหารสงบจิต",
     "dharma": "หอพระธรรม",
-    "donate": "ร่วมทำบุญ"
+    "donate": "ร่วมทำบุญ",
+    "store": "Quiesan Store"
   },
   "Dharma": {
     "title": "หอพระธรรม",
@@ -109,7 +110,11 @@
     "rankCelestial": "ผู้อุปถัมภ์แห่งสรวงสวรรค์",
     "rankDevout": "ผู้ศรัทธามั่นคง",
     "btnReturn": "กลับสู่โถง",
-    "devotion": "ศรัทธาบารมี: {amount} คะแนนจิตวิญญาณ"
+    "devotion": "ศรัทธาบารมี: {amount} คะแนนจิตวิญญาณ",
+    "foundersHall": "Founders' Hall",
+    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "supportersWall": "Supporter's Wall",
+    "supportersDesc": "Hearts who continue to sustain this sacred space"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",
@@ -147,5 +152,9 @@
     "paypalNote": "การชำระเงินผ่าน PayPal ดำเนินการอย่างปลอดภัย ข้อมูลทางการเงินของคุณจะไม่ถูกจัดเก็บในเซิร์ฟเวอร์ของเรา กลีบบัวจะถูกเพิ่มให้หลังจากยืนยันการชำระเงิน",
     "virtualNote": "การถวายกลีบบัวเสมือนจริงเป็นการร่วมจุนเจือจิตวิญญาณของชุมชนวิหาร มิใช่ธุรกรรมทางการเงิน",
     "returnToTemple": "← กลับสู่วิหาร"
+  },
+  "Chat": {
+    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   }
 }
