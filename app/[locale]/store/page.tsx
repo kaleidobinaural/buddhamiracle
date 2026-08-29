@@ -283,7 +283,7 @@ export default function StorePage() {
           {/* VVIP ($1111) */}
           <div className="store-tier-card store-vvip" style={{ maxWidth: '400px', background: 'rgba(212,160,23,0.03)', borderColor: 'rgba(212,160,23,0.3)', position: 'relative' }}>
             <div className="store-badge" style={{ background: '#000', color: 'var(--primary-gold)', border: '1px solid rgba(212,175,55,0.3)', top: '-18px', left: '50%', right: 'auto', transform: 'translateX(-50%)', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
-              {locale === 'ko' ? '이번 달 남은 자리는 단 ' : 'Only '}
+              {t('badgeText1')}
               <span style={{ 
                 display: 'inline-block', minWidth: '26px', height: '26px', lineHeight: '26px',
                 textAlign: 'center', borderRadius: '50%', background: 'linear-gradient(135deg, #FFD700 0%, #C0A062 100%)', 
@@ -293,7 +293,7 @@ export default function StorePage() {
               }}>
                 {vvipSpots}
               </span>
-              {locale === 'ko' ? '자리뿐입니다' : 'exclusive seats left'}
+              {t('badgeText2')}
             </div>
             <div style={{ textAlign: 'center', marginBottom: '16px', marginTop: '12px' }}>
               <h3 className="store-tier-name" style={{ color: '#FFD700', textShadow: '0 0 10px rgba(212,160,23,0.5)' }}>{t('vvipTier')}</h3>

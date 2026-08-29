@@ -38,8 +38,8 @@ export default function ResonancePage() {
             </div>
           ))}
         </div>
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
-          <a href="https://www.tiktok.com/@buddha_miracle" target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold" style={{ display: 'inline-block', maxWidth: '300px', margin: '0 auto', fontSize: '0.9rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '60px' }}>
+          <a href="https://www.tiktok.com/@buddha_miracle" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#d4a017', color: '#000', padding: '18px 40px', borderRadius: '8px', fontSize: '1.2rem', fontWeight: '900', textDecoration: 'none', letterSpacing: '1px', boxShadow: '0 10px 25px rgba(212,160,23,0.4)', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}>
             Follow @buddha_miracle on TikTok
           </a>
         </div>
@@ -54,17 +54,11 @@ export default function ResonancePage() {
         
         .tiktok-gallery {
           display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          gap: 24px;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 40px;
           padding: 20px 0;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
         }
-        .tiktok-gallery::-webkit-scrollbar { height: 8px; }
-        .tiktok-gallery::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
-        .tiktok-gallery::-webkit-scrollbar-thumb { background: rgba(212,160,23,0.3); border-radius: 4px; }
-        .tiktok-gallery::-webkit-scrollbar-thumb:hover { background: rgba(212,160,23,0.6); }
 
         .tiktok-embed-wrapper {
           flex: 0 0 auto;
