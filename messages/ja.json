@@ -129,8 +129,9 @@
     "realTier1Desc": "聖域に一本の炎を灯しましょう。あなたの光は集合的な輝きに加わります。",
     "realTier2Name": "一輪の蓮",
     "realTier2Desc": "蓮を捧げましょう。あなたの名前は寺院の壁にある静寂の柱に加わります。",
-    "realTier3Name": "一本の柱",
-    "realTier3Desc": "あなたの名前が仮想の大理石に永久に刻まれた光の柱を建立しましょう。",
+    "realTier3Name": "数珠 (Mala)",
+    "realTier3Desc": "祈りの数珠を捧げてください。蓮の花1,080個を受け取り、あなたの名前が支援者の壁に永遠に刻まれます。",
+
     "lotusTier1Name": "お香",
     "lotusTier1Desc": "ささやかな存在の供物。あなたのエネルギーは集合的な場に加わります。",
     "lotusTier2Name": "祈りの鐘",

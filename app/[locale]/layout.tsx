@@ -88,11 +88,32 @@ export default async function RootLayout({
             <footer className="sanctuary-footer">
               <div className="footer-divider" />
               <div className="footer-content">
+                {/* Social Links */}
+                <div className="footer-social">
+                  {process.env.NEXT_PUBLIC_TIKTOK_URL && (
+                    <a
+                      href={process.env.NEXT_PUBLIC_TIKTOK_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="footer-social-link"
+                      aria-label="TikTok"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.71a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/>
+                      </svg>
+                      <span>TikTok</span>
+                    </a>
+                  )}
+                </div>
+
                 <p className="copyright">&copy; {new Date().getFullYear()} Temple of Light. The Eternal Sanctuary.</p>
+
                 <div className="legal-links">
                   <Link href="/terms" className="footer-link">Terms of Service</Link>
                   <span className="footer-dot">•</span>
                   <Link href="/privacy" className="footer-link">Privacy Policy</Link>
+                  <span className="footer-dot">•</span>
+                  <Link href="/refund" className="footer-link">Refund Policy</Link>
                 </div>
               </div>
             </footer>

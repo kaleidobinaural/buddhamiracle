@@ -35,6 +35,11 @@ export default function PillarsPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
+  // Split pillars into Founders and Supporters
+  const founderPillars = pillars.filter(p => ['gold', 'marble', 'stone'].includes(p.pillar_type));
+  const supporterPillars = pillars.filter(p => p.pillar_type === 'donor');
+
+
   useEffect(() => {
     setMounted(true);
     fetchPillars(searchQuery, sortBy);
@@ -165,73 +170,175 @@ export default function PillarsPage() {
           ) : pillars.length === 0 ? (
             <div className="empty-state">{t('empty')}</div>
           ) : viewMode === 'hall' ? (
-            <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={'auto'}
-              coverflowEffect={{
-                rotate: 0,
-                stretch: 150,
-                depth: 300,
-                modifier: 1.2,
-                slideShadows: false,
-              }}
-              keyboard={{ enabled: true }}
-              mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
-              modules={[EffectCoverflow, Keyboard, Mousewheel]}
-              onSwiper={setSwiperInstance}
-              className="pillars-swiper"
-            >
-              {pillars.map((pillar) => (
-                <SwiperSlide key={pillar.id} className="pillar-slide">
-                  <div 
-                    className="pillar-wrapper"
-                    onClick={() => setSelectedPillar(pillar)}
-                  >
-                    <article className={`pillar-monument ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                      <div className="pillar-cap" />
-                      <div className="pillar-body">
-                        <div className="pillar-texture" />
-                        <div className="pillar-content">
-                          <h3 className="donor-name">{pillar.name}</h3>
-                          <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
-                        </div>
-                        <div className="pillar-engraving-glow" />
-                      </div>
-                      <div className="pillar-base" />
-                      <div className="pillar-aura" />
-                    </article>
+            <>
+              {/* ─── Founders' Hall ─── */}
+              {founderPillars.length > 0 && (
+                <>
+                  <div className="pillar-section-header founder">
+                    <span className="pillar-section-icon">🏛️</span>
+                    <h2 className="pillar-section-title">Founders&apos; Hall</h2>
+                    <p className="pillar-section-desc">Those who built the foundation of this sanctuary</p>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                      rotate: 0,
+                      stretch: 150,
+                      depth: 300,
+                      modifier: 1.2,
+                      slideShadows: false,
+                    }}
+                    keyboard={{ enabled: true }}
+                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                    modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                    onSwiper={setSwiperInstance}
+                    className="pillars-swiper"
+                  >
+                    {founderPillars.map((pillar) => (
+                      <SwiperSlide key={pillar.id} className="pillar-slide">
+                        <div
+                          className="pillar-wrapper"
+                          onClick={() => setSelectedPillar(pillar)}
+                        >
+                          <article className={`pillar-monument founder-pillar ${pillar.pillar_type} ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                            <div className="pillar-cap" />
+                            <div className="pillar-body">
+                              <div className="pillar-texture" />
+                              <div className="pillar-content">
+                                <h3 className="donor-name">{pillar.name}</h3>
+                                <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
+                              </div>
+                              <div className="pillar-engraving-glow" />
+                            </div>
+                            <div className="pillar-base" />
+                            <div className="pillar-aura" />
+                          </article>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </>
+              )}
+
+              {/* ─── Supporter's Wall ─── */}
+              {supporterPillars.length > 0 && (
+                <>
+                  <div className="pillar-section-header supporter">
+                    <span className="pillar-section-icon">📿</span>
+                    <h2 className="pillar-section-title">Supporter&apos;s Wall</h2>
+                    <p className="pillar-section-desc">Hearts who continue to sustain this sacred space</p>
+                  </div>
+                  <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                      rotate: 0,
+                      stretch: 120,
+                      depth: 250,
+                      modifier: 1.0,
+                      slideShadows: false,
+                    }}
+                    keyboard={{ enabled: true }}
+                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                    modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                    className="pillars-swiper supporters-swiper"
+                  >
+                    {supporterPillars.map((pillar) => (
+                      <SwiperSlide key={pillar.id} className="pillar-slide">
+                        <div
+                          className="pillar-wrapper"
+                          onClick={() => setSelectedPillar(pillar)}
+                        >
+                          <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                            <div className="pillar-cap" />
+                            <div className="pillar-body">
+                              <div className="pillar-texture" />
+                              <div className="pillar-content">
+                                <h3 className="donor-name">{pillar.name}</h3>
+                                <p className="donor-rank">Supporter</p>
+                              </div>
+                              <div className="pillar-engraving-glow" />
+                            </div>
+                            <div className="pillar-base" />
+                            <div className="pillar-aura" />
+                          </article>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </>
+              )}
+            </>
           ) : (
+            /* ─── Grid View (both sections) ─── */
             <div className="pillars-scroll-area animate-fade-up">
-              {pillars.map((pillar) => (
-                <div 
-                  key={pillar.id} 
-                  className="pillar-wrapper"
-                  onClick={() => setSelectedPillar(pillar)}
-                >
-                  <article className={`pillar-monument ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                    <div className="pillar-cap" />
-                    <div className="pillar-body">
-                      <div className="pillar-texture" />
-                      <div className="pillar-content">
-                        <h3 className="donor-name">{pillar.name}</h3>
-                        <p className="donor-rank">{pillar.amount >= 5000 ? 'Celestial Patron' : 'Devout Supporter'}</p>
-                      </div>
-                      <div className="pillar-engraving-glow" />
+              {founderPillars.length > 0 && (
+                <>
+                  <div className="pillar-section-header founder" style={{ gridColumn: '1 / -1' }}>
+                    <span className="pillar-section-icon">🏛️</span>
+                    <h2 className="pillar-section-title">Founders&apos; Hall</h2>
+                  </div>
+                  {founderPillars.map((pillar) => (
+                    <div
+                      key={pillar.id}
+                      className="pillar-wrapper"
+                      onClick={() => setSelectedPillar(pillar)}
+                    >
+                      <article className={`pillar-monument founder-pillar ${pillar.pillar_type} ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                        <div className="pillar-cap" />
+                        <div className="pillar-body">
+                          <div className="pillar-texture" />
+                          <div className="pillar-content">
+                            <h3 className="donor-name">{pillar.name}</h3>
+                            <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
+                          </div>
+                          <div className="pillar-engraving-glow" />
+                        </div>
+                        <div className="pillar-base" />
+                        <div className="pillar-aura" />
+                      </article>
                     </div>
-                    <div className="pillar-base" />
-                    <div className="pillar-aura" />
-                  </article>
-                </div>
-              ))}
+                  ))}
+                </>
+              )}
+              {supporterPillars.length > 0 && (
+                <>
+                  <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1' }}>
+                    <span className="pillar-section-icon">📿</span>
+                    <h2 className="pillar-section-title">Supporter&apos;s Wall</h2>
+                  </div>
+                  {supporterPillars.map((pillar) => (
+                    <div
+                      key={pillar.id}
+                      className="pillar-wrapper"
+                      onClick={() => setSelectedPillar(pillar)}
+                    >
+                      <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                        <div className="pillar-cap" />
+                        <div className="pillar-body">
+                          <div className="pillar-texture" />
+                          <div className="pillar-content">
+                            <h3 className="donor-name">{pillar.name}</h3>
+                            <p className="donor-rank">Supporter</p>
+                          </div>
+                          <div className="pillar-engraving-glow" />
+                        </div>
+                        <div className="pillar-base" />
+                        <div className="pillar-aura" />
+                      </article>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           )}
         </section>
+
 
         {selectedPillar && (
           <div className="ritual-modal-overlay" onClick={() => setSelectedPillar(null)}>
@@ -384,6 +491,46 @@ export default function PillarsPage() {
         .animate-sacred-zoom { animation: sacred-zoom 0.7s cubic-bezier(0.15, 0, 0, 1) forwards; }
 
         .ritual-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.94); backdrop-filter: blur(20px); z-index: 99999; display: flex; align-items: flex-start; justify-content: center; padding: calc(var(--nav-height) + 24px) 24px 40px; overflow-y: auto; }
+
+        /* ─── Section Headers: Founder / Supporter ─── */
+        .pillar-section-header {
+          text-align: center; padding: 60px 24px 40px; width: 100%;
+        }
+        .pillar-section-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+        .pillar-section-title {
+          font-family: var(--font-serif);
+          font-size: clamp(1.6rem, 4vw, 2.5rem);
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+        .pillar-section-desc { font-size: 0.95rem; color: var(--text-tertiary); letter-spacing: 0.05em; }
+        .pillar-section-header.founder .pillar-section-title {
+          background: linear-gradient(135deg, #FFD700, #D4A017, #FFF0A0);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .pillar-section-header.supporter .pillar-section-title {
+          background: linear-gradient(135deg, #C8A97E, #A07855, #D4B896);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* ─── Donor Pillar: warm terracotta stone (distinct from gold founders) ─── */
+        .donor-pillar .pillar-body {
+          background: linear-gradient(180deg, #2a1f14 0%, #1a1208 100%) !important;
+          border-left: 3px solid rgba(160, 120, 80, 0.5) !important;
+          border-right: 3px solid rgba(160, 120, 80, 0.5) !important;
+        }
+        .donor-pillar .pillar-cap, .donor-pillar .pillar-base {
+          background: linear-gradient(135deg, #3a2a1a, #2a1f14) !important;
+          border-color: rgba(160, 120, 80, 0.4) !important;
+        }
+        .donor-pillar .pillar-engraving-glow {
+          background: radial-gradient(ellipse at 50% 50%, rgba(160,120,80,0.15) 0%, transparent 70%) !important;
+        }
+        .donor-pillar .pillar-aura {
+          box-shadow: 0 0 60px rgba(160, 120, 80, 0.15), 0 0 120px rgba(160, 120, 80, 0.08) !important;
+        }
+        .supporters-swiper { margin-top: 0; }
       `}</style>
     </main>
   );

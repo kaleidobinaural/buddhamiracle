@@ -5,14 +5,21 @@ import crypto from 'crypto';
 // ============================================================
 // Lemon Squeezy Webhook — Charges lotus credits on purchase.
 // Products must be registered in Lemon Squeezy dashboard:
-//   • LEMONSQUEEZY_PRODUCT_ID_20  → grants 20 lotus
-//   • LEMONSQUEEZY_PRODUCT_ID_60  → grants 60 lotus
+//   • LEMONSQUEEZY_PRODUCT_ID_CANDLE  → grants 54 lotus  (🕯️ $5)
+//   • LEMONSQUEEZY_PRODUCT_ID_LOTUS   → grants 333 lotus (🪷 $25)
+//   • LEMONSQUEEZY_PRODUCT_ID_MALA    → grants 1080 lotus (📿 $108) + auto-pillar
 // ============================================================
 
 const LOTUS_PACKAGES: Record<string, number> = {
-  [process.env.LEMONSQUEEZY_PRODUCT_ID_20 || '__unset_20__']: 20,
-  [process.env.LEMONSQUEEZY_PRODUCT_ID_60 || '__unset_60__']: 60,
+  [process.env.LEMONSQUEEZY_PRODUCT_ID_CANDLE || '__unset_candle__']: 54,
+  [process.env.LEMONSQUEEZY_PRODUCT_ID_LOTUS   || '__unset_lotus__']: 333,
+  [process.env.LEMONSQUEEZY_PRODUCT_ID_MALA    || '__unset_mala__']: 1080,
 };
+
+// Product IDs that trigger automatic Pillar (Supporter's Wall) registration
+const PILLAR_PRODUCTS = new Set([
+  process.env.LEMONSQUEEZY_PRODUCT_ID_MALA || '__unset_mala__',
+]);
 
 /**
  * Verifies the Lemon Squeezy webhook signature using HMAC-SHA256.
@@ -82,6 +89,7 @@ export async function POST(req: NextRequest) {
   const orderData = payload?.data?.attributes;
   const productId = String(orderData?.first_order_item?.product_id ?? '');
   const customerEmail: string = orderData?.user_email ?? '';
+  const customerName: string = orderData?.user_name ?? 'Anonymous';
   const orderStatus: string = orderData?.status ?? '';
 
   if (orderStatus !== 'paid') {
@@ -115,6 +123,27 @@ export async function POST(req: NextRequest) {
     await supabase
       .from('user_limits')
       .insert([{ email: customerEmail, lotus_count: lotusToGrant, chat_count: 0 }]);
+  }
+
+  // ★ AUTO-PILLAR: If this product qualifies, register on Supporter's Wall
+  if (PILLAR_PRODUCTS.has(productId)) {
+    const { error: pillarError } = await supabase
+      .from('pillars')
+      .insert([{
+        name: customerName,
+        email: customerEmail,
+        message: 'May peace and wisdom fill all beings. 📿',
+        amount: 108,
+        pillar_type: 'donor',
+        created_at: new Date().toISOString(),
+      }]);
+
+    if (pillarError) {
+      console.error('[Webhook] Failed to register pillar:', pillarError.message);
+      // Non-fatal: lotus is already granted, just log the pillar failure
+    } else {
+      console.log(`[Webhook] ✅ Pillar registered for ${customerName} (${customerEmail})`);
+    }
   }
 
   // Log this event to prevent duplicate processing

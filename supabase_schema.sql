@@ -127,3 +127,25 @@ begin
   where id = p_id;
 end;
 $$;
+
+-- ==========================================
+-- ★ quiesan_inquiries — VVIP / Premium 신청 폼 저장
+-- ==========================================
+-- Run in Supabase SQL editor if not yet created.
+
+create table if not exists quiesan_inquiries (
+  id             uuid default gen_random_uuid() primary key,
+  name           text not null,
+  email          text not null,
+  message        text,
+  inquiry_type   text default 'VVIP',  -- 'VVIP' | 'Premium' | 'Donation'
+  created_at     timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Admin reads all; public cannot access
+alter table quiesan_inquiries enable row level security;
+
+create policy "Service role can manage inquiries"
+  on quiesan_inquiries
+  using (true)
+  with check (true);

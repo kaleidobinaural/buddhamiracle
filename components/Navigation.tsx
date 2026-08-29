@@ -87,7 +87,7 @@ export default function Navigation() {
                 value={locale}
                 onChange={(e) => {
                   const nextLocale = e.target.value;
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr)(\/|$)/, '/') || '/';
+                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                 }}
                 style={{ appearance: 'auto', cursor: 'pointer', paddingRight: '12px' }}
@@ -98,6 +98,14 @@ export default function Navigation() {
                 <option value="zh">ZH</option>
                 <option value="es">ES</option>
                 <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="pt">PT</option>
+                <option value="ar">AR</option>
+                <option value="vi">VI</option>
+                <option value="th">TH</option>
+                <option value="id">ID</option>
+                <option value="my">MY</option>
+                <option value="km">KM</option>
               </select>
             </div>
 
@@ -202,7 +210,7 @@ export default function Navigation() {
                 value={locale}
                 onChange={(e) => {
                   const nextLocale = e.target.value;
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr)(\/|$)/, '/') || '/';
+                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                   setMobileOpen(false);
                 }}
@@ -213,6 +221,14 @@ export default function Navigation() {
                 <option value="zh">🌐 中文</option>
                 <option value="es">🌐 Español</option>
                 <option value="fr">🌐 Français</option>
+                <option value="de">🌐 Deutsch</option>
+                <option value="pt">🌐 Português</option>
+                <option value="ar">🌐 العربية</option>
+                <option value="vi">🌐 Tiếng Việt</option>
+                <option value="th">🌐 ไทย</option>
+                <option value="id">🌐 Bahasa Indonesia</option>
+                <option value="my">🌐 မြန်မာ</option>
+                <option value="km">🌐 ខ្មែរ</option>
               </select>
             </div>
           </div>
