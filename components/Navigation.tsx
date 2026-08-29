@@ -54,6 +54,7 @@ export default function Navigation() {
     { href: '/hall', key: 'hall' },
     { href: '/dharma', key: 'dharma' },
     { href: '/store', key: 'store' },
+    { href: '/resonance', key: 'resonance' },
   ];
 
   return (

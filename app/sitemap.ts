@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://buddhamiracle.com';
   const locales = ['en', 'ko', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'ar', 'vi', 'th', 'id', 'my', 'km'];
-  const routes = ['', '/chat', '/wish-roof', '/pillars', '/donate', '/store', '/dharma', '/hall'];
+  const routes = ['', '/chat', '/wish-roof', '/pillars', '/donate', '/store', '/resonance', '/dharma', '/hall'];
   const staticRoutes = ['/privacy', '/terms', '/refund'];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
