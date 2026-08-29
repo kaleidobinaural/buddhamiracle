@@ -22,19 +22,15 @@ export default function ResonancePage() {
         </p>
         <div className="tiktok-gallery">
           {TIKTOK_VIDEOS.map((vid, idx) => (
-            <div key={idx} className="tiktok-embed-wrapper">
-              <blockquote
-                className="tiktok-embed"
-                cite={`https://www.tiktok.com/@buddha_miracle/video/${vid}`}
-                data-video-id={vid}
-                style={{ maxWidth: '325px', minWidth: '325px' }}
-              >
-                <section>
-                  <a target="_blank" title="@buddha_miracle" href="https://www.tiktok.com/@buddha_miracle?refer=embed">
-                    @buddha_miracle
-                  </a>
-                </section>
-              </blockquote>
+            <div key={idx} className="tiktok-embed-wrapper" style={{ width: '325px', height: '580px' }}>
+              <iframe
+                src={`https://www.tiktok.com/embed/v2/${vid}?lang=en-US`}
+                allow="autoplay; encrypted-media"
+                title={`TikTok ${vid}`}
+                className="store-tiktok-iframe"
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
+                style={{ width: '100%', height: '100%', border: 'none', borderRadius: '8px' }}
+              />
             </div>
           ))}
         </div>
