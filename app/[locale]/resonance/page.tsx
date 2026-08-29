@@ -3,7 +3,6 @@
 import { useTranslations } from 'next-intl';
 
 const TIKTOK_VIDEOS = [
-  "7629342532014542098",
   "7629655147815259400",
   "7610752603353287954",
   "7634842775787162888",
@@ -39,6 +38,11 @@ export default function ResonancePage() {
               </blockquote>
             </div>
           ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <a href="https://www.tiktok.com/@buddha_miracle" target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline" style={{ display: 'inline-block', maxWidth: '300px', margin: '0 auto', fontSize: '0.9rem' }}>
+            Follow @buddha_miracle on TikTok
+          </a>
         </div>
       </section>
       

@@ -21,12 +21,37 @@ export default function StorePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [vvipSpots, setVvipSpots] = useState(3);
 
   useEffect(() => {
-    fetch('https://script.google.com/macros/s/AKfycbw6wF9QJqX8mN42E28nOIfVqY_c4zXJ8l2V-j6J-W5y6Z9p_oFv-y5kM4O_q3z/exec')
+    // Follower Count Logic
+    fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
       .then(res => res.json())
       .then(data => { if (data.followerCount) setFollowerCount(data.followerCount); })
       .catch(() => {});
+
+    // VVIP 10-day cycle countdown logic
+    const now = new Date();
+    const year = now.getUTCFullYear();
+    const month = now.getUTCMonth() + 1; 
+    const today = now.getUTCDate(); 
+    const seed = year * 100 + month;
+    
+    function getSeededRandom(s: number) {
+      let x = Math.sin(s) * 10000;
+      return x - Math.floor(x);
+    }
+
+    const drop1 = Math.floor(getSeededRandom(seed) * 10) + 3;
+    const drop2 = Math.floor(getSeededRandom(seed + 1) * 11) + 15;
+
+    let spotsLeft = 3;
+    if (today >= drop2) {
+      spotsLeft = 1;
+    } else if (today >= drop1) {
+      spotsLeft = 2;
+    }
+    setVvipSpots(spotsLeft);
   }, []);
 
   const handleVvipSubmit = async (e: React.FormEvent) => {
@@ -255,8 +280,21 @@ export default function StorePage() {
           </div>
 
           {/* VVIP ($1111) */}
-          <div className="store-tier-card store-vvip" style={{ maxWidth: '400px', background: 'rgba(212,160,23,0.03)', borderColor: 'rgba(212,160,23,0.3)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+          <div className="store-tier-card store-vvip" style={{ maxWidth: '400px', background: 'rgba(212,160,23,0.03)', borderColor: 'rgba(212,160,23,0.3)', position: 'relative' }}>
+            <div className="store-badge" style={{ background: '#000', color: 'var(--primary-gold)', border: '1px solid rgba(212,175,55,0.3)', top: '-18px', left: '50%', right: 'auto', transform: 'translateX(-50%)', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
+              Only 
+              <span style={{ 
+                display: 'inline-block', minWidth: '26px', height: '26px', lineHeight: '26px',
+                textAlign: 'center', borderRadius: '50%', background: 'linear-gradient(135deg, #FFD700 0%, #C0A062 100%)', 
+                color: '#000', fontWeight: '900', fontSize: '14px', margin: '0 8px',
+                boxShadow: '0 0 10px rgba(255, 215, 0, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.5)', 
+                border: '1px solid #FFF8DC', transform: 'scale(1.1)' 
+              }}>
+                {vvipSpots}
+              </span>
+              exclusive seats left
+            </div>
+            <div style={{ textAlign: 'center', marginBottom: '16px', marginTop: '12px' }}>
               <h3 className="store-tier-name" style={{ color: '#FFD700', textShadow: '0 0 10px rgba(212,160,23,0.5)' }}>{t('vvipTier')}</h3>
               <p className="store-tier-price" style={{ color: '#FFD700' }}>$1111</p>
             </div>

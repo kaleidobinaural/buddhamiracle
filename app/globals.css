@@ -221,6 +221,8 @@ img, video {
   padding: 8px 16px;
   border-radius: 8px;
   position: relative;
+  white-space: nowrap;
+  word-break: keep-all;
   transition: color var(--duration-fast) var(--ease-smooth),
               background var(--duration-fast) var(--ease-smooth);
 }
