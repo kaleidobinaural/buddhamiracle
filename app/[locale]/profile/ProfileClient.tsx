@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface ProfileProps {
   user: {
@@ -12,6 +13,7 @@ interface ProfileProps {
 }
 
 export default function ProfileClient({ user }: ProfileProps) {
+  const t = useTranslations('Profile');
   const [activeTab, setActiveTab] = useState<'wishes' | 'pillars' | 'privacy'>('wishes');
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -86,59 +88,59 @@ export default function ProfileClient({ user }: ProfileProps) {
             className={`profile-tab ${activeTab === 'wishes' ? 'active' : ''}`}
             onClick={() => setActiveTab('wishes')}
           >
-            My Wishes
+            {t('myWishes')}
           </button>
           <button 
             className={`profile-tab ${activeTab === 'pillars' ? 'active' : ''}`}
             onClick={() => setActiveTab('pillars')}
           >
-            My Pillars
+            {t('myPillars')}
           </button>
           <button 
             className={`profile-tab ${activeTab === 'privacy' ? 'active' : ''}`}
             onClick={() => setActiveTab('privacy')}
           >
-            Privacy & Data
+            {t('privacyData')}
           </button>
         </div>
 
         <section className="profile-content">
           {activeTab === 'privacy' ? (
             <div className="privacy-settings glass-card">
-              <h2 className="settings-title">Data Privacy & Protection</h2>
+              <h2 className="settings-title">{t('dataPrivacy')}</h2>
               <p className="settings-desc">
-                In compliance with global privacy standards (GDPR, CCPA, KR PIPA), you have full control over your digital footprint in the Sanctuary.
+                {t('privacyDesc')}
               </p>
               
               <div className="privacy-action-box">
                 <div className="action-info">
-                  <h3>Right to be Forgotten</h3>
-                  <p>Permanently remove all your inscriptions and interactions from our records.</p>
+                  <h3>{t('rightForgotten')}</h3>
+                  <p>{t('rightForgottenDesc')}</p>
                 </div>
                 <button 
                   className="btn-delete-data" 
                   onClick={handleDeleteData}
                   disabled={isDeleting}
                 >
-                  {isDeleting ? 'Erasing...' : 'Delete My Data'}
+                  {isDeleting ? t('deleting') : t('deleteData')}
                 </button>
               </div>
 
               <div className="privacy-action-box">
                 <div className="action-info">
-                  <h3>Data Portability</h3>
-                  <p>Request a complete export of your personal data in JSON format.</p>
+                  <h3>{t('dataPortability')}</h3>
+                  <p>{t('dataPortabilityDesc')}</p>
                 </div>
-                <button className="btn-ghost-small" onClick={() => alert("Data export link will be sent to your email.")}>
-                  Request Export
+                <button className="btn-ghost-small" onClick={() => alert(t('exportSent'))}>
+                  {t('requestExport')}
                 </button>
               </div>
             </div>
           ) : isLoading ? (
-            <div className="loading-state">Gathering your memories...</div>
+            <div className="loading-state">{t('loading')}</div>
           ) : data.length === 0 ? (
             <div className="empty-state">
-              You have not inscribed any {activeTab} yet.
+              {activeTab === 'wishes' ? t('emptyWishes') : t('emptyPillars')}
             </div>
           ) : (
             <div className="items-grid">
@@ -148,13 +150,13 @@ export default function ProfileClient({ user }: ProfileProps) {
                   <p className="item-text">“{item.content || item.message}”</p>
                   <div className="item-footer">
                     {activeTab === 'wishes' && (
-                      <span className="stat-likes">✨ {item.likes_count || 0} Lights</span>
+                      <span className="stat-likes">✨ {item.likes_count || 0} {t('lights')}</span>
                     )}
                     {activeTab === 'pillars' && (
-                      <span className="stat-amount">💎 {item.amount} Soul Points</span>
+                      <span className="stat-amount">💎 {item.amount} {t('soulPoints')}</span>
                     )}
                     <span className={`badge ${item.is_public ? 'public' : 'private'}`}>
-                      {item.is_public ? 'Public' : 'Private'}
+                      {item.is_public ? t('public') : t('private')}
                     </span>
                   </div>
                 </article>

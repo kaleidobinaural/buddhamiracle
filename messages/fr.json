@@ -26,7 +26,11 @@
     "dharma": "Bibliothèque du Dharma",
     "donate": "Faire une Offrande",
     "store": "Quiesan Store",
-    "resonance": "Résonance Mondiale"
+    "resonance": "Résonance Mondiale",
+    "mySanctuary": "Mon Sanctuaire",
+    "privacyPolicy": "Politique de Confidentialité",
+    "signOut": "Déconnexion",
+    "signIn": "Connexion"
   },
   "Dharma": {
     "title": "Bibliothèque du Dharma",
@@ -199,7 +203,7 @@
     "malaDesc": "Un chapelet sacré pour la méditation profonde. Devenez instantanément Supporter.",
     "buyLotus": "Offer ",
     "vipTitle": "Un Voyage Rien Que Pour Vous",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "Pour ceux qui souhaitent laisser un impact profond.",
     "premiumTier": "Collection Premium THE RESONANCE",
     "premiumF1": "Visuel de méditation kaléidoscope Premium",
     "premiumF2": "Choix de couche de fréquence harmonique (432Hz ou 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Suivez @buddha_miracle sur TikTok",
     "eyebrow": "RÉSONANCE MONDIALE"
+  },
+  "Profile": {
+    "myWishes": "Mes Vœux",
+    "myPillars": "Mes Piliers",
+    "privacyData": "Confidentialité & Données",
+    "dataPrivacy": "Confidentialité et Protection des Données",
+    "privacyDesc": "Conformément aux normes mondiales de confidentialité (GDPR, CCPA, KR PIPA), vous avez un contrôle total sur votre empreinte numérique dans le Sanctuaire.",
+    "rightForgotten": "Droit à l'Oubli",
+    "rightForgottenDesc": "Supprimez définitivement toutes vos inscriptions et interactions de nos archives.",
+    "deleteData": "Supprimer Mes Données",
+    "deleting": "Effacement...",
+    "dataPortability": "Portabilité des Données",
+    "dataPortabilityDesc": "Demandez une exportation complète de vos données personnelles au format JSON.",
+    "requestExport": "Demander l'Exportation",
+    "exportSent": "Le lien d'exportation de données sera envoyé à votre email.",
+    "loading": "Rassemblement de vos souvenirs...",
+    "emptyWishes": "Vous n'avez pas encore inscrit de vœux.",
+    "emptyPillars": "Vous n'avez pas encore inscrit de piliers.",
+    "lights": "Lumières",
+    "soulPoints": "Points d'Âme",
+    "public": "Public",
+    "private": "Privé"
   }
 }

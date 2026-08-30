@@ -143,10 +143,10 @@ export default function Navigation() {
                     <p className="user-email">{session.user.email}</p>
                   </div>
                   <Link href="/profile" className="dropdown-item">
-                    My Sanctuary
+                    {t('mySanctuary')}
                   </Link>
                   <Link href="/privacy" className="dropdown-item" style={{ color: '#888' }}>
-                    Privacy Policy
+                    {t('privacyPolicy')}
                   </Link>
                   {isAdmin && (
                     <Link href="/admin" className="dropdown-item dropdown-item-admin">
@@ -154,7 +154,7 @@ export default function Navigation() {
                     </Link>
                   )}
                   <button onClick={() => signOut({ callbackUrl: '/' })} className="dropdown-item">
-                    Sign out
+                    {t('signOut')}
                   </button>
                 </div>
               </div>
@@ -199,11 +199,11 @@ export default function Navigation() {
               </Link>
               {!session?.user && (
                 <Link href="/login" className="mobile-nav-link bloom-8" style={{ color: 'var(--primary-gold)', fontStyle: 'italic' }} onClick={() => setMobileOpen(false)}>
-                  Sign In
+                  {t('signIn')}
                 </Link>
               )}
               <Link href="/privacy" className="mobile-nav-link bloom-9" style={{ fontSize: '1.1rem', marginTop: '12px', color: '#666' }} onClick={() => setMobileOpen(false)}>
-                Privacy Policy
+                {t('privacyPolicy')}
               </Link>
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select

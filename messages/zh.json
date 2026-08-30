@@ -26,7 +26,11 @@
     "dharma": "佛法藏经阁",
     "donate": "供养",
     "store": "Quiesan 商店",
-    "resonance": "全球共鸣"
+    "resonance": "全球共鸣",
+    "mySanctuary": "我的圣所",
+    "privacyPolicy": "隐私政策",
+    "signOut": "退出登录",
+    "signIn": "登录"
   },
   "Dharma": {
     "title": "佛法藏经阁",
@@ -199,7 +203,7 @@
     "malaDesc": "深度冥想的神圣念珠。立即成为\"支持者\"。",
     "buyLotus": "Offer ",
     "vipTitle": "只为您的专属旅程",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "为那些希望留下深远影响的人们而设。",
     "premiumTier": "Premium 尊享系列 THE RESONANCE",
     "premiumF1": "精选万花筒冥想视觉",
     "premiumF2": "选择谐波频率层（432Hz 或 528Hz）",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "在TikTok上关注 @buddha_miracle",
     "eyebrow": "全球共鸣"
+  },
+  "Profile": {
+    "myWishes": "我的心愿",
+    "myPillars": "我的柱子",
+    "privacyData": "隐私与数据",
+    "dataPrivacy": "数据隐私与保护",
+    "privacyDesc": "遵守全球隐私标准(GDPR, CCPA, KR PIPA)，您可完全控制在圣所中的数字足迹。",
+    "rightForgotten": "被遗忘权",
+    "rightForgottenDesc": "永久删除您的所有记录和互动。",
+    "deleteData": "删除我的数据",
+    "deleting": "删除中...",
+    "dataPortability": "数据可携带性",
+    "dataPortabilityDesc": "请求以JSON格式导出您的完整个人数据。",
+    "requestExport": "请求导出",
+    "exportSent": "数据导出链接将发送到您的邮箱。",
+    "loading": "正在收集您的记忆...",
+    "emptyWishes": "您还没有留下任何心愿。",
+    "emptyPillars": "您还没有留下任何柱子。",
+    "lights": "光",
+    "soulPoints": "灵魂积分",
+    "public": "公开",
+    "private": "私密"
   }
 }

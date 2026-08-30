@@ -26,7 +26,11 @@
     "dharma": "បណ្ណាល័យព្រះធម៌",
     "donate": "បរិច្ចាគ",
     "store": "Quiesan Store",
-    "resonance": "សម្លេងសកល"
+    "resonance": "សម្លេងសកល",
+    "mySanctuary": "សន្ទ្រាន់របស់ខ្ញុំ",
+    "privacyPolicy": "គោលការណ៍ភាពឯកជន",
+    "signOut": "ចេញ",
+    "signIn": "ចូល"
   },
   "Dharma": {
     "title": "បណ្ណាល័យព្រះធម៌",
@@ -199,7 +203,7 @@
     "malaDesc": "មាលាបវិត្រសម្រាប់ការស្ងាប់ស្ងៀមជ្រៅ។ ក្លាយជា Supporter ភ្លាមៗ",
     "buyLotus": "Offer ",
     "vipTitle": "ឋានើរឯកផ្តល់ខ្លួន",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "សម្រាប់អ្នកដែលចង់បង្កើតផលប៉ះពាល់ជ្រៅៗ",
     "premiumTier": "អ្នកប្រមូលពិសើស THE RESONANCE",
     "premiumF1": "Kaleidoscope ពិសើសព័សើស",
     "premiumF2": "ជម្រើសស្រទាប់ប្រេកង់អាម៉ូនិក (432Hz ឬ 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok",
     "eyebrow": "សំឡេងជ្រួញជ្រើសសកល"
+  },
+  "Profile": {
+    "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",
+    "myPillars": "សសររបស់ខ្ញុំ",
+    "privacyData": "ភាពឯកជន & ទិន្នន័យ",
+    "dataPrivacy": "ភាពឯកជននិងការការពារទិន្នន័យ",
+    "privacyDesc": "អនុលោមតាមស្តង់ដារភាពឯកជនពិភពលោក អ្នកមានការគ្រប់គ្រងពេញលេញលើស្នាមចំណាំឌីជីថលរបស់អ្នកនៅក្នុងទីសក្ការបូជា",
+    "rightForgotten": "សិទ្ធិត្រូវបានភ្លេច",
+    "rightForgottenDesc": "លុបការចារឹករបស់អ្នកទាំងអស់ចេញពីកំណត់ត្រារបស់យើងជាអចិន្ត្រៃយ៍",
+    "deleteData": "លុបទិន្នន័យរបស់ខ្ញុំ",
+    "deleting": "កំពុងលុប...",
+    "dataPortability": "ការចល័តទិន្នន័យ",
+    "dataPortabilityDesc": "ស្នើសុំការនាំចេញទិន្នន័យផ្ទាល់ខ្លួនទាំងស្រុងរបស់អ្នកក្នុងទម្រង់ JSON",
+    "requestExport": "ស្នើសុំការនាំចេញ",
+    "exportSent": "តំណភ្ជាប់នាំចេញទិន្នន័យនឹងត្រូវបានផ្ញើទៅអ៊ីមែលរបស់អ្នក",
+    "loading": "កំពុងប្រមូលការចងចាំ...",
+    "emptyWishes": "អ្នកមិនទាន់ចារឹកបំណងប្រាថ្នាណាមួយទេ",
+    "emptyPillars": "អ្នកមិនទាន់ចារឹកសសរណាមួយទេ",
+    "lights": "ពន្លឺ",
+    "soulPoints": "ពិន្ទុវិញ្ញាណ",
+    "public": "សាធារណៈ",
+    "private": "ឯកជន"
   }
 }

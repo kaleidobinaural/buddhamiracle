@@ -26,7 +26,11 @@
     "dharma": "경전 서재",
     "donate": "공양하기",
     "store": "Quiesan 스토어",
-    "resonance": "글로벌 울림"
+    "resonance": "글로벌 울림",
+    "mySanctuary": "내 성소",
+    "privacyPolicy": "개인정보 처리방침",
+    "signOut": "로그아웃",
+    "signIn": "로그인"
   },
   "Dharma": {
     "title": "법의 서재",
@@ -199,7 +203,7 @@
     "malaDesc": "깊은 명상을 위한 신성한 염주. 즉시 '후원자' 등급 획득.",
     "buyLotus": "공양하기 ",
     "vipTitle": "당신만을 위한 여정",
-    "vipDesc": "깊은 발자취를 남기고자 하는 분들을 위해.",
+    "vipDesc": "깊은 울림을 남기고자 하는 분들을 위한 특별한 여정입니다.",
     "premiumTier": "프리미엄 컬렉션 THE RESONANCE",
     "premiumF1": "프리미엄 칼레이도스코프 명상 비주얼",
     "premiumF2": "조화 주파수 레이어 선택(432Hz 또는 528Hz)",
@@ -241,5 +245,27 @@
     "related": "관련 영상",
     "followBtn": "TikTok에서 @buddha_miracle 팔로우하기",
     "eyebrow": "글로벌 울림"
+  },
+  "Profile": {
+    "myWishes": "내 소원",
+    "myPillars": "내 기둥",
+    "privacyData": "개인정보 & 데이터",
+    "dataPrivacy": "데이터 개인정보 보호",
+    "privacyDesc": "글로벌 개인정보 보호 기준(GDPR, CCPA, KR PIPA)을 준수하여 성소에서의 디지털 흔적을 완전히 통제하실 수 있습니다.",
+    "rightForgotten": "잊혀질 권리",
+    "rightForgottenDesc": "당신의 모든 소원과 상호작용을 영구적으로 삭제합니다.",
+    "deleteData": "내 데이터 삭제",
+    "deleting": "삭제 중...",
+    "dataPortability": "데이터 이동권",
+    "dataPortabilityDesc": "JSON 형식으로 개인 데이터 전체 내보내기를 요청하세요.",
+    "requestExport": "내보내기 요청",
+    "exportSent": "데이터 내보내기 링크가 이메일로 전송됩니다.",
+    "loading": "기억을 불러오는 중...",
+    "emptyWishes": "아직 새겨진 소원이 없습니다.",
+    "emptyPillars": "아직 새겨진 기둥이 없습니다.",
+    "lights": "빛",
+    "soulPoints": "소울 포인트",
+    "public": "공개",
+    "private": "비공개"
   }
 }

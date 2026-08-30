@@ -26,7 +26,11 @@
     "dharma": "Perpustakaan Dharma",
     "donate": "Berdana",
     "store": "Quiesan Store",
-    "resonance": "Resonansi Global"
+    "resonance": "Resonansi Global",
+    "mySanctuary": "Tempat Suciku",
+    "privacyPolicy": "Kebijakan Privasi",
+    "signOut": "Keluar",
+    "signIn": "Masuk"
   },
   "Dharma": {
     "title": "Perpustakaan Dharma",
@@ -199,7 +203,7 @@
     "malaDesc": "Tasbih sakral untuk meditasi mendalam. Jadilah Pendukung seketika.",
     "buyLotus": "Offer ",
     "vipTitle": "Perjalanan Khusus Untuk Anda",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "Untuk mereka yang ingin memberikan dampak mendalam.",
     "premiumTier": "Koleksi Premium THE RESONANCE",
     "premiumF1": "Visual meditasi kaleidoskop premium",
     "premiumF2": "Pilihan lapisan frekuensi harmonik (432Hz atau 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Ikuti @buddha_miracle di TikTok",
     "eyebrow": "RESONANSI GLOBAL"
+  },
+  "Profile": {
+    "myWishes": "Keinginan Saya",
+    "myPillars": "Pilar Saya",
+    "privacyData": "Privasi & Data",
+    "dataPrivacy": "Privasi & Perlindungan Data",
+    "privacyDesc": "Sesuai standar privasi global (GDPR, CCPA, KR PIPA), Anda memiliki kendali penuh atas jejak digital Anda di Tempat Suci.",
+    "rightForgotten": "Hak untuk Dilupakan",
+    "rightForgottenDesc": "Hapus secara permanen semua catatan dan interaksi Anda dari arsip kami.",
+    "deleteData": "Hapus Data Saya",
+    "deleting": "Menghapus...",
+    "dataPortability": "Portabilitas Data",
+    "dataPortabilityDesc": "Minta ekspor lengkap data pribadi Anda dalam format JSON.",
+    "requestExport": "Minta Ekspor",
+    "exportSent": "Tautan ekspor data akan dikirim ke email Anda.",
+    "loading": "Mengumpulkan kenangan Anda...",
+    "emptyWishes": "Anda belum mengukir keinginan apapun.",
+    "emptyPillars": "Anda belum mengukir pilar apapun.",
+    "lights": "Cahaya",
+    "soulPoints": "Poin Jiwa",
+    "public": "Publik",
+    "private": "Pribadi"
   }
 }

@@ -26,7 +26,11 @@
     "dharma": "หอพระธรรม",
     "donate": "ร่วมทำบุญ",
     "store": "Quiesan Store",
-    "resonance": "เสียงสะท้อนระดับโลก"
+    "resonance": "เสียงสะท้อนระดับโลก",
+    "mySanctuary": "ศาลเจ้าของฉัน",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "signOut": "ออกจากระบบ",
+    "signIn": "เข้าสู่ระบบ"
   },
   "Dharma": {
     "title": "หอพระธรรม",
@@ -199,7 +203,7 @@
     "malaDesc": "ลูกประคำศักดิ์สิทธิ์สำหรับการนั่งสมาธิลึก กลายเป็น Supporter ทันที",
     "buyLotus": "Offer ",
     "vipTitle": "การเดินทางเพื่อคุณโดยเฉพาะ",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "สำหรับผู้ที่ต้องการสร้างผลกระทบอย่างลึกซึ้ง",
     "premiumTier": "คอลเลกชันพรีเมียม THE RESONANCE",
     "premiumF1": "ภาพสมาธิ Kaleidoscope พรีเมียม",
     "premiumF2": "เลือกชั้นความถี่สอดคล้อง (432Hz หรือ 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "ติดตาม @buddha_miracle บน TikTok",
     "eyebrow": "เสียงสะท้อนระดับโลก"
+  },
+  "Profile": {
+    "myWishes": "ความปรารถนาของฉัน",
+    "myPillars": "เสาของฉัน",
+    "privacyData": "ความเป็นส่วนตัวและข้อมูล",
+    "dataPrivacy": "ความเป็นส่วนตัวและการปกป้องข้อมูล",
+    "privacyDesc": "เป็นไปตามมาตรฐานความเป็นส่วนตัวระดับโลก คุณมีการควบคุมเต็มรูปแบบเหนือรอยเท้าดิจิทัลของคุณในศาลเจ้า",
+    "rightForgotten": "สิทธิ์ที่จะถูกลืม",
+    "rightForgottenDesc": "ลบจารึกและการโต้ตอบทั้งหมดของคุณออกจากบันทึกของเราอย่างถาวร",
+    "deleteData": "ลบข้อมูลของฉัน",
+    "deleting": "กำลังลบ...",
+    "dataPortability": "ความสามารถในการพกพาข้อมูล",
+    "dataPortabilityDesc": "ขอส่งออกข้อมูลส่วนตัวของคุณทั้งหมดในรูปแบบ JSON",
+    "requestExport": "ขอส่งออก",
+    "exportSent": "ลิงก์ส่งออกข้อมูลจะถูกส่งไปยังอีเมลของคุณ",
+    "loading": "กำลังรวบรวมความทรงจำ...",
+    "emptyWishes": "คุณยังไม่ได้บันทึกความปรารถนาใดๆ",
+    "emptyPillars": "คุณยังไม่ได้บันทึกเสาใดๆ",
+    "lights": "แสงสว่าง",
+    "soulPoints": "คะแนนวิญญาณ",
+    "public": "สาธารณะ",
+    "private": "ส่วนตัว"
   }
 }

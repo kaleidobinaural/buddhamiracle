@@ -26,7 +26,11 @@
     "dharma": "Dharma Library",
     "donate": "Donate",
     "store": "Quiesan Store",
-    "resonance": "Global Resonance"
+    "resonance": "Global Resonance",
+    "mySanctuary": "My Sanctuary",
+    "privacyPolicy": "Privacy Policy",
+    "signOut": "Sign out",
+    "signIn": "Sign In"
   },
   "Dharma": {
     "title": "Dharma Library",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Follow @buddha_miracle on TikTok",
     "eyebrow": "GLOBAL RESONANCE"
+  },
+  "Profile": {
+    "myWishes": "My Wishes",
+    "myPillars": "My Pillars",
+    "privacyData": "Privacy & Data",
+    "dataPrivacy": "Data Privacy & Protection",
+    "privacyDesc": "In compliance with global privacy standards (GDPR, CCPA, KR PIPA), you have full control over your digital footprint in the Sanctuary.",
+    "rightForgotten": "Right to be Forgotten",
+    "rightForgottenDesc": "Permanently remove all your inscriptions and interactions from our records.",
+    "deleteData": "Delete My Data",
+    "deleting": "Erasing...",
+    "dataPortability": "Data Portability",
+    "dataPortabilityDesc": "Request a complete export of your personal data in JSON format.",
+    "requestExport": "Request Export",
+    "exportSent": "Data export link will be sent to your email.",
+    "loading": "Gathering your memories...",
+    "emptyWishes": "You have not inscribed any wishes yet.",
+    "emptyPillars": "You have not inscribed any pillars yet.",
+    "lights": "Lights",
+    "soulPoints": "Soul Points",
+    "public": "Public",
+    "private": "Private"
   }
 }

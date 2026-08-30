@@ -26,7 +26,11 @@
     "dharma": "Thư Viện Pháp",
     "donate": "Cúng Nhường",
     "store": "Quiesan Store",
-    "resonance": "Sự Cộng Hưởng Toàn Cầu"
+    "resonance": "Sự Cộng Hưởng Toàn Cầu",
+    "mySanctuary": "Thánh Địa Của Tôi",
+    "privacyPolicy": "Chính Sách Bảo Mật",
+    "signOut": "Đăng Xuất",
+    "signIn": "Đăng Nhập"
   },
   "Dharma": {
     "title": "Thư Viện Phật Pháp",
@@ -199,7 +203,7 @@
     "malaDesc": "Tràng hạt thiêng liêng cho thiền định sâu. Trở thành Người Ủng Hộ ngay lập tức.",
     "buyLotus": "Offer ",
     "vipTitle": "Hành trình dành riêng cho bạn",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "Dành cho những ai muốn tạo ra tác động sâu sắc.",
     "premiumTier": "Bộ sưu tập cao cấp THE RESONANCE",
     "premiumF1": "Hình ảnh thiền kính vạn hoa cao cấp",
     "premiumF2": "Lớp tần số hài hòa (432Hz hoặc 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Theo dõi @buddha_miracle trên TikTok",
     "eyebrow": "CỘNG HƯỞNG TOÀN CẦU"
+  },
+  "Profile": {
+    "myWishes": "Ước Nguyện Của Tôi",
+    "myPillars": "Trụ Cột Của Tôi",
+    "privacyData": "Quyền Riêng Tư & Dữ Liệu",
+    "dataPrivacy": "Bảo Mật & Bảo Vệ Dữ Liệu",
+    "privacyDesc": "Tuân thủ các tiêu chuẩn quyền riêng tư toàn cầu (GDPR, CCPA, KR PIPA), bạn có toàn quyền kiểm soát dấu vết kỹ thuật số trong Thánh Địa.",
+    "rightForgotten": "Quyền Bị Lãng Quên",
+    "rightForgottenDesc": "Xóa vĩnh viễn tất cả bản ghi và tương tác của bạn khỏi hệ thống.",
+    "deleteData": "Xóa Dữ Liệu Của Tôi",
+    "deleting": "Đang xóa...",
+    "dataPortability": "Tính Di Động Dữ Liệu",
+    "dataPortabilityDesc": "Yêu cầu xuất toàn bộ dữ liệu cá nhân ở định dạng JSON.",
+    "requestExport": "Yêu Cầu Xuất",
+    "exportSent": "Liên kết xuất dữ liệu sẽ được gửi đến email của bạn.",
+    "loading": "Đang thu thập ký ức...",
+    "emptyWishes": "Bạn chưa khắc bất kỳ ước nguyện nào.",
+    "emptyPillars": "Bạn chưa khắc bất kỳ trụ cột nào.",
+    "lights": "Ánh Sáng",
+    "soulPoints": "Điểm Linh Hồn",
+    "public": "Công Khai",
+    "private": "Riêng Tư"
   }
 }

@@ -26,7 +26,11 @@
     "dharma": "法（ダルマ）の書庫",
     "donate": "寄進",
     "store": "Quiesan ストア",
-    "resonance": "グローバル・レゾナンス"
+    "resonance": "グローバル・レゾナンス",
+    "mySanctuary": "私の聖域",
+    "privacyPolicy": "プライバシーポリシー",
+    "signOut": "サインアウト",
+    "signIn": "サインイン"
   },
   "Dharma": {
     "title": "法（ダルマ）の書庫",
@@ -199,7 +203,7 @@
     "malaDesc": "深い瞑想のための神聖な数珠。すぐに「サポーター」になれます。",
     "buyLotus": "Offer ",
     "vipTitle": "あなただけの特別な旅",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "深い影響を与えたいと願う方々のための特別な旅。",
     "premiumTier": "プレミアムコレクション THE RESONANCE",
     "premiumF1": "プレミアム・カレイドスコープ瞑想ビジュアル",
     "premiumF2": "和声周波数レイヤーの選択（432Hz または 528Hz）",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "TikTokで@buddha_miracleをフォロー",
     "eyebrow": "グローバル・レゾナンス"
+  },
+  "Profile": {
+    "myWishes": "私の願い",
+    "myPillars": "私の柱",
+    "privacyData": "プライバシー & データ",
+    "dataPrivacy": "データプライバシー保護",
+    "privacyDesc": "グローバルプライバシー基準（GDPR、CCPA、KR PIPA）に準拠し、聖域でのデジタルフットプリントを完全に管理できます。",
+    "rightForgotten": "忘れられる権利",
+    "rightForgottenDesc": "すべての記録とインタラクションを永久に削除します。",
+    "deleteData": "データを削除",
+    "deleting": "削除中...",
+    "dataPortability": "データポータビリティ",
+    "dataPortabilityDesc": "JSON形式で個人データの完全エクスポートをリクエストします。",
+    "requestExport": "エクスポートをリクエスト",
+    "exportSent": "データエクスポートリンクがメールに送信されます。",
+    "loading": "記憶を集めています...",
+    "emptyWishes": "まだ願いが刻まれていません。",
+    "emptyPillars": "まだ柱が刻まれていません。",
+    "lights": "光",
+    "soulPoints": "ソウルポイント",
+    "public": "公開",
+    "private": "プライベート"
   }
 }

@@ -26,7 +26,11 @@
     "dharma": "Biblioteca do Dharma",
     "donate": "Doar",
     "store": "Quiesan Store",
-    "resonance": "Ressonância Global"
+    "resonance": "Ressonância Global",
+    "mySanctuary": "Meu Santuário",
+    "privacyPolicy": "Política de Privacidade",
+    "signOut": "Sair",
+    "signIn": "Entrar"
   },
   "Dharma": {
     "title": "Biblioteca do Dharma",
@@ -199,7 +203,7 @@
     "malaDesc": "Um sagrado rosário para meditação profunda. Torne-se Supporter instantaneamente.",
     "buyLotus": "Offer ",
     "vipTitle": "Uma Jornada Só Para Você",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "Para aqueles que desejam causar um impacto profundo.",
     "premiumTier": "Coleção Premium THE RESONANCE",
     "premiumF1": "Visual de meditação caleidoscópio Premium",
     "premiumF2": "Escolha de camada de frequência harmônica (432Hz ou 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Siga @buddha_miracle no TikTok",
     "eyebrow": "RESSONÂNCIA GLOBAL"
+  },
+  "Profile": {
+    "myWishes": "Meus Desejos",
+    "myPillars": "Meus Pilares",
+    "privacyData": "Privacidade & Dados",
+    "dataPrivacy": "Privacidade e Proteção de Dados",
+    "privacyDesc": "Em conformidade com padrões globais de privacidade (GDPR, CCPA, KR PIPA), você tem controle total sobre sua pegada digital no Santuário.",
+    "rightForgotten": "Direito ao Esquecimento",
+    "rightForgottenDesc": "Remova permanentemente todas as suas inscrições e interações de nossos registros.",
+    "deleteData": "Excluir Meus Dados",
+    "deleting": "Apagando...",
+    "dataPortability": "Portabilidade de Dados",
+    "dataPortabilityDesc": "Solicite uma exportação completa de seus dados pessoais em formato JSON.",
+    "requestExport": "Solicitar Exportação",
+    "exportSent": "O link de exportação de dados será enviado ao seu email.",
+    "loading": "Reunindo suas memórias...",
+    "emptyWishes": "Você ainda não inscreveu nenhum desejo.",
+    "emptyPillars": "Você ainda não inscreveu nenhum pilar.",
+    "lights": "Luzes",
+    "soulPoints": "Pontos de Alma",
+    "public": "Público",
+    "private": "Privado"
   }
 }

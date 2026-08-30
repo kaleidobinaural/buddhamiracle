@@ -26,7 +26,11 @@
     "dharma": "Dharma-Bibliothek",
     "donate": "Spenden",
     "store": "Quiesan Store",
-    "resonance": "Globale Resonanz"
+    "resonance": "Globale Resonanz",
+    "mySanctuary": "Mein Heiligtum",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "signOut": "Abmelden",
+    "signIn": "Anmelden"
   },
   "Dharma": {
     "title": "Dharma-Bibliothek",
@@ -199,7 +203,7 @@
     "malaDesc": "Eine heilige Gebetskette für tiefe Meditation. Werden Sie sofort Supporter.",
     "buyLotus": "Offer ",
     "vipTitle": "Eine Reise Nur Für Dich",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "Für diejenigen, die einen tiefgreifenden Einfluss hinterlassen möchten.",
     "premiumTier": "Premium Collection THE RESONANCE",
     "premiumF1": "Premium Kaleidoskop-Meditationsvisual",
     "premiumF2": "Wahl der harmonischen Frequenzschicht (432Hz oder 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "Folge @buddha_miracle auf TikTok",
     "eyebrow": "GLOBALE RESONANZ"
+  },
+  "Profile": {
+    "myWishes": "Meine Wünsche",
+    "myPillars": "Meine Säulen",
+    "privacyData": "Datenschutz & Daten",
+    "dataPrivacy": "Datenschutz & Datensicherheit",
+    "privacyDesc": "Gemäß globaler Datenschutzstandards (DSGVO, CCPA, KR PIPA) haben Sie die volle Kontrolle über Ihren digitalen Fußabdruck im Heiligtum.",
+    "rightForgotten": "Recht auf Vergessenwerden",
+    "rightForgottenDesc": "Löschen Sie dauerhaft alle Ihre Inschriften und Interaktionen aus unseren Aufzeichnungen.",
+    "deleteData": "Meine Daten löschen",
+    "deleting": "Wird gelöscht...",
+    "dataPortability": "Datenübertragbarkeit",
+    "dataPortabilityDesc": "Fordern Sie einen vollständigen Export Ihrer persönlichen Daten im JSON-Format an.",
+    "requestExport": "Export anfordern",
+    "exportSent": "Der Datenexport-Link wird an Ihre E-Mail gesendet.",
+    "loading": "Samle Ihre Erinnerungen...",
+    "emptyWishes": "Sie haben noch keine Wünsche eingetragen.",
+    "emptyPillars": "Sie haben noch keine Säulen eingetragen.",
+    "lights": "Lichter",
+    "soulPoints": "Seelenpunkte",
+    "public": "Öffentlich",
+    "private": "Privat"
   }
 }

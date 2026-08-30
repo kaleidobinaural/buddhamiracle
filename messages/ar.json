@@ -26,7 +26,11 @@
     "dharma": "مكتبة الدرما",
     "donate": "تبرع",
     "store": "Quiesan Store",
-    "resonance": "صدى عالمي"
+    "resonance": "صدى عالمي",
+    "mySanctuary": "ملاذي",
+    "privacyPolicy": "سياسة الخصوصية",
+    "signOut": "تسجيل الخروج",
+    "signIn": "تسجيل الدخول"
   },
   "Dharma": {
     "title": "مكتبة الدرما",
@@ -199,7 +203,7 @@
     "malaDesc": "مسبحة مقدسة للتأمل العميق. كن داعمًا على الفور.",
     "buyLotus": "Offer ",
     "vipTitle": "رحلة فقط من أجلك",
-    "vipDesc": "For those who wish to make a profound impact.",
+    "vipDesc": "لأولئك الذين يرغبون في إحداث تأثير عميق.",
     "premiumTier": "المجموعة المميزة THE RESONANCE",
     "premiumF1": "مرئي تأمل كاليدوسكوب مميز",
     "premiumF2": "اختيار طبقة التردد التناسقي (432Hz أو 528Hz)",
@@ -241,5 +245,27 @@
     "related": "Related videos",
     "followBtn": "تابع @buddha_miracle على تيك توك",
     "eyebrow": "الصدى العالمي"
+  },
+  "Profile": {
+    "myWishes": "أمنياتي",
+    "myPillars": "أعمدتي",
+    "privacyData": "الخصوصية والبيانات",
+    "dataPrivacy": "خصوصية البيانات وحمايتها",
+    "privacyDesc": "وفقاً لمعايير الخصوصية العالمية (GDPR, CCPA, KR PIPA)، لديك السيطرة الكاملة على بصمتك الرقمية في الملاذ.",
+    "rightForgotten": "حق النسيان",
+    "rightForgottenDesc": "احذف نهائياً جميع نقوشك وتفاعلاتك من سجلاتنا.",
+    "deleteData": "حذف بياناتي",
+    "deleting": "جارٍ الحذف...",
+    "dataPortability": "قابلية نقل البيانات",
+    "dataPortabilityDesc": "اطلب تصديراً كاملاً لبياناتك الشخصية بصيغة JSON.",
+    "requestExport": "طلب التصدير",
+    "exportSent": "سيتم إرسال رابط تصدير البيانات إلى بريدك الإلكتروني.",
+    "loading": "جمع ذكرياتك...",
+    "emptyWishes": "لم تنقش أي أمنيات بعد.",
+    "emptyPillars": "لم تنقش أي أعمدة بعد.",
+    "lights": "أضواء",
+    "soulPoints": "نقاط الروح",
+    "public": "عام",
+    "private": "خاص"
   }
 }
