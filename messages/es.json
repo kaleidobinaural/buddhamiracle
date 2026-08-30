@@ -113,9 +113,9 @@
     "btnReturn": "Volver a la Sala",
     "devotion": "Devoción: {amount} Puntos de Alma",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "supportersDesc": "Hearts who continue to sustain this sacred space."
   },
   "hall": {
     "title": "Santuario de Luz",

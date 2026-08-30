@@ -113,9 +113,9 @@
     "btnReturn": "ခန်းမသို့ ပြန်သွားရန်",
     "devotion": "သဒ္ဓါတရား: {amount} ဝိညာဉ်အမှတ်",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "supportersDesc": "Hearts who continue to sustain this sacred space."
   },
   "hall": {
     "title": "အလင်းဗိမာန်",

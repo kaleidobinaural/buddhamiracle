@@ -1540,3 +1540,135 @@ img, video {
   .btn-ebook { font-size: 0.76rem; padding: 7px 14px; }
   .ai-disclaimer { font-size: 0.65rem; }
 }
+
+/* Refund and Privacy Pages */
+.privacy-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  background-color: var(--background-deep);
+  color: var(--text-secondary);
+}
+
+.privacy-bg-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  background: radial-gradient(ellipse at top, rgba(212,175,55,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.privacy-container {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+}
+
+.privacy-header {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.privacy-eyebrow {
+  color: var(--primary-gold);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.privacy-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.privacy-updated {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.privacy-section {
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-num {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: #666;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.section-body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+
+.section-body strong {
+  color: var(--text-primary);
+}
+
+.privacy-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 16px 0 24px 16px;
+}
+
+.privacy-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #bbb;
+}
+
+.privacy-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-gold);
+}
+
+.privacy-list li strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .privacy-container {
+    padding: 24px;
+  }
+  .privacy-title {
+    font-size: 2rem;
+  }
+}

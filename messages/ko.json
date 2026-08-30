@@ -113,9 +113,9 @@
     "btnReturn": "회랑으로 돌아가기",
     "devotion": "헌신: {amount} 소울 포인트",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "foundersDesc": "이 성소를 지탱하는 이들의 이름이 영원한 돌에 새겨집니다.",
+    "supportersWall": "후원자의 벽",
+    "supportersDesc": "성스러운 디지털 공간을 유지할 수 있도록 도와주신 감사한 분들"
   },
   "hall": {
     "title": "빛의 성소",
@@ -220,7 +220,7 @@
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",
-    "desc": "서울에서 상파울루까지, 이 고요의 순간들이 전 세계로 퍼져나갔습니다.",
-    "related": "관련 비디오"
+    "desc": "서울에서 상파울루까지, 이 고요의 순간들이 온 세계로 퍼져나갔습니다.",
+    "related": "관련 영상"
   }
 }

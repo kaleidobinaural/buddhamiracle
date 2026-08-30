@@ -224,30 +224,29 @@ export default function PillarsPage() {
               )}
 
               {/* ─── Supporter's Wall ─── */}
-              {supporterPillars.length > 0 && (
-                <>
-                  <div className="pillar-section-header supporter">
-                    <span className="pillar-section-icon">📿</span>
-                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
-                    <p className="pillar-section-desc">{t('supportersDesc')}</p>
-                  </div>
-                  <Swiper
-                    effect={'coverflow'}
-                    grabCursor={true}
-                    centeredSlides={true}
-                    slidesPerView={'auto'}
-                    coverflowEffect={{
-                      rotate: 0,
-                      stretch: 120,
-                      depth: 250,
-                      modifier: 1.0,
-                      slideShadows: false,
-                    }}
-                    keyboard={{ enabled: true }}
-                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
-                    modules={[EffectCoverflow, Keyboard, Mousewheel]}
-                    className="pillars-swiper supporters-swiper"
-                  >
+              <div className="pillar-section-header supporter" style={{ marginTop: '100px' }}>
+                <span className="pillar-section-icon">📿</span>
+                <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                <p className="pillar-section-desc">{t('supportersDesc')}</p>
+              </div>
+              {supporterPillars.length > 0 ? (
+                <Swiper
+                  effect={'coverflow'}
+                  grabCursor={true}
+                  centeredSlides={true}
+                  slidesPerView={'auto'}
+                  coverflowEffect={{
+                    rotate: 0,
+                    stretch: 120,
+                    depth: 250,
+                    modifier: 1.0,
+                    slideShadows: false,
+                  }}
+                  keyboard={{ enabled: true }}
+                  mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                  modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                  className="pillars-swiper supporters-swiper"
+                >
                     {supporterPillars.map((pillar) => (
                       <SwiperSlide key={pillar.id} className="pillar-slide">
                         <div
@@ -271,7 +270,10 @@ export default function PillarsPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                </>
+              ) : (
+                <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
+                  The first pillar is waiting to be inscribed.
+                </div>
               )}
             </>
           ) : (
@@ -281,7 +283,7 @@ export default function PillarsPage() {
                 <>
                   <div className="pillar-section-header founder" style={{ gridColumn: '1 / -1' }}>
                     <span className="pillar-section-icon">🏛️</span>
-                    <h2 className="pillar-section-title">Founders&apos; Hall</h2>
+                    <h2 className="pillar-section-title">{t('foundersHall')}</h2>
                   </div>
                   {founderPillars.map((pillar) => (
                     <div
@@ -306,12 +308,12 @@ export default function PillarsPage() {
                   ))}
                 </>
               )}
-              {supporterPillars.length > 0 && (
+              <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1', marginTop: '60px' }}>
+                <span className="pillar-section-icon">📿</span>
+                <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+              </div>
+              {supporterPillars.length > 0 ? (
                 <>
-                  <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1' }}>
-                    <span className="pillar-section-icon">📿</span>
-                    <h2 className="pillar-section-title">Supporter&apos;s Wall</h2>
-                  </div>
                   {supporterPillars.map((pillar) => (
                     <div
                       key={pillar.id}
@@ -334,6 +336,10 @@ export default function PillarsPage() {
                     </div>
                   ))}
                 </>
+              ) : (
+                <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
+                  The first pillar is waiting to be inscribed.
+                </div>
               )}
             </div>
           )}

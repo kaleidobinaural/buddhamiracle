@@ -113,9 +113,9 @@
     "btnReturn": "返回殿堂",
     "devotion": "虔诚值：{amount} 灵魂点",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "supportersDesc": "Hearts who continue to sustain this sacred space."
   },
   "hall": {
     "title": "光明圣殿",

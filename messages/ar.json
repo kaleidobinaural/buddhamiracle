@@ -113,9 +113,9 @@
     "btnReturn": "العودة إلى القاعة",
     "devotion": "الالتزام: {amount} نقطة روحية",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "supportersDesc": "Hearts who continue to sustain this sacred space."
   },
   "hall": {
     "title": "ملاذ النور",

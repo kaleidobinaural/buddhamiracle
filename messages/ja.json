@@ -113,9 +113,9 @@
     "btnReturn": "殿堂に戻る",
     "devotion": "献身: {amount} ソウルポイント",
     "foundersHall": "Founders' Hall",
-    "foundersDesc": "Those who built the foundation of this sanctuary",
+    "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space"
+    "supportersDesc": "Hearts who continue to sustain this sacred space."
   },
   "hall": {
     "title": "光の聖域",
