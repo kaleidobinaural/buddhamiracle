@@ -123,7 +123,9 @@
     "exit": "Quitter le Sanctuaire",
     "explore3d": "Explorer en 3D",
     "returnToMeditation": "Voir en 2D (Immobilité)",
-    "writeWish": "Écrire une Offrande"
+    "writeWish": "Écrire une Offrande",
+    "eco": "Éco",
+    "ecoOn": "Éco ON"
   },
   "Donate": {
     "eyebrow": "SOUTENEZ LE SANCTUAIRE",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ Amulette Cosmique Sacrée",
     "bundleF3": "💰 Prix Spécial Bundle",
     "getBundle": "Obtenir le Bundle – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "Offrandes du Temple",
+    "lotusDesc": "Soutenez le sanctuaire et collectez des fleurs de lotus pour manifester vos vœux sur le Toit des Vœux.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "Couches de Fréquences Harmoniques",
     "sci3Desc": "Des variations tonales harmoniques optionnelles (432Hz, 528Hz) sont disponibles dans les niveaux premium.",
     "badgeText1": "Seulement ",
-    "badgeText2": " places exclusives ce mois-ci"
+    "badgeText2": " places exclusives ce mois-ci",
+    "premiumModalTitle": "Renseignements sur la Collection Premium",
+    "vvipModalTitle": "Voyage Privé VVIP",
+    "modalDesc": "Veuillez laisser vos coordonnées. Le fondateur examinera et répondra directement.",
+    "modalName": "Votre Nom",
+    "modalEmail": "Votre E-mail",
+    "modalPremiumQ": "Qu'est-ce qui vous attire vers la Collection Premium ?",
+    "modalVvipQ": "Pourquoi souhaitez-vous rejoindre le cercle intérieur ?",
+    "modalCancel": "Annuler",
+    "modalSubmit": "Soumettre",
+    "modalSending": "Envoi en cours...",
+    "modalSuccess": "Votre candidature a été reçue avec gratitude.",
+    "modalSuccessNote": "Notre équipe vous contactera prochainement.",
+    "modalClose": "Fermer",
+    "modalError": "Échec de l'envoi. Veuillez réessayer."
   },
   "Resonance": {
     "title": "Des Millions Touchés par la Fréquence",
     "desc": "De Séoul à Sao Paulo, ces moments de silence ont voyagé à travers le monde.",
     "related": "Related videos",
-    "followBtn": "Suivez @buddha_miracle sur TikTok"
+    "followBtn": "Suivez @buddha_miracle sur TikTok",
+    "eyebrow": "RÉSONANCE MONDIALE"
   }
 }

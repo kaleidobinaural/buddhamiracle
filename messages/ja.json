@@ -123,7 +123,9 @@
     "exit": "聖域を出る",
     "explore3d": "3Dで探索する",
     "returnToMeditation": "2Dで見る（静寂）",
-    "writeWish": "供物を書く"
+    "writeWish": "供物を書く",
+    "eco": "エコ",
+    "ecoOn": "エコ ON"
   },
   "Donate": {
     "eyebrow": "聖域を支援する",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ 神聖な宇宙のアミュレット",
     "bundleF3": "💰 特別バンドル価格",
     "getBundle": "バンドルを入手 – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "寺院への供養",
+    "lotusDesc": "聖域をサポートし、蓮の花を集めて願い事を願い屋根に残しましょう。",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "ハーモニック周波数レイヤー",
     "sci3Desc": "オプションの和声音調変体（432Hz、528Hz）はプレミアム層で利用可能です。",
     "badgeText1": "今月は残り ",
-    "badgeText2": " 名様のみ"
+    "badgeText2": " 名様のみ",
+    "premiumModalTitle": "プレミアムコレクションのお問い合わせ",
+    "vvipModalTitle": "VVIPプライベートジャーニー",
+    "modalDesc": "詳細をご記入ください。創業者が直接確認してご返答いたします。",
+    "modalName": "お名前",
+    "modalEmail": "メールアドレス",
+    "modalPremiumQ": "プレミアムコレクションに惹かれる理由は何ですか？",
+    "modalVvipQ": "なぜインナーサークルに参加したいのですか？",
+    "modalCancel": "キャンセル",
+    "modalSubmit": "申し込む",
+    "modalSending": "送信中...",
+    "modalSuccess": "申し込みをありがたく受け付けました。",
+    "modalSuccessNote": "担当者よりまもなくご連絡いたします。",
+    "modalClose": "閉じる",
+    "modalError": "送信に失敗しました。もう一度お試しください。"
   },
   "Resonance": {
     "title": "周波数に触れた何百万もの魂",
     "desc": "ソウルからサンパウロまで、この静寂の瞬間が世界中を旅しました。",
     "related": "Related videos",
-    "followBtn": "TikTokで@buddha_miracleをフォロー"
+    "followBtn": "TikTokで@buddha_miracleをフォロー",
+    "eyebrow": "グローバル・レゾナンス"
   }
 }

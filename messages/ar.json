@@ -123,7 +123,9 @@
     "exit": "الخروج من الملاذ",
     "explore3d": "استكشف ثلاثي الأبعاد",
     "returnToMeditation": "عرض ثنائي الأبعاد (سكون)",
-    "writeWish": "اكتب قرباناً"
+    "writeWish": "اكتب قرباناً",
+    "eco": "اقتصادي",
+    "ecoOn": "اقتصادي ON"
   },
   "Donate": {
     "eyebrow": "ادعم الملاذ",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ التميمة الكونية المقدسة",
     "bundleF3": "💰 سعر الحزمة الخاص",
     "getBundle": "الحصول على الحزمة – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "قرابين المعبد",
+    "lotusDesc": "ادعم الملاذ واجمع زهور اللوتس لتجلي أمنياتك على سقف الأمنيات.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "طبقات التردد التناسقي",
     "sci3Desc": "التنويعات النغمية التناسقية الاختيارية (432Hz، 528Hz) متاحة في المستويات المميزة.",
     "badgeText1": "فقط ",
-    "badgeText2": " مقاعد حصرية هذا الشهر"
+    "badgeText2": " مقاعد حصرية هذا الشهر",
+    "premiumModalTitle": "استفسار عن المجموعة المميزة",
+    "vvipModalTitle": "الرحلة الخاصة VVIP",
+    "modalDesc": "يرجى ترك تفاصيلك. سيراجع المؤسس ويرد مباشرة.",
+    "modalName": "اسمك",
+    "modalEmail": "بريدك الإلكتروني",
+    "modalPremiumQ": "ما الذي يجذبك إلى المجموعة المميزة؟",
+    "modalVvipQ": "لماذا تريد الانضمام إلى الدائرة الداخلية؟",
+    "modalCancel": "إلغاء",
+    "modalSubmit": "إرسال",
+    "modalSending": "جارٍ الإرسال...",
+    "modalSuccess": "تم استلام طلبك بامتنان.",
+    "modalSuccessNote": "سيتصل بك فريقنا قريباً.",
+    "modalClose": "إغلاق",
+    "modalError": "فشل الإرسال. يرجى المحاولة مرة أخرى."
   },
   "Resonance": {
     "title": "ملايين تأثروا بالتردد",
     "desc": "من سيول إلى ساو باولو، سافرت لحظات السكون هذه عبر العالم.",
     "related": "Related videos",
-    "followBtn": "تابع @buddha_miracle على تيك توك"
+    "followBtn": "تابع @buddha_miracle على تيك توك",
+    "eyebrow": "الصدى العالمي"
   }
 }

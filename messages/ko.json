@@ -123,7 +123,9 @@
     "exit": "성소 나가기",
     "explore3d": "3D 공간 탐색하기",
     "returnToMeditation": "정면 바라보기 (2D 모드)",
-    "writeWish": "공양 올리기 (소원 쓰기)"
+    "writeWish": "공양 올리기 (소원 쓰기)",
+    "eco": "에코",
+    "ecoOn": "에코 ON"
   },
   "Donate": {
     "eyebrow": "성소 후원하기",
@@ -217,12 +219,27 @@
     "sci3Title": "조화 주파수 레이어",
     "sci3Desc": "선택적 조화 음조 변형(432Hz, 528Hz)은 프리미엄 등급에서 제공됩니다.",
     "badgeText1": "이번 달 남은 인연은 단 ",
-    "badgeText2": " 분"
+    "badgeText2": " 분",
+    "premiumModalTitle": "프리미엄 컬렉션 문의",
+    "vvipModalTitle": "VVIP 프라이빗 여정",
+    "modalDesc": "아래 정보를 남겨주세요. 창립자가 직접 검토 후 답변드립니다.",
+    "modalName": "성함",
+    "modalEmail": "이메일",
+    "modalPremiumQ": "프리미엄 컬렉션에 끌리시는 이유가 무엇인가요?",
+    "modalVvipQ": "내면의 원으로 들어오고 싶으신 이유는 무엇인가요?",
+    "modalCancel": "취소",
+    "modalSubmit": "신청하기",
+    "modalSending": "전송 중...",
+    "modalSuccess": "신청이 감사히 접수되었습니다.",
+    "modalSuccessNote": "담당자가 곧 연락드릴 것입니다.",
+    "modalClose": "닫기",
+    "modalError": "전송에 실패했습니다. 다시 시도해 주세요."
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",
     "desc": "서울에서 상파울루까지, 이 고요의 순간들이 전 세계로 퍼져나갔습니다.",
     "related": "관련 영상",
-    "followBtn": "TikTok에서 @buddha_miracle 팔로우하기"
+    "followBtn": "TikTok에서 @buddha_miracle 팔로우하기",
+    "eyebrow": "글로벌 울림"
   }
 }

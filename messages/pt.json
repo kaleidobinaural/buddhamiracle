@@ -123,7 +123,9 @@
     "exit": "Sair do Santuário",
     "explore3d": "Explorar em 3D",
     "returnToMeditation": "Ver em 2D (Quietude)",
-    "writeWish": "Escrever uma Oferenda"
+    "writeWish": "Escrever uma Oferenda",
+    "eco": "Eco",
+    "ecoOn": "Eco ON"
   },
   "Donate": {
     "eyebrow": "APOIE O SANTUÁRIO",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ Amuleto Cósmico Sagrado",
     "bundleF3": "💰 Preço Especial do Bundle",
     "getBundle": "Obter Bundle – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "Oferendas do Templo",
+    "lotusDesc": "Apoie o santuário e colete flores de lótus para manifestar seus desejos no Telhado dos Desejos.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "Camadas de Frequência Harmônica",
     "sci3Desc": "Variações tonais harmônicas opcionais (432Hz, 528Hz) estão disponíveis em níveis premium.",
     "badgeText1": "Apenas ",
-    "badgeText2": " lugares exclusivos este mês"
+    "badgeText2": " lugares exclusivos este mês",
+    "premiumModalTitle": "Consulta sobre Coleção Premium",
+    "vvipModalTitle": "Jornada Privada VVIP",
+    "modalDesc": "Por favor deixe seus dados. O fundador revisará e responderá diretamente.",
+    "modalName": "Seu Nome",
+    "modalEmail": "Seu E-mail",
+    "modalPremiumQ": "O que te atrai para a Coleção Premium?",
+    "modalVvipQ": "Por que deseja entrar no círculo interno?",
+    "modalCancel": "Cancelar",
+    "modalSubmit": "Enviar",
+    "modalSending": "Enviando...",
+    "modalSuccess": "Sua inscrição foi recebida com gratidão.",
+    "modalSuccessNote": "Nossa equipe entrará em contato em breve.",
+    "modalClose": "Fechar",
+    "modalError": "Falha ao enviar. Por favor tente novamente."
   },
   "Resonance": {
     "title": "Milhões Tocados pela Frequência",
     "desc": "De Seul a São Paulo, esses momentos de quietude viajaram pelo mundo.",
     "related": "Related videos",
-    "followBtn": "Siga @buddha_miracle no TikTok"
+    "followBtn": "Siga @buddha_miracle no TikTok",
+    "eyebrow": "RESSONÂNCIA GLOBAL"
   }
 }

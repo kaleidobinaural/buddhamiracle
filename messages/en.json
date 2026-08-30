@@ -123,7 +123,9 @@
     "exit": "Exit Sanctuary",
     "explore3d": "Explore in 3D",
     "returnToMeditation": "View in 2D (Stillness)",
-    "writeWish": "Write an Offering"
+    "writeWish": "Write an Offering",
+    "eco": "Eco",
+    "ecoOn": "Eco On"
   },
   "Donate": {
     "eyebrow": "SUPPORT THE SANCTUARY",
@@ -217,12 +219,27 @@
     "sci3Title": "Harmonic Frequency Layers",
     "sci3Desc": "Optional harmonic tonal variations (432Hz, 528Hz) are available in premium tiers.",
     "badgeText1": "Only ",
-    "badgeText2": " exclusive seats left this month"
+    "badgeText2": " exclusive seats left this month",
+    "premiumModalTitle": "Premium Collection Inquiry",
+    "vvipModalTitle": "VVIP Private Journey",
+    "modalDesc": "Please leave your details. The founder will review and reply directly.",
+    "modalName": "Your Name",
+    "modalEmail": "Your Email",
+    "modalPremiumQ": "What draws you to the Premium Collection?",
+    "modalVvipQ": "Why do you wish to join the inner circle?",
+    "modalCancel": "Cancel",
+    "modalSubmit": "Submit",
+    "modalSending": "Sending...",
+    "modalSuccess": "Your application has been received with gratitude.",
+    "modalSuccessNote": "Our team will contact you shortly.",
+    "modalClose": "Close",
+    "modalError": "Failed to send. Please try again."
   },
   "Resonance": {
     "title": "Millions Touched by the Frequency",
     "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
     "related": "Related videos",
-    "followBtn": "Follow @buddha_miracle on TikTok"
+    "followBtn": "Follow @buddha_miracle on TikTok",
+    "eyebrow": "GLOBAL RESONANCE"
   }
 }

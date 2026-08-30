@@ -19,6 +19,7 @@ export default function StorePage() {
   const { data: session } = useSession();
   const [followerCount, setFollowerCount] = useState<number>(366800);
   const [isVvipModalOpen, setIsVvipModalOpen] = useState(false);
+  const [isPremiumModal, setIsPremiumModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -274,8 +275,8 @@ export default function StorePage() {
               <li>📧 {t('premiumF2')}</li>
               <li>🎶 {t('premiumF3')}</li>
             </ul>
-            {/* Using a mailto link as the default action for premium inquiry, or could use lemonsqueezy if it exists */}
-            <button className="store-cta-btn store-cta-outline" onClick={() => setIsVvipModalOpen(true)}>
+            {/* Premium inquiry modal */}
+            <button className="store-cta-btn store-cta-outline" onClick={() => { setIsPremiumModal(true); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
               {t('getPremium')}$333
             </button>
           </div>
@@ -304,39 +305,39 @@ export default function StorePage() {
               <li>🗣️ {t('vvipF2')}</li>
               <li>🏛️ {t('vvipF3')}</li>
             </ul>
-            <button className="store-cta-btn store-cta-gold" onClick={() => setIsVvipModalOpen(true)}>
+            <button className="store-cta-btn store-cta-gold" onClick={() => { setIsPremiumModal(false); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
               {t('applyVvip')}$1111
             </button>
           </div>
         </div>
       </section>
 
-      {/* VVIP Application Modal */}
+      {/* VIP/VVIP Application Modal */}
       {isVvipModalOpen && (
         <div className="store-modal-overlay" onClick={() => setIsVvipModalOpen(false)}>
           <div className="store-modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
             <h3 className="store-modal-title" style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--primary-gold)' }}>
-              VIP Inquiry
+              {isPremiumModal ? t('premiumModalTitle') : t('vvipModalTitle')}
             </h3>
             {formStatus === 'success' ? (
               <div style={{ textAlign: 'center', padding: '20px 0' }}>
                 <p style={{ color: '#4CAF50', fontSize: '1.1rem', marginBottom: '16px' }}>
-                  Your application has been received with gratitude.
+                  {t('modalSuccess')}
                 </p>
-                <p style={{ color: '#aaa' }}>Our team will contact you shortly.</p>
+                <p style={{ color: '#aaa' }}>{t('modalSuccessNote')}</p>
                 <button className="store-cta-btn store-cta-gold" style={{ marginTop: '24px' }} onClick={() => setIsVvipModalOpen(false)}>
-                  Close
+                  {t('modalClose')}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleVvipSubmit} className="store-form">
                 <p style={{ color: '#aaa', marginBottom: '24px', fontSize: '0.9rem' }}>
-                  Please leave your details. The founder will review and reply directly.
+                  {t('modalDesc')}
                 </p>
                 <input
                   type="text"
                   required
-                  placeholder="Your Name"
+                  placeholder={t('modalName')}
                   className="store-input"
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -344,29 +345,29 @@ export default function StorePage() {
                 <input
                   type="email"
                   required
-                  placeholder="Your Email"
+                  placeholder={t('modalEmail')}
                   className="store-input"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
                 />
                 <textarea
                   required
-                  placeholder="Why do you wish to join the inner circle?"
+                  placeholder={isPremiumModal ? t('modalPremiumQ') : t('modalVvipQ')}
                   className="store-textarea"
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                 />
                 <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
                   <button type="button" className="store-cta-btn store-cta-outline" style={{ padding: '12px', flex: 1 }} onClick={() => setIsVvipModalOpen(false)}>
-                    Cancel
+                    {t('modalCancel')}
                   </button>
                   <button type="submit" className="store-cta-btn store-cta-gold" style={{ padding: '12px', flex: 1 }} disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending...' : 'Submit'}
+                    {isSubmitting ? t('modalSending') : t('modalSubmit')}
                   </button>
                 </div>
                 {formStatus === 'error' && (
                   <p style={{ color: '#E53E3E', fontSize: '0.85rem', marginTop: '12px', textAlign: 'center' }}>
-                    Failed to send. Please try again.
+                    {t('modalError')}
                   </p>
                 )}
               </form>

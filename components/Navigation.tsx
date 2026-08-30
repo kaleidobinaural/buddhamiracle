@@ -94,20 +94,20 @@ export default function Navigation() {
                 }}
                 style={{ appearance: 'auto', cursor: 'pointer', paddingRight: '12px' }}
               >
-                <option value="en">EN</option>
-                <option value="ko">KO</option>
-                <option value="ja">JA</option>
-                <option value="zh">ZH</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-                <option value="de">DE</option>
-                <option value="pt">PT</option>
-                <option value="ar">AR</option>
-                <option value="vi">VI</option>
-                <option value="th">TH</option>
-                <option value="id">ID</option>
-                <option value="my">MY</option>
-                <option value="km">KM</option>
+                <option value="en">English</option>
+                <option value="ko">한국어</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="pt">Português</option>
+                <option value="ar">العربية</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="th">ไทย</option>
+                <option value="id">Indonesia</option>
+                <option value="my">မြန်မာ</option>
+                <option value="km">ខ្មែរ</option>
               </select>
             </div>
 

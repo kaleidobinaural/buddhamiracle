@@ -83,7 +83,7 @@ export default function HallPage() {
               title={isEcoMode ? 'Eco Mode On (Low GPU)' : 'Switch to Eco Mode'}
             >
               <span className="btn-icon">{isEcoMode ? '🌿' : '⚡'}</span>
-              {isEcoMode ? 'Eco On' : 'Eco'}
+              {isEcoMode ? t('ecoOn') : t('eco')}
             </button>
           </div>
         </footer>

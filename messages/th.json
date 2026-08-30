@@ -123,7 +123,9 @@
     "exit": "ออกจากวิหาร",
     "explore3d": "สำรวจแบบ 3 มิติ",
     "returnToMeditation": "มุมมอง 2 มิติ (นิ่งสงบ)",
-    "writeWish": "เขียนสิ่งถวายบูชา"
+    "writeWish": "เขียนสิ่งถวายบูชา",
+    "eco": "ประหยัด",
+    "ecoOn": "ประหยัด ON"
   },
   "Donate": {
     "eyebrow": "ร่วมค้ำจุนวิหาร",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ เครื่องรางศักดิ์สิทธิ์",
     "bundleF3": "💰 ราคาชุดพิเศษ",
     "getBundle": "รับชุด – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "เครื่องบูชาวัด",
+    "lotusDesc": "สนับสนุนศาลเจ้าและเก็บดอกบัวเพื่อแสดงความปรารถนาบนหลังคาแห่งความปรารถนา",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "ชั้นความถี่สอดคล้อง",
     "sci3Desc": "ความหลากหลายของโทนเสียงสอดคล้อง (432Hz, 528Hz)",
     "badgeText1": "เหลือเพียง ",
-    "badgeText2": " ที่นั่งพิเศษเดือนนี้"
+    "badgeText2": " ที่นั่งพิเศษเดือนนี้",
+    "premiumModalTitle": "สอบถามเกี่ยวกับคอลเลคชัน Premium",
+    "vvipModalTitle": "การเดินทางส่วนตัว VVIP",
+    "modalDesc": "กรุณาฝากรายละเอียดของคุณ ผู้ก่อตั้งจะตรวจสอบและตอบกลับโดยตรง",
+    "modalName": "ชื่อของคุณ",
+    "modalEmail": "อีเมลของคุณ",
+    "modalPremiumQ": "อะไรดึงดูดคุณไปยังคอลเลคชัน Premium?",
+    "modalVvipQ": "ทำไมคุณถึงอยากเข้าร่วมวงในเล็ก?",
+    "modalCancel": "ยกเลิก",
+    "modalSubmit": "ส่ง",
+    "modalSending": "กำลังส่ง...",
+    "modalSuccess": "ได้รับใบสมัครของคุณด้วยความกตัญญู",
+    "modalSuccessNote": "ทีมของเราจะติดต่อคุณเร็วๆ นี้",
+    "modalClose": "ปิด",
+    "modalError": "ส่งล้มเหลว กรุณาลองอีกครั้ง"
   },
   "Resonance": {
     "title": "หลายล้านคนสัมผัสได้ถึงคลื่นความถี่",
     "desc": "จากโซลถึงเซาเปาโล ช่วงเวลาแห่งความสงบเหล่านี้ได้เดินทางไปทั่วโลก",
     "related": "Related videos",
-    "followBtn": "ติดตาม @buddha_miracle บน TikTok"
+    "followBtn": "ติดตาม @buddha_miracle บน TikTok",
+    "eyebrow": "เสียงสะท้อนระดับโลก"
   }
 }

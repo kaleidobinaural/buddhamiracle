@@ -123,7 +123,9 @@
     "exit": "Rời Chánh Điện",
     "explore3d": "Khám Phá 3D",
     "returnToMeditation": "Xem ở chế độ 2D (Tĩnh Lặng)",
-    "writeWish": "Gửi Nguyện Cầu"
+    "writeWish": "Gửi Nguyện Cầu",
+    "eco": "Tiết Kiệm",
+    "ecoOn": "Tiết Kiệm ON"
   },
   "Donate": {
     "eyebrow": "ỦNG HỘ TỊNH XÁ",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ Bùa hộ mệnh vũ trụ thiêng liêng",
     "bundleF3": "💰 Giá gói đặc biệt",
     "getBundle": "Lấy gói – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "Cúng Dường Chùa",
+    "lotusDesc": "Hỗ trợ thánh địa và thu thập hoa sen để hiển thị ước nguyện trên Mái Nguyện Cầu.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "Lớp tần số hài hòa",
     "sci3Desc": "Biến thể tôn tần số (432Hz, 528Hz) có sẵn ở cấp cao cấp.",
     "badgeText1": "Chỉ còn ",
-    "badgeText2": " chỗ độc quyền trong tháng này"
+    "badgeText2": " chỗ độc quyền trong tháng này",
+    "premiumModalTitle": "Tư Vấn Bộ Sưu Tập Premium",
+    "vvipModalTitle": "Hành Trình Riêng Tư VVIP",
+    "modalDesc": "Vui lòng để lại thông tin của bạn. Người sáng lập sẽ xem xét và trả lời trực tiếp.",
+    "modalName": "Tên của bạn",
+    "modalEmail": "Email của bạn",
+    "modalPremiumQ": "Điều gì thu hút bạn đến Bộ Sưu Tập Premium?",
+    "modalVvipQ": "Tại sao bạn muốn tham gia vòng tròn nội bộ?",
+    "modalCancel": "Hủy",
+    "modalSubmit": "Gửi",
+    "modalSending": "Đang gửi...",
+    "modalSuccess": "Đơn đăng ký của bạn đã được nhận với lòng biết ơn.",
+    "modalSuccessNote": "Đội ngũ của chúng tôi sẽ liên hệ với bạn sớm.",
+    "modalClose": "Đóng",
+    "modalError": "Gửi thất bại. Vui lòng thử lại."
   },
   "Resonance": {
     "title": "Hàng Triệu Người Được Chạm Đến Bởi Tần Số",
     "desc": "Từ Seoul đến Sao Paulo, những khoảnh khắc tĩnh lặng này đã lan tỏa khắp thế giới.",
     "related": "Related videos",
-    "followBtn": "Theo dõi @buddha_miracle trên TikTok"
+    "followBtn": "Theo dõi @buddha_miracle trên TikTok",
+    "eyebrow": "CỘNG HƯỞNG TOÀN CẦU"
   }
 }

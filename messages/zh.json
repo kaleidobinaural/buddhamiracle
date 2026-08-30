@@ -123,7 +123,9 @@
     "exit": "离开圣殿",
     "explore3d": "3D探索",
     "returnToMeditation": "2D视图 (寂静)",
-    "writeWish": "题写供养"
+    "writeWish": "题写供养",
+    "eco": "节能",
+    "ecoOn": "节能 ON"
   },
   "Donate": {
     "eyebrow": "护持圣殿",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ 神圣宇宙护身符",
     "bundleF3": "💰 套装专享特价",
     "getBundle": "获取套装 – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "寺庙供养",
+    "lotusDesc": "支持圣所并收集莲花，在许愿屋顶上留下您的愿望。",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "谐波频率层",
     "sci3Desc": "可选谐波音调变体（432Hz、528Hz）在高级等级中提供。",
     "badgeText1": "本月仅剩 ",
-    "badgeText2": " 个席位"
+    "badgeText2": " 个席位",
+    "premiumModalTitle": "精品收藏咨询",
+    "vvipModalTitle": "VVIP私人之旅",
+    "modalDesc": "请留下您的详细信息。创始人将亲自审阅并直接回复。",
+    "modalName": "您的姓名",
+    "modalEmail": "您的邮箱",
+    "modalPremiumQ": "是什么吸引您选择精品收藏？",
+    "modalVvipQ": "您为什么希望加入内圈？",
+    "modalCancel": "取消",
+    "modalSubmit": "提交",
+    "modalSending": "发送中...",
+    "modalSuccess": "您的申请已被感激地收到。",
+    "modalSuccessNote": "我们的团队将很快与您联系。",
+    "modalClose": "关闭",
+    "modalError": "发送失败，请重试。"
   },
   "Resonance": {
     "title": "数百万灵魂被频率触动",
     "desc": "从首尔到圣保罗，这些宁静的时刻传遍了全世界。",
     "related": "Related videos",
-    "followBtn": "在TikTok上关注 @buddha_miracle"
+    "followBtn": "在TikTok上关注 @buddha_miracle",
+    "eyebrow": "全球共鸣"
   }
 }

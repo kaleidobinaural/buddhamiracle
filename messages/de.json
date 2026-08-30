@@ -123,7 +123,9 @@
     "exit": "Heiligtum verlassen",
     "explore3d": "In 3D erkunden",
     "returnToMeditation": "In 2D betrachten (Stille)",
-    "writeWish": "Eine Gabe niederschreiben"
+    "writeWish": "Eine Gabe niederschreiben",
+    "eco": "Öko",
+    "ecoOn": "Öko AN"
   },
   "Donate": {
     "eyebrow": "UNTERSTÜTZE DAS HEILIGTUM",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ Heiliges Kosmisches Amulett",
     "bundleF3": "💰 Spezieller Bundle-Preis",
     "getBundle": "Bundle Holen – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "Tempelgaben",
+    "lotusDesc": "Unterstützen Sie das Heiligtum und sammeln Sie Lotusblumen, um Ihre Wünsche auf dem Wunschdach zu manifestieren.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "Harmonische Frequenzschichten",
     "sci3Desc": "Optionale harmonische Tonschwankungen (432Hz, 528Hz) sind in Premium-Stufen verfügbar.",
     "badgeText1": "Nur noch ",
-    "badgeText2": " exklusive Plätze diesen Monat"
+    "badgeText2": " exklusive Plätze diesen Monat",
+    "premiumModalTitle": "Premium-Kollektion Anfrage",
+    "vvipModalTitle": "VVIP Privatreise",
+    "modalDesc": "Bitte hinterlassen Sie Ihre Daten. Der Gründer wird sie prüfen und direkt antworten.",
+    "modalName": "Ihr Name",
+    "modalEmail": "Ihre E-Mail",
+    "modalPremiumQ": "Was zieht Sie zur Premium-Kollektion?",
+    "modalVvipQ": "Warum möchten Sie dem inneren Kreis beitreten?",
+    "modalCancel": "Abbrechen",
+    "modalSubmit": "Absenden",
+    "modalSending": "Senden...",
+    "modalSuccess": "Ihre Bewerbung wurde dankbar entgegengenommen.",
+    "modalSuccessNote": "Unser Team wird Sie in Kürze kontaktieren.",
+    "modalClose": "Schließen",
+    "modalError": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut."
   },
   "Resonance": {
     "title": "Millionen von der Frequenz berührt",
     "desc": "Von Seoul bis Sao Paulo sind diese Momente der Stille um die Welt gereist.",
     "related": "Related videos",
-    "followBtn": "Folge @buddha_miracle auf TikTok"
+    "followBtn": "Folge @buddha_miracle auf TikTok",
+    "eyebrow": "GLOBALE RESONANZ"
   }
 }

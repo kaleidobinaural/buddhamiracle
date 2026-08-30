@@ -123,7 +123,9 @@
     "exit": "ចាកចេញពីទីសក្ការៈ",
     "explore3d": "ស្វែងយល់ជា 3D",
     "returnToMeditation": "មើលជា 2D (ភាពស្ងប់ស្ងាត់)",
-    "writeWish": "សរសេរគ្រឿងបូជា"
+    "writeWish": "សរសេរគ្រឿងបូជា",
+    "eco": "Eco",
+    "ecoOn": "Eco ON"
   },
   "Donate": {
     "eyebrow": "គាំទ្រទីសក្ការៈ",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ យាន្ត្រជ្រុងត្រូងចក្រវាក",
     "bundleF3": "💰 តម្លៃកញ្ចប់",
     "getBundle": "យកកញ្ចប់ – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "ការថ្វាយដល់វត្ត",
+    "lotusDesc": "គាំទ្រដល់ទីសักការបូជា និងប្រមូលផ្កាឈូកដើម្បីបង្ហាញបំណងប្រាថ្នារបស់អ្នកនៅលើដំបូលបំណង",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "ស្រតាបប័រើកង់ចុឡ",
     "sci3Desc": "ជម្រើសសំឡេងអាម៉ូនិក (432Hz, 528Hz) មានផ្តល់ជូនសម្រាប់កម្រិតបុព្វលាភ។",
     "badgeText1": "នៅសលតើ ",
-    "badgeText2": " កន្លែងផ្តាច់មួយ"
+    "badgeText2": " កន្លែងផ្តាច់មួយ",
+    "premiumModalTitle": "ការសួររកព័ត៌មានអំពីការប្រមូល Premium",
+    "vvipModalTitle": "ដំណើរការឯកជន VVIP",
+    "modalDesc": "សូមទុកព័ត៌មានលម្អិតរបស់អ្នក។ អ្នកបង្កើតនឹងពិនិត្យ និងឆ្លើយតបដោយផ្ទាល់",
+    "modalName": "ឈ្មោះរបស់អ្នក",
+    "modalEmail": "អ៊ីមែលរបស់អ្នក",
+    "modalPremiumQ": "អ្វីដែលទាក់ទាញអ្នកទៅកាន់ការប្រមូល Premium?",
+    "modalVvipQ": "ហេតុអ្វីអ្នកចង់ចូលរួមក្នុងជំរុំខាងក្នុង?",
+    "modalCancel": "បោះបង់",
+    "modalSubmit": "ដាក់ស្នើ",
+    "modalSending": "កំពុងផ្ញើ...",
+    "modalSuccess": "ពាក្យសុំរបស់អ្នកត្រូវបានទទួលដោយការដឹងគុណ",
+    "modalSuccessNote": "ក្រុមការងាររបស់យើងនឹងទាក់ទងអ្នកក្នុងពេលឆាប់ៗ",
+    "modalClose": "បិទ",
+    "modalError": "ការផ្ញើបានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត"
   },
   "Resonance": {
     "title": "មនុស្សរាប់លាននាក់ត្រូវបានប៉ះដោយប្រេកង់",
     "desc": "ពីទីក្រុងសេអ៊ូលដល់ទីក្រុងសៅប៉ូឡូ ពេលវេលានៃភាពស្ងៀមស្ងាត់ទាំងនេះបានធ្វើដំណើរជុំវិញពិភពលោក។",
     "related": "Related videos",
-    "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok"
+    "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok",
+    "eyebrow": "សំឡេងជ្រួញជ្រើសសកល"
   }
 }

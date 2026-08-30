@@ -15,7 +15,7 @@ export default function ResonancePage() {
     <main className="resonance-page">
       <div className="store-bg-glow" />
       <section className="store-section store-tiktok-section" style={{ paddingTop: '120px' }}>
-        <p className="store-tiktok-eyebrow">GLOBAL RESONANCE</p>
+        <p className="store-tiktok-eyebrow">{t('eyebrow')}</p>
         <h2 className="store-section-title">{t('title')}</h2>
         <p style={{ textAlign: 'center', color: '#aaa', marginBottom: '40px' }}>
           {t('desc')}

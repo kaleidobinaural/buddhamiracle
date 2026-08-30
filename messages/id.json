@@ -123,7 +123,9 @@
     "exit": "Keluar dari Tempat Suci",
     "explore3d": "Jelajahi dalam 3D",
     "returnToMeditation": "Tampilkan dalam 2D (Keheningan)",
-    "writeWish": "Tuliskan Persembahan"
+    "writeWish": "Tuliskan Persembahan",
+    "eco": "Hemat",
+    "ecoOn": "Hemat ON"
   },
   "Donate": {
     "eyebrow": "DUKUNG TEMPAT SUCI",
@@ -187,8 +189,8 @@
     "bundleF2": "✅ Jimat Kosmik Sakral",
     "bundleF3": "💰 Harga Paket Spesial",
     "getBundle": "Dapatkan Paket – ",
-    "lotusTitle": "Temple Offerings",
-    "lotusDesc": "Support the sanctuary and collect Lotus flowers to manifest your wishes on the Wish Roof.",
+    "lotusTitle": "Persembahan Kuil",
+    "lotusDesc": "Dukung tempat suci dan kumpulkan bunga teratai untuk mewujudkan keinginan Anda di Atap Keinginan.",
     "candlePack": "Candle Package",
     "candleDesc": "A small light to brighten the dark.",
     "lotusPack": "Lotus Package",
@@ -217,12 +219,27 @@
     "sci3Title": "Lapisan Frekuensi Harmonik",
     "sci3Desc": "Variasi tonal harmonik opsional (432Hz, 528Hz) tersedia di tingkat premium.",
     "badgeText1": "Hanya tersisa ",
-    "badgeText2": " kursi eksklusif bulan ini"
+    "badgeText2": " kursi eksklusif bulan ini",
+    "premiumModalTitle": "Pertanyaan Koleksi Premium",
+    "vvipModalTitle": "Perjalanan Pribadi VVIP",
+    "modalDesc": "Silakan tinggalkan detail Anda. Pendiri akan meninjau dan membalas langsung.",
+    "modalName": "Nama Anda",
+    "modalEmail": "Email Anda",
+    "modalPremiumQ": "Apa yang menarik Anda ke Koleksi Premium?",
+    "modalVvipQ": "Mengapa Anda ingin bergabung dengan lingkaran dalam?",
+    "modalCancel": "Batal",
+    "modalSubmit": "Kirim",
+    "modalSending": "Mengirim...",
+    "modalSuccess": "Lamaran Anda telah diterima dengan rasa syukur.",
+    "modalSuccessNote": "Tim kami akan menghubungi Anda segera.",
+    "modalClose": "Tutup",
+    "modalError": "Gagal mengirim. Silakan coba lagi."
   },
   "Resonance": {
     "title": "Jutaan Orang Tersentuh oleh Frekuensi",
     "desc": "Dari Seoul hingga Sao Paulo, momen-momen keheningan ini telah melintasi dunia.",
     "related": "Related videos",
-    "followBtn": "Ikuti @buddha_miracle di TikTok"
+    "followBtn": "Ikuti @buddha_miracle di TikTok",
+    "eyebrow": "RESONANSI GLOBAL"
   }
 }
