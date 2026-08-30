@@ -115,7 +115,8 @@
     "foundersHall": "Founders' Hall",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "The first pillar is waiting to be inscribed."
   },
   "hall": {
     "title": "Sanctuary of Light",
@@ -221,6 +222,7 @@
   "Resonance": {
     "title": "Millions Touched by the Frequency",
     "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "related": "Related videos",
+    "followBtn": "Follow @buddha_miracle on TikTok"
   }
 }

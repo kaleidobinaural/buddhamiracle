@@ -36,7 +36,7 @@ export default function ResonancePage() {
         </div>
         <div style={{ textAlign: 'center', marginTop: '60px' }}>
           <a href="https://www.tiktok.com/@buddha_miracle" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#d4a017', color: '#000', padding: '18px 40px', borderRadius: '8px', fontSize: '1.2rem', fontWeight: '900', textDecoration: 'none', letterSpacing: '1px', boxShadow: '0 10px 25px rgba(212,160,23,0.4)', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}>
-            Follow @buddha_miracle on TikTok
+            {t('followBtn')}
           </a>
         </div>
       </section>

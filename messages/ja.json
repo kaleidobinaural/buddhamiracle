@@ -26,7 +26,7 @@
     "dharma": "法（ダルマ）の書庫",
     "donate": "寄進",
     "store": "Quiesan ストア",
-    "resonance": "Global Resonance"
+    "resonance": "グローバル・レゾナンス"
   },
   "Dharma": {
     "title": "法（ダルマ）の書庫",
@@ -112,10 +112,11 @@
     "rankDevout": "篤信の支援者",
     "btnReturn": "殿堂に戻る",
     "devotion": "献身: {amount} ソウルポイント",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "創設者の殿堂",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersWall": "サポーターの壁",
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "最初の柱が刻印されるのを待っています。"
   },
   "hall": {
     "title": "光の聖域",
@@ -219,8 +220,9 @@
     "badgeText2": " 名様のみ"
   },
   "Resonance": {
-    "title": "Millions Touched by the Frequency",
-    "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "title": "周波数に触れた何百万もの魂",
+    "desc": "ソウルからサンパウロまで、この静寂の瞬間が世界中を旅しました。",
+    "related": "Related videos",
+    "followBtn": "TikTokで@buddha_miracleをフォロー"
   }
 }

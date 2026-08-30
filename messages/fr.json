@@ -26,7 +26,7 @@
     "dharma": "Bibliothèque du Dharma",
     "donate": "Faire une Offrande",
     "store": "Quiesan Store",
-    "resonance": "Global Resonance"
+    "resonance": "Résonance Mondiale"
   },
   "Dharma": {
     "title": "Bibliothèque du Dharma",
@@ -112,10 +112,11 @@
     "rankDevout": "Soutien Dévoué",
     "btnReturn": "Retour au Hall",
     "devotion": "Dévotion : {amount} Points d'Âme",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "Salle des Fondateurs",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersWall": "Mur des Sympathisants",
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "Le premier pilier attend d'être inscrit."
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -219,8 +220,9 @@
     "badgeText2": " places exclusives ce mois-ci"
   },
   "Resonance": {
-    "title": "Millions Touched by the Frequency",
-    "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "title": "Des Millions Touchés par la Fréquence",
+    "desc": "De Séoul à Sao Paulo, ces moments de silence ont voyagé à travers le monde.",
+    "related": "Related videos",
+    "followBtn": "Suivez @buddha_miracle sur TikTok"
   }
 }

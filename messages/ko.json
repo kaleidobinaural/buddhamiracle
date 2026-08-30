@@ -112,10 +112,11 @@
     "rankDevout": "경건한 후원자",
     "btnReturn": "회랑으로 돌아가기",
     "devotion": "헌신: {amount} 소울 포인트",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "창립자의 전당",
     "foundersDesc": "이 성소를 지탱하는 이들의 이름이 영원한 돌에 새겨집니다.",
     "supportersWall": "후원자의 벽",
-    "supportersDesc": "성스러운 디지털 공간을 유지할 수 있도록 도와주신 감사한 분들"
+    "supportersDesc": "성스러운 디지털 공간을 유지할 수 있도록 도와주신 감사한 분들",
+    "emptySupporter": "첫 번째 기둥이 새겨지기를 기다리고 있습니다."
   },
   "hall": {
     "title": "빛의 성소",
@@ -220,7 +221,8 @@
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",
-    "desc": "서울에서 상파울루까지, 이 고요의 순간들이 온 세계로 퍼져나갔습니다.",
-    "related": "관련 영상"
+    "desc": "서울에서 상파울루까지, 이 고요의 순간들이 전 세계로 퍼져나갔습니다.",
+    "related": "관련 영상",
+    "followBtn": "TikTok에서 @buddha_miracle 팔로우하기"
   }
 }

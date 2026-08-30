@@ -272,7 +272,7 @@ export default function PillarsPage() {
                   </Swiper>
               ) : (
                 <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  The first pillar is waiting to be inscribed.
+                  {t('emptySupporter')}
                 </div>
               )}
             </>
@@ -338,7 +338,7 @@ export default function PillarsPage() {
                 </>
               ) : (
                 <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  The first pillar is waiting to be inscribed.
+                  {t('emptySupporter')}
                 </div>
               )}
             </div>

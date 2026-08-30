@@ -26,7 +26,7 @@
     "dharma": "Thư Viện Pháp",
     "donate": "Cúng Nhường",
     "store": "Quiesan Store",
-    "resonance": "Global Resonance"
+    "resonance": "Sự Cộng Hưởng Toàn Cầu"
   },
   "Dharma": {
     "title": "Thư Viện Phật Pháp",
@@ -112,10 +112,11 @@
     "rankDevout": "Tín Chủ Thành Tâm",
     "btnReturn": "Trở Về Điện Công Đức",
     "devotion": "Tâm Nguyện: {amount} Điểm Tâm Thức",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "Sảnh Sáng Lập",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersWall": "Bức Tường Người Ủng Hộ",
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "Trụ cột đầu tiên đang chờ được khắc tên."
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -219,8 +220,9 @@
     "badgeText2": " chỗ độc quyền trong tháng này"
   },
   "Resonance": {
-    "title": "Millions Touched by the Frequency",
-    "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "title": "Hàng Triệu Người Được Chạm Đến Bởi Tần Số",
+    "desc": "Từ Seoul đến Sao Paulo, những khoảnh khắc tĩnh lặng này đã lan tỏa khắp thế giới.",
+    "related": "Related videos",
+    "followBtn": "Theo dõi @buddha_miracle trên TikTok"
   }
 }

@@ -26,7 +26,7 @@
     "dharma": "ဓမ္မ စာကြည့်တိုက်",
     "donate": "လှူဒါန်းရန်",
     "store": "Quiesan Store",
-    "resonance": "Global Resonance"
+    "resonance": "ကမ္ဘာလုံးဆိုင်ရာ ပဲ့တင်သံ"
   },
   "Dharma": {
     "title": "ဓမ္မ စာကြည့်တိုက်",
@@ -112,10 +112,11 @@
     "rankDevout": "သဒ္ဓါထက်သန်သော ထောက်ပံ့သူ",
     "btnReturn": "ခန်းမသို့ ပြန်သွားရန်",
     "devotion": "သဒ္ဓါတရား: {amount} ဝိညာဉ်အမှတ်",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "တည်ထောင်သူများခန်းမ",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersWall": "ထောက်ခံသူများနံရံ",
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "ပထမဆုံးတိုင်ကို ကမ္ပည်းထိုးရန် စောင့်ဆိုင်းနေသည်။"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",
@@ -219,8 +220,9 @@
     "badgeText2": " ပိုင် အပါ"
   },
   "Resonance": {
-    "title": "Millions Touched by the Frequency",
-    "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "title": "ကြိမ်နှုန်းဖြင့် ထိတွေ့ခံရသူ သန်းပေါင်းများစွာ",
+    "desc": "ဆိုးလ်မှ ဆော်ပေါ်လိုအထိ၊ ဤငြိမ်သက်ခြင်းအချိန်များသည် ကမ္ဘာတဝှမ်းသို့ ရောက်ရှိသွားသည်။",
+    "related": "Related videos",
+    "followBtn": "TikTok တွင် @buddha_miracle ကို Follow လုပ်ပါ"
   }
 }

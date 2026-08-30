@@ -26,7 +26,7 @@
     "dharma": "مكتبة الدرما",
     "donate": "تبرع",
     "store": "Quiesan Store",
-    "resonance": "Global Resonance"
+    "resonance": "صدى عالمي"
   },
   "Dharma": {
     "title": "مكتبة الدرما",
@@ -112,10 +112,11 @@
     "rankDevout": "داعم مخلص",
     "btnReturn": "العودة إلى القاعة",
     "devotion": "الالتزام: {amount} نقطة روحية",
-    "foundersHall": "Founders' Hall",
+    "foundersHall": "قاعة المؤسسين",
     "foundersDesc": "Those who built the foundation of this sanctuary.",
-    "supportersWall": "Supporter's Wall",
-    "supportersDesc": "Hearts who continue to sustain this sacred space."
+    "supportersWall": "حائط الداعمين",
+    "supportersDesc": "Hearts who continue to sustain this sacred space.",
+    "emptySupporter": "العمود الأول ينتظر أن يُنقش."
   },
   "hall": {
     "title": "ملاذ النور",
@@ -219,8 +220,9 @@
     "badgeText2": " مقاعد حصرية هذا الشهر"
   },
   "Resonance": {
-    "title": "Millions Touched by the Frequency",
-    "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
-    "related": "Related videos"
+    "title": "ملايين تأثروا بالتردد",
+    "desc": "من سيول إلى ساو باولو، سافرت لحظات السكون هذه عبر العالم.",
+    "related": "Related videos",
+    "followBtn": "تابع @buddha_miracle على تيك توك"
   }
 }
