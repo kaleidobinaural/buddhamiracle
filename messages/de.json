@@ -68,7 +68,9 @@
     "sourcesLabel": "Quellen der Inspiration",
     "fallbackMsg": "In der Stille wird die Antwort kommen. Bitte versuche es erneut.",
     "rateLimitMsg": "Der Tempel bittet um Stille. Bitte warte einen Moment, bevor du erneut sprichst.",
-    "unexpectedError": "Unerwartete Antwort des Gurus. Bitte versuche es erneut."
+    "unexpectedError": "Unerwartete Antwort des Gurus. Bitte versuche es erneut.",
+    "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",
+    "signIn": "Anmelden, um Weisheit zu suchen"
   },
   "WishRoof": {
     "eyebrow": "Das ewige Heiligtum",
@@ -162,8 +164,8 @@
     "returnToTemple": "← Zurück zum Tempel"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",
+    "signIn": "Anmelden, um Weisheit zu suchen"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

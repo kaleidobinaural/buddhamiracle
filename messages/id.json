@@ -68,7 +68,9 @@
     "sourcesLabel": "Sumber Inspirasi",
     "fallbackMsg": "Dalam keheningan, jawaban akan datang. Silakan coba lagi.",
     "rateLimitMsg": "Kuil memohon keheningan. Harap tunggu sejenak sebelum berbicara lagi.",
-    "unexpectedError": "Tanggapan tak terduga dari Guru. Silakan coba lagi."
+    "unexpectedError": "Tanggapan tak terduga dari Guru. Silakan coba lagi.",
+    "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
+    "signIn": "Masuk untuk mencari kebijaksanaan"
   },
   "WishRoof": {
     "eyebrow": "Tempat Suci Abadi",
@@ -162,8 +164,8 @@
     "returnToTemple": "← Kembali ke Kuil"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
+    "signIn": "Masuk untuk mencari kebijaksanaan"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

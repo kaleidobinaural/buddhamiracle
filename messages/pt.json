@@ -68,7 +68,9 @@
     "sourcesLabel": "Fontes de Inspiração",
     "fallbackMsg": "No silêncio, a resposta virá. Por favor, tente novamente.",
     "rateLimitMsg": "O templo pede quietude. Por favor, aguarde um momento antes de falar novamente.",
-    "unexpectedError": "Uma resposta inesperada do Guru. Por favor, tente novamente."
+    "unexpectedError": "Uma resposta inesperada do Guru. Por favor, tente novamente.",
+    "unauthMessage": "Entre na luz para falar com o Guru.",
+    "signIn": "Entrar para buscar sabedoria"
   },
   "WishRoof": {
     "eyebrow": "O Santuário Eterno",
@@ -162,8 +164,8 @@
     "returnToTemple": "← Voltar ao Templo"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "Entre na luz para falar com o Guru.",
+    "signIn": "Entrar para buscar sabedoria"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

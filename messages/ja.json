@@ -68,7 +68,9 @@
     "sourcesLabel": "インスピレーションの源",
     "fallbackMsg": "静寂の中に答えは訪れます。もう一度お試しください。",
     "rateLimitMsg": "寺院は静寂を求めています。もう一度話す前に、しばらくお待ちください。",
-    "unexpectedError": "導師からの予期せぬ応答です。もう一度お試しください。"
+    "unexpectedError": "導師からの予期せぬ応答です。もう一度お試しください。",
+    "unauthMessage": "師と語るために、光の中に踏み込んでください。",
+    "signIn": "サインインして知恵を求める"
   },
   "WishRoof": {
     "eyebrow": "永遠の聖域",
@@ -162,8 +164,8 @@
     "returnToTemple": "← 寺院に戻る"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "師と語るために、光の中に踏み込んでください。",
+    "signIn": "サインインして知恵を求める"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

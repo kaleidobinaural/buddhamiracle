@@ -68,7 +68,9 @@
     "sourcesLabel": "Nguồn Cảm Hứng",
     "fallbackMsg": "Trong sự tĩnh lặng, câu trả lời sẽ đến. Vui lòng thử lại.",
     "rateLimitMsg": "Cõi thiền cần sự tĩnh lặng. Vui lòng đợi một chút trước khi tiếp tục trò chuyện.",
-    "unexpectedError": "Phản hồi không xác định từ Bậc Giác Ngộ. Vui lòng thử lại."
+    "unexpectedError": "Phản hồi không xác định từ Bậc Giác Ngộ. Vui lòng thử lại.",
+    "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
+    "signIn": "Đăng nhập để tìm kiếm trí tuệ"
   },
   "WishRoof": {
     "eyebrow": "Thánh Địa Vĩnh Hằng",
@@ -162,8 +164,8 @@
     "returnToTemple": "← Trở Về Đền"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
+    "signIn": "Đăng nhập để tìm kiếm trí tuệ"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

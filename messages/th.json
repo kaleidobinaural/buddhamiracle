@@ -68,7 +68,9 @@
     "sourcesLabel": "แหล่งที่มาแห่งแรงบันดาลใจ",
     "fallbackMsg": "ในความสงบ คำตอบจะปรากฏ โปรดลองใหม่อีกครั้ง",
     "rateLimitMsg": "วิหารขอความสงบสักครู่ โปรดรอสักครู่ก่อนพูดคุยอีกครั้ง",
-    "unexpectedError": "เกิดข้อผิดพลาดไม่คาดคิดจากคุรุ โปรดลองใหม่อีกครั้ง"
+    "unexpectedError": "เกิดข้อผิดพลาดไม่คาดคิดจากคุรุ โปรดลองใหม่อีกครั้ง",
+    "unauthMessage": "ก้าวเข้าสู่แสงสว่างเพื่อพูดคุยกับครูบาอาจารย์",
+    "signIn": "เข้าสู่ระบบเพื่อแสวงหาปัญญา"
   },
   "WishRoof": {
     "eyebrow": "สถานสงบจิตอันเป็นนิรันดร์",
@@ -162,8 +164,8 @@
     "returnToTemple": "← กลับสู่วิหาร"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "ก้าวเข้าสู่แสงสว่างเพื่อพูดคุยกับครูบาอาจารย์",
+    "signIn": "เข้าสู่ระบบเพื่อแสวงหาปัญญา"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

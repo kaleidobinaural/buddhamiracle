@@ -68,7 +68,9 @@
     "sourcesLabel": "ប្រភពនៃគំនិតបណ្តុះ",
     "fallbackMsg": "នៅក្នុងភាពស្ងប់ស្ងាត់ ចម្លើយនឹងលេចឡើង។ សូមព្យាយាមម្តងទៀត។",
     "rateLimitMsg": "ប្រាសាទសុំភាពស្ងប់ស្ងាត់។ សូមរង់ចាំមួយភ្លែតមុននឹងនិយាយម្តងទៀត។",
-    "unexpectedError": "ចម្លើយមិនប្រក្រតីពីព្រះគ្រូ។ សូមព្យាយាមម្តងទៀត។"
+    "unexpectedError": "ចម្លើយមិនប្រក្រតីពីព្រះគ្រូ។ សូមព្យាយាមម្តងទៀត។",
+    "unauthMessage": "ចូលក្នុងពន្លឺដើម្បីនិយាយជាមួយ Guru",
+    "signIn": "ចូលដើម្បីស្វែងរកប្រាជ្ញា"
   },
   "WishRoof": {
     "eyebrow": "ទីសក្ការៈអមតៈ",
@@ -162,8 +164,8 @@
     "returnToTemple": "← ត្រឡប់ទៅកាន់ប្រាសាទ"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "ចូលក្នុងពន្លឺដើម្បីនិយាយជាមួយ Guru",
+    "signIn": "ចូលដើម្បីស្វែងរកប្រាជ្ញា"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

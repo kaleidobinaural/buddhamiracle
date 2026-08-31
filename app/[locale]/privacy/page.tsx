@@ -5,7 +5,7 @@ export default function PrivacyPage() {
     <main className="privacy-page">
       <div className="privacy-bg-glow" aria-hidden="true" />
 
-      <div className="privacy-container animate-fade-up">
+      <div className="privacy-container">
 
         {/* Header */}
         <header className="privacy-header">

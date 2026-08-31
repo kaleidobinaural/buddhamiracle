@@ -401,9 +401,9 @@ export default function StorePage() {
         .store-section-title { text-align: center; font-family: var(--font-serif); font-size: 2.5rem; color: #fff; margin-bottom: 50px; }
         
         .store-tier-wrap { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
-        .store-tier-card { position: relative; flex: 1; min-width: 300px; max-width: 380px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 40px 30px; display: flex; flex-direction: column; transition: transform 0.4s; }
-        .store-tier-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
-        .store-featured { border-color: rgba(212,160,23,0.3); box-shadow: 0 0 40px rgba(212,160,23,0.05); }
+        .store-tier-card { position: relative; flex: 1; min-width: 300px; max-width: 380px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 40px 30px; display: flex; flex-direction: column; transition: transform 0.4s, border-color 0.4s; }
+        .store-tier-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.35); }
+        .store-featured { border-color: rgba(212,160,23,0.5) !important; box-shadow: 0 0 40px rgba(212,160,23,0.08); }
         
         .store-badge { position: absolute; top: -12px; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
         .store-tier-name { font-size: 1.3rem; color: #fff; font-weight: 600; margin-bottom: 8px; }

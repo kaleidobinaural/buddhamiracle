@@ -68,7 +68,9 @@
     "sourcesLabel": "灵感来源",
     "fallbackMsg": "于寂静中，答案自会显现。请再试一次。",
     "rateLimitMsg": "殿堂请求片刻宁静。请稍候片刻再发言。",
-    "unexpectedError": "导师回应异常。请再试一次。"
+    "unexpectedError": "导师回应异常。请再试一次。",
+    "unauthMessage": "踏入光明，与大师交流。",
+    "signIn": "登录以寻求智慧"
   },
   "WishRoof": {
     "eyebrow": "永恒圣所",
@@ -162,8 +164,8 @@
     "returnToTemple": "← 返回殿堂"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "踏入光明，与大师交流。",
+    "signIn": "登录以寻求智慧"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

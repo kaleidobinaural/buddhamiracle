@@ -68,7 +68,9 @@
     "sourcesLabel": "مصادر الإلهام",
     "fallbackMsg": "في السكون تجد الإجابة. يرجى المحاولة مرة أخرى.",
     "rateLimitMsg": "يطلب المعبد الهدوء والسكينة. يرجى الانتظار لحظة قبل التحدث مرة أخرى.",
-    "unexpectedError": "استجابة غير متوقعة من المرشد. يرجى المحاولة مرة أخرى."
+    "unexpectedError": "استجابة غير متوقعة من المرشد. يرجى المحاولة مرة أخرى.",
+    "unauthMessage": "ادخل في النور للتحدث مع الغورو.",
+    "signIn": "سجل دخولك لطلب الحكمة"
   },
   "WishRoof": {
     "eyebrow": "الملاذ الأبدي",
@@ -162,8 +164,8 @@
     "returnToTemple": "← العودة إلى المعبد"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
-    "signIn": "Sign In to Seek Wisdom"
+    "unauthMessage": "ادخل في النور للتحدث مع الغورو.",
+    "signIn": "سجل دخولك لطلب الحكمة"
   },
   "Store": {
     "heroEyebrow": "Quiesan × Temple of Light",

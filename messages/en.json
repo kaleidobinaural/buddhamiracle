@@ -68,7 +68,9 @@
     "sourcesLabel": "Sources of Inspiration",
     "fallbackMsg": "In stillness, the answer will come. Please try again.",
     "rateLimitMsg": "The temple asks for stillness. Please wait a moment before speaking again.",
-    "unexpectedError": "An unexpected response from the Guru. Please try again."
+    "unexpectedError": "An unexpected response from the Guru. Please try again.",
+    "unauthMessage": "Step into the light to speak with the Guru.",
+    "signIn": "Sign In to Seek Wisdom"
   },
   "WishRoof": {
     "eyebrow": "The Eternal Sanctuary",
@@ -162,7 +164,7 @@
     "returnToTemple": "← Return to Temple"
   },
   "Chat": {
-    "unauthMessage": "You must step into the light to speak with the Guru.",
+    "unauthMessage": "Step into the light to speak with the Guru.",
     "signIn": "Sign In to Seek Wisdom"
   },
   "Store": {
