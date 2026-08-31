@@ -724,8 +724,7 @@ img, video {
   font-size: 0.6rem;
 }
 @media (max-width: 640px) {
-  .legal-links { flex-direction: column; gap: 8px; }
-  .footer-dot { display: none; }
+  /* removed .legal-links column flex to keep them on 1 row */
 }
 .footer-social {
   display: flex;

@@ -92,7 +92,6 @@ export default function PrivacyPage() {
         {/* Footer */}
         <footer className="privacy-footer">
           <Link href="/" className="footer-return">← Return to Sanctuary</Link>
-          <p className="footer-copy">© 2026 Temple of Light. All Rights Reserved.</p>
         </footer>
       </div>
 

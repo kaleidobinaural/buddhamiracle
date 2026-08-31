@@ -74,7 +74,6 @@ export default function TermsPage() {
         {/* Footer */}
         <footer className="terms-footer">
           <Link href="/" className="footer-return">← Return to Sanctuary</Link>
-          <p className="footer-copy">© 2026 Temple of Light. All Rights Reserved.</p>
         </footer>
       </div>
 

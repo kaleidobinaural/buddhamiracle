@@ -102,16 +102,9 @@ export default function RefundPage() {
 
         </div>
 
-        {/* Footer Nav */}
-        <footer className="privacy-footer" style={{ marginTop: '56px', paddingTop: '28px', borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <div className="footer-links" style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <Link href="/privacy" className="privacy-link" style={{ fontSize: '0.88rem', color: '#666', transition: 'color 0.3s' }}>Privacy Policy</Link>
-            <span className="privacy-sep" style={{ color: '#444' }}>·</span>
-            <Link href="/terms" className="privacy-link" style={{ fontSize: '0.88rem', color: '#666', transition: 'color 0.3s' }}>Terms of Service</Link>
-            <span className="privacy-sep" style={{ color: '#444' }}>·</span>
-            <Link href="/refund" className="privacy-link" style={{ fontSize: '0.88rem', color: 'var(--primary-gold)', transition: 'color 0.3s' }}>Refund Policy</Link>
-          </div>
-          <Link href="/" className="footer-return" style={{ fontSize: '0.88rem', color: '#666', transition: 'color 0.3s' }}>← Return to Temple</Link>
+        {/* Footer */}
+        <footer className="privacy-footer" style={{ marginTop: '56px', paddingTop: '28px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+          <Link href="/" className="footer-return" style={{ fontSize: '0.88rem', color: '#666', transition: 'color 0.3s' }}>← Return to Sanctuary</Link>
         </footer>
 
       </div>
