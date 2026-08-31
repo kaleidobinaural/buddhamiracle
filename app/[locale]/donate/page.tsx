@@ -226,6 +226,8 @@ export default function DonatePage() {
                 <p className="tier-desc">{tDonate(`lotusTier${index + 1}Desc`)}</p>
                 <button
                   onClick={() => handleLotusOffer(tier)}
+                  className="btn-gold tier-btn"
+                  style={{ width: '100%', marginTop: 'auto' }}
                 >
                   🌿 Offer {tier.lotus} Lotus
                 </button>

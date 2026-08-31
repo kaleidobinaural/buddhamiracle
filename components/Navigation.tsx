@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, Link } from '@/i18n/navigation';
 import { useSession, signOut } from "next-auth/react";
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
@@ -72,7 +71,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <Link 
                 key={link.href} 
-                href={link.href} 
+                href={link.href as any} 
                 className={`nav-link ${pathname === link.href ? 'active' : ''}`}
               >
                 {t(link.key)}
@@ -153,7 +152,7 @@ export default function Navigation() {
                       ⚙️ Admin Panel
                     </Link>
                   )}
-                  <button onClick={() => signOut({ callbackUrl: '/' })} className="dropdown-item">
+                  <button onClick={() => signOut({ callbackUrl: `/${locale}` })} className="dropdown-item">
                     {t('signOut')}
                   </button>
                 </div>
@@ -187,14 +186,14 @@ export default function Navigation() {
               {navLinks.map((link, i) => (
                 <Link 
                   key={link.href} 
-                  href={link.href} 
+                  href={link.href as any} 
                   className={`mobile-nav-link bloom-${i + 1}`} 
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(link.key)}
                 </Link>
               ))}
-              <Link href="/donate" className="mobile-nav-link donate bloom-7" onClick={() => setMobileOpen(false)}>
+              <Link href="/donate" className="mobile-nav-link bloom-7" onClick={() => setMobileOpen(false)}>
                 {t('donate')}
               </Link>
               {!session?.user && (

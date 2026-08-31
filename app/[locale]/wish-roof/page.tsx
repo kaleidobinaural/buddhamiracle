@@ -317,10 +317,16 @@ export default function WishRoofPage() {
             <div className="empty-state">{t('empty')}</div>
           ) : (
             wishes.map((wish, index) => {
-              const left = (index * 137.5) % 90; 
-              const top = (index * 223.1) % 95;
-              const scale = 0.5 + (index % 6) * 0.12;
-              const opacity = 0.6 + (index % 10) * 0.04; // Increased min opacity
+              // Create a deterministic pseudo-random seed based on the wish ID
+              const seed = Math.abs(
+                wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
+              );
+              
+              // Pseudo-random scatter (5% to 85% of screen width/height to avoid cutoff)
+              const left = 5 + (seed % 80); 
+              const top = 5 + ((seed >> 3) % 80);
+              const scale = 0.5 + ((seed >> 6) % 6) * 0.12;
+              const opacity = 0.6 + ((seed >> 9) % 10) * 0.04;
               
               return (
                 <div 
