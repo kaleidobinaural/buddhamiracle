@@ -122,7 +122,12 @@
     "foundersDesc": "Nama-nama mereka yang membangun fondasi tempat suci ini terukir di batu abadi.",
     "supportersWall": "Dinding Pendukung",
     "supportersDesc": "Hati-hati yang terus menopang ruang digital suci ini.",
-    "emptySupporter": "Pilar pertama menunggu untuk diukir."
+    "emptySupporter": "Pilar pertama menunggu untuk diukir.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",

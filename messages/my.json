@@ -122,7 +122,12 @@
     "foundersDesc": "ဤတရားအိမ်၏ အုတ်မြစ်ကို တည်ဆောက်ခဲ့သူများ၏ နာမည်များ ထာဝရကျောက်ပေါ်တွင် ထွင်းထုထားသည်",
     "supportersWall": "ထောက်ခံသူများနံရံ",
     "supportersDesc": "ဤသန့်မြတ်သောဒစ်ဂျစ်တယ်နေရာကို ဆက်လက်ထိန်းသိမ်းနေသောနှလုံးသားများ",
-    "emptySupporter": "ပထမဆုံးတိုင်ကို ကမ္ပည်းထိုးရန် စောင့်ဆိုင်းနေသည်။"
+    "emptySupporter": "ပထမဆုံးတိုင်ကို ကမ္ပည်းထိုးရန် စောင့်ဆိုင်းနေသည်။",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",

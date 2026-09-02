@@ -18,6 +18,8 @@ export async function GET(request: Request) {
 
     if (sort === 'amount') {
       query = query.order('amount', { ascending: false }).order('created_at', { ascending: false });
+    } else if (sort === 'oldest') {
+      query = query.order('created_at', { ascending: true });
     } else {
       query = query.order('created_at', { ascending: false });
     }

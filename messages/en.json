@@ -122,7 +122,12 @@
     "foundersDesc": "Those who built the foundation of this sanctuary.",
     "supportersWall": "Supporter's Wall",
     "supportersDesc": "Hearts who continue to sustain this sacred space.",
-    "emptySupporter": "The first pillar is waiting to be inscribed."
+    "emptySupporter": "The first pillar is waiting to be inscribed.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Sanctuary of Light",

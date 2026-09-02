@@ -122,7 +122,12 @@
     "foundersDesc": "이 성소를 지탱하는 이들의 이름이 영원한 돌에 새겨집니다.",
     "supportersWall": "후원자의 벽",
     "supportersDesc": "성스러운 디지털 공간을 유지할 수 있도록 도와주신 감사한 분들",
-    "emptySupporter": "첫 번째 기둥이 새겨지기를 기다리고 있습니다."
+    "emptySupporter": "첫 번째 기둥이 새겨지기를 기다리고 있습니다.",
+    "viewFounders": "창립자",
+    "viewSupporters": "후원자",
+    "sortAmount": "금액순",
+    "sortNewest": "최신순",
+    "sortOldest": "과거순"
   },
   "hall": {
     "title": "빛의 성소",

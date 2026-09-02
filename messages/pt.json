@@ -122,7 +122,12 @@
     "foundersDesc": "Os nomes de quem construiu os alicerces deste santuário estão gravados em pedra eterna.",
     "supportersWall": "Muro dos Apoiadores",
     "supportersDesc": "Corações que continuam sustentando este sagrado espaço digital.",
-    "emptySupporter": "O primeiro pilar espera para ser inscrito."
+    "emptySupporter": "O primeiro pilar espera para ser inscrito.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Santuário da Luz",

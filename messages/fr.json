@@ -122,7 +122,12 @@
     "foundersDesc": "Les noms de ceux qui ont bâti les fondations de ce sanctuaire sont gravés dans la pierre éternelle.",
     "supportersWall": "Mur des Sympathisants",
     "supportersDesc": "Des cœurs qui continuent de soutenir cet espace numérique sacré.",
-    "emptySupporter": "Le premier pilier attend d'être inscrit."
+    "emptySupporter": "Le premier pilier attend d'être inscrit.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",

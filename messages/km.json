@@ -122,7 +122,12 @@
     "foundersDesc": "ឈ្មោះរបស់អ្នកដែលបង្កើតគ្រឹះនៃទីសក្ការបូជានេះ ត្រូវបានចារឹកនៅលើថ្មអស់កល្ប",
     "supportersWall": "ជញ្ជាំងអ្នកគាំទ្រ",
     "supportersDesc": "បេះដូងដែលបន្តគាំទ្រទីនេះ ដែលជាទំហំឌីជីថលដ៏ស័ក្តិសិទ្ធ",
-    "emptySupporter": "សសរទីមួយកំពុងរង់ចាំការចារឹក។"
+    "emptySupporter": "សសរទីមួយកំពុងរង់ចាំការចារឹក។",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",

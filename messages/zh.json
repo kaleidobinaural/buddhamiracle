@@ -122,7 +122,12 @@
     "foundersDesc": "奠定此圣域基础之人的名字将永远铭刻于石上。",
     "supportersWall": "支持者之墙",
     "supportersDesc": "感谢那些持续支撑这个神圣数字空间的人们。",
-    "emptySupporter": "第一根柱子正等待被铭刻。"
+    "emptySupporter": "第一根柱子正等待被铭刻。",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "光明圣殿",

@@ -25,8 +25,9 @@ export default function PillarsPage() {
   const { data: session } = useSession();
   const t = useTranslations('Pillars');
   const [pillars, setPillars] = useState<Pillar[]>([]);
+  const [role, setRole] = useState<'founder' | 'supporter'>('founder');
   const [viewMode, setViewMode] = useState<'hall' | 'grid'>('hall');
-  const [sortBy, setSortBy] = useState<'amount' | 'date'>('amount');
+  const [sortBy, setSortBy] = useState<'amount' | 'date' | 'oldest'>('amount');
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -110,27 +111,45 @@ export default function PillarsPage() {
         </header>
 
         <div className="pillars-top-actions animate-fade-up animate-delay-200">
-          <div className="control-group">
+          <div className="control-group multi-toggles">
+            {/* Role Toggle */}
+            <div className="view-selector role-selector">
+              <button 
+                className={`btn-view ${role === 'founder' ? 'active' : ''}`}
+                onClick={() => setRole('founder')}
+              >🏛️ {t('viewFounders')}</button>
+              <button 
+                className={`btn-view ${role === 'supporter' ? 'active' : ''}`}
+                onClick={() => setRole('supporter')}
+              >📿 {t('viewSupporters')}</button>
+            </div>
+
+            {/* View Mode Toggle */}
             <div className="view-selector">
               <button 
                 className={`btn-view ${viewMode === 'hall' ? 'active' : ''}`}
                 onClick={() => setViewMode('hall')}
-              >🏛️ {t('viewHall')}</button>
+              >👁️‍🗨️ {t('viewHall')}</button>
               <button 
                 className={`btn-view ${viewMode === 'grid' ? 'active' : ''}`}
                 onClick={() => setViewMode('grid')}
-              >🪟 {t('viewGrid')}</button>
+              >🔲 {t('viewGrid')}</button>
             </div>
 
+            {/* Sort Toggle */}
             <div className="sort-selector">
               <button 
                 className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
                 onClick={() => setSortBy('amount')}
-              >💎 {t('sortTop')}</button>
+              >💎 {t('sortAmount')}</button>
               <button 
                 className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
                 onClick={() => setSortBy('date')}
-              >🕒 {t('sortRecent')}</button>
+              >⬇️ {t('sortNewest')}</button>
+              <button 
+                className={`btn-sort ${sortBy === 'oldest' ? 'active' : ''}`}
+                onClick={() => setSortBy('oldest')}
+              >⬆️ {t('sortOldest')}</button>
             </div>
 
             <button className="btn-music-glass" onClick={toggleMusic}>
@@ -172,7 +191,7 @@ export default function PillarsPage() {
           ) : viewMode === 'hall' ? (
             <>
               {/* ─── Founders' Hall ─── */}
-              {founderPillars.length > 0 && (
+              {role === 'founder' && founderPillars.length > 0 && (
                 <>
                   <div className="pillar-section-header founder">
                     <span className="pillar-section-icon">🏛️</span>
@@ -222,64 +241,73 @@ export default function PillarsPage() {
                   </Swiper>
                 </>
               )}
+              {role === 'founder' && founderPillars.length === 0 && (
+                <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
+                  {t('empty')}
+                </div>
+              )}
 
               {/* ─── Supporter's Wall ─── */}
-              <div className="pillar-section-header supporter" style={{ marginTop: '100px' }}>
-                <span className="pillar-section-icon">📿</span>
-                <h2 className="pillar-section-title">{t('supportersWall')}</h2>
-                <p className="pillar-section-desc">{t('supportersDesc')}</p>
-              </div>
-              {supporterPillars.length > 0 ? (
-                <Swiper
-                  effect={'coverflow'}
-                  grabCursor={true}
-                  centeredSlides={true}
-                  slidesPerView={'auto'}
-                  coverflowEffect={{
-                    rotate: 0,
-                    stretch: 120,
-                    depth: 250,
-                    modifier: 1.0,
-                    slideShadows: false,
-                  }}
-                  keyboard={{ enabled: true }}
-                  mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
-                  modules={[EffectCoverflow, Keyboard, Mousewheel]}
-                  className="pillars-swiper supporters-swiper"
-                >
-                    {supporterPillars.map((pillar) => (
-                      <SwiperSlide key={pillar.id} className="pillar-slide">
-                        <div
-                          className="pillar-wrapper"
-                          onClick={() => setSelectedPillar(pillar)}
-                        >
-                          <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                            <div className="pillar-cap" />
-                            <div className="pillar-body">
-                              <div className="pillar-texture" />
-                              <div className="pillar-content">
-                                <h3 className="donor-name">{pillar.name}</h3>
-                                <p className="donor-rank">Supporter</p>
-                              </div>
-                              <div className="pillar-engraving-glow" />
+              {role === 'supporter' && (
+                <>
+                  <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
+                    <span className="pillar-section-icon">📿</span>
+                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                    <p className="pillar-section-desc">{t('supportersDesc')}</p>
+                  </div>
+                  {supporterPillars.length > 0 ? (
+                    <Swiper
+                      effect={'coverflow'}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={'auto'}
+                      coverflowEffect={{
+                        rotate: 0,
+                        stretch: 120,
+                        depth: 250,
+                        modifier: 1.0,
+                        slideShadows: false,
+                      }}
+                      keyboard={{ enabled: true }}
+                      mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                      modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                      className="pillars-swiper supporters-swiper"
+                    >
+                        {supporterPillars.map((pillar) => (
+                          <SwiperSlide key={pillar.id} className="pillar-slide">
+                            <div
+                              className="pillar-wrapper"
+                              onClick={() => setSelectedPillar(pillar)}
+                            >
+                              <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                                <div className="pillar-cap" />
+                                <div className="pillar-body">
+                                  <div className="pillar-texture" />
+                                  <div className="pillar-content">
+                                    <h3 className="donor-name">{pillar.name}</h3>
+                                    <p className="donor-rank">Supporter</p>
+                                  </div>
+                                  <div className="pillar-engraving-glow" />
+                                </div>
+                                <div className="pillar-base" />
+                                <div className="pillar-aura" />
+                              </article>
                             </div>
-                            <div className="pillar-base" />
-                            <div className="pillar-aura" />
-                          </article>
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-              ) : (
-                <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  {t('emptySupporter')}
-                </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                  ) : (
+                    <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
+                      {t('emptySupporter')}
+                    </div>
+                  )}
+                </>
               )}
             </>
           ) : (
             /* ─── Grid View (both sections) ─── */
             <div className="pillars-scroll-area animate-fade-up">
-              {founderPillars.length > 0 && (
+              {role === 'founder' && founderPillars.length > 0 && (
                 <>
                   <div className="pillar-section-header founder" style={{ gridColumn: '1 / -1' }}>
                     <span className="pillar-section-icon">🏛️</span>
@@ -308,38 +336,47 @@ export default function PillarsPage() {
                   ))}
                 </>
               )}
-              <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1', marginTop: '60px' }}>
-                <span className="pillar-section-icon">📿</span>
-                <h2 className="pillar-section-title">{t('supportersWall')}</h2>
-              </div>
-              {supporterPillars.length > 0 ? (
-                <>
-                  {supporterPillars.map((pillar) => (
-                    <div
-                      key={pillar.id}
-                      className="pillar-wrapper"
-                      onClick={() => setSelectedPillar(pillar)}
-                    >
-                      <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                        <div className="pillar-cap" />
-                        <div className="pillar-body">
-                          <div className="pillar-texture" />
-                          <div className="pillar-content">
-                            <h3 className="donor-name">{pillar.name}</h3>
-                            <p className="donor-rank">Supporter</p>
-                          </div>
-                          <div className="pillar-engraving-glow" />
-                        </div>
-                        <div className="pillar-base" />
-                        <div className="pillar-aura" />
-                      </article>
-                    </div>
-                  ))}
-                </>
-              ) : (
+              {role === 'founder' && founderPillars.length === 0 && (
                 <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  {t('emptySupporter')}
+                  {t('empty')}
                 </div>
+              )}
+              {role === 'supporter' && (
+                <>
+                  <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1', marginTop: '0' }}>
+                    <span className="pillar-section-icon">📿</span>
+                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                  </div>
+                  {supporterPillars.length > 0 ? (
+                    <>
+                      {supporterPillars.map((pillar) => (
+                        <div
+                          key={pillar.id}
+                          className="pillar-wrapper"
+                          onClick={() => setSelectedPillar(pillar)}
+                        >
+                          <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                            <div className="pillar-cap" />
+                            <div className="pillar-body">
+                              <div className="pillar-texture" />
+                              <div className="pillar-content">
+                                <h3 className="donor-name">{pillar.name}</h3>
+                                <p className="donor-rank">Supporter</p>
+                              </div>
+                              <div className="pillar-engraving-glow" />
+                            </div>
+                            <div className="pillar-base" />
+                            <div className="pillar-aura" />
+                          </article>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
+                      {t('emptySupporter')}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           )}

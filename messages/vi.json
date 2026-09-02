@@ -122,7 +122,12 @@
     "foundersDesc": "Tên của những người đã xây dựng nền tảng của thánh địa này được khắc vào đá vĩnh cửu.",
     "supportersWall": "Bức Tường Người Ủng Hộ",
     "supportersDesc": "Những trái tim tiếp tục duy trì không gian kỹ thuật số thiêng liêng này.",
-    "emptySupporter": "Trụ cột đầu tiên đang chờ được khắc tên."
+    "emptySupporter": "Trụ cột đầu tiên đang chờ được khắc tên.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",

@@ -122,7 +122,12 @@
     "foundersDesc": "Die Namen derer, die das Fundament dieses Heiligtums errichteten, sind in ewigen Stein eingraviert.",
     "supportersWall": "Wand der Unterstützer",
     "supportersDesc": "Herzen, die diesen heiligen digitalen Raum weiterhin aufrechterhalten.",
-    "emptySupporter": "Die erste Säule wartet darauf, beschriftet zu werden."
+    "emptySupporter": "Die erste Säule wartet darauf, beschriftet zu werden.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Heiligtum des Lichts",

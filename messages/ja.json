@@ -122,7 +122,12 @@
     "foundersDesc": "この聖域の基盤を築いた人々の名が永遠の石に刻まれます。",
     "supportersWall": "サポーターの壁",
     "supportersDesc": "この神聖なデジタル空間を支え続けてくださる感謝すべき方々。",
-    "emptySupporter": "最初の柱が刻印されるのを待っています。"
+    "emptySupporter": "最初の柱が刻印されるのを待っています。",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "光の聖域",

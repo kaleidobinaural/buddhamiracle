@@ -122,7 +122,12 @@
     "foundersDesc": "أسماء من أرسوا أساس هذا الملاذ محفورة في الحجر الأبدي.",
     "supportersWall": "حائط الداعمين",
     "supportersDesc": "قلوب تواصل دعم هذا الفضاء الرقمي المقدس.",
-    "emptySupporter": "العمود الأول ينتظر أن يُنقش."
+    "emptySupporter": "العمود الأول ينتظر أن يُنقش.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "ملاذ النور",

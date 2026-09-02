@@ -122,7 +122,12 @@
     "foundersDesc": "Los nombres de quienes construyeron los cimientos de este santuario están grabados en piedra eterna.",
     "supportersWall": "Muro de los Simpatizantes",
     "supportersDesc": "Corazones que continúan sosteniendo este sagrado espacio digital.",
-    "emptySupporter": "El primer pilar espera ser inscrito."
+    "emptySupporter": "El primer pilar espera ser inscrito.",
+    "viewFounders": "Founders",
+    "viewSupporters": "Supporters",
+    "sortAmount": "Top Amount",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest"
   },
   "hall": {
     "title": "Santuario de Luz",

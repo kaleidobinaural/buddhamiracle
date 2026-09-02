@@ -46,7 +46,7 @@ export default function CharacterAvatar({
         transition={{ type: 'spring', stiffness: 200, damping: 20 }}
         className={`avatar-container ${position}`}
       >
-        {message && (
+        {message && (typeof message !== 'string' || message.trim() !== '') && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
