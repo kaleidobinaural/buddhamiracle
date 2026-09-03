@@ -97,7 +97,8 @@
     "modalPublic": "Niat Publik",
     "modalPrivate": "Pribadi (Hanya untuk Anda)",
     "modalSubmit": "Lepaskan ke Langit",
-    "modalCancel": "Batal"
+    "modalCancel": "Batal",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",
@@ -166,7 +167,20 @@
     "purchaseLotus": "Beli Kelopak Teratai",
     "paypalNote": "Pembayaran PayPal diproses secara aman. Data keuangan Anda tidak pernah disimpan di server kami. Kelopak teratai dikreditkan setelah konfirmasi pembayaran.",
     "virtualNote": "Persembahan teratai virtual mendukung semangat komunitas kuil. Ini bukan transaksi keuangan.",
-    "returnToTemple": "← Kembali ke Kuil"
+    "returnToTemple": "← Kembali ke Kuil",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
@@ -273,6 +287,11 @@
     "lights": "Cahaya",
     "soulPoints": "Poin Jiwa",
     "public": "Publik",
-    "private": "Pribadi"
+    "private": "Pribadi",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

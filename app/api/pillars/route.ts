@@ -6,6 +6,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const search = searchParams.get('search');
   const sort = searchParams.get('sort') || 'amount';
+  const type = searchParams.get('type'); // 'founder' | 'supporter'
   const showMine = searchParams.get('mine') === 'true';
   const session = await auth();
   const userEmail = session?.user?.email;
@@ -22,6 +23,13 @@ export async function GET(request: Request) {
       query = query.order('created_at', { ascending: true });
     } else {
       query = query.order('created_at', { ascending: false });
+    }
+
+    // Type Filter (founder vs supporter)
+    if (type === 'founder') {
+      query = query.in('pillar_type', ['gold', 'marble', 'stone']);
+    } else if (type === 'supporter') {
+      query = query.eq('pillar_type', 'donor');
     }
 
     // Privacy Logic:

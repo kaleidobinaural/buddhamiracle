@@ -80,7 +80,7 @@ export default function HallPage() {
             <button 
               className={`eco-btn ${isEcoMode ? 'active' : ''}`}
               onClick={() => setIsEcoMode(!isEcoMode)}
-              title={isEcoMode ? 'Eco Mode On (Low GPU)' : 'Switch to Eco Mode'}
+              title={isEcoMode ? 'Lite Mode On (Low GPU)' : 'Switch to Lite Mode (Low GPU)'}
             >
               <span className="btn-icon">{isEcoMode ? '🌿' : '⚡'}</span>
               {isEcoMode ? t('ecoOn') : t('eco')}

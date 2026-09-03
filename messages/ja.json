@@ -97,7 +97,8 @@
     "modalPublic": "公開の意図",
     "modalPrivate": "非公開（あなたのみ）",
     "modalSubmit": "空へ放つ",
-    "modalCancel": "キャンセル"
+    "modalCancel": "キャンセル",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",
@@ -166,7 +167,20 @@
     "purchaseLotus": "蓮の花びらを購入する",
     "paypalNote": "PayPalでの支払いは安全に処理されます。あなたの金融データが当社のサーバーに保存されることはありません。蓮の花びらは支払い確認後に付与されます。",
     "virtualNote": "仮想の蓮の供物は、寺院コミュニティの精神を支えます。これらは金銭的な取引ではありません。",
-    "returnToTemple": "← 寺院に戻る"
+    "returnToTemple": "← 寺院に戻る",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "師と語るために、光の中に踏み込んでください。",
@@ -273,6 +287,11 @@
     "lights": "光",
     "soulPoints": "ソウルポイント",
     "public": "公開",
-    "private": "プライベート"
+    "private": "プライベート",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

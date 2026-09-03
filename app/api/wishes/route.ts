@@ -41,8 +41,8 @@ export async function GET(req: NextRequest) {
     let query = supabase.from('wishes').select('*');
 
     // Sorting Logic
-    if (sort === 'amount') {
-      query = query.order('amount', { ascending: false }).order('created_at', { ascending: false });
+    if (sort === 'likes') {
+      query = query.order('likes_count', { ascending: false }).order('created_at', { ascending: false });
     } else {
       query = query.order('created_at', { ascending: false });
     }
@@ -83,11 +83,27 @@ export async function PATCH(request: Request) {
   }
 
   const likerEmail = session.user.email!;
+  const body = await request.json();
 
   try {
-    const { id, action } = await request.json();
+    const { id, action } = body;
+    if (!id || !action) return NextResponse.json({ error: 'ID and action required' }, { status: 400 });
 
-    if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    // Toggle public/private - owner only
+    if (action === 'toggle_public') {
+      const userEmail = session?.user?.email;
+      if (!userEmail) return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+      // Fetch current state
+      const { data: wish, error: fetchError } = await supabase
+        .from('wishes').select('is_public, user_email').eq('id', id).single();
+      if (fetchError) return NextResponse.json({ error: fetchError.message }, { status: 500 });
+      if (wish.user_email !== userEmail) return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+      const { data: updated, error: updateError } = await supabase
+        .from('wishes').update({ is_public: !wish.is_public }).eq('id', id).select();
+      if (updateError) return NextResponse.json({ error: updateError.message }, { status: 500 });
+      return NextResponse.json({ success: true, data: updated });
+    }
+
     if (action !== 'like' && action !== 'unlike') {
       return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
@@ -209,20 +225,32 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * DELETE: Admin only. Deletes a wish by ID.
+ * DELETE: Owner or Admin can delete a wish by ID.
  */
 export async function DELETE(request: NextRequest) {
   const supabase = getSupabaseAdmin();
   const session = await auth();
   const adminEmails = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [];
+  const userEmail = session?.user?.email;
   
-  if (!session?.user?.email || !adminEmails.includes(session.user.email)) {
-    return NextResponse.json({ error: 'Unauthorized. Admin access required.' }, { status: 403 });
+  if (!userEmail) {
+    return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
   }
 
   try {
     const { id } = await request.json();
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+
+    const isAdmin = adminEmails.includes(userEmail);
+
+    // Fetch wish to check ownership
+    const { data: wish, error: fetchError } = await supabase
+      .from('wishes').select('user_email').eq('id', id).single();
+    if (fetchError) return NextResponse.json({ error: 'Wish not found' }, { status: 404 });
+
+    if (!isAdmin && wish.user_email !== userEmail) {
+      return NextResponse.json({ error: 'Unauthorized. You can only delete your own wishes.' }, { status: 403 });
+    }
 
     const { error } = await supabase.from('wishes').delete().eq('id', id);
     if (error) throw error;

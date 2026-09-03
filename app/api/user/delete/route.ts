@@ -25,15 +25,17 @@ export async function DELETE(req: NextRequest) {
 
     if (wishesError) throw wishesError;
 
-    // 2. Delete all pillar dedications (if applicable - checking table name)
-    // Note: If you have a pillars table, add similar logic here.
+    // 2. Delete pillar dedications
     const { error: pillarsError } = await supabase
       .from('pillars')
       .delete()
       .eq('user_email', userEmail);
     
-    // We don't throw for pillarsError in case the table doesn't exist yet, 
-    // but in a real app we would ensure sync.
+    // 3. Delete lotus balance / user limits
+    const { error: limitsError } = await supabase
+      .from('user_limits')
+      .delete()
+      .eq('email', userEmail);
 
     return NextResponse.json({ 
       success: true, 

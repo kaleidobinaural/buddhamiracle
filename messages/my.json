@@ -97,7 +97,8 @@
     "modalPublic": "အများမြင်နိုင်သော ဆန္ဒ",
     "modalPrivate": "သီးသန့် (သင့်အတွက်သာ)",
     "modalSubmit": "ကောင်းကင်သို့ လွှတ်တင်မည်",
-    "modalCancel": "ပယ်ဖျက်မည်"
+    "modalCancel": "ပယ်ဖျက်မည်",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "ထာဝရ အုတ်မြစ်",
@@ -166,7 +167,20 @@
     "purchaseLotus": "ကြာပွင့်ဖတ်များ ဝယ်ယူပါ",
     "paypalNote": "PayPal ငွေပေးချေမှုများကို ဘေးကင်းလုံခြုံစွာ လွှဲပြောင်းဆောင်ရွက်ပါသည်။ သင်၏ ငွေရေးကြေးရေး အချက်အလက်များကို ကျွန်ုပ်တို့၏ ဆာဗာများတွင် ဘယ်တော့မှ သိမ်းဆည်းမည်မဟုတ်ပါ။ ငွေပေးချေမှု အတည်ပြုပြီးပါက ကြာပွင့်ဖတ်များကို ထည့်သွင်းပေးမည်ဖြစ်သည်။",
     "virtualNote": "အတုအယောင် ကြာပွင့် လှူဒါန်းမှုများသည် ကျောင်းတော်၏ အသိုင်းအဝိုင်း စိတ်ဓာတ်ကို ပံ့ပိုးပေးပါသည်။ ၎င်းတို့သည် ငွေကြေးဆိုင်ရာ လွှဲပြောင်းမှုများ မဟုတ်ပါ။",
-    "returnToTemple": "← ကျောင်းတော်သို့ ပြန်သွားပါ"
+    "returnToTemple": "← ကျောင်းတော်သို့ ပြန်သွားပါ",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "ဂုရုနှင့် စကားပြောရန် အလင်းထဲသို့ ဝင်ရောက်ပါ",
@@ -273,6 +287,11 @@
     "lights": "အလင်းများ",
     "soulPoints": "စိတ်ဝိညာဉ်မှတ်နိပ်",
     "public": "အများနှင့်",
-    "private": "ကိုယ်ပိုင်"
+    "private": "ကိုယ်ပိုင်",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

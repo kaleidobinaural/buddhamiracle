@@ -97,7 +97,8 @@
     "modalPublic": "Intention Publique",
     "modalPrivate": "Privée (Seulement pour vous)",
     "modalSubmit": "Libérer dans le Ciel",
-    "modalCancel": "Annuler"
+    "modalCancel": "Annuler",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
@@ -166,7 +167,20 @@
     "purchaseLotus": "Acheter des Pétales de Lotus",
     "paypalNote": "Les paiements PayPal sont traités en toute sécurité. Vos données financières ne sont jamais stockées sur nos serveurs. Les pétales de lotus sont crédités après confirmation du paiement.",
     "virtualNote": "Les offrandes virtuelles de lotus soutiennent l'esprit de la communauté du temple. Ce ne sont pas des transactions financières.",
-    "returnToTemple": "← Retour au Temple"
+    "returnToTemple": "← Retour au Temple",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "Entrez dans la lumière pour parler au Guru.",
@@ -273,6 +287,11 @@
     "lights": "Lumières",
     "soulPoints": "Points d'Âme",
     "public": "Public",
-    "private": "Privé"
+    "private": "Privé",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

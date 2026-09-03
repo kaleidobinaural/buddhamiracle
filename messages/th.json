@@ -97,7 +97,8 @@
     "modalPublic": "ความตั้งใจสาธารณะ",
     "modalPrivate": "ส่วนตัว (สำหรับคุณเท่านั้น)",
     "modalSubmit": "ปล่อยขึ้นสู่ท้องฟ้า",
-    "modalCancel": "ยกเลิก"
+    "modalCancel": "ยกเลิก",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",
@@ -166,7 +167,20 @@
     "purchaseLotus": "ซื้อกลีบบัว",
     "paypalNote": "การชำระเงินผ่าน PayPal ดำเนินการอย่างปลอดภัย ข้อมูลทางการเงินของคุณจะไม่ถูกจัดเก็บในเซิร์ฟเวอร์ของเรา กลีบบัวจะถูกเพิ่มให้หลังจากยืนยันการชำระเงิน",
     "virtualNote": "การถวายกลีบบัวเสมือนจริงเป็นการร่วมจุนเจือจิตวิญญาณของชุมชนวิหาร มิใช่ธุรกรรมทางการเงิน",
-    "returnToTemple": "← กลับสู่วิหาร"
+    "returnToTemple": "← กลับสู่วิหาร",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "ก้าวเข้าสู่แสงสว่างเพื่อพูดคุยกับครูบาอาจารย์",
@@ -273,6 +287,11 @@
     "lights": "แสงสว่าง",
     "soulPoints": "คะแนนวิญญาณ",
     "public": "สาธารณะ",
-    "private": "ส่วนตัว"
+    "private": "ส่วนตัว",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

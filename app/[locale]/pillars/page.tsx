@@ -43,8 +43,8 @@ export default function PillarsPage() {
 
   useEffect(() => {
     setMounted(true);
-    fetchPillars(searchQuery, sortBy);
-  }, [sortBy]);
+    fetchPillars(searchQuery, sortBy, role);
+  }, [sortBy, role]);
 
   const toggleMusic = () => {
     if (audioRef.current) {
@@ -57,14 +57,15 @@ export default function PillarsPage() {
   // Reactive search reset
   useEffect(() => {
     if (searchQuery === '') {
-      fetchPillars('', sortBy);
+      fetchPillars('', sortBy, role);
     }
   }, [searchQuery]);
 
-  const fetchPillars = async (query = '', sort = sortBy) => {
+  const fetchPillars = async (query = '', sort = sortBy, currentRole = role) => {
     setIsLoading(true);
     try {
-      let url = `/api/pillars?sort=${sort}`;
+      const pillarType = currentRole === 'founder' ? 'founder' : 'supporter';
+      let url = `/api/pillars?sort=${sort}&type=${pillarType}`;
       if (query) url += `&search=${encodeURIComponent(query)}`;
       const res = await fetch(url);
       const data = await res.json();
@@ -85,7 +86,7 @@ export default function PillarsPage() {
         return;
       }
     }
-    fetchPillars(searchQuery, sortBy);
+    fetchPillars(searchQuery, sortBy, role);
   };
 
   return (

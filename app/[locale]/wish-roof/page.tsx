@@ -32,7 +32,7 @@ export default function WishRoofPage() {
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'sky' | 'grid'>('sky');
-  const [sortBy, setSortBy] = useState<'date' | 'amount'>('date');
+  const [sortBy, setSortBy] = useState<'date' | 'likes'>('date');
   const [showOnlyMine, setShowOnlyMine] = useState(false);
   const [isPublic, setIsPublic] = useState(true);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -246,9 +246,9 @@ export default function WishRoofPage() {
 
             <div className="sort-selector">
               <button 
-                className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
-                onClick={() => setSortBy('amount')}
-              >💎 {t('sortTop')}</button>
+                className={`btn-sort ${sortBy === 'likes' ? 'active' : ''}`}
+                onClick={() => setSortBy('likes')}
+              >✨ {t('sortDeep')}</button>
               <button 
                 className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
                 onClick={() => setSortBy('date')}

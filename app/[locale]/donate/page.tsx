@@ -74,6 +74,9 @@ export default function DonatePage() {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [notification, setNotification] = useState<{message: string, show: boolean}>({ message: '', show: false });
+  const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
+  const [inquiryFormData, setInquiryFormData] = useState({ name: '', email: '', message: '' });
+  const [inquiryStatus, setInquiryStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const paypalEmail = process.env.NEXT_PUBLIC_PAYPAL_EMAIL || '';
   const paypalMeUrl = process.env.NEXT_PUBLIC_PAYPAL_ME_URL || '';
@@ -119,6 +122,22 @@ export default function DonatePage() {
     setNotification({ message: tDonate('comingSoon', { count: tier.lotus }), show: true });
     setTimeout(() => setNotification({ message: '', show: false }), 3000);
   }
+
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setInquiryStatus('submitting');
+    try {
+      const res = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...inquiryFormData, type: 'Support' }),
+      });
+      if (res.ok) setInquiryStatus('success');
+      else setInquiryStatus('error');
+    } catch {
+      setInquiryStatus('error');
+    }
+  };
 
   return (
     <main className="donate-page" id="main-content">
@@ -198,6 +217,15 @@ export default function DonatePage() {
                 </a>
               </article>
             ))}
+            {/* Payment Inquiry Link */}
+            <div style={{ textAlign: 'center', marginTop: '32px' }}>
+              <button
+                className="btn-inquiry-link"
+                onClick={() => { setInquiryStatus('idle'); setInquiryFormData({ name: '', email: '', message: '' }); setIsInquiryModalOpen(true); }}
+              >
+                💬 {tDonate('inquiryLink')}
+              </button>
+            </div>
           </section>
         )}
 
@@ -206,6 +234,9 @@ export default function DonatePage() {
           <section className="donate-grid animate-fade-up animate-delay-200" aria-label="Lotus donation tiers">
             <div className="lotus-mode-note">
               <p dangerouslySetInnerHTML={{ __html: tDonate('lotusModeNote') || '🪷 Your lotus petals were received with gratitude. Offering them back to the temple community is a beautiful act of <em>dana</em> — the Buddhist virtue of generosity.' }} />
+            </div>
+            <div className="lotus-pillar-notice">
+              <p>{tDonate('lotusNotice')}</p>
             </div>
             {LOTUS_TIERS.map((tier, index) => (
               <article
@@ -380,6 +411,14 @@ export default function DonatePage() {
         }
         .return-btn { font-size: 0.9rem; padding: 12px 24px; border-radius: 100px; }
         
+        .lotus-pillar-notice {
+          background: rgba(212, 160, 23, 0.05); border: 1px solid rgba(212, 160, 23, 0.2); 
+          padding: 16px 24px; border-radius: 12px; margin-bottom: 32px; text-align: center;
+        }
+        .lotus-pillar-notice p {
+          color: var(--primary-gold); font-size: 0.95rem; line-height: 1.6; font-weight: 500;
+        }
+        
         .notification-bar {
           position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px);
           background: rgba(212, 160, 23, 0.95); color: #000; padding: 14px 40px; border-radius: 50px;
@@ -394,6 +433,19 @@ export default function DonatePage() {
         .ritual-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
         .modal-content { width: 100%; max-width: 500px; padding: 40px; border: 1px solid rgba(212,160,23,0.2); border-radius: 24px; }
         .modal-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 24px; text-align: center; }
+
+        .btn-inquiry-link {
+          background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5);
+          padding: 10px 24px; border-radius: 100px; cursor: pointer; font-size: 0.9rem;
+          font-family: var(--font-ui); transition: all 0.3s;
+        }
+        .btn-inquiry-link:hover { border-color: var(--primary-gold); color: var(--primary-gold); }
+
+        .store-form { display: flex; flex-direction: column; gap: 14px; }
+        .store-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px 16px; border-radius: 10px; font-size: 0.95rem; font-family: var(--font-ui); outline: none; transition: border-color 0.3s; }
+        .store-input:focus { border-color: var(--primary-gold); }
+        .store-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px 16px; border-radius: 10px; font-size: 0.95rem; font-family: var(--font-ui); outline: none; resize: vertical; min-height: 100px; transition: border-color 0.3s; }
+        .store-textarea:focus { border-color: var(--primary-gold); }
 
         @media (max-width: 768px) {
           .donate-page { padding: 60px 20px; }
@@ -442,6 +494,58 @@ export default function DonatePage() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Payment Inquiry Modal ── */}
+      {isInquiryModalOpen && (
+        <div className="ritual-modal-overlay" onClick={() => setIsInquiryModalOpen(false)}>
+          <div className="modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: 'var(--primary-gold)', fontFamily: 'var(--font-serif)' }}>
+              {tDonate('inquiryModalTitle')}
+            </h3>
+            {inquiryStatus === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                <p style={{ color: '#4CAF50', fontSize: '1.1rem', marginBottom: '16px' }}>{tDonate('inquirySuccess')}</p>
+                <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '24px' }}>{tDonate('inquirySuccessNote')}</p>
+                <button className="btn-gold" onClick={() => setIsInquiryModalOpen(false)}>{tDonate('inquiryClose')}</button>
+              </div>
+            ) : (
+              <form onSubmit={handleInquirySubmit} className="store-form">
+                <p style={{ color: '#aaa', marginBottom: '8px', fontSize: '0.9rem' }}>{tDonate('inquiryDesc')}</p>
+                <input
+                  type="text" required
+                  placeholder={tDonate('inquiryName')}
+                  className="store-input"
+                  value={inquiryFormData.name}
+                  onChange={e => setInquiryFormData({ ...inquiryFormData, name: e.target.value })}
+                />
+                <input
+                  type="email" required
+                  placeholder={tDonate('inquiryEmail')}
+                  className="store-input"
+                  value={inquiryFormData.email}
+                  onChange={e => setInquiryFormData({ ...inquiryFormData, email: e.target.value })}
+                />
+                <textarea
+                  required
+                  placeholder={tDonate('inquiryMessage')}
+                  className="store-textarea"
+                  value={inquiryFormData.message}
+                  onChange={e => setInquiryFormData({ ...inquiryFormData, message: e.target.value })}
+                />
+                {inquiryStatus === 'error' && (
+                  <p style={{ color: '#E53E3E', fontSize: '0.85rem' }}>{tDonate('inquiryError')}</p>
+                )}
+                <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
+                  <button type="button" className="btn-ghost" style={{ flex: 1, padding: '12px' }} onClick={() => setIsInquiryModalOpen(false)}>{tDonate('inquiryCancel')}</button>
+                  <button type="submit" className="btn-gold" style={{ flex: 1, padding: '12px' }} disabled={inquiryStatus === 'submitting'}>
+                    {inquiryStatus === 'submitting' ? '...' : tDonate('inquirySubmit')}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}

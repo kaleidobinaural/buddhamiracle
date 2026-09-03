@@ -131,7 +131,23 @@ export default function ProfileClient({ user }: ProfileProps) {
                   <h3>{t('dataPortability')}</h3>
                   <p>{t('dataPortabilityDesc')}</p>
                 </div>
-                <button className="btn-ghost-small" onClick={() => alert(t('exportSent'))}>
+                <button className="btn-ghost-small" onClick={async () => {
+                  try {
+                    const res = await fetch('/api/user/export');
+                    if (!res.ok) throw new Error('Export failed');
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `my_sanctuary_data.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  } catch {
+                    alert(t('exportError') || 'Export failed. Please try again.');
+                  }
+                }}>
                   {t('requestExport')}
                 </button>
               </div>
@@ -158,6 +174,39 @@ export default function ProfileClient({ user }: ProfileProps) {
                     <span className={`badge ${item.is_public ? 'public' : 'private'}`}>
                       {item.is_public ? t('public') : t('private')}
                     </span>
+                    {activeTab === 'wishes' && (
+                      <div className="item-actions">
+                        <button
+                          className="btn-item-action"
+                          title={item.is_public ? t('makePrivate') || 'Make Private' : t('makePublic') || 'Make Public'}
+                          onClick={async () => {
+                            const res = await fetch('/api/wishes', {
+                              method: 'PATCH',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({ id: item.id, action: 'toggle_public' }),
+                            });
+                            if (res.ok) {
+                              setData(prev => prev.map(w => w.id === item.id ? { ...w, is_public: !w.is_public } : w));
+                            }
+                          }}
+                        >{item.is_public ? '🔒' : '🌐'}</button>
+                        <button
+                          className="btn-item-action btn-item-delete"
+                          title={t('deleteWish') || 'Delete'}
+                          onClick={async () => {
+                            if (!window.confirm(t('confirmDelete') || 'Delete this wish?')) return;
+                            const res = await fetch('/api/wishes', {
+                              method: 'DELETE',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({ id: item.id }),
+                            });
+                            if (res.ok) {
+                              setData(prev => prev.filter(w => w.id !== item.id));
+                            }
+                          }}
+                        >🗑️</button>
+                      </div>
+                    )}
                   </div>
                 </article>
               ))}
@@ -201,6 +250,11 @@ export default function ProfileClient({ user }: ProfileProps) {
         .badge { padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: bold; }
         .badge.public { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
         .badge.private { background: rgba(255, 255, 255, 0.1); color: #aaa; }
+        
+        .item-actions { display: flex; gap: 8px; margin-left: auto; }
+        .btn-item-action { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #aaa; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .btn-item-action:hover { background: rgba(212,160,23,0.1); border-color: rgba(212,160,23,0.3); color: var(--primary-gold); }
+        .btn-item-delete:hover { background: rgba(229,57,53,0.1); border-color: rgba(229,57,53,0.3); color: #E53E3E; }
         
         .empty-state, .loading-state { text-align: center; color: var(--text-tertiary); padding: 60px 0; font-style: italic; }
         

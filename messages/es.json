@@ -97,7 +97,8 @@
     "modalPublic": "Intención Pública",
     "modalPrivate": "Privada (Solo para ti)",
     "modalSubmit": "Liberar al Cielo",
-    "modalCancel": "Cancelar"
+    "modalCancel": "Cancelar",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "La Fundación Eterna",
@@ -166,7 +167,20 @@
     "purchaseLotus": "Comprar Pétalos de Loto",
     "paypalNote": "Los pagos de PayPal se procesan de forma segura. Tus datos financieros nunca se almacenan en nuestros servidores. Los pétalos de loto se acreditan después de la confirmación del pago.",
     "virtualNote": "Las ofrendas virtuales de loto apoyan el espíritu de la comunidad del templo. No son transacciones financieras.",
-    "returnToTemple": "← Volver al Templo"
+    "returnToTemple": "← Volver al Templo",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "Entra en la luz para hablar con el Guru.",
@@ -273,6 +287,11 @@
     "lights": "Luces",
     "soulPoints": "Puntos del Alma",
     "public": "Público",
-    "private": "Privado"
+    "private": "Privado",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }

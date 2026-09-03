@@ -97,7 +97,8 @@
     "modalPublic": "公开意愿",
     "modalPrivate": "私密 (仅您可见)",
     "modalSubmit": "放飞天际",
-    "modalCancel": "取消"
+    "modalCancel": "取消",
+    "sortDeep": "Deep Wishes"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
@@ -166,7 +167,20 @@
     "purchaseLotus": "购买莲花瓣",
     "paypalNote": "PayPal支付安全处理。您的财务数据绝不会存储在我们的服务器上。莲花瓣将在支付确认后入账。",
     "virtualNote": "虚拟莲花供养旨在支持殿堂社区精神。它们并非金融交易。",
-    "returnToTemple": "← 返回殿堂"
+    "returnToTemple": "← 返回殿堂",
+    "lotusNotice": "※ Lotus offerings are spiritual gestures to illuminate the sanctuary. To establish an eternal Pillar in the Hall of Supporters, please make your offering via the [Real Offering] tab.",
+    "inquiryLink": "Can't use PayPal? Inquire about alternative payment methods",
+    "inquiryModalTitle": "Payment Inquiry",
+    "inquiryDesc": "Let us know your preferred payment method (e.g., Bank Transfer, WeChat Pay) and we will guide you personally.",
+    "inquiryName": "Name",
+    "inquiryEmail": "Email",
+    "inquiryMessage": "Please describe your preferred payment method and any questions.",
+    "inquirySuccess": "Inquiry received. 🙏",
+    "inquirySuccessNote": "Our team will contact you shortly.",
+    "inquiryClose": "Close",
+    "inquiryCancel": "Cancel",
+    "inquirySubmit": "Send Inquiry",
+    "inquiryError": "An error occurred. Please try again."
   },
   "Chat": {
     "unauthMessage": "踏入光明，与大师交流。",
@@ -273,6 +287,11 @@
     "lights": "光",
     "soulPoints": "灵魂积分",
     "public": "公开",
-    "private": "私密"
+    "private": "私密",
+    "makePublic": "Make Public",
+    "makePrivate": "Make Private",
+    "deleteWish": "Delete Wish",
+    "confirmDelete": "Delete this wish? This cannot be undone.",
+    "exportError": "Export failed. Please try again."
   }
 }
