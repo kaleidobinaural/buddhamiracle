@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Piliers de Lumière",
     "cardPillarsDesc": "Honorez les bienfaiteurs dont les noms sont à jamais gravés dans la pierre lumineuse.",
     "cardDharmaTitle": "Bibliothèque du Dharma",
-    "cardDharmaDesc": "Immergez-vous dans les écritures sacrées et la sagesse bouddhiste intemporelle."
+    "cardDharmaDesc": "Immergez-vous dans les écritures sacrées et la sagesse bouddhiste intemporelle.",
+    "cardStoreTitle": "Boutique Quiesan",
+    "cardStoreDesc": "Découvrez les offrandes de lotus et l'art de méditation.",
+    "cardResonanceTitle": "Résonance Mondiale",
+    "cardResonanceDesc": "Résonnez avec des chercheurs du monde entier."
   },
   "Nav": {
     "home": "Accueil",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Veuillez d'abord avoir une conversation avec le Guru.",
     "upgradeTitle": "Pétales de Lotus Épuisés",
     "upgradeBody": "Vos pétales de lotus ont pleinement fleuri pour l'instant.\nOffrez de nouveaux pétales pour continuer votre voyage de sagesse.",
-    "buyLotus": "Offrir des Pétales de Lotus",
+    "buyLotus": "Acheter des Lotus",
     "returnToSilence": "Retour au Silence",
     "sourcesLabel": "Sources d'Inspiration",
     "fallbackMsg": "Dans le calme, la réponse viendra. Veuillez réessayer.",

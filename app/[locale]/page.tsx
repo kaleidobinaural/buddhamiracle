@@ -80,6 +80,26 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="feature-desc">{t('cardDharmaDesc')}</p>
             <div className="feature-card-arrow">→</div>
           </Link>
+
+          <Link href="/store" className="feature-card glass-card" id="card-store">
+            <div className="feature-icon-wrap">
+              <div className="feature-icon">🛕</div>
+              <div className="feature-icon-glow" />
+            </div>
+            <h3 className="feature-title">{t('cardStoreTitle')}</h3>
+            <p className="feature-desc">{t('cardStoreDesc')}</p>
+            <div className="feature-card-arrow">→</div>
+          </Link>
+
+          <Link href="/resonance" className="feature-card glass-card" id="card-resonance">
+            <div className="feature-icon-wrap">
+              <div className="feature-icon">🌐</div>
+              <div className="feature-icon-glow" />
+            </div>
+            <h3 className="feature-title">{t('cardResonanceTitle')}</h3>
+            <p className="feature-desc">{t('cardResonanceDesc')}</p>
+            <div className="feature-card-arrow">→</div>
+          </Link>
         </div>
       </div>
     </main>

@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Pilar-Pilar Cahaya",
     "cardPillarsDesc": "Hormati para dermawan yang namanya terukir abadi di batu bercahaya.",
     "cardDharmaTitle": "Perpustakaan Dharma",
-    "cardDharmaDesc": "Hanyutkan diri Anda dalam kitab-kitab suci dan kebijaksanaan Buddhis yang abadi."
+    "cardDharmaDesc": "Hanyutkan diri Anda dalam kitab-kitab suci dan kebijaksanaan Buddhis yang abadi.",
+    "cardStoreTitle": "Toko Quiesan",
+    "cardStoreDesc": "Jelajahi persembahan lotus dan seni meditasi.",
+    "cardResonanceTitle": "Resonansi Global",
+    "cardResonanceDesc": "Beresonansi dengan para pencari di seluruh dunia."
   },
   "Nav": {
     "home": "Beranda",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Silakan berbicara dengan Guru terlebih dahulu.",
     "upgradeTitle": "Kelopak Teratai Habis",
     "upgradeBody": "Kelopak teratai Anda telah mekar sepenuhnya untuk saat ini.\nPersembahkan kelopak baru untuk melanjutkan perjalanan kebijaksanaan Anda.",
-    "buyLotus": "Persembahkan Kelopak Teratai",
+    "buyLotus": "Beli Lotus",
     "returnToSilence": "Kembali ke Keheningan",
     "sourcesLabel": "Sumber Inspirasi",
     "fallbackMsg": "Dalam keheningan, jawaban akan datang. Silakan coba lagi.",

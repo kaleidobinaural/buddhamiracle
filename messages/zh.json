@@ -15,7 +15,11 @@
     "cardPillarsTitle": "光明之柱",
     "cardPillarsDesc": "铭记那些名字永恒镌刻于光辉石柱上的护持者。",
     "cardDharmaTitle": "佛法藏经阁",
-    "cardDharmaDesc": "沉浸于神圣经文与永恒的佛法智慧之中。"
+    "cardDharmaDesc": "沉浸于神圣经文与永恒的佛法智慧之中。",
+    "cardStoreTitle": "Quiesan 商店",
+    "cardStoreDesc": "探索莲花供品和冥想艺术。",
+    "cardResonanceTitle": "全球共鸣",
+    "cardResonanceDesc": "与世界各地的探索者共鸣。"
   },
   "Nav": {
     "home": "首页",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "请先与导师进行对话。",
     "upgradeTitle": "莲花瓣已用尽",
     "upgradeBody": "您的莲花瓣暂时已尽。\n供养新的莲花瓣以继续您的智慧之旅。",
-    "buyLotus": "供养莲花瓣",
+    "buyLotus": "购买莲花",
     "returnToSilence": "回归寂静",
     "sourcesLabel": "灵感来源",
     "fallbackMsg": "于寂静中，答案自会显现。请再试一次。",

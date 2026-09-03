@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Pilares de Luz",
     "cardPillarsDesc": "Honra a los benefactores cuyos nombres están grabados para siempre en piedra luminosa.",
     "cardDharmaTitle": "Biblioteca del Dharma",
-    "cardDharmaDesc": "Sumérgete en escrituras sagradas y la sabiduría budista atemporal."
+    "cardDharmaDesc": "Sumérgete en escrituras sagradas y la sabiduría budista atemporal.",
+    "cardStoreTitle": "Tienda Quiesan",
+    "cardStoreDesc": "Explora ofrendas de loto y arte de meditación.",
+    "cardResonanceTitle": "Resonancia Global",
+    "cardResonanceDesc": "Resuena con buscadores de todo el mundo."
   },
   "Nav": {
     "home": "Inicio",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Por favor, ten una conversación con el Gurú primero.",
     "upgradeTitle": "Pétalos de Loto Agotados",
     "upgradeBody": "Tus pétalos de loto han florecido completamente por ahora.\nOfrece nuevos pétalos para continuar tu viaje de sabiduría.",
-    "buyLotus": "Ofrecer Pétalos de Loto",
+    "buyLotus": "Comprar Lotus",
     "returnToSilence": "Volver al Silencio",
     "sourcesLabel": "Fuentes de Inspiración",
     "fallbackMsg": "En la quietud, la respuesta llegará. Por favor, inténtalo de nuevo.",

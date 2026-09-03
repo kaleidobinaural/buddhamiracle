@@ -15,7 +15,11 @@
     "cardPillarsTitle": "빛의 기둥",
     "cardPillarsDesc": "이 성소를 지탱하는 후원자들의 이름이 영원히 빛나는 돌에 새겨집니다.",
     "cardDharmaTitle": "경전 서재",
-    "cardDharmaDesc": "신성한 경전과 시간을 초월한 불교의 지혜 속으로 깊이 빠져보세요."
+    "cardDharmaDesc": "신성한 경전과 시간을 초월한 불교의 지혜 속으로 깊이 빠져보세요.",
+    "cardStoreTitle": "Quiesan 스토어",
+    "cardStoreDesc": "연꽃과 명상 아트를 만나보세요.",
+    "cardResonanceTitle": "글로벌 울림",
+    "cardResonanceDesc": "전 세계 구도자들과 공명하세요."
   },
   "Nav": {
     "home": "홈",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "먼저 구루와 대화를 나눠주세요.",
     "upgradeTitle": "연꽃이 다 피어났습니다",
     "upgradeBody": "지혜의 여정을 이어가려면 새 연꽃을 공양하세요.",
-    "buyLotus": "파랑 연꽃 공양하기",
+    "buyLotus": "연꽃 구매하기",
     "returnToSilence": "정적으로 돌아가기",
     "sourcesLabel": "영감의 원천",
     "fallbackMsg": "정적 속에 답이 있습니다. 다시 한 번 질문해 주세요.",

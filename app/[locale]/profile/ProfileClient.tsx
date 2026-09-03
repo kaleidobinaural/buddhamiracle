@@ -18,6 +18,7 @@ export default function ProfileClient({ user }: ProfileProps) {
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [confirmModal, setConfirmModal] = useState<{ open: boolean; wishId: string | null }>({ open: false, wishId: null });
 
   useEffect(() => {
     if (activeTab === 'privacy') {
@@ -193,17 +194,7 @@ export default function ProfileClient({ user }: ProfileProps) {
                         <button
                           className="btn-item-action btn-item-delete"
                           title={t('deleteWish') || 'Delete'}
-                          onClick={async () => {
-                            if (!window.confirm(t('confirmDelete') || 'Delete this wish?')) return;
-                            const res = await fetch('/api/wishes', {
-                              method: 'DELETE',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({ id: item.id }),
-                            });
-                            if (res.ok) {
-                              setData(prev => prev.filter(w => w.id !== item.id));
-                            }
-                          }}
+                          onClick={() => setConfirmModal({ open: true, wishId: item.id })}
                         >🗑️</button>
                       </div>
                     )}
@@ -213,6 +204,39 @@ export default function ProfileClient({ user }: ProfileProps) {
             </div>
           )}
         </section>
+
+      {/* ── Custom Delete Confirm Modal ── */}
+      {confirmModal.open && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}
+          onClick={() => setConfirmModal({ open: false, wishId: null })}>
+          <div style={{ background: 'rgba(20,20,20,0.98)', border: '1px solid rgba(212,160,23,0.2)', borderRadius: '20px', padding: '40px', maxWidth: '420px', width: '100%', textAlign: 'center' }}
+            onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '16px' }}>🗑️</div>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginBottom: '12px', color: '#fff' }}>{t('deleteWish') || 'Delete Wish'}</h3>
+            <p style={{ color: '#aaa', fontSize: '0.95rem', marginBottom: '28px', lineHeight: 1.6 }}>{t('confirmDelete') || 'Delete this wish? This cannot be undone.'}</p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+              <button style={{ background: 'none', border: '1px solid rgba(255,255,255,0.15)', color: '#aaa', padding: '10px 24px', borderRadius: '100px', cursor: 'pointer', fontSize: '0.9rem', fontFamily: 'var(--font-ui)' }}
+                onClick={() => setConfirmModal({ open: false, wishId: null })}>
+                {t('makePrivate') ? 'Cancel' : 'Cancel'}
+              </button>
+              <button style={{ background: 'rgba(229,57,53,0.8)', border: 'none', color: '#fff', padding: '10px 24px', borderRadius: '100px', cursor: 'pointer', fontSize: '0.9rem', fontFamily: 'var(--font-ui)', fontWeight: 700 }}
+                onClick={async () => {
+                  const id = confirmModal.wishId;
+                  setConfirmModal({ open: false, wishId: null });
+                  if (!id) return;
+                  const res = await fetch('/api/wishes', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id }),
+                  });
+                  if (res.ok) setData(prev => prev.filter(w => w.id !== id));
+                }}>
+                {t('deleteWish') || 'Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
 
       <style>{`

@@ -180,7 +180,7 @@ export default function HallPage() {
           width: 240px;
         }
 
-        .explore-btn, .offering-btn, .exit-btn {
+        .explore-btn, .offering-btn, .exit-btn, .eco-btn {
           background: rgba(212, 160, 23, 0.1);
           border: 1px solid rgba(212, 160, 23, 0.3);
           color: #d4a017;
@@ -247,19 +247,21 @@ export default function HallPage() {
         }
 
         .eco-btn {
-          background: rgba(30, 80, 30, 0.2);
+          background: rgba(30, 80, 30, 0.15);
           border-color: rgba(100, 200, 100, 0.3);
-          color: rgba(150, 220, 150, 0.8);
+          color: rgba(150, 220, 150, 0.9);
+          /* Same shape as other buttons - inherited from .explore-btn, .offering-btn, .exit-btn */
         }
 
         .eco-btn:hover {
-          background: rgba(40, 120, 40, 0.3);
+          background: rgba(40, 120, 40, 0.25);
           border-color: rgba(100, 200, 100, 0.6);
           box-shadow: 0 5px 20px rgba(80, 180, 80, 0.2);
+          transform: translateY(-2px);
         }
 
         .eco-btn.active {
-          background: rgba(50, 150, 50, 0.3);
+          background: rgba(50, 150, 50, 0.25);
           border-color: rgba(100, 220, 100, 0.7);
           color: #7dff7d;
           box-shadow: 0 0 15px rgba(80, 200, 80, 0.3);

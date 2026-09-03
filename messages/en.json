@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Pillars of Light",
     "cardPillarsDesc": "Honor supporters whose names are forever etched in luminous stone.",
     "cardDharmaTitle": "Dharma Library",
-    "cardDharmaDesc": "Immerse yourself in sacred scriptures and timeless Buddhist wisdom."
+    "cardDharmaDesc": "Immerse yourself in sacred scriptures and timeless Buddhist wisdom.",
+    "cardStoreTitle": "Quiesan Store",
+    "cardStoreDesc": "Explore lotus offerings and meditation art.",
+    "cardResonanceTitle": "Global Resonance",
+    "cardResonanceDesc": "Resonate with seekers around the world."
   },
   "Nav": {
     "home": "Home",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Please have a conversation with the Guru first.",
     "upgradeTitle": "Lotus Petals Depleted",
     "upgradeBody": "Your lotus petals have blossomed fully for now.\nOffer new petals to continue your journey of wisdom.",
-    "buyLotus": "Offer Lotus Petals",
+    "buyLotus": "Purchase Lotus",
     "returnToSilence": "Return to Silence",
     "sourcesLabel": "Sources of Inspiration",
     "fallbackMsg": "In stillness, the answer will come. Please try again.",

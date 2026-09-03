@@ -218,7 +218,7 @@ export default function DonatePage() {
               </article>
             ))}
             {/* Payment Inquiry Link */}
-            <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <div style={{ textAlign: 'center', marginTop: '32px', width: '100%' }}>
               <button
                 className="btn-inquiry-link"
                 onClick={() => { setInquiryStatus('idle'); setInquiryFormData({ name: '', email: '', message: '' }); setIsInquiryModalOpen(true); }}
@@ -234,9 +234,7 @@ export default function DonatePage() {
           <section className="donate-grid animate-fade-up animate-delay-200" aria-label="Lotus donation tiers">
             <div className="lotus-mode-note">
               <p dangerouslySetInnerHTML={{ __html: tDonate('lotusModeNote') || '🪷 Your lotus petals were received with gratitude. Offering them back to the temple community is a beautiful act of <em>dana</em> — the Buddhist virtue of generosity.' }} />
-            </div>
-            <div className="lotus-pillar-notice">
-              <p>{tDonate('lotusNotice')}</p>
+              <p style={{ marginTop: '12px', fontSize: '0.85rem', opacity: 0.8 }}>{tDonate('lotusNotice')}</p>
             </div>
             {LOTUS_TIERS.map((tier, index) => (
               <article

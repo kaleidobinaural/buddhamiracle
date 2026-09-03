@@ -15,7 +15,11 @@
     "cardPillarsTitle": "光の柱",
     "cardPillarsDesc": "光り輝く石に永遠に刻まれた、支援者の皆様を称えましょう。",
     "cardDharmaTitle": "法（ダルマ）の書庫",
-    "cardDharmaDesc": "聖なる経典と時代を超えた仏教の知恵に深く浸りましょう。"
+    "cardDharmaDesc": "聖なる経典と時代を超えた仏教の知恵に深く浸りましょう。",
+    "cardStoreTitle": "Quiesan ストア",
+    "cardStoreDesc": "蓮の花と瞑想アートを探求しましょう。",
+    "cardResonanceTitle": "グローバル共鳴",
+    "cardResonanceDesc": "世界中の探求者と共鳴しましょう。"
   },
   "Nav": {
     "home": "ホーム",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "まず導師と対話してください。",
     "upgradeTitle": "蓮の花びらが尽きました",
     "upgradeBody": "あなたの蓮の花びらは、今は満開となりました。\n知恵の旅を続けるために、新たな花びらを捧げましょう。",
-    "buyLotus": "蓮の花びらを捧げる",
+    "buyLotus": "蓮を購入する",
     "returnToSilence": "静寂に戻る",
     "sourcesLabel": "インスピレーションの源",
     "fallbackMsg": "静寂の中に答えは訪れます。もう一度お試しください。",

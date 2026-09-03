@@ -36,6 +36,7 @@ export default function DharmaPage() {
   const [showFab, setShowFab] = useState(false);
   const [readingScripture, setReadingScripture] = useState<Scripture | null>(null);
   const [translatingIds, setTranslatingIds] = useState<Set<string>>(new Set());
+  const [failedIds, setFailedIds] = useState<Set<string>>(new Set());
   const topRef = useRef<HTMLDivElement>(null);
 
   // Scroll listener for FAB
@@ -150,9 +151,9 @@ export default function DharmaPage() {
       if (item.id !== todayQuote?.id) itemsToCheck.push(item);
     });
 
-    // Filter items that don't have the current locale translation and are not currently translating
+    // Filter items that don't have the current locale translation and are not currently translating or failed
     const missing = itemsToCheck.filter(
-      (item) => !item.translations?.[locale] && !translatingIds.has(item.id)
+      (item) => !item.translations?.[locale] && !translatingIds.has(item.id) && !failedIds.has(item.id)
     );
 
     if (missing.length === 0) return;
@@ -181,6 +182,8 @@ export default function DharmaPage() {
         }
       } catch (e) {
         console.error('Translation failed for', item.id, e);
+        // Mark as failed so we don't retry endlessly
+        setFailedIds(prev => new Set([...prev, item.id]));
       } finally {
         setTranslatingIds(prev => {
           const next = new Set(prev);
@@ -189,13 +192,15 @@ export default function DharmaPage() {
         });
       }
     });
-  }, [visibleScriptures, todayQuote, locale, scriptures.length]);
+  }, [visibleScriptures, todayQuote, locale, scriptures.length, failedIds]);
 
   const getLocalizedContent = (scripture: Scripture | null) => {
     if (!scripture) return { text: '', isTranslating: false };
     if (locale === 'en') return { text: scripture.content, isTranslating: false };
     const translated = scripture.translations?.[locale];
     if (translated) return { text: translated, isTranslating: false };
+    // If failed, show English without spinner
+    if (failedIds.has(scripture.id)) return { text: scripture.content, isTranslating: false };
     return { text: scripture.content, isTranslating: translatingIds.has(scripture.id) };
   };
 

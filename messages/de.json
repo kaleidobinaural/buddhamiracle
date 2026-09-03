@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Säulen des Lichts",
     "cardPillarsDesc": "Ehre die Unterstützer, deren Namen für immer in leuchtenden Stein gemeißelt sind.",
     "cardDharmaTitle": "Dharma-Bibliothek",
-    "cardDharmaDesc": "Tauche ein in heilige Schriften und zeitlose buddhistische Weisheit."
+    "cardDharmaDesc": "Tauche ein in heilige Schriften und zeitlose buddhistische Weisheit.",
+    "cardStoreTitle": "Quiesan Shop",
+    "cardStoreDesc": "Entdecken Sie Lotus-Angebote und Meditationskunst.",
+    "cardResonanceTitle": "Globale Resonanz",
+    "cardResonanceDesc": "Resonieren Sie mit Suchenden aus aller Welt."
   },
   "Nav": {
     "home": "Startseite",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Bitte führe zuerst ein Gespräch mit dem Guru.",
     "upgradeTitle": "Lotosblütenblätter aufgebraucht",
     "upgradeBody": "Deine Lotosblütenblätter sind für den Moment vollständig erblüht.\nOpfere neue Blätter, um deine Reise der Weisheit fortzusetzen.",
-    "buyLotus": "Lotosblütenblätter darbringen",
+    "buyLotus": "Lotus kaufen",
     "returnToSilence": "Zurück in die Stille",
     "sourcesLabel": "Quellen der Inspiration",
     "fallbackMsg": "In der Stille wird die Antwort kommen. Bitte versuche es erneut.",

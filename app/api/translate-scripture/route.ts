@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
     // 1. Translate via Gemini
     const systemInstruction = "You are a professional Buddhist translator. Translate the given scripture accurately and poetically. Respond ONLY with the translated text, no markdown, no quotes, no conversational filler.";
     
-    // We use gemini-3.6-flash for cost efficiency and speed
     const modelId = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
 

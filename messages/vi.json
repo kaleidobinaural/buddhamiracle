@@ -15,7 +15,11 @@
     "cardPillarsTitle": "Trụ Đá Ánh Sáng",
     "cardPillarsDesc": "Tôn vinh những người phát tâm ủng hộ, tên tuổi họ được khắc vĩnh viễn trên đá tỏa sáng.",
     "cardDharmaTitle": "Thư Viện Phật Pháp",
-    "cardDharmaDesc": "Hòa mình vào kinh điển linh thiêng và trí tuệ Phật giáo vượt thời gian."
+    "cardDharmaDesc": "Hòa mình vào kinh điển linh thiêng và trí tuệ Phật giáo vượt thời gian.",
+    "cardStoreTitle": "Cửa hàng Quiesan",
+    "cardStoreDesc": "Khám phá cúng dường sen và nghệ thuật thiền định.",
+    "cardResonanceTitle": "Cộng hưởng Toàn cầu",
+    "cardResonanceDesc": "Cộng hưởng với những người tìm kiếm trên toàn thế giới."
   },
   "Nav": {
     "home": "Trang Chủ",
@@ -63,7 +67,7 @@
     "ebookNoMessages": "Vui lòng trò chuyện với Bậc Giác Ngộ trước.",
     "upgradeTitle": "Đã Hết Cánh Hoa Sen",
     "upgradeBody": "Những cánh hoa sen của bạn hiện đã nở rộ hết.\nHãy cúng nhường thêm hoa sen để tiếp tục hành trình trí tuệ.",
-    "buyLotus": "Cúng Nhường Hoa Sen",
+    "buyLotus": "Mua Hoa Sen",
     "returnToSilence": "Trở Về Sự Tĩnh Lặng",
     "sourcesLabel": "Nguồn Cảm Hứng",
     "fallbackMsg": "Trong sự tĩnh lặng, câu trả lời sẽ đến. Vui lòng thử lại.",
