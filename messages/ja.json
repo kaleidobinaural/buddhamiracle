@@ -113,14 +113,14 @@
     "sortTop": "上位寄進者",
     "sortRecent": "最新",
     "searchPlaceholder": "寄進者の名前を検索...",
-    "btnSearch": "柱を検索",
+    "btnSearch": "検索",
     "donate": "寄進する",
     "musicOn": "音をオン",
     "musicOff": "音をオフ",
     "loading": "殿堂を照らしています...",
     "empty": "検索条件に一致する柱は見つかりませんでした。",
-    "rankCelestial": "天上の守護者",
-    "rankDevout": "篤信の支援者",
+    "rankCelestial": "天の創設者",
+    "rankDevout": "敬虔な創設者",
     "btnReturn": "殿堂に戻る",
     "devotion": "献身: {amount} ソウルポイント",
     "foundersHall": "創設者の殿堂",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "サポーター"
   },
   "hall": {
     "title": "光の聖域",

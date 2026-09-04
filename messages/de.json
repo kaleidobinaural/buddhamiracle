@@ -113,14 +113,14 @@
     "sortTop": "Top-Förderer",
     "sortRecent": "Neueste",
     "searchPlaceholder": "Name des Förderers suchen...",
-    "btnSearch": "Säule suchen",
+    "btnSearch": "Suchen",
     "donate": "Eine Gabe darbringen",
     "musicOn": "Ton an",
     "musicOff": "Ton aus",
     "loading": "Halle wird erleuchtet...",
     "empty": "Keine Säulen gefunden, die deiner Suche entsprechen.",
-    "rankCelestial": "Himmlischer Patron",
-    "rankDevout": "Hingebungsvoller Unterstützer",
+    "rankCelestial": "Himmlischer Gründer",
+    "rankDevout": "Frommer Gründer",
     "btnReturn": "Zurück zur Halle",
     "devotion": "Hingabe: {amount} Seelenpunkte",
     "foundersHall": "Halle der Gründer",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Unterstützer"
   },
   "hall": {
     "title": "Heiligtum des Lichts",

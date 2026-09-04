@@ -113,14 +113,14 @@
     "sortTop": "ထိပ်တန်း အလှူရှင်များ",
     "sortRecent": "လတ်တလော",
     "searchPlaceholder": "အလှူရှင်အမည် ရှာဖွေရန်...",
-    "btnSearch": "မဏ္ဍိုင် ရှာဖွေရန်",
+    "btnSearch": "ရှာဖွေရန်",
     "donate": "လှူဒါန်းမှု ပြုလုပ်ရန်",
     "musicOn": "အသံဖွင့်ရန်",
     "musicOff": "အသံပိတ်ရန်",
     "loading": "ခန်းမကို အလင်းရောင် ထိန်လင်းစေနေသည်...",
     "empty": "ရှာဖွေမှုနှင့် ကိုက်ညီသည့် မဏ္ဍိုင် မတွေ့ပါ။",
-    "rankCelestial": "နတ်ဒေဝါ အလှူရှင်",
-    "rankDevout": "သဒ္ဓါထက်သန်သော ထောက်ပံ့သူ",
+    "rankCelestial": "နတ်ပြည်တည်ထောင်သူ",
+    "rankDevout": "သဒ္ဓါတရားရှိသော တည်ထောင်သူ",
     "btnReturn": "ခန်းမသို့ ပြန်သွားရန်",
     "devotion": "သဒ္ဓါတရား: {amount} ဝိညာဉ်အမှတ်",
     "foundersHall": "တည်ထောင်သူများခန်းမ",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "ထောက်ခံသူ"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",

@@ -286,7 +286,7 @@ export default function PillarsPage() {
                                   <div className="pillar-texture" />
                                   <div className="pillar-content">
                                     <h3 className="donor-name">{pillar.name}</h3>
-                                    <p className="donor-rank">Supporter</p>
+                                    <p className="donor-rank">{t('rankSupporter')}</p>
                                   </div>
                                   <div className="pillar-engraving-glow" />
                                 </div>

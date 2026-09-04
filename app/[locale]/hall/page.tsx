@@ -412,18 +412,26 @@ export default function HallPage() {
           .hall-footer {
             right: 0;
             top: auto;
-            bottom: 40px;
+            bottom: 20px;
             transform: none;
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 0 24px;
+            padding: 0 16px;
           }
           
           .hall-controls {
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 100%;
+          }
+          
+          .explore-btn, .offering-btn, .exit-btn, .eco-btn {
+            width: calc(50% - 5px); /* 2x2 Grid */
+            font-size: 0.9rem;
+            padding: 10px 0;
           }
         }
       `}</style>

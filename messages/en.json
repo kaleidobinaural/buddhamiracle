@@ -113,14 +113,14 @@
     "sortTop": "Top Donors",
     "sortRecent": "Recent",
     "searchPlaceholder": "Search donor's name...",
-    "btnSearch": "Search Pillar",
+    "btnSearch": "Search",
     "donate": "Make an Offering",
     "musicOn": "Sound On",
     "musicOff": "Sound Off",
     "loading": "Illuminating the Hall...",
     "empty": "No pillars found matching your search.",
-    "rankCelestial": "Celestial Patron",
-    "rankDevout": "Devout Supporter",
+    "rankCelestial": "Celestial Founder",
+    "rankDevout": "Devout Founder",
     "btnReturn": "Return to Hall",
     "devotion": "Devotion: {amount} Soul Points",
     "foundersHall": "Founders' Hall",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Supporter"
   },
   "hall": {
     "title": "Sanctuary of Light",

@@ -113,14 +113,14 @@
     "sortTop": "Đóng Góp Lớn Nhất",
     "sortRecent": "Mới Nhất",
     "searchPlaceholder": "Tìm tên người công đức...",
-    "btnSearch": "Tìm Trụ Đá",
+    "btnSearch": "Tìm kiếm",
     "donate": "Cúng Nhường",
     "musicOn": "Mở Âm Thanh",
     "musicOff": "Tắt Âm Thanh",
     "loading": "Đang thắp sáng Điện Công Đức...",
     "empty": "Không tìm thấy trụ đá phù hợp với tìm kiếm.",
-    "rankCelestial": "Hộ Pháp Thiên Giới",
-    "rankDevout": "Tín Chủ Thành Tâm",
+    "rankCelestial": "Người Sáng Lập Thiên Thanh",
+    "rankDevout": "Người Sáng Lập Thành Kính",
     "btnReturn": "Trở Về Điện Công Đức",
     "devotion": "Tâm Nguyện: {amount} Điểm Tâm Thức",
     "foundersHall": "Sảnh Sáng Lập",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Người Ủng Hộ"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",

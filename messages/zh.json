@@ -113,14 +113,14 @@
     "sortTop": "功德榜",
     "sortRecent": "最新",
     "searchPlaceholder": "搜索供养者姓名...",
-    "btnSearch": "搜索石柱",
+    "btnSearch": "搜索",
     "donate": "进行供养",
     "musicOn": "开启音效",
     "musicOff": "关闭音效",
     "loading": "正在照亮殿堂...",
     "empty": "未找到符合您搜索条件的石柱。",
-    "rankCelestial": "天界护法",
-    "rankDevout": "虔诚护持者",
+    "rankCelestial": "天界创始人",
+    "rankDevout": "虔诚创始人",
     "btnReturn": "返回殿堂",
     "devotion": "虔诚值：{amount} 灵魂点",
     "foundersHall": "创始人殿堂",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "支持者"
   },
   "hall": {
     "title": "光明圣殿",

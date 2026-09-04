@@ -113,14 +113,14 @@
     "sortTop": "អ្នកបរិច្ចាគកំពូល",
     "sortRecent": "ថ្មីៗ",
     "searchPlaceholder": "ស្វែងរកឈ្មោះអ្នកបរិច្ចាគ...",
-    "btnSearch": "ស្វែងរកសសរទ្រទ្រង់",
+    "btnSearch": "ស្វែងរក",
     "donate": "ធ្វើការបូជា",
     "musicOn": "បើកសំឡេង",
     "musicOff": "បិទសំឡេង",
     "loading": "កំពុងបំភ្លឺសាល...",
     "empty": "រកមិនឃើញសសរទ្រទ្រង់ដែលត្រូវនឹងការស្វែងរករបស់អ្នកទេ។",
-    "rankCelestial": "ឧបត្ថម្ភកៈសួគ៌ា",
-    "rankDevout": "អ្នកទ្រទ្រង់ដ៏ជ្រះថ្លា",
+    "rankCelestial": "ស្ថាបនិកសួគ៌",
+    "rankDevout": "ស្ថាបនិកស៊ូ",
     "btnReturn": "ត្រឡប់ទៅកាន់សាល",
     "devotion": "ការជ្រះថ្លា៖ {amount} ពិន្ទុវិញ្ញាណ",
     "foundersHall": "សាលស្ថាបនិក",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "អ្នកគាំទ្រ"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",

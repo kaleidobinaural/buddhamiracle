@@ -113,14 +113,14 @@
     "sortTop": "كبار المتبرعين",
     "sortRecent": "الأحدث",
     "searchPlaceholder": "ابحث عن اسم المتبرع...",
-    "btnSearch": "ابحث في الأعمدة",
+    "btnSearch": "بحث",
     "donate": "قدم قرباناً",
     "musicOn": "تشغيل الصوت",
     "musicOff": "إيقاف الصوت",
     "loading": "جاري إضاءة القاعة...",
     "empty": "لم يتم العثور على أعمدة تطابق بحثك.",
-    "rankCelestial": "راعي سماوي",
-    "rankDevout": "داعم مخلص",
+    "rankCelestial": "مؤسس سماوي",
+    "rankDevout": "مؤسس ورع",
     "btnReturn": "العودة إلى القاعة",
     "devotion": "الالتزام: {amount} نقطة روحية",
     "foundersHall": "قاعة المؤسسين",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "داعم"
   },
   "hall": {
     "title": "ملاذ النور",

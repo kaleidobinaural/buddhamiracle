@@ -113,14 +113,14 @@
     "sortTop": "ผู้ร่วมอุปถัมภ์สูงสุด",
     "sortRecent": "ล่าสุด",
     "searchPlaceholder": "ค้นหาชื่อผู้จุนเจือ...",
-    "btnSearch": "ค้นหาเสาหลัก",
+    "btnSearch": "ค้นหา",
     "donate": "ร่วมทำบุญถวาย",
     "musicOn": "เปิดเสียง",
     "musicOff": "ปิดเสียง",
     "loading": "กำลังส่องสว่างทั่วหอ...",
     "empty": "ไม่พบเสาหลักที่ตรงกับการค้นหา",
-    "rankCelestial": "ผู้อุปถัมภ์แห่งสรวงสวรรค์",
-    "rankDevout": "ผู้ศรัทธามั่นคง",
+    "rankCelestial": "ผู้ก่อตั้งแห่งสวรรค์",
+    "rankDevout": "ผู้ก่อตั้งผู้ศรัทธา",
     "btnReturn": "กลับสู่โถง",
     "devotion": "ศรัทธาบารมี: {amount} คะแนนจิตวิญญาณ",
     "foundersHall": "หอเกียรติยศผู้ก่อตั้ง",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "ผู้สนับสนุน"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",

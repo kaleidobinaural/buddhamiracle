@@ -88,6 +88,7 @@ export default function Navigation() {
                 value={locale}
                 onChange={(e) => {
                   const nextLocale = e.target.value;
+                  document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
                   const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                 }}
@@ -211,6 +212,7 @@ export default function Navigation() {
                 value={locale}
                 onChange={(e) => {
                   const nextLocale = e.target.value;
+                  document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
                   const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
                   router.replace(pathWithoutLocale, { locale: nextLocale });
                   setMobileOpen(false);

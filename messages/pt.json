@@ -113,14 +113,14 @@
     "sortTop": "Principais Doadores",
     "sortRecent": "Recentes",
     "searchPlaceholder": "Pesquisar nome do doador...",
-    "btnSearch": "Buscar Pilar",
+    "btnSearch": "Buscar",
     "donate": "Fazer uma Oferenda",
     "musicOn": "Som Ligado",
     "musicOff": "Som Desligado",
     "loading": "Iluminando o Salão...",
     "empty": "Nenhum pilar encontrado para sua pesquisa.",
-    "rankCelestial": "Patrono Celestial",
-    "rankDevout": "Apoiador Devoto",
+    "rankCelestial": "Fundador Celestial",
+    "rankDevout": "Fundador Devoto",
     "btnReturn": "Voltar ao Salão",
     "devotion": "Devoção: {amount} Pontos de Alma",
     "foundersHall": "Salão dos Fundadores",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Apoiador"
   },
   "hall": {
     "title": "Santuário da Luz",

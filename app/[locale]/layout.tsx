@@ -109,11 +109,11 @@ export default async function RootLayout({
                 <p className="copyright">&copy; {new Date().getFullYear()} Temple of Light. The Eternal Sanctuary.</p>
 
                 <div className="legal-links">
-                  <Link href="/terms" className="footer-link">Terms of Service</Link>
+                  <Link href="/terms" className="footer-link">Terms</Link>
                   <span className="footer-dot">•</span>
-                  <Link href="/privacy" className="footer-link">Privacy Policy</Link>
+                  <Link href="/privacy" className="footer-link">Privacy</Link>
                   <span className="footer-dot">•</span>
-                  <Link href="/refund" className="footer-link">Refund Policy</Link>
+                  <Link href="/refund" className="footer-link">Refund</Link>
                 </div>
               </div>
             </footer>

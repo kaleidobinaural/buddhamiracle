@@ -113,14 +113,14 @@
     "sortTop": "빛의 공헌자",
     "sortRecent": "최근 후원",
     "searchPlaceholder": "후원자 이름 검색...",
-    "btnSearch": "기둥 찾기",
+    "btnSearch": "찾기",
     "donate": "공양하기",
     "musicOn": "소리 켬",
     "musicOff": "소리 끔",
     "loading": "주춧돌을 살펴보는 중...",
     "empty": "아직 새겨진 이름이 없습니다.",
-    "rankCelestial": "천상의 수호자",
-    "rankDevout": "경건한 후원자",
+    "rankCelestial": "천상의 창립자",
+    "rankDevout": "경건한 창립자",
     "btnReturn": "회랑으로 돌아가기",
     "devotion": "헌신: {amount} 소울 포인트",
     "foundersHall": "창립자의 전당",
@@ -132,7 +132,8 @@
     "viewSupporters": "후원자",
     "sortAmount": "금액순",
     "sortNewest": "최신순",
-    "sortOldest": "과거순"
+    "sortOldest": "과거순",
+    "rankSupporter": "후원자"
   },
   "hall": {
     "title": "빛의 성소",

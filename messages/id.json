@@ -113,14 +113,14 @@
     "sortTop": "Dermawan Utama",
     "sortRecent": "Terbaru",
     "searchPlaceholder": "Cari nama dermawan...",
-    "btnSearch": "Cari Pilar",
+    "btnSearch": "Cari",
     "donate": "Berikan Persembahan",
     "musicOn": "Suara Nyala",
     "musicOff": "Suara Mati",
     "loading": "Menerangi Ruangan...",
     "empty": "Tidak ada pilar yang cocok dengan pencarian Anda.",
-    "rankCelestial": "Pelindung Surgawi",
-    "rankDevout": "Pendukung Setia",
+    "rankCelestial": "Pendiri Surgawi",
+    "rankDevout": "Pendiri Saleh",
     "btnReturn": "Kembali ke Ruangan",
     "devotion": "Ketaatan: {amount} Poin Jiwa",
     "foundersHall": "Aula Pendiri",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Pendukung"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",

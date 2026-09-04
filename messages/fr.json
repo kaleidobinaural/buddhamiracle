@@ -113,14 +113,14 @@
     "sortTop": "Principaux Donateurs",
     "sortRecent": "Récents",
     "searchPlaceholder": "Rechercher le nom d'un donateur...",
-    "btnSearch": "Rechercher un Pilier",
+    "btnSearch": "Chercher",
     "donate": "Faire une Offrande",
     "musicOn": "Son Activé",
     "musicOff": "Son Désactivé",
     "loading": "Illumination du Hall...",
     "empty": "Aucun pilier trouvé correspondant à votre recherche.",
-    "rankCelestial": "Mécène Céleste",
-    "rankDevout": "Soutien Dévoué",
+    "rankCelestial": "Fondateur Céleste",
+    "rankDevout": "Fondateur Dévoué",
     "btnReturn": "Retour au Hall",
     "devotion": "Dévotion : {amount} Points d'Âme",
     "foundersHall": "Salle des Fondateurs",
@@ -132,7 +132,8 @@
     "viewSupporters": "Supporters",
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
-    "sortOldest": "Oldest"
+    "sortOldest": "Oldest",
+    "rankSupporter": "Soutien"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
