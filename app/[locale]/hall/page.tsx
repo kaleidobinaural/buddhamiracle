@@ -130,7 +130,7 @@ export default function HallPage() {
         .hall-container {
           position: relative;
           width: 100vw;
-          height: 100vh;
+          height: 100dvh; /* Use dynamic viewport height to fix mobile browser bar clipping */
           overflow: hidden;
           background: #000;
         }
@@ -412,7 +412,7 @@ export default function HallPage() {
           .hall-footer {
             right: 0;
             top: auto;
-            bottom: 20px;
+            bottom: 75px; /* Raised above the ambient sound button */
             transform: none;
             width: 100%;
             display: flex;

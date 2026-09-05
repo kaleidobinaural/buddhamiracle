@@ -268,7 +268,7 @@ export default function StorePage() {
           <div className="store-tier-card" style={{ maxWidth: '400px' }}>
             <div style={{ textAlign: 'center', marginBottom: '16px' }}>
               <h3 className="store-tier-name">{t('premiumTier')}</h3>
-              <p className="store-tier-price">$333</p>
+              <p className="store-tier-price">$1,111</p>
             </div>
             <ul className="store-tier-features">
               <li>✅ {t('premiumF1')}</li>
@@ -277,7 +277,7 @@ export default function StorePage() {
             </ul>
             {/* Premium inquiry modal */}
             <button className="store-cta-btn store-cta-outline" onClick={() => { setIsPremiumModal(true); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
-              {t('getPremium')}$333
+              {t('getPremium')}$1,111
             </button>
           </div>
 
@@ -298,7 +298,7 @@ export default function StorePage() {
             </div>
             <div style={{ textAlign: 'center', marginBottom: '16px', marginTop: '12px' }}>
               <h3 className="store-tier-name" style={{ color: '#FFD700', textShadow: '0 0 10px rgba(212,160,23,0.5)' }}>{t('vvipTier')}</h3>
-              <p className="store-tier-price" style={{ color: '#FFD700' }}>$1111</p>
+              <p className="store-tier-price" style={{ color: '#FFD700' }}>$11,111</p>
             </div>
             <ul className="store-tier-features">
               <li>✨ {t('vvipF1')}</li>
@@ -306,7 +306,7 @@ export default function StorePage() {
               <li>🏛️ {t('vvipF3')}</li>
             </ul>
             <button className="store-cta-btn store-cta-gold" onClick={() => { setIsPremiumModal(false); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
-              {t('applyVvip')}$1111
+              {t('applyVvip')}$11,111
             </button>
           </div>
         </div>
