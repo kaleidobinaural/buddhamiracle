@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Sanctuary of Light",
-    "exit": "Exit Sanctuary",
-    "explore3d": "Explore in 3D",
-    "returnToMeditation": "View in 2D (Stillness)",
-    "writeWish": "Write an Offering",
-    "eco": "Eco",
-    "ecoOn": "Eco On"
+    "exit": "Exit",
+    "explore3d": "3D Space",
+    "returnToMeditation": "2D Space",
+    "writeWish": "Make a Wish",
+    "eco": "Eco Mode",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "SUPPORT THE SANCTUARY",

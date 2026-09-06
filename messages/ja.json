@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "光の聖域",
-    "exit": "聖域を出る",
-    "explore3d": "3Dで探索する",
-    "returnToMeditation": "2Dで見る（静寂）",
-    "writeWish": "供物を書く",
-    "eco": "エコ",
-    "ecoOn": "エコ ON"
+    "exit": "退出",
+    "explore3d": "3D空間",
+    "returnToMeditation": "2D空間",
+    "writeWish": "願いを書く",
+    "eco": "エコモード",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "聖域を支援する",

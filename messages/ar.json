@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "ملاذ النور",
-    "exit": "الخروج من الملاذ",
-    "explore3d": "استكشف ثلاثي الأبعاد",
-    "returnToMeditation": "عرض ثنائي الأبعاد (سكون)",
-    "writeWish": "اكتب قرباناً",
-    "eco": "اقتصادي",
-    "ecoOn": "اقتصادي ON"
+    "exit": "خروج",
+    "explore3d": "فضاء 3D",
+    "returnToMeditation": "فضاء 2D",
+    "writeWish": "تمنى أمنية",
+    "eco": "الوضع الاقتصادي",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "ادعم الملاذ",

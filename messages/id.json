@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
-    "exit": "Keluar dari Tempat Suci",
-    "explore3d": "Jelajahi dalam 3D",
-    "returnToMeditation": "Tampilkan dalam 2D (Keheningan)",
-    "writeWish": "Tuliskan Persembahan",
-    "eco": "Hemat",
-    "ecoOn": "Hemat ON"
+    "exit": "Keluar",
+    "explore3d": "Ruang 3D",
+    "returnToMeditation": "Ruang 2D",
+    "writeWish": "Buat Harapan",
+    "eco": "Mode Eco",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "DUKUNG TEMPAT SUCI",

@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "အလင်းဗိမာန်",
-    "exit": "ဗိမာန်မှ ထွက်ရန်",
-    "explore3d": "3D ဖြင့် လေ့လာစူးစမ်းရန်",
-    "returnToMeditation": "2D ဖြင့် ကြည့်ရှုရန် (ငြိမ်သက်ခြင်း)",
-    "writeWish": "ပူဇော်လွှာ ရေးသားရန်",
-    "eco": "Eco",
-    "ecoOn": "Eco ON"
+    "exit": "ထွက်ရန်",
+    "explore3d": "3D နေရာ",
+    "returnToMeditation": "2D နေရာ",
+    "writeWish": "ဆုတောင်းရန်",
+    "eco": "Eco စနစ်",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "ကျောင်းတော်ကို ထောက်ပံ့ပါ",

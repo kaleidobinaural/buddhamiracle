@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Santuário da Luz",
-    "exit": "Sair do Santuário",
-    "explore3d": "Explorar em 3D",
-    "returnToMeditation": "Ver em 2D (Quietude)",
-    "writeWish": "Escrever uma Oferenda",
-    "eco": "Eco",
-    "ecoOn": "Eco ON"
+    "exit": "Sair",
+    "explore3d": "Espaço 3D",
+    "returnToMeditation": "Espaço 2D",
+    "writeWish": "Fazer um Pedido",
+    "eco": "Modo Eco",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "APOIE O SANTUÁRIO",

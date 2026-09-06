@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",
-    "exit": "ออกจากวิหาร",
-    "explore3d": "สำรวจแบบ 3 มิติ",
-    "returnToMeditation": "มุมมอง 2 มิติ (นิ่งสงบ)",
-    "writeWish": "เขียนสิ่งถวายบูชา",
-    "eco": "ประหยัด",
-    "ecoOn": "ประหยัด ON"
+    "exit": "ออก",
+    "explore3d": "พื้นที่ 3D",
+    "returnToMeditation": "พื้นที่ 2D",
+    "writeWish": "อธิษฐาน",
+    "eco": "โหมด Eco",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "ร่วมค้ำจุนวิหาร",

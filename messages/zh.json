@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "光明圣殿",
-    "exit": "离开圣殿",
-    "explore3d": "3D探索",
-    "returnToMeditation": "2D视图 (寂静)",
-    "writeWish": "题写供养",
-    "eco": "节能",
-    "ecoOn": "节能 ON"
+    "exit": "退出",
+    "explore3d": "3D空间",
+    "returnToMeditation": "2D空间",
+    "writeWish": "许愿",
+    "eco": "节能模式",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "护持圣殿",

@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
-    "exit": "Rời Chánh Điện",
-    "explore3d": "Khám Phá 3D",
-    "returnToMeditation": "Xem ở chế độ 2D (Tĩnh Lặng)",
-    "writeWish": "Gửi Nguyện Cầu",
-    "eco": "Tiết Kiệm",
-    "ecoOn": "Tiết Kiệm ON"
+    "exit": "Thoát",
+    "explore3d": "Không gian 3D",
+    "returnToMeditation": "Không gian 2D",
+    "writeWish": "Cầu nguyện",
+    "eco": "Chế độ Eco",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "ỦNG HỘ TỊNH XÁ",

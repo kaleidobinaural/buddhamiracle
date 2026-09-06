@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",
-    "exit": "ចាកចេញពីទីសក្ការៈ",
-    "explore3d": "ស្វែងយល់ជា 3D",
-    "returnToMeditation": "មើលជា 2D (ភាពស្ងប់ស្ងាត់)",
-    "writeWish": "សរសេរគ្រឿងបូជា",
-    "eco": "Eco",
-    "ecoOn": "Eco ON"
+    "exit": "ចាកចេញ",
+    "explore3d": "លំហ 3D",
+    "returnToMeditation": "លំហ 2D",
+    "writeWish": "ធ្វើសេចក្តីប្រាថ្នា",
+    "eco": "មុខងារអេកូ",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "គាំទ្រទីសក្ការៈ",

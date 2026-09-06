@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "빛의 성소",
-    "exit": "성소 나가기",
-    "explore3d": "3D 공간 탐색하기",
-    "returnToMeditation": "정면 바라보기 (2D 모드)",
-    "writeWish": "공양 올리기 (소원 쓰기)",
-    "eco": "에코",
-    "ecoOn": "에코 ON"
+    "exit": "나가기",
+    "explore3d": "3D 공간",
+    "returnToMeditation": "2D 공간",
+    "writeWish": "소원 쓰기",
+    "eco": "에코 모드",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "성소 후원하기",

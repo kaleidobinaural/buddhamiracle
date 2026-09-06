@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Heiligtum des Lichts",
-    "exit": "Heiligtum verlassen",
-    "explore3d": "In 3D erkunden",
-    "returnToMeditation": "In 2D betrachten (Stille)",
-    "writeWish": "Eine Gabe niederschreiben",
-    "eco": "Öko",
-    "ecoOn": "Öko AN"
+    "exit": "Verlassen",
+    "explore3d": "3D-Raum",
+    "returnToMeditation": "2D-Raum",
+    "writeWish": "Wunsch äußern",
+    "eco": "Eco-Modus",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "UNTERSTÜTZE DAS HEILIGTUM",

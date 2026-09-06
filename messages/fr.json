@@ -137,12 +137,12 @@
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
-    "exit": "Quitter le Sanctuaire",
-    "explore3d": "Explorer en 3D",
-    "returnToMeditation": "Voir en 2D (Immobilité)",
-    "writeWish": "Écrire une Offrande",
-    "eco": "Éco",
-    "ecoOn": "Éco ON"
+    "exit": "Quitter",
+    "explore3d": "Espace 3D",
+    "returnToMeditation": "Espace 2D",
+    "writeWish": "Faire un Vœu",
+    "eco": "Mode Éco",
+    "ecoOn": "ECO ON"
   },
   "Donate": {
     "eyebrow": "SOUTENEZ LE SANCTUAIRE",
