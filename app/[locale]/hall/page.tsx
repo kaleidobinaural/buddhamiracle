@@ -181,32 +181,43 @@ export default function HallPage() {
         }
 
         .explore-btn, .offering-btn, .exit-btn, .eco-btn {
-          background: rgba(212, 160, 23, 0.1);
-          border: 1px solid rgba(212, 160, 23, 0.3);
-          color: #d4a017;
-          padding: 14px 20px;
-          border-radius: 30px;
-          font-size: 0.95rem;
-          letter-spacing: 0.1em;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          backdrop-filter: blur(10px);
-          text-decoration: none;
-          width: 100%;
-        }
+  background: rgba(212, 160, 23, 0.15);
+  border: 1px solid rgba(212, 160, 23, 0.4);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .explore-btn, .offering-btn, .exit-btn, .eco-btn {
+    flex-direction: column;
+    padding: 12px 10px;
+    font-size: 0.85rem;
+    gap: 4px;
+    text-align: center;
+    justify-content: center;
+  }
+}
 
         .explore-btn {
-          background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%) !important;
-          color: #000 !important;
-          font-weight: 700 !important;
-          border: none !important;
-          box-shadow: 0 10px 25px rgba(212, 160, 23, 0.4), 0 0 15px rgba(212, 160, 23, 0.2);
-          animation: gold-pulse 2s infinite alternate;
-        }
+  background: rgba(212, 160, 23, 0.8) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 10px 25px rgba(212, 160, 23, 0.4);
+}
 
         @keyframes gold-pulse {
           from { box-shadow: 0 0 10px rgba(212, 160, 23, 0.3), 0 5px 15px rgba(212, 160, 23, 0.2); }
@@ -247,7 +258,7 @@ export default function HallPage() {
         }
 
         .eco-btn {
-          background: rgba(30, 80, 30, 0.15);
+  background: rgba(30, 80, 30, 0.6);
           border-color: rgba(100, 200, 100, 0.3);
           color: rgba(150, 220, 150, 0.9);
           /* Same shape as other buttons - inherited from .explore-btn, .offering-btn, .exit-btn */

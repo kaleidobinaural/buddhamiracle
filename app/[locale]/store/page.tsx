@@ -357,7 +357,7 @@ export default function StorePage() {
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                 />
-                <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+                <div className="store-form-actions" style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '24px', width: '100%' }}>
                   <button type="button" className="store-cta-btn store-cta-outline" style={{ padding: '12px', flex: 1 }} onClick={() => setIsVvipModalOpen(false)}>
                     {t('modalCancel')}
                   </button>

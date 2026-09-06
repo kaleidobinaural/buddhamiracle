@@ -66,10 +66,17 @@ body {
   color: var(--text-primary);
   font-family: var(--font-ui);
   line-height: 1.6;
-  min-height: 100dvh;
-  overflow-x: hidden;
+  height: 100dvh;
+  overflow: hidden;
   word-break: keep-all;
   overflow-wrap: break-word;
+}
+
+.page-wrap {
+  height: 100dvh;
+  overflow-y: auto;
+  padding-top: var(--nav-height);
+  padding-bottom: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -374,7 +381,7 @@ img, video {
 -------------------------------------------------------- */
 .glass-card {
   background: var(--surface-glass);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -632,7 +639,7 @@ img, video {
 .profile-dropdown {
   position: absolute; top: calc(100% + 12px); right: 0; width: 240px;
   background: rgba(16, 15, 14, 0.95); backdrop-filter: blur(20px);
-  border: 1px solid var(--border-glass); border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1); border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   opacity: 0; visibility: hidden; transform: translateY(10px);
   transition: all 0.3s var(--ease-expo); z-index: 100;
@@ -677,28 +684,34 @@ img, video {
    13. Footer
 -------------------------------------------------------- */
 .sanctuary-footer {
-  padding: 40px 24px;
+  padding: 10px 16px;
   background: #000;
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  height: 50px;
 }
-.footer-divider {
-  width: 100%;
-  max-width: 1200px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.1) 50%, transparent);
-  margin-bottom: 20px;
+
+@media (max-width: 768px) {
+  .sanctuary-footer {
+    justify-content: center;
+  }
 }
+.footer-divider { display: none; }
 .footer-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
-  text-align: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 .copyright {
   font-size: 0.75rem;
@@ -1022,7 +1035,7 @@ img, video {
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1);
   transition: all 1s var(--ease-expo);
 }
 
@@ -1148,7 +1161,7 @@ img, video {
 .message-wrapper.user .message-bubble {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1);
   border-bottom-right-radius: 4px;
   backdrop-filter: blur(5px);
 }
@@ -1179,7 +1192,7 @@ img, video {
 .chat-input {
   flex: 1;
   background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1);
   border-radius: 14px;
   padding: 14px 24px;
   color: var(--text-primary);
@@ -1221,7 +1234,7 @@ img, video {
   background: rgba(255,255,255,0.04);
   border-radius: 20px;
   width: fit-content;
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1);
 }
 .typing-indicator span {
   width: 7px;
@@ -1674,3 +1687,5 @@ img, video {
     font-size: 2rem;
   }
 }
+
+@media (max-width: 768px) { .hidden-mobile { display: none !important; } }

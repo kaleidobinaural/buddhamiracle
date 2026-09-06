@@ -89,7 +89,7 @@ export default async function RootLayout({
               <div className="footer-divider" />
               <div className="footer-content">
                 {/* Social Links */}
-                <div className="footer-social">
+                <div className="footer-social hidden-mobile">
                   {process.env.NEXT_PUBLIC_TIKTOK_URL && (
                     <a
                       href={process.env.NEXT_PUBLIC_TIKTOK_URL}
@@ -106,7 +106,7 @@ export default async function RootLayout({
                   )}
                 </div>
 
-                <p className="copyright">&copy; {new Date().getFullYear()} Temple of Light. The Eternal Sanctuary.</p>
+                <p className="copyright hidden-mobile">&copy; {new Date().getFullYear()} Temple of Light. The Eternal Sanctuary.</p>
 
                 <div className="legal-links">
                   <Link href="/terms" className="footer-link">Terms</Link>
