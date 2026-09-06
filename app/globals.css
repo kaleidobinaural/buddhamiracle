@@ -692,10 +692,11 @@ img, video {
   right: 0;
   z-index: 100;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 50px;
+  justify-content: center;
+  height: auto;
+  min-height: 50px;
 }
 
 @media (max-width: 768px) {
@@ -706,12 +707,13 @@ img, video {
 .footer-divider { display: none; }
 .footer-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
+  gap: 6px;
 }
 .copyright {
   font-size: 0.75rem;
@@ -722,7 +724,9 @@ img, video {
 .legal-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
+  width: 100%;
 }
 .footer-link {
   font-size: 0.8rem;
