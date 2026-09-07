@@ -76,11 +76,13 @@ export async function POST(req: NextRequest) {
     }
 
     const session = await auth();
-    const userEmail = session?.user?.email;
+    const rawEmail = session?.user?.email;
 
-    if (!userEmail) {
+    if (!rawEmail) {
       return NextResponse.json({ error: 'Authentication required to speak with the Guru.' }, { status: 401 });
     }
+
+    const userEmail = rawEmail.trim().toLowerCase();
 
     // ★ LAYER 2 DEFENSE: Server-side rate limit (5 req/min per user)
     if (!checkRateLimit(userEmail)) {
@@ -97,10 +99,10 @@ export async function POST(req: NextRequest) {
     let { data: limitData, error: fetchError } = await supabase
       .from('user_limits')
       .select('*')
-      .eq('email', userEmail)
-      .single();
+      .ilike('email', userEmail)
+      .maybeSingle();
 
-    if (fetchError && fetchError.code === 'PGRST116') {
+    if (!limitData) {
       const { data: newLimit, error: insertError } = await supabase
         .from('user_limits')
         .insert([{ email: userEmail, chat_count: 0, last_chat_date: today, lotus_count: 0 }])
@@ -114,7 +116,7 @@ export async function POST(req: NextRequest) {
 
     // Reset daily chat_count if new day
     if (limitData.last_chat_date !== today) {
-      await supabase.from('user_limits').update({ chat_count: 0, last_chat_date: today }).eq('email', userEmail);
+      await supabase.from('user_limits').update({ chat_count: 0, last_chat_date: today }).eq('id', limitData.id);
       limitData.chat_count = 0;
     }
 
@@ -219,12 +221,12 @@ export async function POST(req: NextRequest) {
             chat_count: limitData.chat_count + 1,
             lotus_count: limitData.lotus_count - 1,
           })
-          .eq('email', userEmail);
+          .eq('id', limitData.id);
       } else {
         await supabase
           .from('user_limits')
           .update({ chat_count: limitData.chat_count + 1 })
-          .eq('email', userEmail);
+          .eq('id', limitData.id);
       }
     }
 

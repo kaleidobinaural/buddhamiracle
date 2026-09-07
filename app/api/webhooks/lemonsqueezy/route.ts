@@ -10,16 +10,6 @@ import crypto from 'crypto';
 //   • LEMONSQUEEZY_PRODUCT_ID_MALA    → grants 1080 lotus (📿 $108) + auto-pillar
 // ============================================================
 
-const LOTUS_PACKAGES: Record<string, number> = {
-  [process.env.LEMONSQUEEZY_PRODUCT_ID_CANDLE || '__unset_candle__']: 54,
-  [process.env.LEMONSQUEEZY_PRODUCT_ID_LOTUS   || '__unset_lotus__']: 333,
-  [process.env.LEMONSQUEEZY_PRODUCT_ID_MALA    || '__unset_mala__']: 1080,
-};
-
-// Product IDs that trigger automatic Pillar (Supporter's Wall) registration
-const PILLAR_PRODUCTS = new Set([
-  process.env.LEMONSQUEEZY_PRODUCT_ID_MALA || '__unset_mala__',
-]);
 
 /**
  * Verifies the Lemon Squeezy webhook signature using HMAC-SHA256.
@@ -78,7 +68,7 @@ export async function POST(req: NextRequest) {
     .from('webhook_logs')
     .select('id')
     .eq('event_id', eventId)
-    .single();
+    .maybeSingle();
 
   if (existing) {
     console.log(`[Webhook] Duplicate event ${eventId} — skipping.`);
@@ -87,10 +77,19 @@ export async function POST(req: NextRequest) {
 
   // Extract order data
   const orderData = payload?.data?.attributes;
-  const productId = String(orderData?.first_order_item?.product_id ?? '');
-  const customerEmail: string = orderData?.user_email ?? '';
+  const firstItem = orderData?.first_order_item;
+  const productId = String(firstItem?.product_id ?? '').trim();
+  const rawEmail = String(orderData?.user_email ?? '').trim();
+  const customerEmail = rawEmail.toLowerCase();
   const customerName: string = orderData?.user_name ?? 'Anonymous';
   const orderStatus: string = orderData?.status ?? '';
+
+  console.log('[Webhook] Received order:', {
+    eventId,
+    productId,
+    customerEmail,
+    orderStatus,
+  });
 
   if (orderStatus !== 'paid') {
     return NextResponse.json({ received: true, skipped: true, reason: 'Order not paid.' });
@@ -101,32 +100,73 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'No customer email.' }, { status: 422 });
   }
 
-  const lotusToGrant = LOTUS_PACKAGES[productId] ?? 0;
+  // Strictly match by Product ID from environment variables
+  const envCandle = (process.env.LEMONSQUEEZY_PRODUCT_ID_CANDLE || '').replace(/['"]/g, '').trim();
+  const envLotus  = (process.env.LEMONSQUEEZY_PRODUCT_ID_LOTUS || '').replace(/['"]/g, '').trim();
+  const envMala   = (process.env.LEMONSQUEEZY_PRODUCT_ID_MALA || '').replace(/['"]/g, '').trim();
+
+  let lotusToGrant = 0;
+  let isMala = false;
+
+  if (envCandle && productId === envCandle) {
+    lotusToGrant = 54;
+  } else if (envLotus && productId === envLotus) {
+    lotusToGrant = 333;
+  } else if (envMala && productId === envMala) {
+    lotusToGrant = 1080;
+    isMala = true;
+  }
+
   if (lotusToGrant === 0) {
-    console.warn(`[Webhook] Unknown product ID: ${productId}`);
+    console.warn(`[Webhook] Unknown product ID: "${productId}". Configured product IDs:`, {
+      candle: envCandle,
+      lotus: envLotus,
+      mala: envMala,
+    });
     return NextResponse.json({ received: true, skipped: true, reason: 'Unknown product.' });
   }
 
-  // ★ Upsert user record and add lotus credits atomically
-  const { data: existing_user } = await supabase
+  // ★ Upsert user record case-insensitively and add lotus credits
+  const { data: existingUsers, error: fetchUserError } = await supabase
     .from('user_limits')
-    .select('lotus_count')
-    .eq('email', customerEmail)
-    .single();
+    .select('id, email, lotus_count')
+    .ilike('email', customerEmail);
 
-  if (existing_user) {
-    await supabase
-      .from('user_limits')
-      .update({ lotus_count: (existing_user.lotus_count ?? 0) + lotusToGrant })
-      .eq('email', customerEmail);
-  } else {
-    await supabase
-      .from('user_limits')
-      .insert([{ email: customerEmail, lotus_count: lotusToGrant, chat_count: 0 }]);
+  if (fetchUserError) {
+    console.error('[Webhook] Error querying user_limits:', fetchUserError);
   }
 
-  // ★ AUTO-PILLAR: If this product qualifies, register on Supporter's Wall
-  if (PILLAR_PRODUCTS.has(productId)) {
+  const existing_user = existingUsers?.[0];
+
+  if (existing_user) {
+    const newCount = (existing_user.lotus_count ?? 0) + lotusToGrant;
+    const { error: updateError } = await supabase
+      .from('user_limits')
+      .update({
+        lotus_count: newCount,
+        email: customerEmail, // normalize to lowercase
+      })
+      .eq('id', existing_user.id);
+
+    if (updateError) {
+      console.error('[Webhook] Failed to update user_limits:', updateError);
+      return NextResponse.json({ error: 'DB update failed.' }, { status: 500 });
+    }
+    console.log(`[Webhook] ✅ Updated user ${existing_user.id} (${customerEmail}): ${existing_user.lotus_count} -> ${newCount} lotuses`);
+  } else {
+    const { error: insertError } = await supabase
+      .from('user_limits')
+      .insert([{ email: customerEmail, lotus_count: lotusToGrant, chat_count: 0 }]);
+
+    if (insertError) {
+      console.error('[Webhook] Failed to insert user_limits:', insertError);
+      return NextResponse.json({ error: 'DB insert failed.' }, { status: 500 });
+    }
+    console.log(`[Webhook] ✅ Inserted new user ${customerEmail} with ${lotusToGrant} lotuses`);
+  }
+
+  // ★ AUTO-PILLAR: If this product qualifies (Mala package), register on Supporter's Wall
+  if (isMala) {
     const { error: pillarError } = await supabase
       .from('pillars')
       .insert([{
@@ -140,7 +180,6 @@ export async function POST(req: NextRequest) {
 
     if (pillarError) {
       console.error('[Webhook] Failed to register pillar:', pillarError.message);
-      // Non-fatal: lotus is already granted, just log the pillar failure
     } else {
       console.log(`[Webhook] ✅ Pillar registered for ${customerName} (${customerEmail})`);
     }
@@ -152,6 +191,6 @@ export async function POST(req: NextRequest) {
     event_type: eventName,
   }]);
 
-  console.log(`[Webhook] ✅ Granted ${lotusToGrant} lotus to ${customerEmail} (product: ${productId})`);
-  return NextResponse.json({ received: true, granted: lotusToGrant });
+  console.log(`[Webhook] ✅ Successfully granted ${lotusToGrant} lotus to ${customerEmail} (product: ${productId})`);
+  return NextResponse.json({ received: true, granted: lotusToGrant, email: customerEmail });
 }

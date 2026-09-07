@@ -6,18 +6,19 @@ import { getSupabaseAdmin } from '@/lib/supabase';
 // Called on chat page mount to display the lotus badge.
 export async function GET() {
   const session = await auth();
-  const userEmail = session?.user?.email;
+  const rawEmail = session?.user?.email;
 
-  if (!userEmail) {
+  if (!rawEmail) {
     return NextResponse.json({ lotus_count: 0 }, { status: 401 });
   }
 
+  const userEmail = rawEmail.trim().toLowerCase();
   const supabase = getSupabaseAdmin();
   const { data } = await supabase
     .from('user_limits')
     .select('lotus_count')
-    .eq('email', userEmail)
-    .single();
+    .ilike('email', userEmail)
+    .maybeSingle();
 
   return NextResponse.json({ lotus_count: data?.lotus_count ?? 0 });
 }

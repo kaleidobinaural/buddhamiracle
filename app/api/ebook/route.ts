@@ -437,10 +437,12 @@ export async function POST(req: NextRequest) {
     }
 
     const session = await auth();
-    const userEmail = session?.user?.email;
-    if (!userEmail) {
+    const rawEmail = session?.user?.email;
+    if (!rawEmail) {
       return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
     }
+
+    const userEmail = rawEmail.trim().toLowerCase();
 
     const body = await req.json();
     const { messages, locale } = body;
@@ -452,10 +454,10 @@ export async function POST(req: NextRequest) {
     const { data: limitData, error: fetchError } = await supabase
       .from('user_limits')
       .select('*')
-      .eq('email', userEmail)
-      .single();
+      .ilike('email', userEmail)
+      .maybeSingle();
 
-    if (fetchError) {
+    if (fetchError || !limitData) {
       return NextResponse.json({ error: 'Could not verify your lotus balance.' }, { status: 500 });
     }
 
@@ -521,7 +523,7 @@ export async function POST(req: NextRequest) {
       await supabase
         .from('user_limits')
         .update({ lotus_count: limitData.lotus_count - EBOOK_COST })
-        .eq('email', userEmail);
+        .eq('id', limitData.id);
     }
 
     const newLotusCount = isAdmin ? limitData.lotus_count : limitData.lotus_count - EBOOK_COST;

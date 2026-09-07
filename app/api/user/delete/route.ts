@@ -35,7 +35,7 @@ export async function DELETE(req: NextRequest) {
     const { error: limitsError } = await supabase
       .from('user_limits')
       .delete()
-      .eq('email', userEmail);
+      .ilike('email', userEmail);
 
     return NextResponse.json({ 
       success: true, 
