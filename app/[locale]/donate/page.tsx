@@ -134,14 +134,14 @@ export default function DonatePage() {
         <div className="donate-bottom-actions animate-fade-up animate-delay-400">
           <a
             href="/store#lotus-section"
-            className="btn-gold-glow-v2"
+            className="donate-action-btn donate-action-btn--gold"
             id="btn-buy-lotus"
-            style={{ textDecoration: 'none', padding: '12px 28px' }}
+            style={{ textDecoration: 'none' }}
           >
             🪷 {tDonate('buyMoreLotus')}
           </a>
           <button
-            className="btn-inquiry-link"
+            className="donate-action-btn donate-action-btn--outline"
             id="btn-payment-inquiry"
             onClick={() => {
               setInquiryStatus('idle');
@@ -180,9 +180,12 @@ export default function DonatePage() {
         .paypal-free-label { font-size: 1.05rem; color: rgba(255,255,255,0.4); font-family: var(--font-serif); font-style: italic; }
         .tier-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; flex: 1; margin: 0; }
         .tier-btn { width: 100%; padding: 14px; font-size: 0.88rem; justify-content: center; display: flex; align-items: center; gap: 8px; text-decoration: none; margin-top: auto; border-radius: 100px; border: none; cursor: pointer; }
-        .donate-bottom-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .btn-inquiry-link { background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); padding: 12px 24px; border-radius: 100px; cursor: pointer; font-size: 0.9rem; font-family: var(--font-ui); transition: all 0.3s; }
-        .btn-inquiry-link:hover { border-color: var(--primary-gold); color: var(--primary-gold); }
+        .donate-bottom-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .donate-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; font-family: var(--font-ui); cursor: pointer; transition: all 0.3s; white-space: nowrap; min-width: 200px; text-align: center; }
+        .donate-action-btn--gold { background: linear-gradient(135deg, var(--primary-gold), #f3c75e); color: #000; border: none; box-shadow: 0 8px 24px rgba(212,160,23,0.25); }
+        .donate-action-btn--gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,160,23,0.45); }
+        .donate-action-btn--outline { background: transparent; border: 1px solid rgba(212,160,23,0.35); color: var(--primary-gold); }
+        .donate-action-btn--outline:hover { background: rgba(212,160,23,0.08); border-color: var(--primary-gold); }
         .ritual-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
         .modal-content { width: 100%; max-width: 500px; padding: 40px; border: 1px solid rgba(212,160,23,0.2); border-radius: 24px; }
         .modal-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 24px; text-align: center; }
