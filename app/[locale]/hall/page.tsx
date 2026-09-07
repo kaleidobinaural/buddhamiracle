@@ -62,11 +62,11 @@ export default function HallPage() {
 
         <footer className="hall-footer">
           <div className="hall-controls">
-            <button 
+            <button
               className={`explore-btn ${is3DMode ? 'active' : ''}`}
               onClick={() => setIs3DMode(!is3DMode)}
             >
-              <span className="btn-icon">☸</span>
+              <span className="btn-icon" style={{ fontSize: '1.2rem', lineHeight: '1', display: 'block' }}>☸</span>
               {is3DMode ? t('returnToMeditation') : t('explore3d')}
             </button>
             <button className="offering-btn" onClick={() => setIsModalOpen(true)}>
@@ -77,7 +77,7 @@ export default function HallPage() {
               <span className="btn-icon">←</span>
               {t('exit')}
             </button>
-            <button 
+            <button
               className={`eco-btn ${isEcoMode ? 'active' : ''}`}
               onClick={() => setIsEcoMode(!isEcoMode)}
               title={isEcoMode ? 'Lite Mode On (Low GPU)' : 'Switch to Lite Mode (Low GPU)'}

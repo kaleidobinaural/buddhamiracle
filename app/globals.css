@@ -743,7 +743,10 @@ img, video {
   font-size: 0.6rem;
 }
 @media (max-width: 640px) {
-  /* removed .legal-links column flex to keep them on 1 row */
+  .legal-links {
+    justify-content: space-between;
+    padding: 0 8px;
+  }
 }
 .footer-social {
   display: flex;

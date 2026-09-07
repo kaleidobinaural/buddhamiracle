@@ -514,10 +514,10 @@ export default function WishRoofPage() {
         .search-box-v2 { 
           display: flex; gap: 12px; background: rgba(255,255,255,0.02); padding: 5px 5px 5px 20px; border-radius: 40px; 
           border: 1px solid rgba(212, 160, 23, 0.2); width: 100%; max-width: 450px; transition: all 0.3s;
-          box-shadow: 0 0 20px rgba(0,0,0,0.5);
+          box-shadow: 0 0 20px rgba(0,0,0,0.5); flex-wrap: nowrap; align-items: center;
         }
         .search-box-v2:focus-within { border-color: var(--primary-gold); box-shadow: 0 0 30px rgba(212, 160, 23, 0.2); }
-        .search-input { background: transparent; border: none; color: #fff; flex: 1; outline: none; font-size: 0.95rem; }
+        .search-input { background: transparent; border: none; color: #fff; flex: 1; min-width: 0; outline: none; font-size: 0.95rem; }
         .btn-clear-search { background: transparent; border: none; color: var(--text-tertiary); font-size: 1.2rem; cursor: pointer; padding: 0 10px; transition: 0.3s; }
         .btn-clear-search:hover { color: #fff; transform: scale(1.1); }
         .btn-search-glow { 
@@ -682,11 +682,9 @@ export default function WishRoofPage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <a
-                  href={process.env.NEXT_PUBLIC_LEMONSQUEEZY_STORE_URL || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/store#lotus-section"
                   className="btn-gold-glow-v2"
-                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {tGuru('buyLotus')}
                 </a>

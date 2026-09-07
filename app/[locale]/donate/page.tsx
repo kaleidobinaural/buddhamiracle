@@ -202,32 +202,19 @@ export default function DonatePage() {
                 </p>
                 <p className="tier-desc">{tDonate(`realTier${index + 1}Desc`)}</p>
                 <p className="tier-reward">{tDonate('receiveLotus', { count: tier.lotusReward })}</p>
-                <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-                  <a
-                    href={tier.checkoutUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-gold tier-btn"
-                    style={{ flex: 1 }}
-                    id={`donate-${tier.id}-lemon-btn`}
-                  >
-                    💳 레몬스퀴지
-                  </a>
-                  <a
-                    href={buildPayPalUrl(tier)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-gold tier-btn"
-                    style={{ flex: 1 }}
-                    id={`donate-${tier.id}-paypal-btn`}
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.8, marginRight: '6px' }}>
-                      <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
-                      <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
-                    </svg>
-                    페이팔
-                  </a>
-                </div>
+                <a
+                  href={tier.id === 'candle' ? tier.checkoutUrl : buildPayPalUrl(tier)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold tier-btn"
+                  id={`donate-${tier.id}-btn`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.8 }}>
+                    <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
+                    <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
+                  </svg>
+                  {tDonate('payWithPayPal')}
+                </a>
               </article>
             ))}
             {/* Payment Inquiry Link */}
@@ -485,11 +472,9 @@ export default function DonatePage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <a
-                  href={lemonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/store#lotus-section"
                   className="btn-gold-glow-v2"
-                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {tGuru('buyLotus')}
                 </a>

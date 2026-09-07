@@ -198,7 +198,7 @@ export default function StorePage() {
       {/* ══════════════════════════════════════
           SECTION 4: Lotus Products (Consumables)
       ══════════════════════════════════════ */}
-      <section className="store-section">
+      <section className="store-section" id="lotus-section">
         <h2 className="store-section-title" style={{ fontSize: '2rem', color: '#fff' }}>{t('lotusTitle')}</h2>
         <p style={{ textAlign: 'center', color: '#aaa', maxWidth: '600px', margin: '0 auto 40px' }}>
           {t('lotusDesc')}
@@ -412,7 +412,7 @@ export default function StorePage() {
         .store-tier-features { list-style: none; padding: 0; margin: 0 0 32px 0; flex-grow: 1; }
         .store-tier-features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; color: #ccc; font-size: 0.95rem; line-height: 1.4; }
         
-        .store-cta-btn { display: inline-block; width: 100%; padding: 16px; text-align: center; border-radius: 30px; font-weight: 700; font-size: 1rem; transition: 0.3s; cursor: pointer; text-decoration: none; border: none; }
+        .store-cta-btn { display: inline-block; width: 100%; padding: 16px; text-align: center; border-radius: 30px; font-weight: 700; font-size: 1rem; transition: 0.3s; cursor: pointer; text-decoration: none; border: none; margin-top: auto; }
         .store-cta-gold { background: linear-gradient(135deg, #d4a017, #f3c75e); color: #000; box-shadow: 0 10px 20px rgba(212,160,23,0.2); }
         .store-cta-gold:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(212,160,23,0.4); }
         .store-cta-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }

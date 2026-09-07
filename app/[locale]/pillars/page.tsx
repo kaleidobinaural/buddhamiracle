@@ -449,10 +449,10 @@ export default function PillarsPage() {
         .search-box-v2 { 
           display: flex; gap: 12px; background: rgba(255,255,255,0.02); padding: 8px 8px 8px 24px; border-radius: 40px; 
           border: 1px solid rgba(212, 160, 23, 0.2); width: 100%; max-width: 500px; transition: all 0.3s;
-          box-shadow: 0 0 20px rgba(0,0,0,0.5);
+          box-shadow: 0 0 20px rgba(0,0,0,0.5); flex-wrap: nowrap; align-items: center;
         }
         .search-box-v2:focus-within { border-color: var(--primary-gold); box-shadow: 0 0 30px rgba(212, 160, 23, 0.2); }
-        .search-input { background: transparent; border: none; color: #fff; flex: 1; outline: none; font-size: 1rem; }
+        .search-input { background: transparent; border: none; color: #fff; flex: 1; min-width: 0; outline: none; font-size: 1rem; }
         .btn-clear-search { background: transparent; border: none; color: var(--text-tertiary); font-size: 1.2rem; cursor: pointer; padding: 0 10px; transition: 0.3s; }
         .btn-clear-search:hover { color: #fff; transform: scale(1.1); }
         .btn-search-glow { 

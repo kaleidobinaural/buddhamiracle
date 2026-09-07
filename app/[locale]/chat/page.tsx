@@ -420,11 +420,9 @@ export default function ChatPage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '24px' }}>
                 <a
-                  href={process.env.NEXT_PUBLIC_LEMONSQUEEZY_STORE_URL || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/store#lotus-section"
                   className="btn-gold-glow-v2"
-                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {t('buyLotus') || 'Offer Lotus Petals'}
                 </a>
