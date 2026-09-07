@@ -94,7 +94,7 @@ export default function DonatePage() {
                 className="btn-gold tier-btn"
                 id={"btn-offer-" + tier.id}
               >
-                🌿 Offer {tier.lotus} Lotus
+                Offer {tier.lotus} Lotus
               </button>
             </article>
           ))}
@@ -114,15 +114,18 @@ export default function DonatePage() {
               href={buildPayPalUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold tier-btn"
+              className="btn-gold tier-btn paypal-btn"
               id="btn-offer-paypal"
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: 'none', flexDirection: 'column', gap: '4px', lineHeight: 1.3 }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.9 }}>
-                <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
-                <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
-              </svg>
-              {tDonate('payWithPayPal')}
+              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.9 }}>
+                  <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
+                  <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
+                </svg>
+                {tDonate('payWithPayPal')}
+              </span>
+              <span style={{ fontSize: '0.75rem', opacity: 0.7, fontWeight: 400 }}>{tDonate('paypalFreeAmount')}</span>
             </a>
           </article>
         </section>

@@ -212,7 +212,7 @@ export default function PillarsPage() {
                       slideShadows: false,
                     }}
                     keyboard={{ enabled: true }}
-                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
                     modules={[EffectCoverflow, Keyboard, Mousewheel]}
                     onSwiper={setSwiperInstance}
                     className="pillars-swiper"
@@ -270,7 +270,7 @@ export default function PillarsPage() {
                         slideShadows: false,
                       }}
                       keyboard={{ enabled: true }}
-                      mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20 }}
+                      mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
                       modules={[EffectCoverflow, Keyboard, Mousewheel]}
                       className="pillars-swiper supporters-swiper"
                     >

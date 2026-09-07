@@ -42,7 +42,7 @@ export default function AmbientAudio() {
         .ambient-audio-btn {
           position: fixed;
           bottom: 30px;
-          right: 30px;
+          left: 30px;
           width: 48px;
           height: 48px;
           border-radius: 50%;
@@ -75,7 +75,7 @@ export default function AmbientAudio() {
         @media (max-width: 768px) {
           .ambient-audio-btn {
             bottom: 72px;
-            right: 16px;
+            left: 16px;
             width: 40px;
             height: 40px;
           }

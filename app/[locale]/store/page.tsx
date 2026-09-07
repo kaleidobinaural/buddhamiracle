@@ -217,7 +217,7 @@ export default function StorePage() {
               + 54 🪷
             </div>
             <a href={PRODUCTS.candle} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
-              {t('buyLotus')}$5
+              {t('buyLotus')} — $5
             </a>
           </div>
 
@@ -235,7 +235,7 @@ export default function StorePage() {
               + 333 🪷
             </div>
             <a href={PRODUCTS.lotus} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
-              {t('buyLotus')}$25
+              {t('buyLotus')} — $25
             </a>
           </div>
 
@@ -250,7 +250,7 @@ export default function StorePage() {
               + 1080 🪷
             </div>
             <a href={PRODUCTS.mala} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline" style={{ borderColor: '#E5A93C', color: '#E5A93C' }}>
-              {t('buyLotus')}$108
+              {t('buyLotus')} — $108
             </a>
           </div>
         </div>

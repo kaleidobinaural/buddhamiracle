@@ -744,7 +744,8 @@ img, video {
 }
 @media (max-width: 640px) {
   .legal-links {
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     padding: 0 8px;
   }
 }
