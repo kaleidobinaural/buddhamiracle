@@ -97,7 +97,7 @@ export default function PillarsPage() {
       
       <audio 
         ref={audioRef}
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" 
+        src="/audio/pillars.mp3" 
         loop
         onError={(e) => console.error('Audio load error:', e)}
       />
