@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "성소 후원하기",
     "title": "공양하기",
-    "subtitle": "당신의 자비로움이 전 세계 구도자들을 위한 이 평화와 지혜의 공간을 유지합니다. 모든 공양은 깊은 감사와 마음챙김으로 받아들여집니다.",
+    "subtitle": "당신의 자비로움이 이 평화와 지혜의 공간을 유지합니다. 모든 공양은 깊은 감사와 마음챙김으로 받아들여집니다.",
     "balance": "보유 연꽃:",
     "realOffering": "일반 공양",
     "lotusOffering": "연꽃 공양",
@@ -157,9 +157,9 @@
     "realTier2Desc": "연꽃을 바칩니다. 당신의 이름이 성소 벽면의 평온의 기둥에 새겨집니다.",
     "realTier3Name": "염주 (Mala)",
     "realTier3Desc": "기도 염주를 바치세요. 연꽃 1,080개를 받고 이름이 후원자의 벽에 영원히 새겨집니다.",
-    "lotusTier1Name": "향",
+    "lotusTier1Name": "소망의 씨앗",
     "lotusTier1Desc": "작은 존재감의 공양입니다. 당신의 기운이 모임의 장에 더해집니다.",
-    "lotusTier2Name": "기도의 종",
+    "lotusTier2Name": "지혜의 꽃",
     "lotusTier2Desc": "가상의 종을 울립니다. 당신의 염원이 모든 구도자들을 위해 성소에 울려 퍼집니다.",
     "lotusTier3Name": "성소의 빛",
     "lotusTier3Desc": "성소를 밝힙니다. 당신의 빛이 한 달 동안 이 공간을 지원합니다.",
@@ -185,7 +185,11 @@
     "inquiryClose": "닫기",
     "inquiryCancel": "취소",
     "inquirySubmit": "문의 보내기",
-    "inquiryError": "오류가 발생했습니다. 다시 시도해 주세요."
+    "inquiryError": "오류가 발생했습니다. 다시 시도해 주세요.",
+    "paypalTitle": "자유로운 공양",
+    "paypalFreeAmount": "마음이 이끄는 만큼",
+    "paypalDesc": "PayPal로 원하시는 만큼 자유롭게 공양해 주세요. 모든 진심 어린 공양을 감사히 받습니다.",
+    "buyMoreLotus": "연꽃 구매하기"
   },
   "Chat": {
     "unauthMessage": "구루와 대화하려면 빛 안으로 들어오세요.",
@@ -263,7 +267,10 @@
     "modalSuccess": "신청이 감사히 접수되었습니다.",
     "modalSuccessNote": "담당자가 곧 연락드릴 것입니다.",
     "modalClose": "닫기",
-    "modalError": "전송에 실패했습니다. 다시 시도해 주세요."
+    "modalError": "전송에 실패했습니다. 다시 시도해 주세요.",
+    "getMusic": "음악받기",
+    "instantTitle": "지금 입장하세요",
+    "instantSubtitle": "디지털 다운로드 - 즉시 이용 가능"
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",

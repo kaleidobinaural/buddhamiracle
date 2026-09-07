@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "护持圣殿",
     "title": "进行供养",
-    "subtitle": "您的慷慨护持着这片为全球求道者提供平和与智慧的空间。每一份供养都将以深切的感恩与正念接受。",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "您的莲花余额：",
     "realOffering": "真实供养",
     "lotusOffering": "莲花供养",
@@ -157,12 +157,12 @@
     "realTier2Desc": "供养一朵莲花。您的名字将刻于殿墙上的宁静之柱。",
     "realTier3Name": "念珠 (Mala)",
     "realTier3Desc": "供奉一串神圣念珠。获得1,080朵莲花花瓣，您的名字将永远鐵刻在支持者之壁上。",
-    "lotusTier1Name": "一炷香",
-    "lotusTier1Desc": "一份微小的临在供养。您的能量将汇入集体场域。",
-    "lotusTier2Name": "一声梵钟",
-    "lotusTier2Desc": "敲响虚拟梵钟。您的意愿将响彻殿堂，为所有求道者回荡。",
-    "lotusTier3Name": "一盏佛前灯",
-    "lotusTier3Desc": "点亮佛龛。您的光之供养将护持社区一个太阴周期。",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "获得 🪷 {count} 莲花瓣",
     "payWithPayPal": "使用PAYPAL支付",
     "offerLotus": "供养莲花瓣",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "踏入光明，与大师交流。",
@@ -263,7 +267,10 @@
     "modalSuccess": "您的申请已被感激地收到。",
     "modalSuccessNote": "我们的团队将很快与您联系。",
     "modalClose": "关闭",
-    "modalError": "发送失败，请重试。"
+    "modalError": "发送失败，请重试。",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "数百万灵魂被频率触动",

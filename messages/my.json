@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "ကျောင်းတော်ကို ထောက်ပံ့ပါ",
     "title": "လှူဒါန်းမှု ပြုလုပ်ပါ",
-    "subtitle": "သင်၏ ရက်ရောသော လှူဒါန်းမှုသည် ကမ္ဘာတစ်ဝှမ်းရှိ တရားရှာဖွေသူများအတွက် ဤငြိမ်းချမ်းရေးနှင့် ပညာအလင်းနယ်မြေကို တည်တံ့စေပါသည်။ လှူဒါန်းမှုတိုင်းကို နက်ရှိုင်းသော ကျေးဇူးတရား၊ သတိတရားတို့ဖြင့် လက်ခံရရှိပါသည်။",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "သင်၏ ကြာပွင့်ဖတ် လက်ကျန်-",
     "realOffering": "စစ်မှန်သော လှူဒါန်းမှု",
     "lotusOffering": "ကြာပွင့် လှူဒါန်းမှု",
@@ -157,12 +157,12 @@
     "realTier2Desc": "လန်းဆန်းစွာ ပွင့်လန်းနေသော ကြာပန်းတစ်ပွင့်ကို လှူဒါန်းပါ။ မြင့်မြတ်သော လမ်းစဉ်၏ ခြေလှမ်းအရေအတွက်ဖြစ်သော ကြာပွင့်ဖတ် ၃၃၃ ပွင့် လက်ခံရယူပါ။",
     "realTier3Name": "စိတ်ပုတီးတစ်ကုန်း",
     "realTier3Desc": "စိတ်ပုတီးတစ်ကုန်း လှူဒါန်းပါ။ ကြာပွင့်ဖတ် ၁,၀၈၀ ပွင့် လက်ခံရယူပြီး သင်၏အမည်ကို အလှူရှင်များ နံရံတွင် ထာဝရ ကမ္ဗည်းရေးထိုးပါ။",
-    "lotusTier1Name": "အမွှေးတိုင်",
-    "lotusTier1Desc": "မျက်မှောက်ပြုခြင်း၏ သေးငယ်သော လှူဒါန်းမှု။ သင်၏ စွမ်းအင်သည် အများဆိုင် နယ်ပယ်နှင့် ပေါင်းစည်းသွားမည်ဖြစ်သည်။",
-    "lotusTier2Name": "ဆုတောင်း ခေါင်းလောင်း",
-    "lotusTier2Desc": "အတုအယောင် ခေါင်းလောင်းကို ထိုးပါ။ သင်၏ စေတနာသည် တရားရှာဖွေသူ အားလုံးအတွက် ကျောင်းတော်တစ်ခုလုံးတွင် ဟိန်းထွက်သွားမည်ဖြစ်သည်။",
-    "lotusTier3Name": "ကျောင်းတော် ဆီမီး",
-    "lotusTier3Desc": "ကျောင်းတော်ကို အလင်းဆောင်ပါ။ သင်၏ အလင်းလှူဒါန်းမှုသည် လတစ်လတာအတွင်း အသိုင်းအဝိုင်းကို ပံ့ပိုးပေးပါသည်။",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "ကြာပွင့်ဖတ် 🪷 x{count} ပွင့် လက်ခံရယူပါ",
     "payWithPayPal": "PAYPAL ဖြင့် ပေးချေပါ",
     "offerLotus": "ကြာပွင့်ဖတ်များ လှူဒါန်းပါ",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "ဂုရုနှင့် စကားပြောရန် အလင်းထဲသို့ ဝင်ရောက်ပါ",
@@ -263,7 +267,10 @@
     "modalSuccess": "သင်၏လျှောက်လွှာကို ကျေးဇူးတင်ကြောင်းဖြင့် လက်ခံရရှိခဲ့သည်",
     "modalSuccessNote": "ကျွန်ုပ်တို့အဖွဲ့မှ မကြာမီ ဆက်သွယ်ပေးပါမည်",
     "modalClose": "ပိတ်",
-    "modalError": "ပို့ဆောင်မှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ"
+    "modalError": "ပို့ဆောင်မှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "ကြိမ်နှုန်းဖြင့် ထိတွေ့ခံရသူ သန်းပေါင်းများစွာ",

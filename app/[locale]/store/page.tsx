@@ -152,7 +152,7 @@ export default function StorePage() {
               <li>📄 {t('omManiF3')}</li>
             </ul>
             <a href={PRODUCTS.omMani} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
-              {t('getInstantAccess')}$11.11
+              {t('getMusic')} — $11.11
             </a>
             <p className="store-micro-note">{t('microNote')}</p>
           </div>
@@ -169,8 +169,9 @@ export default function StorePage() {
               <li>📄 {t('amuletF3')}</li>
             </ul>
             <a href={PRODUCTS.amulet} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
-              {t('receiveAmulet')}$11.11
+              {t('receiveAmulet')} — $11.11
             </a>
+            <p className="store-micro-note" style={{ opacity: 0 }} aria-hidden="true">&nbsp;</p>
           </div>
 
           {/* Bundle */}
@@ -189,8 +190,9 @@ export default function StorePage() {
               <li>💰 {t('bundleF3')}</li>
             </ul>
             <a href={PRODUCTS.bundle} target="_blank" rel="noopener noreferrer" className="store-cta-btn" style={{ background: '#FFD700', color: '#000' }}>
-              {t('getBundle')}$18.88
+              {t('getBundle')} — $18.88
             </a>
+            <p className="store-micro-note" style={{ opacity: 0 }} aria-hidden="true">&nbsp;</p>
           </div>
         </div>
       </section>

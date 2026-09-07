@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "APOYA EL SANTUARIO",
     "title": "Hacer una Ofrenda",
-    "subtitle": "Tu generosidad sostiene este espacio de paz y sabiduría para buscadores de todo el mundo. Cada ofrenda es recibida con profunda gratitud y atención plena.",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "Tu Saldo de Lotos:",
     "realOffering": "Ofrenda Real",
     "lotusOffering": "Ofrenda de Loto",
@@ -157,12 +157,12 @@
     "realTier2Desc": "Ofrece un loto. Tu nombre se une al Pilar de la Serenidad en la pared del templo.",
     "realTier3Name": "Un Mala",
     "realTier3Desc": "Ofrece un mala de oraciones. Recibe 1,080 pétalos de loto y tu nombre quedará grabado eternamente en el Muro de Colaboradores.",
-    "lotusTier1Name": "Incienso",
-    "lotusTier1Desc": "Una pequeña ofrenda de presencia. Tu energía se une al campo colectivo.",
-    "lotusTier2Name": "Campana de Oración",
-    "lotusTier2Desc": "Toca la campana virtual. Tu intención resuena a través del templo para todos los buscadores.",
-    "lotusTier3Name": "Luz del Santuario",
-    "lotusTier3Desc": "Ilumina el santuario. Tu contribución de luz apoya a la comunidad durante un ciclo lunar.",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "Recibe 🪷 x{count} pétalos de loto",
     "payWithPayPal": "PAGAR CON PAYPAL",
     "offerLotus": "OFRECER PÉTALOS DE LOTO",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "Entra en la luz para hablar con el Guru.",
@@ -263,7 +267,10 @@
     "modalSuccess": "Tu solicitud ha sido recibida con gratitud.",
     "modalSuccessNote": "Nuestro equipo se pondrá en contacto contigo pronto.",
     "modalClose": "Cerrar",
-    "modalError": "Error al enviar. Por favor inténtalo de nuevo."
+    "modalError": "Error al enviar. Por favor inténtalo de nuevo.",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "Millones Tocados por la Frecuencia",

@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "SUPPORT THE SANCTUARY",
     "title": "Make an Offering",
-    "subtitle": "Your generosity sustains this space of peace and wisdom for seekers around the world. Every offering is received with deep gratitude and mindfulness.",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "Your Lotus Balance:",
     "realOffering": "Real Offering",
     "lotusOffering": "Lotus Offering",
@@ -157,12 +157,12 @@
     "realTier2Desc": "Offer a lotus in full bloom. Receive 333 lotus petals — the number of steps on the sacred path.",
     "realTier3Name": "A Mala",
     "realTier3Desc": "Offer a prayer mala. Receive 1,080 lotus petals and have your name eternally etched on the Supporter's Wall.",
-    "lotusTier1Name": "Incense",
+    "lotusTier1Name": "Seed of Wish",
     "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
-    "lotusTier2Name": "Prayer Bell",
+    "lotusTier2Name": "Flower of Wisdom",
     "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
-    "lotusTier3Name": "Shrine Light",
-    "lotusTier3Desc": "Illuminate the shrine. Your contribution of light supports the community for one moon cycle.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "Receive 🪷 x{count} lotus petals",
     "payWithPayPal": "PAY WITH PAYPAL",
     "offerLotus": "OFFER LOTUS PETALS",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "Step into the light to speak with the Guru.",
@@ -263,7 +267,10 @@
     "modalSuccess": "Your application has been received with gratitude.",
     "modalSuccessNote": "Our team will contact you shortly.",
     "modalClose": "Close",
-    "modalError": "Failed to send. Please try again."
+    "modalError": "Failed to send. Please try again.",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "Millions Touched by the Frequency",

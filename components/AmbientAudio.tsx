@@ -74,8 +74,8 @@ export default function AmbientAudio() {
 
         @media (max-width: 768px) {
           .ambient-audio-btn {
-            bottom: 20px;
-            right: 20px;
+            bottom: 72px;
+            right: 16px;
             width: 40px;
             height: 40px;
           }

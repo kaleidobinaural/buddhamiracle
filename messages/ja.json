@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "聖域を支援する",
     "title": "供物を捧げる",
-    "subtitle": "あなたの寛大さが、世界中の求道者のためのこの平和と知恵の空間を支えています。全ての供物は深い感謝と気づきをもって受け取られます。",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "あなたの蓮の残高:",
     "realOffering": "実際の供物",
     "lotusOffering": "蓮の供物",
@@ -157,12 +157,12 @@
     "realTier2Desc": "蓮を捧げましょう。あなたの名前は寺院の壁にある静寂の柱に加わります。",
     "realTier3Name": "数珠 (Mala)",
     "realTier3Desc": "祈りの数珠を捧げてください。蓮の花1,080個を受け取り、あなたの名前が支援者の壁に永遠に刻まれます。",
-    "lotusTier1Name": "お香",
-    "lotusTier1Desc": "ささやかな存在の供物。あなたのエネルギーは集合的な場に加わります。",
-    "lotusTier2Name": "祈りの鐘",
-    "lotusTier2Desc": "仮想の鐘を鳴らしましょう。あなたの意図は寺院全体に響き渡り、全ての求道者に届きます。",
-    "lotusTier3Name": "聖堂の光",
-    "lotusTier3Desc": "聖堂を照らしましょう。あなたの光の貢献は、一月の周期の間、コミュニティを支えます。",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "🪷 蓮の花びら x{count} を受け取る",
     "payWithPayPal": "PayPalで支払う",
     "offerLotus": "蓮の花びらを捧げる",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "師と語るために、光の中に踏み込んでください。",
@@ -263,7 +267,10 @@
     "modalSuccess": "申し込みをありがたく受け付けました。",
     "modalSuccessNote": "担当者よりまもなくご連絡いたします。",
     "modalClose": "閉じる",
-    "modalError": "送信に失敗しました。もう一度お試しください。"
+    "modalError": "送信に失敗しました。もう一度お試しください。",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "周波数に触れた何百万もの魂",

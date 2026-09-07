@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "DUKUNG TEMPAT SUCI",
     "title": "Berikan Persembahan",
-    "subtitle": "Kedermawanan Anda menopang ruang kedamaian dan kebijaksanaan ini bagi para pencari di seluruh dunia. Setiap persembahan diterima dengan rasa syukur mendalam dan penuh kesadaran.",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "Saldo Teratai Anda:",
     "realOffering": "Persembahan Nyata",
     "lotusOffering": "Persembahan Teratai",
@@ -157,12 +157,12 @@
     "realTier2Desc": "Persembahkan setangkai teratai. Nama Anda terukir di Pilar Ketenangan pada dinding kuil.",
     "realTier3Name": "Sebuah Pilar",
     "realTier3Desc": "Mendirikan Pilar Cahaya dengan nama Anda terukir secara permanen di marmer virtual.",
-    "lotusTier1Name": "Dupa",
-    "lotusTier1Desc": "Persembahan kecil atas kehadiran. Energi Anda bergabung dalam medan bersama.",
-    "lotusTier2Name": "Genta Doa",
-    "lotusTier2Desc": "Bunyikan genta virtual. Niat Anda bergema di seluruh kuil bagi semua pencari.",
-    "lotusTier3Name": "Cahaya Altar",
-    "lotusTier3Desc": "Menerangi altar. Kontribusi cahaya Anda mendukung komunitas selama satu siklus bulan.",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "Menerima 🪷 x{count} kelopak teratai",
     "payWithPayPal": "BAYAR DENGAN PAYPAL",
     "offerLotus": "PERSEMBAHKAN KELOPAK TERATAI",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
@@ -263,7 +267,10 @@
     "modalSuccess": "Lamaran Anda telah diterima dengan rasa syukur.",
     "modalSuccessNote": "Tim kami akan menghubungi Anda segera.",
     "modalClose": "Tutup",
-    "modalError": "Gagal mengirim. Silakan coba lagi."
+    "modalError": "Gagal mengirim. Silakan coba lagi.",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "Jutaan Orang Tersentuh oleh Frekuensi",

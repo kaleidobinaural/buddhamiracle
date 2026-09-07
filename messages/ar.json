@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "ادعم الملاذ",
     "title": "قدّم قرباناً",
-    "subtitle": "سخاؤك يدعم مساحة السلام والحكمة هذه للسالكين في جميع أنحاء العالم. يُستقبل كل قربان بامتنان وحضور ذهن عميقين.",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "رصيدك من بتلات اللوتس:",
     "realOffering": "قربان حقيقي",
     "lotusOffering": "قربان اللوتس",
@@ -157,12 +157,12 @@
     "realTier2Desc": "قدم زهرة لوتس. ينضم اسمك إلى عمود السكينة على جدار المعبد.",
     "realTier3Name": "عمود",
     "realTier3Desc": "أقم عموداً من النور مع نقش اسمك بشكل دائم في الرخام الافتراضي.",
-    "lotusTier1Name": "بخور",
-    "lotusTier1Desc": "قربان صغير للحضور. تنضم طاقتك إلى المجال الجماعي.",
-    "lotusTier2Name": "جرس الصلاة",
-    "lotusTier2Desc": "اقرع الجرس الافتراضي. تتردد نيتك في المعبد لجميع السالكين.",
-    "lotusTier3Name": "نور المزار",
-    "lotusTier3Desc": "أنر المزار. يدعم إسهامك بالنور المجتمع لدورة قمرية واحدة.",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "احصل على 🪷 x{count} بتلة لوتس",
     "payWithPayPal": "الدفع عبر PAYPAL",
     "offerLotus": "تقديم بتلات اللوتس",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "ادخل في النور للتحدث مع الغورو.",
@@ -263,7 +267,10 @@
     "modalSuccess": "تم استلام طلبك بامتنان.",
     "modalSuccessNote": "سيتصل بك فريقنا قريباً.",
     "modalClose": "إغلاق",
-    "modalError": "فشل الإرسال. يرجى المحاولة مرة أخرى."
+    "modalError": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "ملايين تأثروا بالتردد",

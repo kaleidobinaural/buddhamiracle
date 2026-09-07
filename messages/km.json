@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "គាំទ្រទីសក្ការៈ",
     "title": "ធ្វើការបូជា",
-    "subtitle": "ទឹកចិត្តសប្បុរសរបស់អ្នកទ្រទ្រង់ទីកន្លែងនៃសន្តិភាព និងប្រាជ្ញានេះសម្រាប់អ្នកស្វែងរកធម៌ជុំវិញពិភពលោក។ គ្រប់ការបូជានឹងត្រូវបានទទួលដោយសេចក្តីថ្លែងអំណរគុណ និងការរលឹកដឹងយ៉ាងជ្រាលជ្រៅ។",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "សមតុល្យផ្កាឈូករបស់អ្នក៖",
     "realOffering": "ការបូជាពិតប្រាកដ",
     "lotusOffering": "ការបូជាផ្កាឈូក",
@@ -157,12 +157,12 @@
     "realTier2Desc": "ប្រគេនផ្កាឈូកមួយទង។ ឈ្មោះរបស់អ្នកនឹងបង្ហាញនៅលើសសរភាពស្ងប់ស្ងាត់នៅលើជញ្ជាំងប្រាសាទ។",
     "realTier3Name": "សសរទ្រទ្រង់មួយ",
     "realTier3Desc": "សង់សសរពន្លឺមួយ ដែលមានឈ្មោះរបស់អ្នកចារឹកយ៉ាងរឹងមាំនៅលើថ្មម៉ាតនិម្មិត។",
-    "lotusTier1Name": "ធូប",
-    "lotusTier1Desc": "ការបូជាតូចមួយនៃវត្តមាន។ ថាមពលរបស់អ្នករួមបញ្ចូលគ្នាជាមួយចរន្តរួម។",
-    "lotusTier2Name": "ជួងអធិស្ឋាន",
-    "lotusTier2Desc": "វាយជួងនិម្មិត។ បំណងប្រាថ្នារបស់អ្នករំញ័រពាសពេញប្រាសាទសម្រាប់អ្នកស្វែងរកធម៌ទាំងអស់។",
-    "lotusTier3Name": "ពន្លឺអាសនៈ",
-    "lotusTier3Desc": "បំភ្លឺអាសនៈ។ ការចូលរួមចំណែកនៃពន្លឺរបស់អ្នកគាំទ្រសហគមន៍សម្រាប់មួយរដូវខែ។",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "ទទួលបាន 🪷 ស្រទាប់ផ្កាឈូក x{count}",
     "payWithPayPal": "ទូទាត់តាម PAYPAL",
     "offerLotus": "ប្រគេនស្រទាប់ផ្កាឈូក",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "ចូលក្នុងពន្លឺដើម្បីនិយាយជាមួយ Guru",
@@ -263,7 +267,10 @@
     "modalSuccess": "ពាក្យសុំរបស់អ្នកត្រូវបានទទួលដោយការដឹងគុណ",
     "modalSuccessNote": "ក្រុមការងាររបស់យើងនឹងទាក់ទងអ្នកក្នុងពេលឆាប់ៗ",
     "modalClose": "បិទ",
-    "modalError": "ការផ្ញើបានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត"
+    "modalError": "ការផ្ញើបានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "មនុស្សរាប់លាននាក់ត្រូវបានប៉ះដោយប្រេកង់",

@@ -147,7 +147,7 @@
   "Donate": {
     "eyebrow": "ỦNG HỘ TỊNH XÁ",
     "title": "Phát Tâm Cúng Nhường",
-    "subtitle": "Lòng hảo tâm của bạn duy trì không gian thanh bình và trí tuệ này cho những người tìm kiếm trên khắp thế giới. Mỗi cúng nhường đều được đón nhận với lòng biết ơn và sự chánh niệm sâu sắc.",
+    "subtitle": "Your compassion sustains this space of peace and wisdom. All offerings are received with deep gratitude and mindfulness.",
     "balance": "Số Hoa Sen Hiện Có:",
     "realOffering": "Cúng Nhường Thực Tế",
     "lotusOffering": "Cúng Nhường Hoa Sen",
@@ -157,12 +157,12 @@
     "realTier2Desc": "Dâng một đóa sen. Tên của bạn sẽ được khắc lên Trụ Tĩnh Lặng trên tường đền.",
     "realTier3Name": "Trụ Ánh Sáng",
     "realTier3Desc": "Dựng nên một Trụ Đá Ánh Sáng với tên bạn được khắc vĩnh viễn trên đá cẩm thạch ảo.",
-    "lotusTier1Name": "Nén Hương Thiêng",
-    "lotusTier1Desc": "Một chút hương lòng gửi gắm. Năng lượng của bạn hòa vào trường năng lượng chung.",
-    "lotusTier2Name": "Chuông Thỉnh Nguyện",
-    "lotusTier2Desc": "Thỉnh ngọn chuông ảo. Tâm nguyện của bạn vang vọng khắp ngôi đền cho tất cả chúng sinh.",
-    "lotusTier3Name": "Đèn Phật Đường",
-    "lotusTier3Desc": "Thắp sáng bàn thờ Phật. Đóng góp ánh sáng của bạn hỗ trợ cộng đồng trong một chu kỳ trăng.",
+    "lotusTier1Name": "Seed of Wish",
+    "lotusTier1Desc": "A small offering of presence. Your energy joins the collective field.",
+    "lotusTier2Name": "Flower of Wisdom",
+    "lotusTier2Desc": "Ring the virtual bell. Your intention resonates through the temple for all seekers.",
+    "lotusTier3Name": "Light of the Sanctuary",
+    "lotusTier3Desc": "Illuminate the shrine. Your light supports this sacred space for one moon cycle.",
     "receiveLotus": "Nhận 🪷 x{count} cánh hoa sen",
     "payWithPayPal": "THANH TOÁN QUA PAYPAL",
     "offerLotus": "CÚNG NHƯỜNG CÁNH HOA SEN",
@@ -185,7 +185,11 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
-    "inquiryError": "An error occurred. Please try again."
+    "inquiryError": "An error occurred. Please try again.",
+    "paypalTitle": "Open Offering",
+    "paypalFreeAmount": "As much as your heart gives",
+    "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
+    "buyMoreLotus": "Purchase Lotus"
   },
   "Chat": {
     "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
@@ -263,7 +267,10 @@
     "modalSuccess": "Đơn đăng ký của bạn đã được nhận với lòng biết ơn.",
     "modalSuccessNote": "Đội ngũ của chúng tôi sẽ liên hệ với bạn sớm.",
     "modalClose": "Đóng",
-    "modalError": "Gửi thất bại. Vui lòng thử lại."
+    "modalError": "Gửi thất bại. Vui lòng thử lại.",
+    "getMusic": "Get the Music",
+    "instantTitle": "Digital Downloads",
+    "instantSubtitle": "Instant Access · Download Forever"
   },
   "Resonance": {
     "title": "Hàng Triệu Người Được Chạm Đến Bởi Tần Số",
