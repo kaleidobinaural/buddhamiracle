@@ -47,15 +47,22 @@ export default function Navigation() {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Sync mobile-nav-open class on body to hide floating audio button
+  // Sync mobile-nav-open class on body to hide floating audio button & lock body scroll
   useEffect(() => {
     if (mobileOpen) {
       document.body.classList.add('mobile-nav-open');
+      document.body.style.overflow = 'hidden';
+      // Auto pause ambient audio when mobile drawer opens
+      if (isAudioPlaying) {
+        window.dispatchEvent(new CustomEvent('toggle-ambient-audio'));
+      }
     } else {
       document.body.classList.remove('mobile-nav-open');
+      document.body.style.overflow = '';
     }
     return () => {
       document.body.classList.remove('mobile-nav-open');
+      document.body.style.overflow = '';
     };
   }, [mobileOpen]);
 
@@ -78,9 +85,11 @@ export default function Navigation() {
     { href: '/wish-roof', key: 'wishRoof' },
     { href: '/hall', key: 'hall' },
     { href: '/dharma', key: 'dharma' },
-    { href: '/store', key: 'store' },
     { href: '/resonance', key: 'resonance' },
+    { href: '/store', key: 'store' },
   ];
+
+  const mobileNavLinks = navLinks.filter(link => link.key !== 'home');
 
   return (
     <>
@@ -210,7 +219,7 @@ export default function Navigation() {
         <nav className={`mobile-nav ${mobileOpen ? 'open' : ''}`}>
           <div className="mobile-nav-inner">
             <div className="mobile-nav-links">
-              {navLinks.map((link, i) => (
+              {mobileNavLinks.map((link, i) => (
                 <Link 
                   key={link.href} 
                   href={link.href as any} 
@@ -220,41 +229,18 @@ export default function Navigation() {
                   {t(link.key)}
                 </Link>
               ))}
-              <Link href="/donate" className="mobile-nav-link bloom-7" onClick={() => setMobileOpen(false)}>
+              <Link href="/donate" className="mobile-nav-link bloom-8" onClick={() => setMobileOpen(false)}>
                 {t('donate')}
               </Link>
               {!session?.user && (
-                <Link href="/login" className="mobile-nav-link bloom-8" style={{ color: 'var(--primary-gold)', fontStyle: 'italic' }} onClick={() => setMobileOpen(false)}>
+                <Link href="/login" className="mobile-nav-link bloom-9" style={{ color: 'var(--primary-gold)', fontStyle: 'italic' }} onClick={() => setMobileOpen(false)}>
                   {t('signIn')}
                 </Link>
               )}
-              <div className="bloom-9" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '14px' }}>
+              <div className="bloom-10" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '14px' }}>
                 <Link href="/privacy" className="mobile-nav-link" style={{ fontSize: '1.05rem', color: '#777', textDecoration: 'none' }} onClick={() => setMobileOpen(false)}>
                   {t('privacyPolicy')}
                 </Link>
-                <span style={{ color: '#444' }}>•</span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    window.dispatchEvent(new CustomEvent('toggle-ambient-audio'));
-                  }}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: isAudioPlaying ? 'var(--primary-gold)' : '#777',
-                    cursor: 'pointer',
-                    fontSize: '1.05rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '4px'
-                  }}
-                  title={isAudioPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
-                  aria-label="Toggle Ambient Sound"
-                >
-                  <span style={{ fontSize: '1.1rem' }}>{isAudioPlaying ? '🔊' : '🔇'}</span>
-                  <span style={{ fontSize: '0.95rem' }}>{isAudioPlaying ? (locale === 'ko' ? '소리 켬' : 'Sound') : (locale === 'ko' ? '소리 끔' : 'Muted')}</span>
-                </button>
               </div>
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select

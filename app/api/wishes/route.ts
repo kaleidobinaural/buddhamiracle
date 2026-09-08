@@ -186,13 +186,18 @@ export async function POST(req: NextRequest) {
   }
 
   // Rate limiting — max 5 wishes per minute per user
-  const userEmail = session.user.email!;
-  if (isRateLimited(userEmail)) {
+  const rawEmail = session.user.email!;
+  if (isRateLimited(rawEmail)) {
     return NextResponse.json(
       { error: 'Too many wishes sent. Please wait a moment before inscribing another.' },
       { status: 429 }
     );
   }
+
+  const userEmail = rawEmail.trim().toLowerCase();
+  const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+  const isAdmin = adminEmails.includes(userEmail);
+  const WISH_LOTUS_COST = 3;
 
   try {
     const body = await req.json();
@@ -204,6 +209,24 @@ export async function POST(req: NextRequest) {
 
     if (content.length > 500) {
       return NextResponse.json({ error: 'Wish is too long (max 500 characters)' }, { status: 400 });
+    }
+
+    // Check lotus balance
+    const { data: limitData } = await supabase
+      .from('user_limits')
+      .select('id, lotus_count')
+      .ilike('email', userEmail)
+      .maybeSingle();
+
+    const currentLotuses = limitData?.lotus_count ?? 0;
+    if (!isAdmin && currentLotuses < WISH_LOTUS_COST) {
+      return NextResponse.json(
+        {
+          error: `You need ${WISH_LOTUS_COST} lotus petals to inscribe a wish. You have ${currentLotuses}.`,
+          lotus_count: currentLotuses
+        },
+        { status: 403 }
+      );
     }
 
     const { data, error } = await supabase
@@ -218,7 +241,17 @@ export async function POST(req: NextRequest) {
       .select();
 
     if (error) throw error;
-    return NextResponse.json({ success: true, data });
+
+    // Deduct 3 lotuses
+    const newLotusCount = isAdmin ? currentLotuses : Math.max(0, currentLotuses - WISH_LOTUS_COST);
+    if (limitData?.id && !isAdmin) {
+      await supabase
+        .from('user_limits')
+        .update({ lotus_count: newLotusCount })
+        .eq('id', limitData.id);
+    }
+
+    return NextResponse.json({ success: true, data, lotus_count: newLotusCount });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

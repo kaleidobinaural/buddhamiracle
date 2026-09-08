@@ -41,8 +41,36 @@ export default function DonatePage() {
   async function handleLotusOffer(tier: typeof LOTUS_TIERS[0]) {
     if (status !== 'authenticated') { window.location.href = '/api/auth/signin'; return; }
     if (lotusCount !== null && lotusCount < tier.lotus) { setShowUpgradeModal(true); return; }
-    setNotification({ message: tDonate('comingSoon', { count: tier.lotus }), show: true });
-    setTimeout(() => setNotification({ message: '', show: false }), 3000);
+
+    try {
+      const res = await fetch('/api/user/lotus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: tier.lotus, reason: `offering_${tier.id}` }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        if (typeof data.lotus_count === 'number') {
+          setLotusCount(data.lotus_count);
+        }
+        setNotification({
+          message: tDonate('offeringSuccess', { count: tier.lotus }),
+          show: true
+        });
+        setTimeout(() => setNotification({ message: '', show: false }), 4000);
+      } else {
+        if (res.status === 403) {
+          setShowUpgradeModal(true);
+        } else {
+          setNotification({ message: data.error || '공양 처리 중 오류가 발생했습니다.', show: true });
+          setTimeout(() => setNotification({ message: '', show: false }), 3000);
+        }
+      }
+    } catch {
+      setNotification({ message: '공양 처리 중 오류가 발생했습니다.', show: true });
+      setTimeout(() => setNotification({ message: '', show: false }), 3000);
+    }
   }
 
   const handleInquirySubmit = async (e: React.FormEvent) => {

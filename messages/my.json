@@ -189,7 +189,8 @@
     "paypalTitle": "Open Offering",
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
-    "buyMoreLotus": "Purchase Lotus"
+    "buyMoreLotus": "Purchase Lotus",
+    "offeringSuccess": "🙏 ကြာပန်း {count} ပွင့် လှူဒါန်းမှုကို သာဓုခေါ်ဆိုအပ်ပါသည်။"
   },
   "Chat": {
     "unauthMessage": "ဂုရုနှင့် စကားပြောရန် အလင်းထဲသို့ ဝင်ရောက်ပါ",

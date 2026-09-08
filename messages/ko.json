@@ -189,7 +189,8 @@
     "paypalTitle": "자유로운 공양",
     "paypalFreeAmount": "마음이 이끄는 만큼",
     "paypalDesc": "PayPal로 원하시는 만큼 자유롭게 공양해 주세요. 모든 진심 어린 공양을 감사히 받습니다.",
-    "buyMoreLotus": "연꽃 구매하기"
+    "buyMoreLotus": "연꽃 구매하기",
+    "offeringSuccess": "🙏 {count} 연꽃 공양이 사원에 정성스럽게 전해졌습니다."
   },
   "Chat": {
     "unauthMessage": "구루와 대화하려면 빛 안으로 들어오세요.",

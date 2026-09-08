@@ -189,7 +189,8 @@
     "paypalTitle": "Open Offering",
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
-    "buyMoreLotus": "Purchase Lotus"
+    "buyMoreLotus": "Purchase Lotus",
+    "offeringSuccess": "🙏 L'offrande de {count} lotus a été illuminée dans le sanctuaire."
   },
   "Chat": {
     "unauthMessage": "Entrez dans la lumière pour parler au Guru.",

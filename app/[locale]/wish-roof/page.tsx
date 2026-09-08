@@ -167,6 +167,9 @@ export default function WishRoofPage() {
       });
       const result = await response.json();
       if (result.success) {
+        if (typeof result.lotus_count === 'number') {
+          setLotusCount(result.lotus_count);
+        }
         setTimeout(() => {
           setWishes(prev => [result.data[0], ...prev]);
           setFlyingWish(null);
@@ -191,7 +194,7 @@ export default function WishRoofPage() {
       <div className="roof-atmosphere" />
       {mounted && (
         <div className="particles-container">
-          {[...Array(timeOfDay === 'night' ? 40 : 25)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <div key={i} className="particle" style={{ 
               left: `${(i * 37) % 100}%`, 
               top: `${(i * 59) % 100}%`,
@@ -292,57 +295,67 @@ export default function WishRoofPage() {
           </div>
         )}
 
-        <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { minHeight: `${Math.max(100, Math.ceil(wishes.length / 5) * 40)}vh` } : {}}>
-          {isLoading ? (
-            <div className="loading-state">{t('loading')}</div>
-          ) : wishes.length === 0 ? (
-            <div className="empty-state">{t('empty')}</div>
-          ) : (
-            wishes.map((wish, index) => {
-              // Create a deterministic pseudo-random seed based on the wish ID
-              const seed = Math.abs(
-                wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
-              );
-              
-              // Pseudo-random scatter (5% to 85% of screen width/height to avoid cutoff)
-              const left = 5 + (seed % 80); 
-              const top = 5 + ((seed >> 3) % 80);
-              const scale = 0.5 + ((seed >> 6) % 6) * 0.12;
-              const opacity = 0.6 + ((seed >> 9) % 10) * 0.04;
-              
-              return (
-                <div 
-                  key={wish.id} 
-                  className="lantern-wrapper"
-                  onClick={() => setSelectedWish(wish)}
-                  style={viewMode === 'sky' ? { 
-                    left: `${left}%`, 
-                    top: `${top}%`, 
-                    transform: `scale(${scale})`,
-                    opacity: opacity,
-                    zIndex: Math.floor(scale * 10),
-                    animationDelay: `${(index % 8) * 0.7}s`,
-                    cursor: 'zoom-in'
-                  } : { cursor: 'zoom-in' }}
-                >
-                  <article className={`lantern ${wish.user_email === session?.user?.email ? 'is-mine' : ''} ${viewMode === 'grid' ? 'grid-item' : ''}`}>
-                    <div className="lantern-light" />
-                    {(wish.likes_count || 0) > 0 && <div className="lantern-aura-glow" />}
-                    <div className="lantern-content">
-                      <p className="lantern-text">“{wish.content}”</p>
-                      <div className="lantern-meta">
-                        <span className="lantern-author">{wish.user_name}</span>
-                        {(wish.likes_count || 0) > 0 && <span className="stat-likes">✨ {wish.likes_count}</span>}
-                        {!wish.is_public && <span className="badge-private">Private</span>}
-                      </div>
+        {/* Sacred Sky Frame / Viewport */}
+        <div className="sacred-sky-frame">
+          <div className="sky-fade-top" aria-hidden="true" />
+          <div className="sacred-sky-scroll-area">
+            <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { height: `${Math.max(650, Math.ceil(wishes.length / 3) * 200)}px` } : {}}>
+              {isLoading ? (
+                <div className="loading-state">{t('loading')}</div>
+              ) : wishes.length === 0 ? (
+                <div className="empty-state">{t('empty')}</div>
+              ) : (
+                wishes.map((wish, index) => {
+                  // Create a deterministic pseudo-random seed based on the wish ID
+                  const seed = Math.abs(
+                    wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
+                  );
+                  
+                  const canvasHeight = Math.max(650, Math.ceil(wishes.length / 3) * 200);
+                  const totalSlots = Math.max(1, wishes.length);
+                  const baseTop = (index / totalSlots) * (canvasHeight - 260) + 30;
+                  const jitterTop = ((seed >> 2) % 60) - 30;
+                  const top = Math.max(20, Math.min(canvasHeight - 240, baseTop + jitterTop));
+                  const left = 6 + (seed % 78);
+                  const scale = 0.6 + ((seed >> 6) % 5) * 0.1;
+                  const opacity = 0.75 + ((seed >> 9) % 10) * 0.025;
+                  
+                  return (
+                    <div 
+                      key={wish.id} 
+                      className="lantern-wrapper"
+                      onClick={() => setSelectedWish(wish)}
+                      style={viewMode === 'sky' ? { 
+                        left: `${left}%`, 
+                        top: `${top}px`, 
+                        transform: `scale(${scale})`,
+                        opacity: opacity,
+                        zIndex: Math.floor(scale * 10),
+                        animationDelay: `${(index % 8) * 0.7}s`,
+                        cursor: 'zoom-in'
+                      } : { cursor: 'zoom-in' }}
+                    >
+                      <article className={`lantern ${wish.user_email === session?.user?.email ? 'is-mine' : ''} ${viewMode === 'grid' ? 'grid-item' : ''}`}>
+                        <div className="lantern-light" />
+                        {(wish.likes_count || 0) > 0 && <div className="lantern-aura-glow" />}
+                        <div className="lantern-content">
+                          <p className="lantern-text">“{wish.content}”</p>
+                          <div className="lantern-meta">
+                            <span className="lantern-author">{wish.user_name}</span>
+                            {(wish.likes_count || 0) > 0 && <span className="stat-likes">✨ {wish.likes_count}</span>}
+                            {!wish.is_public && <span className="badge-private">Private</span>}
+                          </div>
+                        </div>
+                        <div className="lantern-tassel" />
+                      </article>
                     </div>
-                    <div className="lantern-tassel" />
-                  </article>
-                </div>
-              );
-            })
-          )}
-        </section>
+                  );
+                })
+              )}
+            </section>
+          </div>
+          <div className="sky-fade-bottom" aria-hidden="true" />
+        </div>
 
       {/* ── Wish Input Modal ── */}
       {isModalOpen && (
@@ -544,31 +557,75 @@ export default function WishRoofPage() {
         .btn-view { padding: 10px 20px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 10px; font-size: 0.95rem; transition: all 0.3s; }
         .btn-view.active { background: var(--primary-gold); color: #000; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3); }
 
-        /* Modes */
-        .lantern-display.sky-mode { position: relative; width: 100%; margin-top: 40px; }
-        .lantern-display.grid-mode { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 50px; justify-items: center; }
+        /* Sacred Sky Viewport Frame */
+        .sacred-sky-frame {
+          position: relative;
+          width: 100%;
+          margin: 28px auto 40px;
+          border-radius: 20px;
+          background: radial-gradient(ellipse at 50% 15%, rgba(26, 18, 50, 0.45) 0%, rgba(8, 8, 7, 0.95) 100%);
+          border: 1px solid rgba(212, 160, 23, 0.25);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(212, 160, 23, 0.04);
+          overflow: hidden;
+        }
 
-        .lantern-wrapper { transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .sacred-sky-scroll-area {
+          height: clamp(480px, 64vh, 720px);
+          overflow-y: auto;
+          overflow-x: hidden;
+          overscroll-behavior: contain;
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+          padding: 20px 10px;
+        }
+
+        .sky-fade-top {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 40px;
+          background: linear-gradient(to bottom, rgba(8, 8, 7, 0.95), transparent);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .sky-fade-bottom {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 50px;
+          background: linear-gradient(to top, rgba(8, 8, 7, 0.95), transparent);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* Modes */
+        .lantern-display.sky-mode { position: relative; width: 100%; }
+        .lantern-display.grid-mode { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px; justify-items: center; padding: 20px 10px; }
+
+        .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }
         .sky-mode .lantern-wrapper { position: absolute; animation: lantern-float-sky 15s ease-in-out infinite; }
         
         @keyframes lantern-float-sky { 
           0%, 100% { transform: translate(0, 0) scale(1) rotate(0.5deg); } 
-          33% { transform: translate(15px, -30px) scale(1.15) rotate(-0.5deg); } 
-          66% { transform: translate(-15px, -15px) scale(0.9) rotate(0.2deg); }
+          33% { transform: translate(12px, -20px) scale(1.08) rotate(-0.5deg); } 
+          66% { transform: translate(-12px, -10px) scale(0.94) rotate(0.2deg); }
         }
 
         .lantern { 
-          width: 180px; 
-          height: 250px; 
-          background: linear-gradient(180deg, rgba(212, 160, 23, 0.25) 0%, rgba(0, 0, 0, 0.8) 100%); 
+          width: 170px; 
+          height: 240px; 
+          background: linear-gradient(180deg, rgba(212, 160, 23, 0.22) 0%, rgba(0, 0, 0, 0.85) 100%); 
           border: 1px solid rgba(212, 160, 23, 0.3); 
           border-radius: 15px 15px 45px 45px; 
-          padding: 24px 20px; 
+          padding: 22px 18px; 
           display: flex; 
           flex-direction: column; 
           text-align: center; 
           position: relative; 
-          box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(212, 160, 23, 0.1); 
+          box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 15px rgba(212, 160, 23, 0.08); 
           transition: all 0.4s var(--ease-expo);
         }
 
@@ -588,7 +645,7 @@ export default function WishRoofPage() {
 
         .zoomed .lantern-text { font-size: 1.6rem; line-height: 1.5; margin-bottom: 24px; -webkit-line-clamp: unset; }
         .zoomed .lantern-author { font-size: 1rem; }
-        .zoomed .lantern-light { width: 150px; height: 180px; filter: blur(30px); }
+        .zoomed .lantern-light { width: 150px; height: 180px; filter: blur(25px); }
 
         .wish-stats { margin-top: 16px; color: var(--primary-gold); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; }
         .btn-light-up { 
@@ -601,14 +658,16 @@ export default function WishRoofPage() {
 
         .stat-likes { font-size: 0.7rem; color: var(--primary-gold); margin-left: 8px; font-weight: 700; }
         .lantern-aura-glow {
-          position: absolute; inset: -15px; background: radial-gradient(circle, rgba(212, 160, 23, 0.2) 0%, transparent 70%);
-          border-radius: 50%; filter: blur(10px); animation: breathing-aura 3s ease-in-out infinite;
+          position: absolute; inset: -15px; 
+          background: radial-gradient(circle, rgba(212, 160, 23, 0.35) 0%, rgba(212, 160, 23, 0.08) 45%, transparent 70%);
+          border-radius: 50%; 
+          animation: breathing-aura 3s ease-in-out infinite;
           pointer-events: none;
         }
 
         @keyframes breathing-aura {
           0%, 100% { transform: scale(1); opacity: 0.4; }
-          50% { transform: scale(1.3); opacity: 0.7; }
+          50% { transform: scale(1.25); opacity: 0.7; }
         }
 
         .zoomed-lantern-container { position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; z-index: 100001; }

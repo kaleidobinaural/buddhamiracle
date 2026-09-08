@@ -24,6 +24,7 @@ export default function StorePage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [vvipSpots, setVvipSpots] = useState(3);
+  const [videoInteractive, setVideoInteractive] = useState(false);
 
   useEffect(() => {
     // Follower Count Logic
@@ -88,11 +89,15 @@ export default function StorePage() {
           <p className="store-hero-sub">{t('heroSub')}</p>
           <p className="store-hero-desc">{t('heroDesc')}</p>
 
-          <div className="store-video-wrap">
+          <div 
+            className={`store-video-wrap ${videoInteractive ? 'interactive' : ''}`}
+            onClick={() => setVideoInteractive(true)}
+          >
             <iframe
               src="https://www.youtube.com/embed/W_vibklRdqY?autoplay=1&mute=1&loop=1&playsinline=1&fs=0&playlist=W_vibklRdqY&rel=0&controls=0&modestbranding=1&disablekb=1"
               allow="autoplay; fullscreen"
               allowFullScreen
+              loading="lazy"
               style={{ border: 'none', width: '100%', height: '100%' }}
             />
           </div>
@@ -390,6 +395,11 @@ export default function StorePage() {
         .store-hero-desc { font-size: 1.1rem; color: #888; max-width: 600px; margin: 0 auto 40px; }
         
         .store-video-wrap { position: relative; width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 768px) {
+          .store-video-wrap:not(.interactive) iframe {
+            pointer-events: none;
+          }
+        }
         .store-caption { text-align: center; font-size: 0.85rem; color: #666; margin-top: 16px; }
         
         .store-science-inner { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; }

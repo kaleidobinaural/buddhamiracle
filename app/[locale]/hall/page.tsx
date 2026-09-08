@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -11,9 +11,12 @@ export default function HallPage() {
   const router = useRouter();
   const t = useTranslations('hall');
   const tWish = useTranslations('WishRoof');
-  const { data: session } = useSession();
+  const tGuru = useTranslations('Guru');
+  const { data: session, status } = useSession();
   const [is3DMode, setIs3DMode] = useState(false);
   const [isEcoMode, setIsEcoMode] = useState(false);
+  const [lotusCount, setLotusCount] = useState<number | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   
   // Offering Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,9 +25,29 @@ export default function HallPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [snackbar, setSnackbar] = useState<{ message: string; show: boolean }>({ message: '', show: false });
 
+  useEffect(() => {
+    if (session?.user) {
+      fetch('/api/user/lotus')
+        .then(r => r.json())
+        .then(d => { if (typeof d.lotus_count === 'number') setLotusCount(d.lotus_count); })
+        .catch(() => {});
+    }
+  }, [session]);
+
   const handleOfferingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newWish.trim() || isSubmitting) return;
+
+    if (status !== 'authenticated') {
+      window.location.href = '/api/auth/signin';
+      return;
+    }
+
+    if (lotusCount !== null && lotusCount < 3) {
+      setIsModalOpen(false);
+      setShowUpgradeModal(true);
+      return;
+    }
 
     const wishText = newWish.trim();
     const userName = session?.user?.name || 'Anonymous';
@@ -39,9 +62,18 @@ export default function HallPage() {
       });
       const result = await response.json();
       if (result.success) {
+        if (typeof result.lotus_count === 'number') {
+          setLotusCount(result.lotus_count);
+        }
         setIsModalOpen(false);
         setNewWish('');
-        setSnackbar({ message: 'Your offering has been illuminated. 🙏', show: true });
+        setSnackbar({ message: 'Your offering has been illuminated. 🙏 (3 🪷)', show: true });
+        setTimeout(() => setSnackbar({ message: '', show: false }), 4000);
+      } else if (response.status === 403) {
+        setIsModalOpen(false);
+        setShowUpgradeModal(true);
+      } else {
+        setSnackbar({ message: result.error || 'Offering failed.', show: true });
         setTimeout(() => setSnackbar({ message: '', show: false }), 4000);
       }
     } catch (err) {
@@ -93,7 +125,15 @@ export default function HallPage() {
       {isModalOpen && (
         <div className="ritual-modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
-            <h2 className="modal-title">{tWish('modalTitle')}</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2 className="modal-title" style={{ margin: 0 }}>{tWish('modalTitle')}</h2>
+              {session?.user && lotusCount !== null && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary-gold)', fontSize: '0.85rem', fontWeight: 600, background: 'rgba(212,160,23,0.1)', padding: '4px 10px', borderRadius: '100px', border: '1px solid rgba(212,160,23,0.2)', whiteSpace: 'nowrap' }}>
+                  <span>🪷</span>
+                  <span>{lotusCount}</span>
+                </div>
+              )}
+            </div>
             <form onSubmit={handleOfferingSubmit}>
               <textarea 
                 className="wish-input"
@@ -117,6 +157,43 @@ export default function HallPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Lotus Upgrade Modal */}
+      {showUpgradeModal && (
+        <div className="ritual-modal-overlay" onClick={() => setShowUpgradeModal(false)}>
+          <div className="modal-content glass-card animate-fade-up text-center" onClick={e => e.stopPropagation()}>
+            <div style={{ padding: '20px', textAlign: 'center' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🪷</div>
+              <h2 className="modal-title">{tGuru('upgradeTitle')}</h2>
+              <p style={{
+                fontFamily: 'var(--font-serif)', fontSize: '1rem',
+                color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '28px',
+              }}>
+                {tGuru('upgradeBody')}
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                <a
+                  href="/store#lotus-section"
+                  className="btn-gold"
+                  style={{ flex: 1, padding: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
+                >
+                  🪷 {tGuru('buyLotus')}
+                </a>
+                <button
+                  onClick={() => setShowUpgradeModal(false)}
+                  style={{
+                    flex: 1, background: 'none', border: '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: '8px', padding: '12px', color: 'rgba(255,255,255,0.5)',
+                    cursor: 'pointer', fontFamily: 'var(--font-serif)', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center'
+                  }}
+                >
+                  {tGuru('returnToSilence')}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -181,43 +258,43 @@ export default function HallPage() {
         }
 
         .explore-btn, .offering-btn, .exit-btn, .eco-btn {
-  background: rgba(212, 160, 23, 0.15);
-  border: 1px solid rgba(212, 160, 23, 0.4);
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-  width: 100%;
-}
+          background: rgba(212, 160, 23, 0.15);
+          border: 1px solid rgba(212, 160, 23, 0.4);
+          color: #fff;
+          padding: 14px 20px;
+          border-radius: 20px;
+          font-size: 0.95rem;
+          letter-spacing: 0.05em;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          backdrop-filter: blur(10px);
+          text-decoration: none;
+          width: 100%;
+        }
 
-@media (max-width: 768px) {
-  .explore-btn, .offering-btn, .exit-btn, .eco-btn {
-    flex-direction: column;
-    padding: 12px 10px;
-    font-size: 0.85rem;
-    gap: 4px;
-    text-align: center;
-    justify-content: center;
-  }
-}
+        @media (max-width: 768px) {
+          .explore-btn, .offering-btn, .exit-btn, .eco-btn {
+            flex-direction: column;
+            padding: 12px 10px;
+            font-size: 0.85rem;
+            gap: 4px;
+            text-align: center;
+            justify-content: center;
+          }
+        }
 
         .explore-btn {
-  background: rgba(212, 160, 23, 0.8) !important;
-  color: #000 !important;
-  font-weight: 700 !important;
-  border: none !important;
-  box-shadow: 0 10px 25px rgba(212, 160, 23, 0.4);
-}
+          background: rgba(212, 160, 23, 0.8) !important;
+          color: #000 !important;
+          font-weight: 700 !important;
+          border: none !important;
+          box-shadow: 0 10px 25px rgba(212, 160, 23, 0.4);
+        }
 
         @keyframes gold-pulse {
           from { box-shadow: 0 0 10px rgba(212, 160, 23, 0.3), 0 5px 15px rgba(212, 160, 23, 0.2); }
@@ -258,10 +335,9 @@ export default function HallPage() {
         }
 
         .eco-btn {
-  background: rgba(30, 80, 30, 0.6);
+          background: rgba(30, 80, 30, 0.6);
           border-color: rgba(100, 200, 100, 0.3);
           color: rgba(150, 220, 150, 0.9);
-          /* Same shape as other buttons - inherited from .explore-btn, .offering-btn, .exit-btn */
         }
 
         .eco-btn:hover {
@@ -276,11 +352,6 @@ export default function HallPage() {
           border-color: rgba(100, 220, 100, 0.7);
           color: #7dff7d;
           box-shadow: 0 0 15px rgba(80, 200, 80, 0.3);
-        }
-
-        .explore-btn.active {
-          background: #d4a017;
-          color: #000;
         }
 
         .btn-icon {

@@ -189,7 +189,8 @@
     "paypalTitle": "Open Offering",
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
-    "buyMoreLotus": "Purchase Lotus"
+    "buyMoreLotus": "Purchase Lotus",
+    "offeringSuccess": "🙏 ការបូជាផ្កាឈូក {count} ត្រូវបានបំភ្លឺនៅក្នុងទីសក្ការៈ។"
   },
   "Chat": {
     "unauthMessage": "ចូលក្នុងពន្លឺដើម្បីនិយាយជាមួយ Guru",
