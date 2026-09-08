@@ -114,7 +114,8 @@
     "wishMadePublic": "El deseo ahora es público.",
     "wishMadePrivate": "El deseo ahora es privado.",
     "viewAllWishes": "Ver todos los deseos",
-    "viewingMyWishes": "Mis deseos ({count})"
+    "viewingMyWishes": "Mis deseos ({count})",
+    "searchResultCount": "Resultados ({count})"
   },
   "Pillars": {
     "eyebrow": "La Fundación Eterna",

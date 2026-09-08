@@ -114,7 +114,8 @@
     "wishMadePublic": "Wish is now public.",
     "wishMadePrivate": "Wish is now private.",
     "viewAllWishes": "View All Wishes",
-    "viewingMyWishes": "My Wishes ({count})"
+    "viewingMyWishes": "My Wishes ({count})",
+    "searchResultCount": "Results ({count})"
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",

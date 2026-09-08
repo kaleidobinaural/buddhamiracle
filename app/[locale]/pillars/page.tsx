@@ -156,11 +156,22 @@ export default function PillarsPage() {
             <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
           </form>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <Link href="/donate" className="btn-gold-glow-v2" style={{ padding: '12px 32px' }}>
               ♡ {t('donate')}
             </Link>
           </div>
+
+          {searchQuery && (
+            <div className="search-status-banner animate-fade-up">
+              <div className="search-status-chip">
+                <span className="search-status-icon">🔍</span>
+                <span className="search-status-text">
+                  &ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: pillars.length }) || `검색 결과 (${pillars.length}개)`}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
         <section className={`pillars-display ${viewMode}-mode`}>
@@ -425,26 +436,24 @@ export default function PillarsPage() {
           {searchQuery && (
             <button
               type="button"
-              className="btn-bottom-view-all"
+              className="btn-bottom-pill"
               onClick={() => {
                 setSearchQuery('');
                 fetchPillars('', sortBy, role);
               }}
             >
-              <span className="btn-view-all-text">
-                🔍 &ldquo;{searchQuery}&rdquo; ({pillars.length})
-              </span>
-              <span className="btn-view-all-badge">↺ {t('viewAll') || '전체 목록 보기'}</span>
+              <span className="btn-bottom-icon">↺</span>
+              <span className="btn-bottom-label">{t('viewAll') || '전체 목록 보기'}</span>
             </button>
           )}
           <button
             type="button"
-            className="btn-scroll-pillars-top"
+            className="btn-bottom-pill"
             onClick={scrollToTop}
             title={t('scrollToTop') || '맨 위로'}
           >
-            <span className="scroll-arrow-icon">↑</span>
-            <span className="scroll-arrow-label">{t('scrollToTop') || '맨 위로'}</span>
+            <span className="btn-bottom-icon">↑</span>
+            <span className="btn-bottom-label">{t('scrollToTop') || '맨 위로'}</span>
           </button>
         </div>
 
@@ -496,8 +505,32 @@ export default function PillarsPage() {
         .page-subtitle { font-size: 1.15rem; color: var(--text-tertiary); max-width: 600px; margin: 0 auto; line-height: 1.8; }
         .loading-state, .empty-state { text-align: center; padding: 100px 0; color: var(--text-tertiary); font-style: italic; font-size: 1.1rem; width: 100%; }
         
-        .pillars-top-actions { display: flex; flex-direction: column; align-items: center; gap: 32px; margin-bottom: 80px; }
+        .pillars-top-actions { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 28px; }
         .control-group { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; align-items: center; }
+
+        .search-status-banner {
+          display: flex;
+          justify-content: center;
+          margin-top: 16px;
+          margin-bottom: 4px;
+          width: 100%;
+        }
+        .search-status-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 22px;
+          border-radius: 30px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          color: var(--primary-gold);
+          font-size: 0.9rem;
+          font-family: var(--font-ui);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(10px);
+        }
+        .search-status-icon { font-size: 1.05rem; }
+        .search-status-text { letter-spacing: 0.03em; }
 
         .btn-music-glass { 
           background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;
@@ -526,7 +559,7 @@ export default function PillarsPage() {
         }
 
         /* Hall Mode (Coverflow Carousel) */
-        .hall-mode { overflow: visible; padding: 40px 0; perspective: 1200px; }
+        .hall-mode { overflow: visible; padding: 16px 0 32px; perspective: 1200px; }
         .pillars-swiper { width: 100%; padding-top: 50px; padding-bottom: 100px; overflow: visible; }
         .pillar-slide { width: 320px; display: flex; justify-content: center; will-change: transform; }
         .pillar-wrapper { width: 100%; cursor: pointer; }
@@ -590,21 +623,20 @@ export default function PillarsPage() {
 
         .pillar-content { position: relative; z-index: 10; text-align: center; padding: 30px; }
         .donor-name { 
-          font-family: var(--font-serif); font-size: 2rem; color: #fff; 
-          text-shadow: 0 0 15px rgba(212, 160, 23, 0.8); margin-bottom: 12px; letter-spacing: 0.05em;
-          transition: all 0.3s;
+          font-family: var(--font-serif); font-size: 1.95rem; font-weight: 700; color: #fff; 
+          margin-bottom: 8px; letter-spacing: 0.1em; transition: 0.3s;
         }
         .pillar-monument:hover .donor-name { color: var(--primary-gold); transform: scale(1.1); }
-        .donor-rank { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-tertiary); opacity: 0.8; }
+        .donor-rank { font-size: 0.85rem; color: var(--text-tertiary); letter-spacing: 0.2em; text-transform: uppercase; }
         
         .pillar-engraving-glow {
-          position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(212, 160, 23, 0.05) 0%, transparent 70%);
+          position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 160, 23, 0.1) 0%, transparent 80%);
           pointer-events: none;
         }
 
         .pillar-aura {
-          position: absolute; inset: -20px; background: radial-gradient(ellipse at center, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
-          opacity: 0; transition: opacity 0.5s; pointer-events: none;
+          position: absolute; inset: -20px; background: radial-gradient(circle, rgba(212, 160, 23, 0.25) 0%, transparent 70%);
+          opacity: 0; transition: 0.5s ease; pointer-events: none; z-index: -1;
         }
         .pillar-monument:hover .pillar-aura { opacity: 1; }
 
@@ -633,7 +665,7 @@ export default function PillarsPage() {
 
         /* ─── Section Headers: Founder / Supporter ─── */
         .pillar-section-header {
-          text-align: center; padding: 60px 24px 40px; width: 100%;
+          text-align: center; padding: 20px 24px 28px; width: 100%;
         }
         .pillar-section-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
         .pillar-section-title {
@@ -671,56 +703,18 @@ export default function PillarsPage() {
         }
         .supporters-swiper { margin-top: 0; }
 
-        /* Bottom Controls (Reset View All + Scroll To Top) */
+        /* ─── Bottom Action Controls ─── */
         .pillars-bottom-controls {
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 16px;
           flex-wrap: wrap;
-          margin-top: 36px;
+          margin-top: 28px;
           margin-bottom: 24px;
         }
 
-        .btn-bottom-view-all {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          padding: 8px 18px;
-          background: rgba(212, 160, 23, 0.1);
-          border: 1px solid rgba(212, 160, 23, 0.4);
-          border-radius: 100px;
-          color: #fff;
-          font-family: var(--font-ui);
-          font-size: 0.88rem;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-        }
-        .btn-bottom-view-all:hover {
-          background: rgba(212, 160, 23, 0.22);
-          border-color: var(--primary-gold);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 22px rgba(212, 160, 23, 0.25);
-        }
-        .btn-view-all-text {
-          color: rgba(255, 255, 255, 0.85);
-          font-size: 0.85rem;
-        }
-        .btn-view-all-badge {
-          background: var(--primary-gold);
-          color: #000;
-          font-weight: 700;
-          font-size: 0.8rem;
-          padding: 4px 12px;
-          border-radius: 20px;
-          transition: background 0.2s;
-        }
-        .btn-bottom-view-all:hover .btn-view-all-badge {
-          background: #fff;
-        }
-        .btn-scroll-pillars-top {
+        .btn-bottom-pill {
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -736,12 +730,20 @@ export default function PillarsPage() {
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
-        .btn-scroll-pillars-top:hover {
+        .btn-bottom-pill:hover {
           background: rgba(212, 160, 23, 0.2);
           border-color: var(--primary-gold);
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(212, 160, 23, 0.25);
           color: #fff;
+        }
+        .btn-bottom-icon {
+          font-size: 1.15rem;
+          font-weight: 800;
+          line-height: 1;
+        }
+        .btn-bottom-label {
+          letter-spacing: 0.05em;
         }
 
         @media (max-width: 640px) {

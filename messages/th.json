@@ -114,7 +114,8 @@
     "wishMadePublic": "คำอธิษฐานถูกเปลี่ยนเป็นสาธารณะแล้ว",
     "wishMadePrivate": "คำอธิษฐานถูกเปลี่ยนเป็นส่วนตัวแล้ว",
     "viewAllWishes": "ดูคำอธิษฐานทั้งหมด",
-    "viewingMyWishes": "คำอธิษฐานของฉัน ({count})"
+    "viewingMyWishes": "คำอธิษฐานของฉัน ({count})",
+    "searchResultCount": "ผลการค้นหา ({count})"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",

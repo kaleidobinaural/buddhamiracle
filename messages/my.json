@@ -114,7 +114,8 @@
     "wishMadePublic": "ဆုတောင်းကို အများမြင်အဖြစ် ပြောင်းလဲပြီးပါပြီ။",
     "wishMadePrivate": "ဆုတောင်းကို သီးသန့်အဖြစ် ပြောင်းလဲပြီးပါပြီ။",
     "viewAllWishes": "ဆုတောင်းအားလုံးကြည့်မည်",
-    "viewingMyWishes": "ကျွန်ုပ်၏ ဆုတောင်းများ ({count})"
+    "viewingMyWishes": "ကျွန်ုပ်၏ ဆုတောင်းများ ({count})",
+    "searchResultCount": "ရလဒ်များ ({count})"
   },
   "Pillars": {
     "eyebrow": "ထာဝရ အုတ်မြစ်",

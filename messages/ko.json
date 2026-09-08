@@ -114,7 +114,8 @@
     "wishMadePublic": "공개 소원으로 전환되었습니다.",
     "wishMadePrivate": "비공개 소원으로 전환되었습니다.",
     "viewAllWishes": "전체 소원 보기",
-    "viewingMyWishes": "내 소원 ({count}개)"
+    "viewingMyWishes": "내 소원 ({count}개)",
+    "searchResultCount": "검색 결과 ({count}개)"
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",

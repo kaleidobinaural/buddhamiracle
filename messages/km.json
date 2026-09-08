@@ -114,7 +114,8 @@
     "wishMadePublic": "បំណងប្រាថ្នាត្រូវបានដាក់ជាសាធារណៈ។",
     "wishMadePrivate": "បំណងប្រាថ្នាត្រូវបានដាក់ជាឯកជន។",
     "viewAllWishes": "មើលបំណងប្រាថ្នាទាំងអស់",
-    "viewingMyWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ ({count})"
+    "viewingMyWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ ({count})",
+    "searchResultCount": "លទ្ធផល ({count})"
   },
   "Pillars": {
     "eyebrow": "គ្រឹះអមតៈ",

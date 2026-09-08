@@ -362,6 +362,22 @@ export default function WishRoofPage() {
           </div>
         )}
 
+        {/* Search / Filter Status Badge */}
+        {(showOnlyMine || searchQuery) && (
+          <div className="search-status-banner animate-fade-up">
+            <div className="search-status-chip">
+              <span className="search-status-icon">{showOnlyMine ? '👤' : '🔍'}</span>
+              <span className="search-status-text">
+                {showOnlyMine ? (
+                  <>{t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
+                ) : (
+                  <>&ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: wishes.length }) || `검색 결과 (${wishes.length}개)`}</>
+                )}
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Sacred Sky Frame / Viewport */}
         <div className="sacred-sky-frame">
           <div className="sky-fade-top" aria-hidden="true" />
@@ -471,31 +487,25 @@ export default function WishRoofPage() {
           {(showOnlyMine || searchQuery) && (
             <button
               type="button"
-              className="btn-bottom-view-all"
+              className="btn-bottom-pill"
               onClick={() => {
                 setShowOnlyMine(false);
                 setSearchQuery('');
                 fetchWishes('', sortBy, false);
               }}
             >
-              <span className="btn-view-all-text">
-                {showOnlyMine ? (
-                  <>👤 {t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
-                ) : (
-                  <>🔍 &ldquo;{searchQuery}&rdquo; ({wishes.length}개)</>
-                )}
-              </span>
-              <span className="btn-view-all-badge">🌟 {t('viewAllWishes') || '전체 소원 보기'}</span>
+              <span className="btn-bottom-icon">🌟</span>
+              <span className="btn-bottom-label">{t('viewAllWishes') || '전체 소원 보기'}</span>
             </button>
           )}
           <button
             type="button"
-            className="btn-scroll-sky-top"
+            className="btn-bottom-pill"
             onClick={scrollToTop}
             title={t('scrollToTop') || '맨 위로'}
           >
-            <span className="scroll-arrow-icon">↑</span>
-            <span className="scroll-arrow-label">{t('scrollToTop') || '맨 위로'}</span>
+            <span className="btn-bottom-icon">↑</span>
+            <span className="btn-bottom-label">{t('scrollToTop') || '맨 위로'}</span>
           </button>
         </div>
 
@@ -822,44 +832,30 @@ export default function WishRoofPage() {
           z-index: 20;
         }
 
-        /* Scroll Controls */
-        .sky-scroll-controls {
+        /* Search Status Banner */
+        .search-status-banner {
           display: flex;
           justify-content: center;
-          margin-top: 18px;
-          margin-bottom: 8px;
+          margin-top: 20px;
+          margin-bottom: 4px;
+          width: 100%;
         }
-        .btn-scroll-sky-top {
+        .search-status-chip {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 10px 24px;
+          padding: 8px 22px;
+          border-radius: 30px;
           background: rgba(212, 160, 23, 0.08);
           border: 1px solid rgba(212, 160, 23, 0.3);
-          border-radius: 100px;
           color: var(--primary-gold);
+          font-size: 0.9rem;
           font-family: var(--font-ui);
-          font-size: 0.88rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(10px);
         }
-        .btn-scroll-sky-top:hover {
-          background: rgba(212, 160, 23, 0.2);
-          border-color: var(--primary-gold);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(212, 160, 23, 0.25);
-          color: #fff;
-        }
-        .scroll-arrow-icon {
-          font-size: 1.15rem;
-          font-weight: 800;
-          line-height: 1;
-        }
-        .scroll-arrow-label {
-          letter-spacing: 0.05em;
-        }
+        .search-status-icon { font-size: 1.05rem; }
+        .search-status-text { letter-spacing: 0.03em; }
 
         /* Modes */
         .lantern-display.sky-mode { position: relative; width: 180%; min-width: 1400px; }
@@ -989,7 +985,7 @@ export default function WishRoofPage() {
           background: #d32f2f;
         }
 
-        /* Bottom Controls (Reset View All + Scroll To Top) */
+        /* Bottom Action Controls */
         .sky-bottom-controls {
           display: flex;
           align-items: center;
@@ -997,46 +993,39 @@ export default function WishRoofPage() {
           gap: 16px;
           flex-wrap: wrap;
           margin-top: 24px;
-          margin-bottom: 16px;
+          margin-bottom: 24px;
         }
 
-        .btn-bottom-view-all {
+        .btn-bottom-pill {
           display: inline-flex;
           align-items: center;
-          gap: 12px;
-          padding: 8px 18px;
-          background: rgba(212, 160, 23, 0.1);
-          border: 1px solid rgba(212, 160, 23, 0.4);
+          gap: 8px;
+          padding: 10px 24px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.3);
           border-radius: 100px;
-          color: #fff;
+          color: var(--primary-gold);
           font-family: var(--font-ui);
           font-size: 0.88rem;
-          font-weight: 500;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
-        .btn-bottom-view-all:hover {
-          background: rgba(212, 160, 23, 0.22);
+        .btn-bottom-pill:hover {
+          background: rgba(212, 160, 23, 0.2);
           border-color: var(--primary-gold);
           transform: translateY(-2px);
-          box-shadow: 0 6px 22px rgba(212, 160, 23, 0.25);
+          box-shadow: 0 6px 20px rgba(212, 160, 23, 0.25);
+          color: #fff;
         }
-        .btn-view-all-text {
-          color: rgba(255, 255, 255, 0.85);
-          font-size: 0.85rem;
+        .btn-bottom-icon {
+          font-size: 1.15rem;
+          font-weight: 800;
+          line-height: 1;
         }
-        .btn-view-all-badge {
-          background: linear-gradient(135deg, var(--primary-gold), #f3c75e);
-          color: #000;
-          font-weight: 700;
-          font-size: 0.8rem;
-          padding: 4px 12px;
-          border-radius: 20px;
-          transition: background 0.2s;
-        }
-        .btn-bottom-view-all:hover .btn-view-all-badge {
-          background: #fff;
+        .btn-bottom-label {
+          letter-spacing: 0.05em;
         }
 
         .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }

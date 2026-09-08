@@ -114,7 +114,8 @@
     "wishMadePublic": "願いが公開に設定されました。",
     "wishMadePrivate": "願いが非公開に設定されました。",
     "viewAllWishes": "すべての願いを表示",
-    "viewingMyWishes": "私の願い ({count}件)"
+    "viewingMyWishes": "私の願い ({count}件)",
+    "searchResultCount": "検索結果 ({count}件)"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",

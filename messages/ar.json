@@ -114,7 +114,8 @@
     "wishMadePublic": "أصبحت الأمنية عامة الآن.",
     "wishMadePrivate": "أصبحت الأمنية خاصة الآن.",
     "viewAllWishes": "عرض كل الأمنيات",
-    "viewingMyWishes": "أمنياتي ({count})"
+    "viewingMyWishes": "أمنياتي ({count})",
+    "searchResultCount": "النتائج ({count})"
   },
   "Pillars": {
     "eyebrow": "الأساس الأبدي",

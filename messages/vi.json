@@ -114,7 +114,8 @@
     "wishMadePublic": "Ước nguyện hiện đã công khai.",
     "wishMadePrivate": "Ước nguyện hiện đã chuyển riêng tư.",
     "viewAllWishes": "Xem tất cả ước nguyện",
-    "viewingMyWishes": "Nguyện vọng của tôi ({count})"
+    "viewingMyWishes": "Nguyện vọng của tôi ({count})",
+    "searchResultCount": "Kết quả ({count})"
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",

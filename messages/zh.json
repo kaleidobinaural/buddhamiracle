@@ -114,7 +114,8 @@
     "wishMadePublic": "心愿已设为公开。",
     "wishMadePrivate": "心愿已设为私密。",
     "viewAllWishes": "查看全部心愿",
-    "viewingMyWishes": "我的心愿 ({count}条)"
+    "viewingMyWishes": "我的心愿 ({count}条)",
+    "searchResultCount": "搜索结果 ({count}条)"
   },
   "Pillars": {
     "eyebrow": "永恒基石",

@@ -114,7 +114,8 @@
     "wishMadePublic": "Der Wunsch ist nun öffentlich.",
     "wishMadePrivate": "Der Wunsch ist nun privat.",
     "viewAllWishes": "Alle Wünsche anzeigen",
-    "viewingMyWishes": "Meine Wünsche ({count})"
+    "viewingMyWishes": "Meine Wünsche ({count})",
+    "searchResultCount": "Ergebnisse ({count})"
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",

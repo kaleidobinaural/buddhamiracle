@@ -114,7 +114,8 @@
     "wishMadePublic": "Doa kini bersifat publik.",
     "wishMadePrivate": "Doa kini bersifat pribadi.",
     "viewAllWishes": "Lihat Semua Doa",
-    "viewingMyWishes": "Doa Saya ({count})"
+    "viewingMyWishes": "Doa Saya ({count})",
+    "searchResultCount": "Hasil ({count})"
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",

@@ -114,7 +114,8 @@
     "wishMadePublic": "Le vœu est désormais public.",
     "wishMadePrivate": "Le vœu est désormais privé.",
     "viewAllWishes": "Voir tous les vœux",
-    "viewingMyWishes": "Mes vœux ({count})"
+    "viewingMyWishes": "Mes vœux ({count})",
+    "searchResultCount": "Résultats ({count})"
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
