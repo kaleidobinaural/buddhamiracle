@@ -161,24 +161,6 @@ export default function PillarsPage() {
               ♡ {t('donate')}
             </Link>
           </div>
-
-          {searchQuery && (
-            <div className="active-filter-banner animate-fade-up">
-              <span className="filter-badge">
-                🔍 &ldquo;{searchQuery}&rdquo; ({pillars.length})
-              </span>
-              <button
-                type="button"
-                className="btn-reset-filter"
-                onClick={() => {
-                  setSearchQuery('');
-                  fetchPillars('', sortBy, role);
-                }}
-              >
-                ↺ {t('viewAll') || '전체 목록 보기'}
-              </button>
-            </div>
-          )}
         </div>
 
         <section className={`pillars-display ${viewMode}-mode`}>
@@ -438,8 +420,23 @@ export default function PillarsPage() {
           )}
         </section>
 
-        {/* Scroll To Top Control */}
-        <div className="pillars-scroll-controls animate-fade-up">
+        {/* Bottom Actions: View All Reset (when active) + Scroll To Top */}
+        <div className="pillars-bottom-controls animate-fade-up">
+          {searchQuery && (
+            <button
+              type="button"
+              className="btn-bottom-view-all"
+              onClick={() => {
+                setSearchQuery('');
+                fetchPillars('', sortBy, role);
+              }}
+            >
+              <span className="btn-view-all-text">
+                🔍 &ldquo;{searchQuery}&rdquo; ({pillars.length})
+              </span>
+              <span className="btn-view-all-badge">↺ {t('viewAll') || '전체 목록 보기'}</span>
+            </button>
+          )}
           <button
             type="button"
             className="btn-scroll-pillars-top"
@@ -540,7 +537,37 @@ export default function PillarsPage() {
         .swiper-slide-active .pillar-aura { opacity: 1; }
 
         /* Grid Mode */
-        .grid-mode .pillars-scroll-area { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 60px; }
+        .pillars-display.grid-mode, .grid-mode {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .grid-mode .pillars-scroll-area {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+          justify-content: center;
+          align-content: center;
+          justify-items: center;
+          gap: 60px 40px;
+          width: 100%;
+          max-width: 1300px;
+          margin: 0 auto;
+          min-height: 400px;
+        }
+        .grid-mode .pillar-section-header {
+          grid-column: 1 / -1;
+          width: 100%;
+          text-align: center;
+        }
+        .grid-mode .pillar-wrapper {
+          width: 320px;
+          max-width: 100%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+        }
 
         /* Pillar Monument Design */
         .pillar-monument { position: relative; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); }
@@ -644,50 +671,54 @@ export default function PillarsPage() {
         }
         .supporters-swiper { margin-top: 0; }
 
-        /* Active Filter Banner */
-        .active-filter-banner {
+        /* Bottom Controls (Reset View All + Scroll To Top) */
+        .pillars-bottom-controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 36px;
+          margin-bottom: 24px;
+        }
+
+        .btn-bottom-view-all {
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          background: rgba(212, 160, 23, 0.08);
-          border: 1px solid rgba(212, 160, 23, 0.3);
-          border-radius: 40px;
           padding: 8px 18px;
-          margin-top: 20px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
-        .filter-badge {
-          font-size: 0.9rem;
+          background: rgba(212, 160, 23, 0.1);
+          border: 1px solid rgba(212, 160, 23, 0.4);
+          border-radius: 100px;
           color: #fff;
           font-family: var(--font-ui);
+          font-size: 0.88rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
         }
-        .btn-reset-filter {
+        .btn-bottom-view-all:hover {
+          background: rgba(212, 160, 23, 0.22);
+          border-color: var(--primary-gold);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 22px rgba(212, 160, 23, 0.25);
+        }
+        .btn-view-all-text {
+          color: rgba(255, 255, 255, 0.85);
+          font-size: 0.85rem;
+        }
+        .btn-view-all-badge {
           background: var(--primary-gold);
-          border: none;
           color: #000;
           font-weight: 700;
-          font-size: 0.82rem;
-          padding: 6px 14px;
+          font-size: 0.8rem;
+          padding: 4px 12px;
           border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-family: var(--font-ui);
+          transition: background 0.2s;
         }
-        .btn-reset-filter:hover {
+        .btn-bottom-view-all:hover .btn-view-all-badge {
           background: #fff;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Scroll To Top Controls */
-        .pillars-scroll-controls {
-          display: flex;
-          justify-content: center;
-          margin-top: 36px;
-          margin-bottom: 24px;
         }
         .btn-scroll-pillars-top {
           display: inline-flex;

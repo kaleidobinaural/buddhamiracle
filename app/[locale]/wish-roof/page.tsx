@@ -362,32 +362,6 @@ export default function WishRoofPage() {
           </div>
         )}
 
-        {/* Active Filter / View All Reset Banner */}
-        {(showOnlyMine || searchQuery) && (
-          <div className="active-filter-banner-wrap animate-fade-up">
-            <div className="active-filter-banner">
-              <span className="filter-badge">
-                {showOnlyMine ? (
-                  <>👤 {t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
-                ) : (
-                  <>🔍 &ldquo;{searchQuery}&rdquo; ({wishes.length}개)</>
-                )}
-              </span>
-              <button
-                type="button"
-                className="btn-reset-filter"
-                onClick={() => {
-                  setShowOnlyMine(false);
-                  setSearchQuery('');
-                  fetchWishes('', sortBy, false);
-                }}
-              >
-                🌟 {t('viewAllWishes') || '전체 소원 보기'}
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Sacred Sky Frame / Viewport */}
         <div className="sacred-sky-frame">
           <div className="sky-fade-top" aria-hidden="true" />
@@ -492,8 +466,28 @@ export default function WishRoofPage() {
           <div className="sky-fade-bottom" aria-hidden="true" />
         </div>
 
-        {/* Scroll To Top of Sky & Section Control */}
-        <div className="sky-scroll-controls animate-fade-up">
+        {/* Bottom Controls: View All Reset (when active) + Scroll To Top */}
+        <div className="sky-bottom-controls animate-fade-up">
+          {(showOnlyMine || searchQuery) && (
+            <button
+              type="button"
+              className="btn-bottom-view-all"
+              onClick={() => {
+                setShowOnlyMine(false);
+                setSearchQuery('');
+                fetchWishes('', sortBy, false);
+              }}
+            >
+              <span className="btn-view-all-text">
+                {showOnlyMine ? (
+                  <>👤 {t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
+                ) : (
+                  <>🔍 &ldquo;{searchQuery}&rdquo; ({wishes.length}개)</>
+                )}
+              </span>
+              <span className="btn-view-all-badge">🌟 {t('viewAllWishes') || '전체 소원 보기'}</span>
+            </button>
+          )}
           <button
             type="button"
             className="btn-scroll-sky-top"
@@ -872,13 +866,21 @@ export default function WishRoofPage() {
         .lantern-display.sky-mode.centered-sky { width: 100% !important; min-width: 100% !important; }
         .lantern-display.grid-mode { 
           display: grid; 
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-          gap: 40px; 
+          grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); 
+          gap: 40px 32px; 
           justify-items: center; 
           justify-content: center;
           align-content: center;
-          min-height: 420px;
-          padding: 20px 10px; 
+          min-height: 100%;
+          padding: 24px 16px; 
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .lantern-display.grid-mode .lantern-wrapper {
+          width: 220px;
+          display: flex;
+          justify-content: center;
         }
 
         .badge-mine {
@@ -987,48 +989,54 @@ export default function WishRoofPage() {
           background: #d32f2f;
         }
 
-        /* Active Filter / Reset Banner */
-        .active-filter-banner-wrap {
+        /* Bottom Controls (Reset View All + Scroll To Top) */
+        .sky-bottom-controls {
           display: flex;
+          align-items: center;
           justify-content: center;
-          margin-bottom: 24px;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 24px;
+          margin-bottom: 16px;
         }
-        .active-filter-banner {
+
+        .btn-bottom-view-all {
           display: inline-flex;
           align-items: center;
-          gap: 14px;
-          background: rgba(212, 160, 23, 0.08);
-          border: 1px solid rgba(212, 160, 23, 0.35);
-          border-radius: 40px;
-          padding: 8px 20px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 160, 23, 0.1);
-        }
-        .filter-badge {
-          font-size: 0.92rem;
+          gap: 12px;
+          padding: 8px 18px;
+          background: rgba(212, 160, 23, 0.1);
+          border: 1px solid rgba(212, 160, 23, 0.4);
+          border-radius: 100px;
           color: #fff;
           font-family: var(--font-ui);
+          font-size: 0.88rem;
           font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
         }
-        .btn-reset-filter {
+        .btn-bottom-view-all:hover {
+          background: rgba(212, 160, 23, 0.22);
+          border-color: var(--primary-gold);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 22px rgba(212, 160, 23, 0.25);
+        }
+        .btn-view-all-text {
+          color: rgba(255, 255, 255, 0.85);
+          font-size: 0.85rem;
+        }
+        .btn-view-all-badge {
           background: linear-gradient(135deg, var(--primary-gold), #f3c75e);
-          border: none;
           color: #000;
           font-weight: 700;
-          font-size: 0.85rem;
-          padding: 7px 16px;
+          font-size: 0.8rem;
+          padding: 4px 12px;
           border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.25s ease;
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-family: var(--font-ui);
-          box-shadow: 0 2px 10px rgba(212, 160, 23, 0.3);
+          transition: background 0.2s;
         }
-        .btn-reset-filter:hover {
+        .btn-bottom-view-all:hover .btn-view-all-badge {
           background: #fff;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
         }
 
         .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }
