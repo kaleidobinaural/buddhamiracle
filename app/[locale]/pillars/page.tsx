@@ -28,31 +28,20 @@ export default function PillarsPage() {
   const [role, setRole] = useState<'founder' | 'supporter'>('founder');
   const [viewMode, setViewMode] = useState<'hall' | 'grid'>('hall');
   const [sortBy, setSortBy] = useState<'amount' | 'date' | 'oldest'>('amount');
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
   const [mounted, setMounted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   // Split pillars into Founders and Supporters
   const founderPillars = pillars.filter(p => ['gold', 'marble', 'stone'].includes(p.pillar_type));
   const supporterPillars = pillars.filter(p => p.pillar_type === 'donor');
 
-
   useEffect(() => {
     setMounted(true);
     fetchPillars(searchQuery, sortBy, role);
   }, [sortBy, role]);
-
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isMusicPlaying) audioRef.current.pause();
-      else audioRef.current.play();
-      setIsMusicPlaying(!isMusicPlaying);
-    }
-  };
 
   // Reactive search reset
   useEffect(() => {
@@ -94,13 +83,6 @@ export default function PillarsPage() {
       <div className="hall-atmosphere" />
       <div className="hall-fog-top" />
       <div className="hall-fog-bottom" />
-      
-      <audio 
-        ref={audioRef}
-        src="/audio/pillars.mp3" 
-        loop
-        onError={(e) => console.error('Audio load error:', e)}
-      />
       
       <div className="pillars-container">
         <header className="page-header animate-fade-up">
@@ -152,11 +134,6 @@ export default function PillarsPage() {
                 onClick={() => setSortBy('oldest')}
               >⬆️ {t('sortOldest')}</button>
             </div>
-
-            <button className="btn-music-glass" onClick={toggleMusic}>
-              <span className="btn-icon">{isMusicPlaying ? '🔊' : '🔇'}</span>
-              {isMusicPlaying ? t('musicOn') : t('musicOff')}
-            </button>
           </div>
 
           <form className="search-box-v2" onSubmit={handleSearch}>

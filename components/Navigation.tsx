@@ -40,10 +40,36 @@ export default function Navigation() {
     }
   }, [session]);
 
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  // Sync mobile-nav-open class on body to hide floating audio button
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('mobile-nav-open');
+    } else {
+      document.body.classList.remove('mobile-nav-open');
+    }
+    return () => {
+      document.body.classList.remove('mobile-nav-open');
+    };
+  }, [mobileOpen]);
+
+  // Listen to ambient audio state
+  useEffect(() => {
+    const handleAudioChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isPlaying: boolean }>;
+      if (typeof customEvent.detail?.isPlaying === 'boolean') {
+        setIsAudioPlaying(customEvent.detail.isPlaying);
+      }
+    };
+    window.addEventListener('ambient-audio-changed', handleAudioChange);
+    return () => window.removeEventListener('ambient-audio-changed', handleAudioChange);
+  }, []);
 
   const navLinks = [
     { href: '/', key: 'home' },
@@ -202,9 +228,34 @@ export default function Navigation() {
                   {t('signIn')}
                 </Link>
               )}
-              <Link href="/privacy" className="mobile-nav-link bloom-9" style={{ fontSize: '1.1rem', marginTop: '12px', color: '#666' }} onClick={() => setMobileOpen(false)}>
-                {t('privacyPolicy')}
-              </Link>
+              <div className="bloom-9" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '14px' }}>
+                <Link href="/privacy" className="mobile-nav-link" style={{ fontSize: '1.05rem', color: '#777', textDecoration: 'none' }} onClick={() => setMobileOpen(false)}>
+                  {t('privacyPolicy')}
+                </Link>
+                <span style={{ color: '#444' }}>•</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('toggle-ambient-audio'));
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: isAudioPlaying ? 'var(--primary-gold)' : '#777',
+                    cursor: 'pointer',
+                    fontSize: '1.05rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '4px'
+                  }}
+                  title={isAudioPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
+                  aria-label="Toggle Ambient Sound"
+                >
+                  <span style={{ fontSize: '1.1rem' }}>{isAudioPlaying ? '🔊' : '🔇'}</span>
+                  <span style={{ fontSize: '0.95rem' }}>{isAudioPlaying ? (locale === 'ko' ? '소리 켬' : 'Sound') : (locale === 'ko' ? '소리 끔' : 'Muted')}</span>
+                </button>
+              </div>
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select
                 className="mobile-nav-link bloom-9"

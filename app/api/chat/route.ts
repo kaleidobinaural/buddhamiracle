@@ -167,7 +167,8 @@ export async function POST(req: NextRequest) {
     while (retryCount < maxRetries) {
       const geminiBody = {
         systemInstruction: { parts: [{ text: enrichedSystemPrompt }] },
-        contents: messages.map((msg: { role: string; content: string }) => ({
+        // Keep sliding window of last 15 messages (approx. 7~8 turns) to bound token usage
+        contents: messages.slice(-15).map((msg: { role: string; content: string }) => ({
           role: msg.role === 'model' ? 'model' : 'user',
           parts: [{ text: msg.content }],
         })),

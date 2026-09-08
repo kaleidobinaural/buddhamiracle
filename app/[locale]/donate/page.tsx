@@ -116,16 +116,13 @@ export default function DonatePage() {
               rel="noopener noreferrer"
               className="btn-gold tier-btn paypal-btn"
               id="btn-offer-paypal"
-              style={{ textDecoration: 'none', flexDirection: 'column', gap: '4px', lineHeight: 1.3 }}
+              style={{ textDecoration: 'none' }}
             >
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.9 }}>
-                  <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
-                  <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
-                </svg>
-                {tDonate('payWithPayPal')}
-              </span>
-              <span style={{ fontSize: '0.75rem', opacity: 0.7, fontWeight: 400 }}>{tDonate('paypalFreeAmount')}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.9 }}>
+                <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.9 2.155.37 3.814-.208 4.913-1.565.9-1.117 1.154-2.6.756-4.145C14.696 5.564 13.37 5 11.849 5H7.037C6.55 5 6.134 5.35 6.053 5.83L3.5 19.5c-.095.527.316 1.016.853 1.016h2.035c.44 0 .817-.317.883-.75z"/>
+                <path d="M19.5 9.5c-.063 3.256-1.87 5.5-5.844 5.5H12l-1 5.5h-2l3-16h5c2.5 0 3.636 1.5 3.5 5z" opacity="0.6"/>
+              </svg>
+              {tDonate('payWithPayPal')}
             </a>
           </article>
         </section>
@@ -180,8 +177,8 @@ export default function DonatePage() {
         .paypal-free-label { font-size: 1.05rem; color: rgba(255,255,255,0.4); font-family: var(--font-serif); font-style: italic; }
         .tier-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; flex: 1; margin: 0; }
         .tier-btn { width: 100%; padding: 14px; font-size: 0.88rem; justify-content: center; display: flex; align-items: center; gap: 8px; text-decoration: none; margin-top: auto; border-radius: 100px; border: none; cursor: pointer; }
-        .donate-bottom-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .donate-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; font-family: var(--font-ui); cursor: pointer; transition: all 0.3s; white-space: nowrap; min-width: 200px; text-align: center; }
+        .donate-bottom-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .donate-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; font-family: var(--font-ui); cursor: pointer; transition: all 0.3s; white-space: nowrap; min-width: 240px; text-align: center; }
         .donate-action-btn--gold { background: linear-gradient(135deg, var(--primary-gold), #f3c75e); color: #000; border: none; box-shadow: 0 8px 24px rgba(212,160,23,0.25); }
         .donate-action-btn--gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,160,23,0.45); }
         .donate-action-btn--outline { background: transparent; border: 1px solid rgba(212,160,23,0.35); color: var(--primary-gold); }
@@ -220,8 +217,26 @@ export default function DonatePage() {
 
       {isInquiryModalOpen && (
         <div className="ritual-modal-overlay" onClick={() => setIsInquiryModalOpen(false)}>
-          <div className="modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: 'var(--primary-gold)', fontFamily: 'var(--font-serif)' }}>{tDonate('inquiryModalTitle')}</h3>
+          <div className="modal-content glass-card animate-fade-up" style={{ position: 'relative' }} onClick={e => e.stopPropagation()}>
+            <button 
+              type="button" 
+              onClick={() => setIsInquiryModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '18px',
+                right: '20px',
+                background: 'none',
+                border: 'none',
+                color: 'rgba(255,255,255,0.5)',
+                fontSize: '1.4rem',
+                cursor: 'pointer',
+                padding: '4px 8px',
+                lineHeight: 1
+              }}
+              aria-label="Close"
+            >✕</button>
+
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: 'var(--primary-gold)', fontFamily: 'var(--font-serif)', textAlign: 'center' }}>{tDonate('inquiryModalTitle')}</h3>
             {inquiryStatus === 'success' ? (
               <div style={{ textAlign: 'center', padding: '20px 0' }}>
                 <p style={{ color: '#4CAF50', fontSize: '1.1rem', marginBottom: '16px' }}>{tDonate('inquirySuccess')}</p>
@@ -230,15 +245,26 @@ export default function DonatePage() {
               </div>
             ) : (
               <form onSubmit={handleInquirySubmit} className="store-form">
-                <p style={{ color: '#aaa', marginBottom: '8px', fontSize: '0.9rem' }}>{tDonate('inquiryDesc')}</p>
+                <p style={{ color: '#aaa', marginBottom: '12px', fontSize: '0.9rem', textAlign: 'center', lineHeight: 1.6 }}>{tDonate('inquiryDesc')}</p>
                 <input type="text" required placeholder={tDonate('inquiryName')} className="store-input" value={inquiryFormData.name} onChange={e => setInquiryFormData({ ...inquiryFormData, name: e.target.value })} />
                 <input type="email" required placeholder={tDonate('inquiryEmail')} className="store-input" value={inquiryFormData.email} onChange={e => setInquiryFormData({ ...inquiryFormData, email: e.target.value })} />
                 <textarea required placeholder={tDonate('inquiryMessage')} className="store-textarea" value={inquiryFormData.message} onChange={e => setInquiryFormData({ ...inquiryFormData, message: e.target.value })} />
-                {inquiryStatus === 'error' && <p style={{ color: '#E53E3E', fontSize: '0.85rem' }}>{tDonate('inquiryError')}</p>}
-                <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-                  <button type="button" className="btn-ghost" style={{ flex: 1, padding: '12px' }} onClick={() => setIsInquiryModalOpen(false)}>{tDonate('inquiryCancel')}</button>
-                  <button type="submit" className="btn-gold" style={{ flex: 1, padding: '12px' }} disabled={inquiryStatus === 'submitting'}>
+                {inquiryStatus === 'error' && <p style={{ color: '#E53E3E', fontSize: '0.85rem', textAlign: 'center' }}>{tDonate('inquiryError')}</p>}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', alignItems: 'center', width: '100%' }}>
+                  <button 
+                    type="submit" 
+                    className="btn-gold" 
+                    style={{ width: '100%', padding: '14px', justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '1rem', fontWeight: 600 }} 
+                    disabled={inquiryStatus === 'submitting'}
+                  >
                     {inquiryStatus === 'submitting' ? '...' : tDonate('inquirySubmit')}
+                  </button>
+                  <button 
+                    type="button" 
+                    style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.45)', cursor: 'pointer', padding: '8px', fontSize: '0.88rem' }} 
+                    onClick={() => setIsInquiryModalOpen(false)}
+                  >
+                    {tDonate('inquiryCancel')}
                   </button>
                 </div>
               </form>

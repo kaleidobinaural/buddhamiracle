@@ -21,6 +21,16 @@ export default function AmbientAudio() {
     }
   };
 
+  useEffect(() => {
+    const handleToggle = () => togglePlay();
+    window.addEventListener('toggle-ambient-audio', handleToggle);
+    return () => window.removeEventListener('toggle-ambient-audio', handleToggle);
+  }, [isPlaying]);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('ambient-audio-changed', { detail: { isPlaying } }));
+  }, [isPlaying]);
+
   return (
     <>
       <audio
@@ -57,6 +67,9 @@ export default function AmbientAudio() {
           z-index: 1000;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        :global(body.mobile-nav-open) .ambient-audio-btn {
+          display: none !important;
         }
         .ambient-audio-btn:hover {
           background: rgba(212, 160, 23, 0.1);

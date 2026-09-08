@@ -35,13 +35,11 @@ export default function WishRoofPage() {
   const [sortBy, setSortBy] = useState<'date' | 'likes'>('date');
   const [showOnlyMine, setShowOnlyMine] = useState(false);
   const [isPublic, setIsPublic] = useState(true);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [selectedWish, setSelectedWish] = useState<Wish | null>(null);
   const [timeOfDay, setTimeOfDay] = useState<'day' | 'sunset' | 'night'>('night');
   const [snackbar, setSnackbar] = useState<{ message: string; show: boolean }>({ message: '', show: false });
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const snackbarTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -186,16 +184,7 @@ export default function WishRoofPage() {
     }
   };
 
-  const toggleMusic = () => {
-    if (!audioRef.current) return;
-    if (isMusicPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.volume = 0.4;
-      audioRef.current.play().catch(e => console.log('Audio play failed:', e));
-    }
-    setIsMusicPlaying(!isMusicPlaying);
-  };
+
 
   return (
     <main className={`wish-page time-${timeOfDay}`}>
@@ -218,9 +207,7 @@ export default function WishRoofPage() {
         delay={1000} 
       />
 
-      <audio ref={audioRef} loop preload="auto">
-        <source src="/audio/wish-roof.mp3" type="audio/mpeg" />
-      </audio>
+
       
       <div className="wish-container">
         <header className="page-header animate-fade-up">
@@ -254,11 +241,6 @@ export default function WishRoofPage() {
                 onClick={() => setSortBy('date')}
               >🕒 {t('sortRecent')}</button>
             </div>
-
-            <button className="btn-music-glass" onClick={toggleMusic}>
-              <span className="btn-icon">{isMusicPlaying ? '🔊' : '🔇'}</span>
-              {isMusicPlaying ? t('musicOn') : t('musicOff')}
-            </button>
           </div>
         </div>
 
