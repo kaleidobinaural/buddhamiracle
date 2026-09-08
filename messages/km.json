@@ -103,7 +103,16 @@
     "modalSubmit": "បញ្ចេញទៅកាន់ផ្ទៃមេឃ",
     "modalCancel": "បោះបង់",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "ត្រឡប់ទៅខាងលើ"
+    "scrollToTop": "ទៅខាងលើ",
+    "myWishBadge": "បំណងប្រាថ្នារបស់ខ្ញុំ",
+    "makePrivate": "ដាក់ឯកជន",
+    "makePublic": "ដាក់សាធារណៈ",
+    "deleteWish": "លុបបំណងប្រាថ្នា",
+    "confirmDeleteWishTitle": "បញ្ជាក់ការលុបបំណងប្រាថ្នា",
+    "confirmDeleteWishDesc": "តើអ្នកប្រាកដជាចង់លុបបំណងប្រាថ្នានេះមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។",
+    "wishDeleted": "បំណងប្រាថ្នាត្រូវបានឧទ្ទិសទៅលើមេឃ និងលុបរួចរាល់។",
+    "wishMadePublic": "បំណងប្រាថ្នាត្រូវបានដាក់ជាសាធារណៈ។",
+    "wishMadePrivate": "បំណងប្រាថ្នាត្រូវបានដាក់ជាឯកជន។"
   },
   "Pillars": {
     "eyebrow": "គ្រឹះអមតៈ",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "អ្នកគាំទ្រ"
+    "rankSupporter": "អ្នកគាំទ្រ",
+    "scrollToTop": "ទៅខាងលើ"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",
@@ -276,7 +286,17 @@
     "modalError": "ការផ្ញើបានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "ការជូនដំណឹងអំពីការទូទាត់",
+    "purchaseLinkNotConfigured": "តំណភ្ជាប់ទូទាត់កំពុងស្ថិតក្នុងការរៀបចំ។ សូមព្យាយាមម្តងទៀតនៅពេលបន្តិចក្រោយមក ឬទាក់ទងមកយើង។",
+    "popupBlockedTitle": "ផ្ទាំងផុសឡើងត្រូវបានទប់ស្កាត់",
+    "popupBlockedDesc": "ផ្ទាំងទូទាត់ត្រូវបានទប់ស្កាត់ដោយកម្មវិធីរុករក។ សូមអនុញ្ញាតឱ្យបើកផ្ទាំងផុសឡើង ហើយព្យាយាមម្តងទៀត។",
+    "paymentFailedTitle": "ការទូទាត់មិនបានជោគជ័យ",
+    "paymentFailedDesc": "មិនអាចដំណើរការការទូទាត់បានទេ។ សូមពិនិត្យព័ត៌មានកាត ឬសមតុល្យរបស់អ្នក។",
+    "paymentCancelledTitle": "ការទូទាត់ត្រូវបានបោះបង់",
+    "paymentCancelledDesc": "ដំណើរការទូទាត់ត្រូវបានបោះបង់។ អ្នកអាចត្រឡប់មកវិញនៅពេលណាក៏បាន។",
+    "modalConfirm": "យល់ព្រម",
+    "inquiryBtn": "ទាក់ទងជំនួយ"
   },
   "Resonance": {
     "title": "មនុស្សរាប់លាននាក់ត្រូវបានប៉ះដោយប្រេកង់",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "ចូលទៅកាន់ទីសក្ការៈបូជា",
+    "subtitle": "ចូលគណនីដើម្បីកត់ត្រាបំណងប្រាថ្នា រក្សាទុកការសន្ទនាជាមួយព្រះគ្រូ និងកត់ត្រាការបរិច្ចាគ។",
+    "googleBtn": "បន្តជាមួយ Google",
+    "disclaimerBefore": "តាមរយៈការបន្ត អ្នកយល់ព្រមនឹង",
+    "terms": "លក្ខខណ្ឌសេវាកម្ម",
+    "disclaimerAnd": "និង",
+    "privacy": "គោលការណ៍ឯកជនភាព",
+    "disclaimerAfter": " របស់យើង។",
+    "privacyNote": "យើងគោរពឯកជនភាពរបស់អ្នក។ គ្មានទិន្នន័យផ្ទាល់ខ្លួនក្រៅពីអ៊ីមែល និងឈ្មោះត្រូវបានរក្សាទុកឡើយ។"
   }
 }

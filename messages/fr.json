@@ -103,7 +103,16 @@
     "modalSubmit": "Libérer dans le Ciel",
     "modalCancel": "Annuler",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Haut du Ciel"
+    "scrollToTop": "Haut de page",
+    "myWishBadge": "Mon Vœu",
+    "makePrivate": "Rendre privé",
+    "makePublic": "Rendre public",
+    "deleteWish": "Supprimer le vœu",
+    "confirmDeleteWishTitle": "Confirmer la suppression",
+    "confirmDeleteWishDesc": "Êtes-vous sûr de vouloir supprimer ce vœu ? Cette action est irréversible.",
+    "wishDeleted": "Le vœu est monté au ciel et a été supprimé.",
+    "wishMadePublic": "Le vœu est désormais public.",
+    "wishMadePrivate": "Le vœu est désormais privé."
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Soutien"
+    "rankSupporter": "Soutien",
+    "scrollToTop": "Haut de page"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -276,7 +286,17 @@
     "modalError": "Échec de l'envoi. Veuillez réessayer.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Avis de Paiement",
+    "purchaseLinkNotConfigured": "Le lien de paiement est en cours de préparation. Veuillez réessayer sous peu ou contacter le support.",
+    "popupBlockedTitle": "Fenêtre Bloquée",
+    "popupBlockedDesc": "La fenêtre de paiement a été bloquée par votre navigateur. Veuillez autoriser les fenêtres contextuelles.",
+    "paymentFailedTitle": "Paiement Non Complété",
+    "paymentFailedDesc": "Le paiement n'a pas pu être traité. Veuillez vérifier vos coordonnées bancaires.",
+    "paymentCancelledTitle": "Paiement Annulé",
+    "paymentCancelledDesc": "Le paiement a été annulé. Vous pouvez revenir quand vous le souhaitez.",
+    "modalConfirm": "OK",
+    "inquiryBtn": "Contacter le Support"
   },
   "Resonance": {
     "title": "Des Millions Touchés par la Fréquence",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Entrer dans le Sanctuaire",
+    "subtitle": "Connectez-vous pour suivre vos vœux, conserver vos dialogues avec le Guru et honorer vos offrandes.",
+    "googleBtn": "Continuer avec Google",
+    "disclaimerBefore": "En continuant, vous acceptez nos",
+    "terms": "Conditions d'utilisation",
+    "disclaimerAnd": "et notre",
+    "privacy": "Politique de confidentialité",
+    "disclaimerAfter": ".",
+    "privacyNote": "Nous respectons votre vie privée. Aucune donnée autre que votre nom et e-mail n'est conservée."
   }
 }

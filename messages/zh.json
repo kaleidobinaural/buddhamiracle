@@ -103,7 +103,16 @@
     "modalSubmit": "放飞天际",
     "modalCancel": "取消",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "回到顶部"
+    "scrollToTop": "回到顶部",
+    "myWishBadge": "我的心愿",
+    "makePrivate": "设为私密",
+    "makePublic": "设为公开",
+    "deleteWish": "删除心愿",
+    "confirmDeleteWishTitle": "确认删除心愿",
+    "confirmDeleteWishDesc": "您确定要删除此心愿吗？删除后将无法恢复。",
+    "wishDeleted": "心愿已升华归天并删除。",
+    "wishMadePublic": "心愿已设为公开。",
+    "wishMadePrivate": "心愿已设为私密。"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "支持者"
+    "rankSupporter": "支持者",
+    "scrollToTop": "回到顶部"
   },
   "hall": {
     "title": "光明圣殿",
@@ -276,7 +286,17 @@
     "modalError": "发送失败，请重试。",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "支付提示",
+    "purchaseLinkNotConfigured": "支付系统正在维护或准备中，请稍后再试或联系支持。",
+    "popupBlockedTitle": "弹窗被拦截",
+    "popupBlockedDesc": "支付弹窗已被浏览器拦截，请允许弹窗后重试。",
+    "paymentFailedTitle": "支付未完成",
+    "paymentFailedDesc": "未能完成支付处理，请检查银行卡或余额后重试。",
+    "paymentCancelledTitle": "支付已取消",
+    "paymentCancelledDesc": "支付流程已取消，欢迎随时再次尝试。",
+    "modalConfirm": "确定",
+    "inquiryBtn": "联系支持"
   },
   "Resonance": {
     "title": "数百万灵魂被频率触动",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "进入神圣殿堂",
+    "subtitle": "登录以记录您的心愿、保存与古鲁的对话，并铭刻您的功德奉献。",
+    "googleBtn": "使用 Google 继续",
+    "disclaimerBefore": "继续操作即表示您已阅读并同意我们的",
+    "terms": "服务条款",
+    "disclaimerAnd": "与",
+    "privacy": "隐私政策",
+    "disclaimerAfter": "。",
+    "privacyNote": "我们尊重您的隐私。除邮箱和姓名外，不会存储任何个人信息。"
   }
 }

@@ -103,7 +103,16 @@
     "modalSubmit": "하늘로 띄우기",
     "modalCancel": "취소",
     "sortDeep": "깊은 염원",
-    "scrollToTop": "맨 위로"
+    "scrollToTop": "맨 위로",
+    "myWishBadge": "내 소원",
+    "makePrivate": "비공개로 전환",
+    "makePublic": "공개로 전환",
+    "deleteWish": "소원 삭제",
+    "confirmDeleteWishTitle": "소원 삭제 확인",
+    "confirmDeleteWishDesc": "이 소원을 삭제하시겠습니까? 삭제된 소원은 복구할 수 없습니다.",
+    "wishDeleted": "소원이 하늘로 회향되어 삭제되었습니다.",
+    "wishMadePublic": "공개 소원으로 전환되었습니다.",
+    "wishMadePrivate": "비공개 소원으로 전환되었습니다."
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",
@@ -134,7 +143,8 @@
     "sortAmount": "금액순",
     "sortNewest": "최신순",
     "sortOldest": "과거순",
-    "rankSupporter": "후원자"
+    "rankSupporter": "후원자",
+    "scrollToTop": "맨 위로"
   },
   "hall": {
     "title": "빛의 성소",
@@ -276,7 +286,17 @@
     "modalError": "전송에 실패했습니다. 다시 시도해 주세요.",
     "getMusic": "음악 받기",
     "instantTitle": "지금 입장하세요",
-    "instantSubtitle": "디지털 다운로드 - 즉시 이용 가능"
+    "instantSubtitle": "디지털 다운로드 - 즉시 이용 가능",
+    "purchaseErrorTitle": "결제 안내",
+    "purchaseLinkNotConfigured": "현재 결제 시스템 연결 준비 중이거나 점검 중입니다. 잠시 후 다시 시도해 주시거나 문의를 남겨주세요.",
+    "popupBlockedTitle": "팝업 차단 알림",
+    "popupBlockedDesc": "결제 창 팝업이 차단되었습니다. 브라우저 팝업 허용 후 다시 시도해 주세요.",
+    "paymentFailedTitle": "결제 실패 안내",
+    "paymentFailedDesc": "결제 처리가 완료되지 않았습니다. 카드 정보나 잔액을 확인 후 다시 시도해 주세요.",
+    "paymentCancelledTitle": "결제 취소 안내",
+    "paymentCancelledDesc": "결제가 취소되었습니다. 언제든 준비되셨을 때 다시 이용해 주세요.",
+    "modalConfirm": "확인",
+    "inquiryBtn": "문의하기"
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",
@@ -311,5 +331,16 @@
     "deleteWish": "소원 삭제",
     "confirmDelete": "이 소원을 삭제하시겠습니까? 되돌릴 수 없습니다.",
     "exportError": "내보내기에 실패했습니다. 다시 시도해 주세요."
+  },
+  "Auth": {
+    "title": "신성한 안식처로 입장",
+    "subtitle": "소원을 남기고, 구루와의 대화를 보존하며, 사찰 기둥 공양을 영구히 기록하려면 로그인하세요.",
+    "googleBtn": "Google 계정으로 계속하기",
+    "disclaimerBefore": "계속 진행하면 사찰의",
+    "terms": "이용약관",
+    "disclaimerAnd": "및",
+    "privacy": "개인정보 처리방침",
+    "disclaimerAfter": "에 동의하는 것으로 간주됩니다.",
+    "privacyNote": "우리는 사용자의 프라이버시를 존중합니다. 이메일과 이름 외의 어떠한 개인정보도 저장되지 않습니다."
   }
 }

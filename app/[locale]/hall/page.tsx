@@ -64,6 +64,7 @@ export default function HallPage() {
       if (result.success) {
         if (typeof result.lotus_count === 'number') {
           setLotusCount(result.lotus_count);
+          window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: result.lotus_count } }));
         }
         setIsModalOpen(false);
         setNewWish('');

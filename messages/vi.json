@@ -103,7 +103,16 @@
     "modalSubmit": "Thả Lên Bầu Trời",
     "modalCancel": "Hủy",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Lên Đầu Trời"
+    "scrollToTop": "Lên đầu trang",
+    "myWishBadge": "Nguyện vọng của tôi",
+    "makePrivate": "Chuyển riêng tư",
+    "makePublic": "Chuyển công khai",
+    "deleteWish": "Xóa ước nguyện",
+    "confirmDeleteWishTitle": "Xóa ước nguyện",
+    "confirmDeleteWishDesc": "Bạn có chắc chắn muốn xóa ước nguyện này? Hành động này không thể hoàn tác.",
+    "wishDeleted": "Ước nguyện đã hồi hướng lên bầu trời và được xóa.",
+    "wishMadePublic": "Ước nguyện hiện đã công khai.",
+    "wishMadePrivate": "Ước nguyện hiện đã chuyển riêng tư."
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Người Ủng Hộ"
+    "rankSupporter": "Người Ủng Hộ",
+    "scrollToTop": "Lên đầu trang"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -276,7 +286,17 @@
     "modalError": "Gửi thất bại. Vui lòng thử lại.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Thông Báo Thanh Toán",
+    "purchaseLinkNotConfigured": "Liên kết thanh toán đang được chuẩn bị. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.",
+    "popupBlockedTitle": "Cửa Sổ Bị Chặn",
+    "popupBlockedDesc": "Cửa sổ thanh toán đã bị trình duyệt chặn. Vui lòng cho phép mở cửa sổ bật lên và thử lại.",
+    "paymentFailedTitle": "Thanh Toán Chưa Hoàn Tất",
+    "paymentFailedDesc": "Không thể xử lý thanh toán. Vui lòng kiểm tra lại thông tin thẻ hoặc số dư.",
+    "paymentCancelledTitle": "Đã Hủy Thanh Toán",
+    "paymentCancelledDesc": "Quá trình thanh toán đã bị hủy. Bạn có thể quay lại bất cứ lúc nào.",
+    "modalConfirm": "Xác Nhận",
+    "inquiryBtn": "Liên Hệ Hỗ Trợ"
   },
   "Resonance": {
     "title": "Hàng Triệu Người Được Chạm Đến Bởi Tần Số",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Bước vào Thánh điện",
+    "subtitle": "Đăng nhập để lưu giữ ước nguyện, bảo tồn cuộc trò chuyện với Guru và ghi nhận công đức cúng dường.",
+    "googleBtn": "Tiếp tục với Google",
+    "disclaimerBefore": "Bằng việc tiếp tục, bạn đồng ý với",
+    "terms": "Điều khoản dịch vụ",
+    "disclaimerAnd": "và",
+    "privacy": "Chính sách bảo mật",
+    "disclaimerAfter": " của chúng tôi.",
+    "privacyNote": "Chúng tôi tôn trọng quyền riêng tư. Không lưu trữ thông tin nào khác ngoài email và tên."
   }
 }

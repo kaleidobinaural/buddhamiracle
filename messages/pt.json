@@ -103,7 +103,16 @@
     "modalSubmit": "Liberar no Céu",
     "modalCancel": "Cancelar",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Subir ao Topo"
+    "scrollToTop": "Volver ao topo",
+    "myWishBadge": "Meu Desejo",
+    "makePrivate": "Tornar privado",
+    "makePublic": "Tornar público",
+    "deleteWish": "Excluir desejo",
+    "confirmDeleteWishTitle": "Excluir desejo",
+    "confirmDeleteWishDesc": "Tem certeza de que deseja excluir este desejo? Não pode ser desfeito.",
+    "wishDeleted": "O desejo ascendeu aos céus e foi removido.",
+    "wishMadePublic": "O desejo agora é público.",
+    "wishMadePrivate": "O desejo agora é privado."
   },
   "Pillars": {
     "eyebrow": "A Fundação Eterna",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Apoiador"
+    "rankSupporter": "Apoiador",
+    "scrollToTop": "Voltar ao topo"
   },
   "hall": {
     "title": "Santuário da Luz",
@@ -276,7 +286,17 @@
     "modalError": "Falha ao enviar. Por favor tente novamente.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Aviso de Pagamento",
+    "purchaseLinkNotConfigured": "O link de pagamento está em manutenção ou preparação. Tente novamente em breve ou contate o suporte.",
+    "popupBlockedTitle": "Popup Bloqueado",
+    "popupBlockedDesc": "A janela de checkout foi bloqueada. Por favor, permita popups e tente novamente.",
+    "paymentFailedTitle": "Pagamento Incompleto",
+    "paymentFailedDesc": "O pagamento não pôde ser processado. Verifique os dados do cartão ou saldo.",
+    "paymentCancelledTitle": "Pagamento Cancelado",
+    "paymentCancelledDesc": "O pagamento foi cancelado. Volte quando desejar.",
+    "modalConfirm": "OK",
+    "inquiryBtn": "Falar com Suporte"
   },
   "Resonance": {
     "title": "Milhões Tocados pela Frequência",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Entrar no Santuário",
+    "subtitle": "Entre para acompanhar seus desejos, preservar conversas com o Guru e honrar suas oferendas.",
+    "googleBtn": "Continuar com Google",
+    "disclaimerBefore": "Ao continuar, você concorda com nossos",
+    "terms": "Termos de Serviço",
+    "disclaimerAnd": "e",
+    "privacy": "Política de Privacidade",
+    "disclaimerAfter": ".",
+    "privacyNote": "Respeitamos sua privacidade. Nenhum dado além de e-mail e nome é armazenado."
   }
 }

@@ -103,7 +103,16 @@
     "modalSubmit": "In den Himmel steigen lassen",
     "modalCancel": "Abbrechen",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Nach Oben"
+    "scrollToTop": "Nach oben",
+    "myWishBadge": "Mein Wunsch",
+    "makePrivate": "Privat schalten",
+    "makePublic": "Öffentlich schalten",
+    "deleteWish": "Wunsch löschen",
+    "confirmDeleteWishTitle": "Wunsch löschen",
+    "confirmDeleteWishDesc": "Möchten Sie diesen Wunsch wirklich löschen? Dies kann nicht rückgängig gemacht werden.",
+    "wishDeleted": "Der Wunsch ist zum Himmel aufgestiegen und gelöscht.",
+    "wishMadePublic": "Der Wunsch ist nun öffentlich.",
+    "wishMadePrivate": "Der Wunsch ist nun privat."
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Unterstützer"
+    "rankSupporter": "Unterstützer",
+    "scrollToTop": "Nach oben"
   },
   "hall": {
     "title": "Heiligtum des Lichts",
@@ -276,7 +286,17 @@
     "modalError": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Zahlungshinweis",
+    "purchaseLinkNotConfigured": "Der Zahlungslink wird derzeit vorbereitet. Bitte versuchen Sie es in Kürze erneut oder kontaktieren Sie den Support.",
+    "popupBlockedTitle": "Popup Blockiert",
+    "popupBlockedDesc": "Das Bezahlfenster wurde blockiert. Bitte erlauben Sie Popups und versuchen Sie es erneut.",
+    "paymentFailedTitle": "Zahlung Fehlgeschlagen",
+    "paymentFailedDesc": "Die Zahlung konnte nicht abgeschlossen werden. Bitte prüfen Sie Ihre Angaben.",
+    "paymentCancelledTitle": "Zahlung Abgebrochen",
+    "paymentCancelledDesc": "Der Bezahlvorgang wurde abgebrochen. Sie können es jederzeit erneut versuchen.",
+    "modalConfirm": "OK",
+    "inquiryBtn": "Support Kontaktieren"
   },
   "Resonance": {
     "title": "Millionen von der Frequenz berührt",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Das Heiligtum betreten",
+    "subtitle": "Melden Sie sich an, um Ihre Wünsche festzuhalten, Gespräche mit dem Guru zu bewahren und Opfergaben zu verewigen.",
+    "googleBtn": "Weiter mit Google",
+    "disclaimerBefore": "Indem Sie fortfahren, stimmen Sie unseren",
+    "terms": "Nutzungsbedingungen",
+    "disclaimerAnd": "und der",
+    "privacy": "Datenschutzrichtlinie",
+    "disclaimerAfter": " zu.",
+    "privacyNote": "Wir respektieren Ihre Privatsphäre. Außer E-Mail und Name werden keine Daten gespeichert."
   }
 }

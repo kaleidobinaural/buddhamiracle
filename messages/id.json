@@ -103,7 +103,16 @@
     "modalSubmit": "Lepaskan ke Langit",
     "modalCancel": "Batal",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Kembali ke Atas"
+    "scrollToTop": "Ke Atas",
+    "myWishBadge": "Doa Saya",
+    "makePrivate": "Jadikan Pribadi",
+    "makePublic": "Jadikan Publik",
+    "deleteWish": "Hapus Doa",
+    "confirmDeleteWishTitle": "Hapus Doa",
+    "confirmDeleteWishDesc": "Yakin ingin menghapus doa ini? Tindakan ini tidak dapat dibatalkan.",
+    "wishDeleted": "Doa telah terangkat ke langit dan dihapus.",
+    "wishMadePublic": "Doa kini bersifat publik.",
+    "wishMadePrivate": "Doa kini bersifat pribadi."
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Pendukung"
+    "rankSupporter": "Pendukung",
+    "scrollToTop": "Ke Atas"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
@@ -276,7 +286,17 @@
     "modalError": "Gagal mengirim. Silakan coba lagi.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Pemberitahuan Pembayaran",
+    "purchaseLinkNotConfigured": "Tautan pembayaran sedang disiapkan. Silakan coba sebentar lagi atau hubungi dukungan.",
+    "popupBlockedTitle": "Popup Diblokir",
+    "popupBlockedDesc": "Jendela pembayaran diblokir oleh browser. Harap izinkan popup dan coba lagi.",
+    "paymentFailedTitle": "Pembayaran Tidak Selesai",
+    "paymentFailedDesc": "Pembayaran tidak dapat diproses. Silakan periksa detail kartu atau saldo Anda.",
+    "paymentCancelledTitle": "Pembayaran Dibatalkan",
+    "paymentCancelledDesc": "Proses pembayaran dibatalkan. Anda dapat kembali kapan saja.",
+    "modalConfirm": "OK",
+    "inquiryBtn": "Hubungi Dukungan"
   },
   "Resonance": {
     "title": "Jutaan Orang Tersentuh oleh Frekuensi",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Masuk ke Tempat Suci",
+    "subtitle": "Masuk untuk mencatat doa Anda, menyimpan percakapan dengan Guru, dan mengabadikan persembahan.",
+    "googleBtn": "Lanjutkan dengan Google",
+    "disclaimerBefore": "Dengan melanjutkan, Anda menyetujui",
+    "terms": "Syarat Layanan",
+    "disclaimerAnd": "dan",
+    "privacy": "Kebijakan Privasi",
+    "disclaimerAfter": " kami.",
+    "privacyNote": "Kami menghormati privasi Anda. Tidak ada data selain email dan nama yang disimpan."
   }
 }

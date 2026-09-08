@@ -53,7 +53,18 @@ export default function Navigation() {
     };
 
     window.addEventListener('lotus-updated', handleLotusUpdate);
-    return () => window.removeEventListener('lotus-updated', handleLotusUpdate);
+    const handleFocus = () => fetchCount();
+    window.addEventListener('focus', handleFocus);
+    const handleVisibility = () => {
+      if (!document.hidden) fetchCount();
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      window.removeEventListener('lotus-updated', handleLotusUpdate);
+      window.removeEventListener('focus', handleFocus);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [session]);
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);

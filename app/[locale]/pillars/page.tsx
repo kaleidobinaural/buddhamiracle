@@ -33,6 +33,15 @@ export default function PillarsPage() {
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
   const [mounted, setMounted] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const pillarsTopRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    if (pillarsTopRef.current) {
+      pillarsTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   // Split pillars into Founders and Supporters
   const founderPillars = pillars.filter(p => ['gold', 'marble', 'stone'].includes(p.pillar_type));
@@ -84,7 +93,7 @@ export default function PillarsPage() {
       <div className="hall-fog-top" />
       <div className="hall-fog-bottom" />
       
-      <div className="pillars-container">
+      <div className="pillars-container" ref={pillarsTopRef}>
         <header className="page-header animate-fade-up">
           <div className="header-eyebrow">{t('eyebrow')}</div>
           <h1 className="page-title text-gradient-gold-v2">{t('title')}</h1>
@@ -181,12 +190,41 @@ export default function PillarsPage() {
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={'auto'}
+                    speed={400}
+                    touchRatio={1.3}
+                    resistanceRatio={0.85}
+                    touchAngle={50}
+                    shortSwipes={true}
+                    longSwipes={true}
+                    longSwipesRatio={0.15}
+                    touchReleaseOnEdges={true}
+                    nested={true}
                     coverflowEffect={{
                       rotate: 0,
                       stretch: 150,
                       depth: 300,
                       modifier: 1.2,
                       slideShadows: false,
+                    }}
+                    breakpoints={{
+                      0: {
+                        coverflowEffect: {
+                          rotate: 0,
+                          stretch: 50,
+                          depth: 160,
+                          modifier: 1.0,
+                          slideShadows: false,
+                        },
+                      },
+                      768: {
+                        coverflowEffect: {
+                          rotate: 0,
+                          stretch: 150,
+                          depth: 300,
+                          modifier: 1.2,
+                          slideShadows: false,
+                        },
+                      },
                     }}
                     keyboard={{ enabled: true }}
                     mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
@@ -239,12 +277,41 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
+                      speed={400}
+                      touchRatio={1.3}
+                      resistanceRatio={0.85}
+                      touchAngle={50}
+                      shortSwipes={true}
+                      longSwipes={true}
+                      longSwipesRatio={0.15}
+                      touchReleaseOnEdges={true}
+                      nested={true}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 120,
                         depth: 250,
                         modifier: 1.0,
                         slideShadows: false,
+                      }}
+                      breakpoints={{
+                        0: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 50,
+                            depth: 160,
+                            modifier: 1.0,
+                            slideShadows: false,
+                          },
+                        },
+                        768: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 120,
+                            depth: 250,
+                            modifier: 1.0,
+                            slideShadows: false,
+                          },
+                        },
                       }}
                       keyboard={{ enabled: true }}
                       mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
@@ -359,6 +426,19 @@ export default function PillarsPage() {
             </div>
           )}
         </section>
+
+        {/* Scroll To Top Control */}
+        <div className="pillars-scroll-controls animate-fade-up">
+          <button
+            type="button"
+            className="btn-scroll-pillars-top"
+            onClick={scrollToTop}
+            title={t('scrollToTop') || '맨 위로'}
+          >
+            <span className="scroll-arrow-icon">↑</span>
+            <span className="scroll-arrow-label">{t('scrollToTop') || '맨 위로'}</span>
+          </button>
+        </div>
 
 
         {selectedPillar && (
@@ -552,6 +632,43 @@ export default function PillarsPage() {
           box-shadow: 0 0 60px rgba(160, 120, 80, 0.15), 0 0 120px rgba(160, 120, 80, 0.08) !important;
         }
         .supporters-swiper { margin-top: 0; }
+
+        /* Scroll To Top Controls */
+        .pillars-scroll-controls {
+          display: flex;
+          justify-content: center;
+          margin-top: 36px;
+          margin-bottom: 24px;
+        }
+        .btn-scroll-pillars-top {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 24px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          border-radius: 100px;
+          color: var(--primary-gold);
+          font-family: var(--font-ui);
+          font-size: 0.88rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .btn-scroll-pillars-top:hover {
+          background: rgba(212, 160, 23, 0.2);
+          border-color: var(--primary-gold);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(212, 160, 23, 0.25);
+          color: #fff;
+        }
+
+        @media (max-width: 640px) {
+          .pillar-slide { width: 270px; }
+          .pillar-body { height: 390px; }
+          .donor-name { font-size: 1.65rem; }
+        }
       `}</style>
     </main>
   );

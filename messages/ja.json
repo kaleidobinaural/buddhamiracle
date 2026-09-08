@@ -103,7 +103,16 @@
     "modalSubmit": "空へ放つ",
     "modalCancel": "キャンセル",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "空の頂点へ"
+    "scrollToTop": "トップへ",
+    "myWishBadge": "私の願い",
+    "makePrivate": "非公開にする",
+    "makePublic": "公開にする",
+    "deleteWish": "願いを削除",
+    "confirmDeleteWishTitle": "願いの削除確認",
+    "confirmDeleteWishDesc": "この願いを削除してもよろしいですか？削除後は復元できません。",
+    "wishDeleted": "願いが空へと昇華し、削除されました。",
+    "wishMadePublic": "願いが公開に設定されました。",
+    "wishMadePrivate": "願いが非公開に設定されました。"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "サポーター"
+    "rankSupporter": "サポーター",
+    "scrollToTop": "トップへ"
   },
   "hall": {
     "title": "光の聖域",
@@ -276,7 +286,17 @@
     "modalError": "送信に失敗しました。もう一度お試しください。",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "お支払いのご案内",
+    "purchaseLinkNotConfigured": "現在決済システムの準備中またはメンテナンス中です。しばらくしてから再度お試しいただくか、お問い合わせください。",
+    "popupBlockedTitle": "ポップアップブロック通知",
+    "popupBlockedDesc": "決済画面のポップアップがブロックされました。ブラウザのポップアップを許可して再度お試しください。",
+    "paymentFailedTitle": "決済未完了のご案内",
+    "paymentFailedDesc": "決済処理が完了しませんでした。カード情報や残高をご確認の上、再度お試しください。",
+    "paymentCancelledTitle": "決済キャンセルのご案内",
+    "paymentCancelledDesc": "決済がキャンセルされました。ご都合の良いときにいつでもご利用ください。",
+    "modalConfirm": "確認",
+    "inquiryBtn": "お問い合わせ"
   },
   "Resonance": {
     "title": "周波数に触れた何百万もの魂",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "聖なる聖域へ入る",
+    "subtitle": "願いを刻み、グルの対話を保存し、寺院の柱の奉納を記録するためにログインしてください。",
+    "googleBtn": "Googleで続ける",
+    "disclaimerBefore": "続行することにより、当寺院の",
+    "terms": "利用規約",
+    "disclaimerAnd": "および",
+    "privacy": "プライバシーポリシー",
+    "disclaimerAfter": "に同意したものとみなされます。",
+    "privacyNote": "当寺院はプライバシーを尊重します。メールアドレスとお名前以外の個人情報は保存されません。"
   }
 }

@@ -25,6 +25,7 @@ export default function StorePage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [vvipSpots, setVvipSpots] = useState(3);
   const [videoInteractive, setVideoInteractive] = useState(false);
+  const [purchaseError, setPurchaseError] = useState<{ title: string; message: string } | null>(null);
 
   useEffect(() => {
     // Follower Count Logic
@@ -32,6 +33,34 @@ export default function StorePage() {
       .then(res => res.json())
       .then(data => { if (data.followerCount) setFollowerCount(data.followerCount); })
       .catch(() => {});
+
+    // Check payment return query params
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const paymentStatus = params.get('payment') || params.get('status');
+      const errorMsg = params.get('error') || params.get('message');
+      
+      if (paymentStatus === 'failed' || errorMsg) {
+        setPurchaseError({
+          title: t('paymentFailedTitle') || '결제 실패 안내',
+          message: errorMsg ? decodeURIComponent(errorMsg) : (t('paymentFailedDesc') || '결제 처리가 완료되지 않았습니다. 카드 정보나 잔액을 확인 후 다시 시도해 주세요.')
+        });
+      } else if (paymentStatus === 'cancelled' || paymentStatus === 'canceled') {
+        setPurchaseError({
+          title: t('paymentCancelledTitle') || '결제 취소 안내',
+          message: t('paymentCancelledDesc') || '결제가 취소되었습니다. 언제든 준비되셨을 때 다시 이용해 주세요.'
+        });
+      } else if (paymentStatus === 'success') {
+        fetch('/api/user/lotus')
+          .then(res => res.json())
+          .then(data => {
+            if (typeof data.lotus_count === 'number') {
+              window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: data.lotus_count } }));
+            }
+          })
+          .catch(() => {});
+      }
+    }
 
     // VVIP 10-day cycle countdown logic
     const now = new Date();
@@ -56,6 +85,37 @@ export default function StorePage() {
     }
     setVvipSpots(spotsLeft);
   }, []);
+
+  const handleBuyProduct = (e: React.MouseEvent, url: string, productName: string) => {
+    e.preventDefault();
+    if (!url || url === '#' || url.trim() === '') {
+      setPurchaseError({
+        title: t('purchaseErrorTitle') || '결제 안내',
+        message: t('purchaseLinkNotConfigured') || '현재 결제 시스템 연결 준비 중이거나 점검 중입니다. 잠시 후 다시 시도해 주시거나 문의를 남겨주세요.'
+      });
+      return;
+    }
+
+    try {
+      let finalUrl = url;
+      if (session?.user?.email) {
+        const separator = finalUrl.includes('?') ? '&' : '?';
+        finalUrl += `${separator}checkout[email]=${encodeURIComponent(session.user.email)}`;
+      }
+      const win = window.open(finalUrl, '_blank', 'noopener,noreferrer');
+      if (!win) {
+        setPurchaseError({
+          title: t('popupBlockedTitle') || '팝업 차단 알림',
+          message: t('popupBlockedDesc') || '결제 창 팝업이 차단되었습니다. 브라우저 팝업 허용 후 다시 시도해 주세요.'
+        });
+      }
+    } catch (err: any) {
+      setPurchaseError({
+        title: t('purchaseErrorTitle') || '결제 오류',
+        message: err?.message || '결제 페이지로 이동하는 중 오류가 발생했습니다.'
+      });
+    }
+  };
 
   const handleVvipSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -156,7 +216,7 @@ export default function StorePage() {
               <li>🖼️ {t('omManiF2')}</li>
               <li>📄 {t('omManiF3')}</li>
             </ul>
-            <a href={PRODUCTS.omMani} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
+            <a href={PRODUCTS.omMani} onClick={(e) => handleBuyProduct(e, PRODUCTS.omMani, 'Om Mani 5Hz')} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
               {t('getMusic')} — $11.11
             </a>
             <p className="store-micro-note">{t('microNote')}</p>
@@ -173,7 +233,7 @@ export default function StorePage() {
               <li>🪐 {t('amuletF2')}</li>
               <li>📄 {t('amuletF3')}</li>
             </ul>
-            <a href={PRODUCTS.amulet} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
+            <a href={PRODUCTS.amulet} onClick={(e) => handleBuyProduct(e, PRODUCTS.amulet, 'Cosmic Amulet')} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
               {t('receiveAmulet')} — $11.11
             </a>
             <p className="store-micro-note" style={{ opacity: 0 }} aria-hidden="true">&nbsp;</p>
@@ -194,7 +254,7 @@ export default function StorePage() {
               <li>✅ {t('bundleF2')}</li>
               <li>💰 {t('bundleF3')}</li>
             </ul>
-            <a href={PRODUCTS.bundle} target="_blank" rel="noopener noreferrer" className="store-cta-btn" style={{ background: '#FFD700', color: '#000' }}>
+            <a href={PRODUCTS.bundle} onClick={(e) => handleBuyProduct(e, PRODUCTS.bundle, 'Complete Bundle')} target="_blank" rel="noopener noreferrer" className="store-cta-btn" style={{ background: '#FFD700', color: '#000' }}>
               {t('getBundle')} — $18.88
             </a>
             <p className="store-micro-note" style={{ opacity: 0 }} aria-hidden="true">&nbsp;</p>
@@ -221,7 +281,7 @@ export default function StorePage() {
             <div style={{ textAlign: 'center', margin: '20px 0', fontSize: '1.2rem', color: '#FFD700' }}>
               + 54 🪷
             </div>
-            <a href={PRODUCTS.candle} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
+            <a href={PRODUCTS.candle} onClick={(e) => handleBuyProduct(e, PRODUCTS.candle, 'Candle Pack')} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline">
               {t('buyLotus')} — $5
             </a>
           </div>
@@ -239,7 +299,7 @@ export default function StorePage() {
             <div style={{ textAlign: 'center', margin: '20px 0', fontSize: '1.5rem', color: '#FFD700', fontWeight: 'bold' }}>
               + 333 🪷
             </div>
-            <a href={PRODUCTS.lotus} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
+            <a href={PRODUCTS.lotus} onClick={(e) => handleBuyProduct(e, PRODUCTS.lotus, 'Lotus Pack')} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-gold">
               {t('buyLotus')} — $25
             </a>
           </div>
@@ -254,7 +314,7 @@ export default function StorePage() {
             <div style={{ textAlign: 'center', margin: '20px 0', fontSize: '1.5rem', color: '#FFD700', fontWeight: 'bold' }}>
               + 1080 🪷
             </div>
-            <a href={PRODUCTS.mala} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline" style={{ borderColor: '#E5A93C', color: '#E5A93C' }}>
+            <a href={PRODUCTS.mala} onClick={(e) => handleBuyProduct(e, PRODUCTS.mala, 'Mala Pack')} target="_blank" rel="noopener noreferrer" className="store-cta-btn store-cta-outline" style={{ borderColor: '#E5A93C', color: '#E5A93C' }}>
               {t('buyLotus')} — $108
             </a>
           </div>
@@ -379,6 +439,43 @@ export default function StorePage() {
                 )}
               </form>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Centered Purchase Error / Status Modal ── */}
+      {purchaseError && (
+        <div className="store-modal-overlay" style={{ zIndex: 100000 }} onClick={() => setPurchaseError(null)}>
+          <div className="store-modal-content glass-card animate-fade-up" style={{ textAlign: 'center', maxWidth: '440px', padding: '36px 28px' }} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: '3rem', marginBottom: '16px' }}>⚠️</div>
+            <h3 className="store-modal-title" style={{ fontSize: '1.4rem', marginBottom: '14px', color: 'var(--primary-gold)' }}>
+              {purchaseError.title}
+            </h3>
+            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '28px' }}>
+              {purchaseError.message}
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="store-cta-btn store-cta-gold"
+                style={{ flex: 1, padding: '12px', fontSize: '0.9rem', cursor: 'pointer', border: 'none' }}
+                onClick={() => setPurchaseError(null)}
+              >
+                {t('modalConfirm') || '확인'}
+              </button>
+              <button
+                type="button"
+                className="store-cta-btn store-cta-outline"
+                style={{ flex: 1, padding: '12px', fontSize: '0.85rem', cursor: 'pointer' }}
+                onClick={() => {
+                  setPurchaseError(null);
+                  setIsVvipModalOpen(true);
+                  setFormStatus('idle');
+                }}
+              >
+                {t('inquiryBtn') || '문의하기'}
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -103,7 +103,16 @@
     "modalSubmit": "ปล่อยขึ้นสู่ท้องฟ้า",
     "modalCancel": "ยกเลิก",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "ขึ้นสู่ยอดฟ้า"
+    "scrollToTop": "กลับขึ้นด้านบน",
+    "myWishBadge": "คำอธิษฐานของฉัน",
+    "makePrivate": "ตั้งเป็นส่วนตัว",
+    "makePublic": "ตั้งเป็นสาธารณะ",
+    "deleteWish": "ลบคำอธิษฐาน",
+    "confirmDeleteWishTitle": "ยืนยันการลบคำอธิษฐาน",
+    "confirmDeleteWishDesc": "คุณแน่ใจหรือไม่ว่าต้องการลบคำอธิษฐานนี้? การกระทำนี้ไม่สามารถยกเลิกได้",
+    "wishDeleted": "คำอธิษฐานได้ลอยสู่ฟากฟ้าและถูกลบแล้ว",
+    "wishMadePublic": "คำอธิษฐานถูกเปลี่ยนเป็นสาธารณะแล้ว",
+    "wishMadePrivate": "คำอธิษฐานถูกเปลี่ยนเป็นส่วนตัวแล้ว"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "ผู้สนับสนุน"
+    "rankSupporter": "ผู้สนับสนุน",
+    "scrollToTop": "กลับขึ้นด้านบน"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",
@@ -276,7 +286,17 @@
     "modalError": "ส่งล้มเหลว กรุณาลองอีกครั้ง",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "แจ้งเตือนการชำระเงิน",
+    "purchaseLinkNotConfigured": "ลิงก์ชำระเงินกำลังอยู่ในระหว่างการเตรียมความพร้อม โปรดลองใหม่อีกครั้งในภายหลังหรือติดต่อฝ่ายสนับสนุน",
+    "popupBlockedTitle": "ป๊อปอัปถูกบล็อก",
+    "popupBlockedDesc": "หน้าต่างชำระเงินถูกบล็อกโดยเบราว์เซอร์ โปรดอนุญาตป๊อปอัปและลองใหม่อีกครั้ง",
+    "paymentFailedTitle": "การชำระเงินไม่สมบูรณ์",
+    "paymentFailedDesc": "ไม่สามารถประมวลผลการชำระเงินได้ โปรดตรวจสอบข้อมูลบัตรหรือยอดเงินของคุณ",
+    "paymentCancelledTitle": "ยกเลิกการชำระเงิน",
+    "paymentCancelledDesc": "กระบวนการชำระเงินถูกยกเลิก คุณสามารถกลับมาทำรายการได้ทุกเมื่อ",
+    "modalConfirm": "ตกลง",
+    "inquiryBtn": "ติดต่อฝ่ายสนับสนุน"
   },
   "Resonance": {
     "title": "หลายล้านคนสัมผัสได้ถึงคลื่นความถี่",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "เข้าสู่อารามอันศักดิ์สิทธิ์",
+    "subtitle": "เข้าสู่ระบบเพื่อบันทึกคำอธิษฐาน เก็บรักษาบทสนทนากับกูรู และจารึกการถวายเสาบุญ",
+    "googleBtn": "ดำเนินการต่อด้วย Google",
+    "disclaimerBefore": "การดำเนินการต่อถือว่าท่านยอมรับ",
+    "terms": "ข้อกำหนดการให้บริการ",
+    "disclaimerAnd": "และ",
+    "privacy": "นโยบายความเป็นส่วนตัว",
+    "disclaimerAfter": " ของเรา",
+    "privacyNote": "เราเคารพความเป็นส่วนตัวของท่าน จะไม่มีการเก็บข้อมูลอื่นใดนอกจากอีเมลและชื่อ"
   }
 }

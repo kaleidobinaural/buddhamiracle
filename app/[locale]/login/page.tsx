@@ -1,29 +1,37 @@
-import { signIn } from "@/auth"
+import { signIn } from "@/auth";
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: 'Sign In',
-  description: 'Sign in to access personalized features like Guru Chat history and Wish Inscriptions.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Auth' });
+  return {
+    title: t('title') || 'Sign In',
+    description: t('subtitle') || 'Sign in to access personalized sanctuary features.',
+  };
+}
 
-export default function LoginPage() {
+export default async function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Auth' });
+
   return (
     <main className="login-page fade-in">
       <div className="login-container glass-card">
         <header className="login-header">
           <div className="login-icon" aria-hidden="true">☸</div>
-          <h1 className="login-title">Enter the Sanctuary</h1>
+          <h1 className="login-title">{t('title')}</h1>
           <p className="login-subtitle">
-            Sign in to track your wishes, preserve your conversations with the Guru, and honor your contributions.
+            {t('subtitle')}
           </p>
         </header>
 
         <div className="login-actions">
           <form
             action={async () => {
-              "use server"
-              await signIn("google", { redirectTo: "/" })
+              "use server";
+              await signIn("google", { redirectTo: `/${locale}` });
             }}
           >
             <button className="btn-social google-btn" type="submit">
@@ -35,17 +43,18 @@ export default function LoginPage() {
                   <path fill="#EA4335" d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z"/>
                 </g>
               </svg>
-              <span>Continue with Google</span>
+              <span>{t('googleBtn')}</span>
             </button>
           </form>
           <div className="login-disclaimer">
             <p>
-              By continuing, you acknowledge that you have read and agree to our 
-              <Link href="/terms" className="legal-link"> Terms of Service </Link> 
-              and 
-              <Link href="/privacy" className="legal-link"> Privacy Policy</Link>.
+              {t('disclaimerBefore')}{' '}
+              <Link href={`/${locale}/terms`} className="legal-link">{t('terms')}</Link>
+              {' '}{t('disclaimerAnd')}{' '}
+              <Link href={`/${locale}/privacy`} className="legal-link">{t('privacy')}</Link>
+              {t('disclaimerAfter')}
             </p>
-            <p>We respect your privacy. No personal data other than your email and name is stored.</p>
+            <p>{t('privacyNote')}</p>
           </div>
         </div>
       </div>

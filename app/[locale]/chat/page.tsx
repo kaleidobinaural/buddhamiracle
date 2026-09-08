@@ -36,14 +36,33 @@ export default function ChatPage() {
       .catch(() => {});
   }, []);
 
-  // Fetch initial lotus count for logged-in users
+  // Fetch and listen for live lotus count updates
   useEffect(() => {
-    if (status === 'authenticated') {
-      fetch('/api/user/lotus')
-        .then(res => res.json())
-        .then(data => { if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count); })
-        .catch(() => {});
-    }
+    const fetchLotuses = () => {
+      if (status === 'authenticated') {
+        fetch('/api/user/lotus')
+          .then(res => res.json())
+          .then(data => { if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count); })
+          .catch(() => {});
+      }
+    };
+    fetchLotuses();
+
+    const handleLotusEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<{ lotus_count?: number }>;
+      if (typeof customEvent.detail?.lotus_count === 'number') {
+        setLotusCount(customEvent.detail.lotus_count);
+      } else {
+        fetchLotuses();
+      }
+    };
+
+    window.addEventListener('lotus-updated', handleLotusEvent);
+    window.addEventListener('focus', fetchLotuses);
+    return () => {
+      window.removeEventListener('lotus-updated', handleLotusEvent);
+      window.removeEventListener('focus', fetchLotuses);
+    };
   }, [status]);
 
   // Auto-scroll to bottom
@@ -111,8 +130,11 @@ export default function ChatPage() {
 
       const data = await response.json();
 
-      // Update lotus count from response
-      if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count);
+      // Update lotus count from response & sync across all tabs
+      if (typeof data.lotus_count === 'number') {
+        setLotusCount(data.lotus_count);
+        window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: data.lotus_count } }));
+      }
 
       if (response.status === 401) {
         throw new Error('Unauthorized');
@@ -164,7 +186,10 @@ export default function ChatPage() {
 
       const data = await response.json();
 
-      if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count);
+      if (typeof data.lotus_count === 'number') {
+        setLotusCount(data.lotus_count);
+        window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: data.lotus_count } }));
+      }
 
       if (response.status === 402) {
         setShowUpgradeModal(true);

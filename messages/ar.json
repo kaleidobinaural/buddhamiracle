@@ -103,7 +103,16 @@
     "modalSubmit": "أطلقها إلى السماء",
     "modalCancel": "إلغاء",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "إلى أعلى السماء"
+    "scrollToTop": "إلى الأعلى",
+    "myWishBadge": "أمنيتي",
+    "makePrivate": "جعله خاصاً",
+    "makePublic": "جعله عاماً",
+    "deleteWish": "حذف الأمنية",
+    "confirmDeleteWishTitle": "تأكيد حذف الأمنية",
+    "confirmDeleteWishDesc": "هل أنت متأكد من رغبتك في حذف هذه الأمنية؟ لا يمكن التراجع عن هذا الإجراء.",
+    "wishDeleted": "صعدت الأمنية إلى السماء وتم حذفها بنجاح.",
+    "wishMadePublic": "أصبحت الأمنية عامة الآن.",
+    "wishMadePrivate": "أصبحت الأمنية خاصة الآن."
   },
   "Pillars": {
     "eyebrow": "الأساس الأبدي",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "داعم"
+    "rankSupporter": "داعم",
+    "scrollToTop": "إلى الأعلى"
   },
   "hall": {
     "title": "ملاذ النور",
@@ -276,7 +286,17 @@
     "modalError": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "إشعار الدفع",
+    "purchaseLinkNotConfigured": "رابط الدفع قيد الإعداد حاليًا. يرجى المحاولة مرة أخرى قريبًا أو التواصل مع الدعم.",
+    "popupBlockedTitle": "تم حظر النافذة المنبثقة",
+    "popupBlockedDesc": "تم حظر نافذة الدفع بواسطة المتصفح. يرجى السماح بالنوافذ المنبثقة وإعادة المحاولة.",
+    "paymentFailedTitle": "لم تكتمل عملية الدفع",
+    "paymentFailedDesc": "تعذر إتمام الدفع. يرجى التحقق من تفاصيل البطاقة أو الرصيد.",
+    "paymentCancelledTitle": "تم إلغاء الدفع",
+    "paymentCancelledDesc": "تم إلغاء عملية الدفع. يمكنك المحاولة مجددًا في أي وقت.",
+    "modalConfirm": "موافق",
+    "inquiryBtn": "تواصل مع الدعم"
   },
   "Resonance": {
     "title": "ملايين تأثروا بالتردد",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "الدخول إلى الملاذ المقدس",
+    "subtitle": "سجّل الدخول لتتبع أمنياتك، والحفاظ على محادثاتك مع المعلم، وتخليد تبرعاتك.",
+    "googleBtn": "المتابعة باستخدام Google",
+    "disclaimerBefore": "بالمتابعة، فإنك تقر بأنك قرأت وتوافق على",
+    "terms": "شروط الخدمة",
+    "disclaimerAnd": "و",
+    "privacy": "سياسة الخصوصية",
+    "disclaimerAfter": " الخاصة بنا.",
+    "privacyNote": "نحن نحترم خصوصيتك. لا يتم تخزين أي بيانات شخصية سوى بريدك الإلكتروني واسمك."
   }
 }

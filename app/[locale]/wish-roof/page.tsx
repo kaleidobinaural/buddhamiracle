@@ -40,9 +40,55 @@ export default function WishRoofPage() {
   const [snackbar, setSnackbar] = useState<{ message: string; show: boolean }>({ message: '', show: false });
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [isActionSubmitting, setIsActionSubmitting] = useState(false);
   const snackbarTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const wishSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleTogglePublic = async (wish: Wish) => {
+    setIsActionSubmitting(true);
+    try {
+      const res = await fetch('/api/wishes', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: wish.id, action: 'toggle_public' }),
+      });
+      if (res.ok) {
+        const updatedStatus = !wish.is_public;
+        setWishes(prev => prev.map(w => w.id === wish.id ? { ...w, is_public: updatedStatus } : w));
+        if (selectedWish?.id === wish.id) {
+          setSelectedWish({ ...selectedWish, is_public: updatedStatus });
+        }
+        showMessage(updatedStatus ? (t('wishMadePublic') || '공개 소원으로 전환되었습니다.') : (t('wishMadePrivate') || '비공개 소원으로 전환되었습니다.'));
+      }
+    } catch {
+      showMessage('오류가 발생했습니다.');
+    } finally {
+      setIsActionSubmitting(false);
+    }
+  };
+
+  const handleDeleteWish = async (id: string) => {
+    setIsActionSubmitting(true);
+    try {
+      const res = await fetch('/api/wishes', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      if (res.ok) {
+        setWishes(prev => prev.filter(w => w.id !== id));
+        setSelectedWish(null);
+        setDeleteConfirmOpen(false);
+        showMessage(t('wishDeleted') || '소원이 삭제되었습니다.');
+      }
+    } catch {
+      showMessage('삭제 중 오류가 발생했습니다.');
+    } finally {
+      setIsActionSubmitting(false);
+    }
+  };
 
   const scrollToTop = () => {
     if (scrollAreaRef.current) {
@@ -56,6 +102,9 @@ export default function WishRoofPage() {
   useEffect(() => {
     fetchWishes(searchQuery, sortBy, showOnlyMine);
     setMounted(true);
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
     
     // Set time of day
     const hour = new Date().getHours();
@@ -317,60 +366,102 @@ export default function WishRoofPage() {
         <div className="sacred-sky-frame">
           <div className="sky-fade-top" aria-hidden="true" />
           <div className="sacred-sky-scroll-area" ref={scrollAreaRef}>
-            <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { height: `${Math.max(700, Math.ceil(wishes.length / 3) * 220)}px` } : {}}>
-              {isLoading ? (
-                <div className="loading-state">{t('loading')}</div>
-              ) : wishes.length === 0 ? (
-                <div className="empty-state">{t('empty')}</div>
-              ) : (
-                wishes.map((wish, index) => {
-                  // Create a deterministic pseudo-random seed based on the wish ID
-                  const seed = Math.abs(
-                    wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
-                  );
-                  
-                  const canvasHeight = Math.max(700, Math.ceil(wishes.length / 3) * 220);
-                  const totalSlots = Math.max(1, wishes.length);
-                  const baseTop = (index / totalSlots) * (canvasHeight - 280) + 40;
-                  const jitterTop = ((seed >> 2) % 70) - 35;
-                  const top = Math.max(30, Math.min(canvasHeight - 260, baseTop + jitterTop));
-                  const left = 3 + (seed % 90);
-                  const scale = 0.6 + ((seed >> 6) % 5) * 0.1;
-                  const opacity = 0.75 + ((seed >> 9) % 10) * 0.025;
-                  
-                  return (
-                    <div 
-                      key={wish.id} 
-                      className="lantern-wrapper"
-                      onClick={() => setSelectedWish(wish)}
-                      style={viewMode === 'sky' ? { 
-                        left: `${left}%`, 
-                        top: `${top}px`, 
-                        transform: `scale(${scale})`,
-                        opacity: opacity,
-                        zIndex: Math.floor(scale * 10),
-                        animationDelay: `${(index % 8) * 0.7}s`,
-                        cursor: 'zoom-in'
-                      } : { cursor: 'zoom-in' }}
-                    >
-                      <article className={`lantern ${wish.user_email === session?.user?.email ? 'is-mine' : ''} ${viewMode === 'grid' ? 'grid-item' : ''}`}>
-                        <div className="lantern-light" />
-                        {(wish.likes_count || 0) > 0 && <div className="lantern-aura-glow" />}
-                        <div className="lantern-content">
-                          <p className="lantern-text">“{wish.content}”</p>
-                          <div className="lantern-meta">
-                            <span className="lantern-author">{wish.user_name}</span>
-                            {(wish.likes_count || 0) > 0 && <span className="stat-likes">✨ {wish.likes_count}</span>}
-                            {!wish.is_public && <span className="badge-private">Private</span>}
-                          </div>
+            {(() => {
+              const isFewOrFiltered = showOnlyMine || !!searchQuery || wishes.length <= 3;
+              const canvasHeight = isFewOrFiltered ? 540 : Math.max(700, Math.ceil(wishes.length / 3) * 220);
+              return (
+                <section 
+                  className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'} ${isFewOrFiltered && viewMode === 'sky' ? 'centered-sky' : ''}`} 
+                  style={viewMode === 'sky' ? { height: `${canvasHeight}px` } : {}}
+                >
+                  {isLoading ? (
+                    <div className="loading-state">{t('loading')}</div>
+                  ) : wishes.length === 0 ? (
+                    <div className="empty-state">{t('empty')}</div>
+                  ) : (
+                    wishes.map((wish, index) => {
+                      let left: number;
+                      let top: number | string;
+                      let scale: number;
+                      let opacity: number;
+
+                      if (isFewOrFiltered && viewMode === 'sky') {
+                        if (wishes.length === 1) {
+                          left = 50;
+                          top = 48;
+                          scale = 1.15;
+                          opacity = 1.0;
+                        } else if (wishes.length === 2) {
+                          left = index === 0 ? 35 : 65;
+                          top = 48;
+                          scale = 1.05;
+                          opacity = 0.96;
+                        } else if (wishes.length === 3) {
+                          left = index === 0 ? 22 : index === 1 ? 50 : 78;
+                          top = index === 1 ? 44 : 50;
+                          scale = 1.0;
+                          opacity = 0.95;
+                        } else {
+                          const cols = Math.min(3, wishes.length);
+                          const row = Math.floor(index / cols);
+                          const col = index % cols;
+                          const itemsInRow = Math.min(cols, wishes.length - row * cols);
+                          left = 50 + (col - (itemsInRow - 1) / 2) * 28;
+                          top = 28 + row * 38;
+                          scale = 0.92;
+                          opacity = 0.92;
+                        }
+                      } else {
+                        const seed = Math.abs(
+                          wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
+                        );
+                        const totalSlots = Math.max(1, wishes.length);
+                        const baseTop = (index / totalSlots) * (canvasHeight - 280) + 40;
+                        const jitterTop = ((seed >> 2) % 70) - 35;
+                        top = Math.max(30, Math.min(canvasHeight - 260, baseTop + jitterTop));
+                        left = 3 + (seed % 90);
+                        scale = 0.6 + ((seed >> 6) % 5) * 0.1;
+                        opacity = 0.75 + ((seed >> 9) % 10) * 0.025;
+                      }
+
+                      const isMyWish = !!(session?.user?.email && wish.user_email && session.user.email.toLowerCase() === wish.user_email.toLowerCase());
+
+                      return (
+                        <div 
+                          key={wish.id} 
+                          className="lantern-wrapper"
+                          onClick={() => setSelectedWish(wish)}
+                          style={viewMode === 'sky' ? { 
+                            left: `${left}%`, 
+                            top: isFewOrFiltered ? `${top}%` : `${top}px`, 
+                            transform: isFewOrFiltered ? `translate(-50%, -50%) scale(${scale})` : `scale(${scale})`,
+                            opacity: opacity,
+                            zIndex: Math.floor(scale * 10),
+                            animationDelay: `${(index % 8) * 0.7}s`,
+                            cursor: 'zoom-in'
+                          } : { cursor: 'zoom-in' }}
+                        >
+                          <article className={`lantern ${isMyWish ? 'is-mine' : ''} ${viewMode === 'grid' ? 'grid-item' : ''}`}>
+                            <div className="lantern-light" />
+                            {(wish.likes_count || 0) > 0 && <div className="lantern-aura-glow" />}
+                            <div className="lantern-content">
+                              <p className="lantern-text">“{wish.content}”</p>
+                              <div className="lantern-meta">
+                                <span className="lantern-author">{wish.user_name}</span>
+                                {(wish.likes_count || 0) > 0 && <span className="stat-likes">✨ {wish.likes_count}</span>}
+                                {isMyWish && <span className="badge-mine">{t('myWishBadge') || '내 소원'}</span>}
+                                {!wish.is_public && <span className="badge-private">Private</span>}
+                              </div>
+                            </div>
+                            <div className="lantern-tassel" />
+                          </article>
                         </div>
-                        <div className="lantern-tassel" />
-                      </article>
-                    </div>
-                  );
-                })
-              )}
-            </section>
+                      );
+                    })
+                  )}
+                </section>
+              );
+            })()}
           </div>
           <div className="sky-fade-bottom" aria-hidden="true" />
         </div>
@@ -461,9 +552,65 @@ export default function WishRoofPage() {
                   >
                     {typeof window !== 'undefined' && JSON.parse(localStorage.getItem('liked_wishes') || '[]').includes(selectedWish.id) ? '🌟' : '🙏'}
                   </button>
+
+                  {/* Owner Controls (In-situ wish management) */}
+                  {session?.user?.email && selectedWish.user_email && session.user.email.toLowerCase() === selectedWish.user_email.toLowerCase() && (
+                    <div className="wish-owner-toolbar">
+                      <button 
+                        type="button" 
+                        className="btn-owner-action btn-owner-toggle"
+                        onClick={(e) => { e.stopPropagation(); handleTogglePublic(selectedWish); }}
+                        disabled={isActionSubmitting}
+                        title={selectedWish.is_public ? (t('makePrivate') || '비공개로 전환') : (t('makePublic') || '공개로 전환')}
+                      >
+                        {selectedWish.is_public ? '🔒 ' + (t('makePrivate') || '비공개로 전환') : '🌐 ' + (t('makePublic') || '공개로 전환')}
+                      </button>
+                      <button 
+                        type="button" 
+                        className="btn-owner-action btn-owner-delete"
+                        onClick={(e) => { e.stopPropagation(); setDeleteConfirmOpen(true); }}
+                        disabled={isActionSubmitting}
+                        title={t('deleteWish') || '소원 삭제'}
+                      >
+                        🗑️ {t('deleteWish') || '소원 삭제'}
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div className="lantern-tassel" />
               </article>
+            </div>
+          </div>
+        )}
+
+        {/* Delete Confirmation Modal */}
+        {deleteConfirmOpen && selectedWish && (
+          <div className="delete-confirm-overlay" onClick={() => setDeleteConfirmOpen(false)}>
+            <div className="delete-confirm-box glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🗑️</div>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', marginBottom: '10px', color: '#fff' }}>
+                {t('confirmDeleteWishTitle') || '소원 삭제'}
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '24px', lineHeight: 1.6 }}>
+                {t('confirmDeleteWishDesc') || '이 소원을 삭제하시겠습니까? 삭제된 소원은 복구할 수 없습니다.'}
+              </p>
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  className="btn-delete-cancel"
+                  onClick={() => setDeleteConfirmOpen(false)}
+                >
+                  {t('modalCancel') || '취소'}
+                </button>
+                <button
+                  type="button"
+                  className="btn-delete-confirm"
+                  onClick={() => handleDeleteWish(selectedWish.id)}
+                  disabled={isActionSubmitting}
+                >
+                  {isActionSubmitting ? '...' : (t('deleteWish') || '삭제')}
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -696,7 +843,123 @@ export default function WishRoofPage() {
 
         /* Modes */
         .lantern-display.sky-mode { position: relative; width: 180%; min-width: 1400px; }
-        .lantern-display.grid-mode { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px; justify-items: center; padding: 20px 10px; }
+        .lantern-display.sky-mode.centered-sky { width: 100% !important; min-width: 100% !important; }
+        .lantern-display.grid-mode { 
+          display: grid; 
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+          gap: 40px; 
+          justify-items: center; 
+          justify-content: center;
+          align-content: center;
+          min-height: 420px;
+          padding: 20px 10px; 
+        }
+
+        .badge-mine {
+          background: rgba(212, 160, 23, 0.25);
+          border: 1px solid rgba(212, 160, 23, 0.5);
+          color: var(--primary-gold);
+          padding: 2px 8px;
+          border-radius: 20px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .wish-owner-toolbar {
+          display: flex;
+          gap: 10px;
+          margin-top: 20px;
+          width: 100%;
+          justify-content: center;
+        }
+
+        .btn-owner-action {
+          flex: 1;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+          font-family: var(--font-ui);
+        }
+
+        .btn-owner-toggle {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: #fff;
+        }
+        .btn-owner-toggle:hover {
+          background: rgba(255, 255, 255, 0.16);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-owner-delete {
+          background: rgba(229, 57, 53, 0.15);
+          border: 1px solid rgba(229, 57, 53, 0.4);
+          color: #ff8888;
+        }
+        .btn-owner-delete:hover {
+          background: rgba(229, 57, 53, 0.3);
+          border-color: #ff5555;
+          color: #fff;
+        }
+
+        .delete-confirm-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.88);
+          backdrop-filter: blur(10px);
+          z-index: 100000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .delete-confirm-box {
+          background: rgba(20, 20, 20, 0.98);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          border-radius: 20px;
+          padding: 36px 30px;
+          max-width: 400px;
+          width: 100%;
+          text-align: center;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .btn-delete-cancel {
+          background: none;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: rgba(255, 255, 255, 0.8);
+          padding: 10px 24px;
+          border-radius: 100px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-family: var(--font-ui);
+        }
+        .btn-delete-cancel:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+        }
+
+        .btn-delete-confirm {
+          background: #e53935;
+          border: none;
+          color: #fff;
+          padding: 10px 24px;
+          border-radius: 100px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-weight: 700;
+          font-family: var(--font-ui);
+        }
+        .btn-delete-confirm:hover {
+          background: #d32f2f;
+        }
 
         .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }
         .sky-mode .lantern-wrapper { position: absolute; animation: lantern-float-sky 15s ease-in-out infinite; }

@@ -103,7 +103,16 @@
     "modalSubmit": "Liberar al Cielo",
     "modalCancel": "Cancelar",
     "sortDeep": "Deep Wishes",
-    "scrollToTop": "Subir al Inicio"
+    "scrollToTop": "Volver arriba",
+    "myWishBadge": "Mi Deseo",
+    "makePrivate": "Hacer privado",
+    "makePublic": "Hacer público",
+    "deleteWish": "Eliminar deseo",
+    "confirmDeleteWishTitle": "Confirmar eliminación",
+    "confirmDeleteWishDesc": "¿Estás seguro de eliminar este deseo? Esta acción no se puede deshacer.",
+    "wishDeleted": "El deseo ha ascendido y fue eliminado.",
+    "wishMadePublic": "El deseo ahora es público.",
+    "wishMadePrivate": "El deseo ahora es privado."
   },
   "Pillars": {
     "eyebrow": "La Fundación Eterna",
@@ -134,7 +143,8 @@
     "sortAmount": "Top Amount",
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
-    "rankSupporter": "Partidario"
+    "rankSupporter": "Partidario",
+    "scrollToTop": "Volver arriba"
   },
   "hall": {
     "title": "Santuario de Luz",
@@ -276,7 +286,17 @@
     "modalError": "Error al enviar. Por favor inténtalo de nuevo.",
     "getMusic": "Get the Music",
     "instantTitle": "Digital Downloads",
-    "instantSubtitle": "Instant Access · Download Forever"
+    "instantSubtitle": "Instant Access · Download Forever",
+    "purchaseErrorTitle": "Aviso de Pago",
+    "purchaseLinkNotConfigured": "El enlace de pago se está preparando o está en mantenimiento. Inténtalo de nuevo en breve o contacta a soporte.",
+    "popupBlockedTitle": "Ventana Emergente Bloqueada",
+    "popupBlockedDesc": "Tu navegador bloqueó la ventana de pago. Por favor, habilita las ventanas emergentes y reintenta.",
+    "paymentFailedTitle": "Pago Incompleto",
+    "paymentFailedDesc": "El pago no pudo completarse. Por favor verifica tus fondos o datos bancarios.",
+    "paymentCancelledTitle": "Pago Cancelado",
+    "paymentCancelledDesc": "El proceso de pago fue cancelado. Vuelve cuando lo desees.",
+    "modalConfirm": "Aceptar",
+    "inquiryBtn": "Contactar Soporte"
   },
   "Resonance": {
     "title": "Millones Tocados por la Frecuencia",
@@ -311,5 +331,16 @@
     "deleteWish": "Delete Wish",
     "confirmDelete": "Delete this wish? This cannot be undone.",
     "exportError": "Export failed. Please try again."
+  },
+  "Auth": {
+    "title": "Entrar al Santuario",
+    "subtitle": "Inicia sesión para guardar tus deseos, preservar tus diálogos con el Guru y honrar tus ofrendas.",
+    "googleBtn": "Continuar con Google",
+    "disclaimerBefore": "Al continuar, aceptas nuestros",
+    "terms": "Términos de Servicio",
+    "disclaimerAnd": "y",
+    "privacy": "Política de Privacidad",
+    "disclaimerAfter": ".",
+    "privacyNote": "Respetamos tu privacidad. No se almacenan datos personales salvo tu correo y nombre."
   }
 }
