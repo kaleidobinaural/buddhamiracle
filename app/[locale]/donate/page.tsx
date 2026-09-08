@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 const LOTUS_TIERS = [
   { id: 'wish', lotus: 10, icon: '🌱', labelKey: 'lotusTier1Name', descKey: 'lotusTier1Desc' },
@@ -15,6 +16,7 @@ export default function DonatePage() {
   const tGuru = useTranslations('Guru');
   const tDonate = useTranslations('Donate');
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [notification, setNotification] = useState<{ message: string; show: boolean }>({ message: '', show: false });
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
@@ -39,8 +41,14 @@ export default function DonatePage() {
   }
 
   async function handleLotusOffer(tier: typeof LOTUS_TIERS[0]) {
-    if (status !== 'authenticated') { window.location.href = '/api/auth/signin'; return; }
-    if (lotusCount !== null && lotusCount < tier.lotus) { setShowUpgradeModal(true); return; }
+    if (status !== 'authenticated') { 
+      setShowAuthModal(true); 
+      return; 
+    }
+    if (lotusCount !== null && lotusCount < tier.lotus) { 
+      setShowUpgradeModal(true); 
+      return; 
+    }
 
     try {
       const res = await fetch('/api/user/lotus', {
@@ -53,6 +61,7 @@ export default function DonatePage() {
       if (res.ok && data.success) {
         if (typeof data.lotus_count === 'number') {
           setLotusCount(data.lotus_count);
+          window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: data.lotus_count } }));
         }
         setNotification({
           message: tDonate('offeringSuccess', { count: tier.lotus }),
@@ -157,14 +166,14 @@ export default function DonatePage() {
 
         {/* Bottom Actions */}
         <div className="donate-bottom-actions animate-fade-up animate-delay-400">
-          <a
+          <Link
             href="/store#lotus-section"
             className="donate-action-btn donate-action-btn--gold"
             id="btn-buy-lotus"
             style={{ textDecoration: 'none' }}
           >
             🪷 {tDonate('buyMoreLotus')}
-          </a>
+          </Link>
           <button
             className="donate-action-btn donate-action-btn--outline"
             id="btn-payment-inquiry"
@@ -219,7 +228,7 @@ export default function DonatePage() {
         .store-input:focus { border-color: var(--primary-gold); }
         .store-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px 16px; border-radius: 10px; font-size: 0.95rem; font-family: var(--font-ui); outline: none; resize: vertical; min-height: 100px; transition: border-color 0.3s; }
         .store-textarea:focus { border-color: var(--primary-gold); }
-        .notification-bar { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(212,160,23,0.95); color: #000; padding: 14px 40px; border-radius: 50px; font-weight: 800; font-size: 1rem; transition: all 0.6s cubic-bezier(0.19,1,0.22,1); opacity: 0; z-index: 200000; pointer-events: none; }
+        .notification-bar { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(120px); background: rgba(212,160,23,0.98); color: #000; padding: 14px 36px; border-radius: 50px; font-weight: 800; font-size: 1rem; transition: all 0.5s cubic-bezier(0.19,1,0.22,1); opacity: 0; z-index: 200000; pointer-events: none; max-width: 90vw; text-align: center; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px rgba(212,160,23,0.4); }
         .notification-bar.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         @media (max-width: 1024px) { .donate-grid-4 { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .donate-page { padding: 70px 16px 60px; } .donate-grid-4 { grid-template-columns: 1fr; } }
@@ -235,8 +244,38 @@ export default function DonatePage() {
               <h2 className="modal-title">{tGuru('upgradeTitle')}</h2>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '28px' }}>{tGuru('upgradeBody')}</p>
               <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-                <a href="/store#lotus-section" className="btn-gold-glow-v2" style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', textDecoration: 'none' }}>🪷 {tGuru('buyLotus')}</a>
+                <Link href="/store#lotus-section" className="btn-gold-glow-v2" style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', textDecoration: 'none' }}>🪷 {tGuru('buyLotus')}</Link>
                 <button onClick={() => setShowUpgradeModal(false)} style={{ flex: 1, background: 'none', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', padding: '10px 12px', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', fontSize: '0.9rem' }}>{tGuru('returnToSilence')}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Localized Login Required Modal ── */}
+      {showAuthModal && (
+        <div className="ritual-modal-overlay" onClick={() => setShowAuthModal(false)}>
+          <div className="modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
+            <div style={{ textAlign: 'center', padding: '20px 0' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>☸</div>
+              <h2 className="modal-title">{tDonate('loginRequiredTitle')}</h2>
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '28px' }}>
+                {tDonate('loginRequiredDesc')}
+              </p>
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                <Link
+                  href="/login"
+                  className="btn-gold-glow-v2"
+                  style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', textDecoration: 'none' }}
+                >
+                  🔑 {tDonate('loginBtn')}
+                </Link>
+                <button
+                  onClick={() => setShowAuthModal(false)}
+                  style={{ flex: 1, background: 'none', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', padding: '10px 12px', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', fontSize: '0.9rem' }}
+                >
+                  {tDonate('returnBtn')}
+                </button>
               </div>
             </div>
           </div>

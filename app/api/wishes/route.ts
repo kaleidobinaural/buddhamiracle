@@ -212,11 +212,21 @@ export async function POST(req: NextRequest) {
     }
 
     // Check lotus balance
-    const { data: limitData } = await supabase
+    let { data: limitData } = await supabase
       .from('user_limits')
-      .select('id, lotus_count')
+      .select('email, lotus_count')
       .ilike('email', userEmail)
       .maybeSingle();
+
+    if (!limitData) {
+      const today = new Date().toISOString().split('T')[0];
+      const { data: newRow } = await supabase
+        .from('user_limits')
+        .insert([{ email: userEmail, chat_count: 0, last_chat_date: today, lotus_count: 0 }])
+        .select('email, lotus_count')
+        .single();
+      if (newRow) limitData = newRow;
+    }
 
     const currentLotuses = limitData?.lotus_count ?? 0;
     if (!isAdmin && currentLotuses < WISH_LOTUS_COST) {
@@ -244,11 +254,11 @@ export async function POST(req: NextRequest) {
 
     // Deduct 3 lotuses
     const newLotusCount = isAdmin ? currentLotuses : Math.max(0, currentLotuses - WISH_LOTUS_COST);
-    if (limitData?.id && !isAdmin) {
+    if (limitData?.email && !isAdmin) {
       await supabase
         .from('user_limits')
         .update({ lotus_count: newLotusCount })
-        .eq('id', limitData.id);
+        .ilike('email', userEmail);
     }
 
     return NextResponse.json({ success: true, data, lotus_count: newLotusCount });

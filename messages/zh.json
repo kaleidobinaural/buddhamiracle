@@ -102,7 +102,8 @@
     "modalPrivate": "私密 (仅您可见)",
     "modalSubmit": "放飞天际",
     "modalCancel": "取消",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "回到顶部"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 {count}朵莲花供养已呈献给圣所。"
+    "offeringSuccess": "🙏 {count}朵莲花供养已呈献给圣所。",
+    "loginRequiredTitle": "需要登录",
+    "loginRequiredDesc": "请先登录以向寺庙供奉。",
+    "loginBtn": "去登录",
+    "returnBtn": "返回"
   },
   "Chat": {
     "unauthMessage": "踏入光明，与大师交流。",

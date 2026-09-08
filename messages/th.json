@@ -102,7 +102,8 @@
     "modalPrivate": "ส่วนตัว (สำหรับคุณเท่านั้น)",
     "modalSubmit": "ปล่อยขึ้นสู่ท้องฟ้า",
     "modalCancel": "ยกเลิก",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "ขึ้นสู่ยอดฟ้า"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 การถวายดอกบัว {count} ดอกได้รับการส่องสว่างในศาลเจ้าแล้ว"
+    "offeringSuccess": "🙏 การถวายดอกบัว {count} ดอกได้รับการส่องสว่างในศาลเจ้าแล้ว",
+    "loginRequiredTitle": "ต้องเข้าสู่ระบบ",
+    "loginRequiredDesc": "โปรดเข้าสู่ระบบเพื่อถවายดอกบัวแก่พระวิหาร",
+    "loginBtn": "เข้าสู่ระบบ",
+    "returnBtn": "ย้อนกลับ"
   },
   "Chat": {
     "unauthMessage": "ก้าวเข้าสู่แสงสว่างเพื่อพูดคุยกับครูบาอาจารย์",

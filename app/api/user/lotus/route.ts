@@ -44,13 +44,25 @@ export async function POST(req: Request) {
     const isAdmin = adminEmails.includes(userEmail);
 
     const supabase = getSupabaseAdmin();
-    const { data, error } = await supabase
+    let { data, error } = await supabase
       .from('user_limits')
-      .select('id, lotus_count')
+      .select('email, lotus_count')
       .ilike('email', userEmail)
       .maybeSingle();
 
     if (error) throw error;
+
+    // Auto-create user_limits record if missing
+    if (!data) {
+      const today = new Date().toISOString().split('T')[0];
+      const { data: newRow, error: insertError } = await supabase
+        .from('user_limits')
+        .insert([{ email: userEmail, chat_count: 0, last_chat_date: today, lotus_count: 0 }])
+        .select('email, lotus_count')
+        .single();
+      if (insertError) throw insertError;
+      data = newRow;
+    }
 
     const currentCount = data?.lotus_count ?? 0;
     if (!isAdmin && currentCount < amount) {
@@ -62,11 +74,11 @@ export async function POST(req: Request) {
 
     const newCount = isAdmin ? currentCount : Math.max(0, currentCount - amount);
 
-    if (data?.id && !isAdmin) {
+    if (data?.email && !isAdmin) {
       const { error: updateError } = await supabase
         .from('user_limits')
         .update({ lotus_count: newCount })
-        .eq('id', data.id);
+        .ilike('email', userEmail);
 
       if (updateError) throw updateError;
     }

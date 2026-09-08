@@ -102,7 +102,8 @@
     "modalPrivate": "Riêng Tư (Chỉ dành cho bạn)",
     "modalSubmit": "Thả Lên Bầu Trời",
     "modalCancel": "Hủy",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "Lên Đầu Trời"
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 Lễ cúng {count} đóa sen đã được chiếu sáng trong thánh địa."
+    "offeringSuccess": "🙏 Lễ cúng {count} đóa sen đã được chiếu sáng trong thánh địa.",
+    "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
+    "loginRequiredDesc": "Vui lòng đăng nhập để dâng hoa cúng dường lên đền.",
+    "loginBtn": "Đăng Nhập",
+    "returnBtn": "Quay Lại"
   },
   "Chat": {
     "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",

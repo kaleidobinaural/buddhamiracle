@@ -523,7 +523,7 @@ export async function POST(req: NextRequest) {
       await supabase
         .from('user_limits')
         .update({ lotus_count: limitData.lotus_count - EBOOK_COST })
-        .eq('id', limitData.id);
+        .ilike('email', userEmail);
     }
 
     const newLotusCount = isAdmin ? limitData.lotus_count : limitData.lotus_count - EBOOK_COST;

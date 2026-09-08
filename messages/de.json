@@ -102,7 +102,8 @@
     "modalPrivate": "Privat (Nur für dich)",
     "modalSubmit": "In den Himmel steigen lassen",
     "modalCancel": "Abbrechen",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "Nach Oben"
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 Die Opfergabe von {count} Lotosblumen wurde im Heiligtum erleuchtet."
+    "offeringSuccess": "🙏 Die Opfergabe von {count} Lotosblumen wurde im Heiligtum erleuchtet.",
+    "loginRequiredTitle": "Anmeldung Erforderlich",
+    "loginRequiredDesc": "Bitte melden Sie sich an, um eine Opfergabe darzubringen.",
+    "loginBtn": "Anmelden",
+    "returnBtn": "Zurück"
   },
   "Chat": {
     "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",

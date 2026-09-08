@@ -102,7 +102,8 @@
     "modalPrivate": "비공개 (나만 보기)",
     "modalSubmit": "하늘로 띄우기",
     "modalCancel": "취소",
-    "sortDeep": "깊은 염원"
+    "sortDeep": "깊은 염원",
+    "scrollToTop": "맨 위로"
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "마음이 이끄는 만큼",
     "paypalDesc": "PayPal로 원하시는 만큼 자유롭게 공양해 주세요. 모든 진심 어린 공양을 감사히 받습니다.",
     "buyMoreLotus": "연꽃 구매하기",
-    "offeringSuccess": "🙏 {count} 연꽃 공양이 사원에 정성스럽게 전해졌습니다."
+    "offeringSuccess": "🙏 {count} 연꽃 공양이 사원에 정성스럽게 전해졌습니다.",
+    "loginRequiredTitle": "로그인이 필요합니다",
+    "loginRequiredDesc": "공양을 올리시려면 먼저 로그인해 주세요.",
+    "loginBtn": "로그인하기",
+    "returnBtn": "돌아가기"
   },
   "Chat": {
     "unauthMessage": "구루와 대화하려면 빛 안으로 들어오세요.",

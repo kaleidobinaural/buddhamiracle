@@ -102,7 +102,8 @@
     "modalPrivate": "Privée (Seulement pour vous)",
     "modalSubmit": "Libérer dans le Ciel",
     "modalCancel": "Annuler",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "Haut du Ciel"
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 L'offrande de {count} lotus a été illuminée dans le sanctuaire."
+    "offeringSuccess": "🙏 L'offrande de {count} lotus a été illuminée dans le sanctuaire.",
+    "loginRequiredTitle": "Connexion Requise",
+    "loginRequiredDesc": "Veuillez vous connecter pour faire une offrande au temple.",
+    "loginBtn": "Se Connecter",
+    "returnBtn": "Retour"
   },
   "Chat": {
     "unauthMessage": "Entrez dans la lumière pour parler au Guru.",

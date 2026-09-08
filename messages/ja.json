@@ -102,7 +102,8 @@
     "modalPrivate": "非公開（あなたのみ）",
     "modalSubmit": "空へ放つ",
     "modalCancel": "キャンセル",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "空の頂点へ"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 {count}本の蓮の供養が聖域に届けられました。"
+    "offeringSuccess": "🙏 {count}本の蓮の供養が聖域に届けられました。",
+    "loginRequiredTitle": "ログインが必要です",
+    "loginRequiredDesc": "ご供養を捧げるには、まずログインしてください。",
+    "loginBtn": "ログイン",
+    "returnBtn": "戻る"
   },
   "Chat": {
     "unauthMessage": "師と語るために、光の中に踏み込んでください。",

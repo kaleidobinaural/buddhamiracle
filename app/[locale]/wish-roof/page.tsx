@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import CharacterAvatar from '@/components/CharacterAvatar';
@@ -41,6 +41,17 @@ export default function WishRoofPage() {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const snackbarTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const wishSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    if (wishSectionRef.current) {
+      wishSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   useEffect(() => {
     fetchWishes(searchQuery, sortBy, showOnlyMine);
@@ -166,9 +177,10 @@ export default function WishRoofPage() {
         body: JSON.stringify({ content: wishText, user_name: userName, is_public: isPublic }),
       });
       const result = await response.json();
-      if (result.success) {
+      if (response.ok && result.success) {
         if (typeof result.lotus_count === 'number') {
           setLotusCount(result.lotus_count);
+          window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: result.lotus_count } }));
         }
         setTimeout(() => {
           setWishes(prev => [result.data[0], ...prev]);
@@ -176,6 +188,12 @@ export default function WishRoofPage() {
           setIsSubmitting(false);
         }, 3500);
       } else {
+        if (response.status === 403) {
+          setFlyingWish(null);
+          setIsSubmitting(false);
+          setShowUpgradeModal(true);
+          return;
+        }
         throw new Error(result.error);
       }
     } catch (err: any) {
@@ -212,7 +230,7 @@ export default function WishRoofPage() {
 
 
       
-      <div className="wish-container">
+      <div className="wish-container" ref={wishSectionRef}>
         <header className="page-header animate-fade-up">
           <div className="header-eyebrow">{t('eyebrow')}</div>
           <h1 className="page-title text-gradient-gold-v2">{t('title')}</h1>
@@ -298,8 +316,8 @@ export default function WishRoofPage() {
         {/* Sacred Sky Frame / Viewport */}
         <div className="sacred-sky-frame">
           <div className="sky-fade-top" aria-hidden="true" />
-          <div className="sacred-sky-scroll-area">
-            <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { height: `${Math.max(650, Math.ceil(wishes.length / 3) * 200)}px` } : {}}>
+          <div className="sacred-sky-scroll-area" ref={scrollAreaRef}>
+            <section className={`lantern-display ${viewMode === 'sky' ? 'sky-mode' : 'grid-mode'}`} style={viewMode === 'sky' ? { height: `${Math.max(700, Math.ceil(wishes.length / 3) * 220)}px` } : {}}>
               {isLoading ? (
                 <div className="loading-state">{t('loading')}</div>
               ) : wishes.length === 0 ? (
@@ -311,12 +329,12 @@ export default function WishRoofPage() {
                     wish.id.split('').reduce((acc, char) => Math.imul(31, acc) + char.charCodeAt(0) | 0, 0)
                   );
                   
-                  const canvasHeight = Math.max(650, Math.ceil(wishes.length / 3) * 200);
+                  const canvasHeight = Math.max(700, Math.ceil(wishes.length / 3) * 220);
                   const totalSlots = Math.max(1, wishes.length);
-                  const baseTop = (index / totalSlots) * (canvasHeight - 260) + 30;
-                  const jitterTop = ((seed >> 2) % 60) - 30;
-                  const top = Math.max(20, Math.min(canvasHeight - 240, baseTop + jitterTop));
-                  const left = 6 + (seed % 78);
+                  const baseTop = (index / totalSlots) * (canvasHeight - 280) + 40;
+                  const jitterTop = ((seed >> 2) % 70) - 35;
+                  const top = Math.max(30, Math.min(canvasHeight - 260, baseTop + jitterTop));
+                  const left = 3 + (seed % 90);
                   const scale = 0.6 + ((seed >> 6) % 5) * 0.1;
                   const opacity = 0.75 + ((seed >> 9) % 10) * 0.025;
                   
@@ -355,6 +373,19 @@ export default function WishRoofPage() {
             </section>
           </div>
           <div className="sky-fade-bottom" aria-hidden="true" />
+        </div>
+
+        {/* Scroll To Top of Sky & Section Control */}
+        <div className="sky-scroll-controls animate-fade-up">
+          <button
+            type="button"
+            className="btn-scroll-sky-top"
+            onClick={scrollToTop}
+            title={t('scrollToTop') || '맨 위로'}
+          >
+            <span className="scroll-arrow-icon">↑</span>
+            <span className="scroll-arrow-label">{t('scrollToTop') || '맨 위로'}</span>
+          </button>
         </div>
 
       {/* ── Wish Input Modal ── */}
@@ -411,6 +442,12 @@ export default function WishRoofPage() {
           <div className="ritual-modal-overlay" onClick={() => setSelectedWish(null)}>
             <div className="zoomed-lantern-container animate-sacred-zoom" onClick={e => e.stopPropagation()}>
               <article className="lantern zoomed">
+                <button
+                  type="button"
+                  className="btn-modal-close-corner"
+                  onClick={() => setSelectedWish(null)}
+                  aria-label={t('modalCancel')}
+                >✕</button>
                 <div className="lantern-light" />
                 <div className="lantern-content">
                   <p className="lantern-text">“{selectedWish.content}”</p>
@@ -427,7 +464,6 @@ export default function WishRoofPage() {
                 </div>
                 <div className="lantern-tassel" />
               </article>
-              <button className="btn-close-zoom" onClick={() => setSelectedWish(null)}>✕ {t('modalCancel')}</button>
             </div>
           </div>
         )}
@@ -570,13 +606,31 @@ export default function WishRoofPage() {
         }
 
         .sacred-sky-scroll-area {
-          height: clamp(480px, 64vh, 720px);
-          overflow-y: auto;
-          overflow-x: hidden;
+          height: clamp(500px, 68vh, 760px);
+          overflow: auto;
           overscroll-behavior: contain;
           -webkit-overflow-scrolling: touch;
           position: relative;
-          padding: 20px 10px;
+          padding: 24px 16px;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(212, 160, 23, 0.45) rgba(0, 0, 0, 0.4);
+        }
+
+        .sacred-sky-scroll-area::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
+        .sacred-sky-scroll-area::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.35);
+          border-radius: 10px;
+        }
+        .sacred-sky-scroll-area::-webkit-scrollbar-thumb {
+          background: rgba(212, 160, 23, 0.4);
+          border-radius: 10px;
+          border: 1px solid rgba(212, 160, 23, 0.2);
+        }
+        .sacred-sky-scroll-area::-webkit-scrollbar-thumb:hover {
+          background: var(--primary-gold);
         }
 
         .sky-fade-top {
@@ -601,8 +655,47 @@ export default function WishRoofPage() {
           z-index: 20;
         }
 
+        /* Scroll Controls */
+        .sky-scroll-controls {
+          display: flex;
+          justify-content: center;
+          margin-top: 18px;
+          margin-bottom: 8px;
+        }
+        .btn-scroll-sky-top {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 24px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          border-radius: 100px;
+          color: var(--primary-gold);
+          font-family: var(--font-ui);
+          font-size: 0.88rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .btn-scroll-sky-top:hover {
+          background: rgba(212, 160, 23, 0.2);
+          border-color: var(--primary-gold);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(212, 160, 23, 0.25);
+          color: #fff;
+        }
+        .scroll-arrow-icon {
+          font-size: 1.15rem;
+          font-weight: 800;
+          line-height: 1;
+        }
+        .scroll-arrow-label {
+          letter-spacing: 0.05em;
+        }
+
         /* Modes */
-        .lantern-display.sky-mode { position: relative; width: 100%; }
+        .lantern-display.sky-mode { position: relative; width: 180%; min-width: 1400px; }
         .lantern-display.grid-mode { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px; justify-items: center; padding: 20px 10px; }
 
         .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }
@@ -632,20 +725,76 @@ export default function WishRoofPage() {
         .lantern:hover { border-color: var(--primary-gold); box-shadow: 0 0 30px rgba(212, 160, 23, 0.4); }
         
         .lantern.zoomed {
-          width: 380px;
+          width: 420px;
           max-width: 90vw;
-          min-height: 300px;
+          min-height: 280px;
           height: auto;
-          max-height: 70vh;
+          max-height: 75vh;
           overflow-y: auto;
-          background: linear-gradient(180deg, rgba(212, 160, 23, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
-          border-color: var(--primary-gold);
-          box-shadow: 0 0 100px rgba(212, 160, 23, 0.6);
+          background: linear-gradient(180deg, rgba(212, 160, 23, 0.28) 0%, rgba(12, 10, 8, 0.96) 100%);
+          border: 1px solid var(--primary-gold);
+          box-shadow: 0 0 70px rgba(212, 160, 23, 0.45), 0 20px 50px rgba(0, 0, 0, 0.9);
+          padding: 36px 28px 28px;
+          position: relative;
         }
 
-        .zoomed .lantern-text { font-size: 1.6rem; line-height: 1.5; margin-bottom: 24px; -webkit-line-clamp: unset; }
-        .zoomed .lantern-author { font-size: 1rem; }
-        .zoomed .lantern-light { width: 150px; height: 180px; filter: blur(25px); }
+        .btn-modal-close-corner {
+          position: absolute;
+          top: 14px;
+          right: 16px;
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          color: rgba(255, 255, 255, 0.8);
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 10;
+        }
+        .btn-modal-close-corner:hover {
+          background: rgba(212, 160, 23, 0.3);
+          border-color: var(--primary-gold);
+          color: #fff;
+          transform: scale(1.1);
+        }
+
+        .zoomed .lantern-content {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+        }
+
+        .zoomed .lantern-text {
+          font-size: 1.45rem;
+          line-height: 1.6;
+          margin-top: 6px;
+          margin-bottom: 20px;
+          -webkit-line-clamp: unset;
+          color: #fff;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+        .zoomed .lantern-author {
+          font-size: 0.95rem;
+          color: var(--primary-gold);
+          letter-spacing: 0.12em;
+        }
+        .zoomed .lantern-light {
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translate(-50%, -30%);
+          width: 220px;
+          height: 200px;
+          background: radial-gradient(circle, rgba(255, 215, 0, 0.22) 0%, rgba(212, 160, 23, 0.06) 50%, transparent 70%);
+          filter: blur(25px);
+          pointer-events: none;
+          z-index: 0;
+        }
 
         .wish-stats { margin-top: 16px; color: var(--primary-gold); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; }
         .btn-light-up { 
@@ -671,8 +820,7 @@ export default function WishRoofPage() {
         }
 
         .zoomed-lantern-container { position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; z-index: 100001; }
-        .btn-close-zoom { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px 32px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: 600; }
-        .btn-close-zoom:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
 
         @keyframes sacred-zoom {
           from { transform: scale(0.5); opacity: 0; }
@@ -722,13 +870,13 @@ export default function WishRoofPage() {
                 {tGuru('upgradeBody')}
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                <a
+                <Link
                   href="/store#lotus-section"
                   className="btn-gold-glow-v2"
                   style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {tGuru('buyLotus')}
-                </a>
+                </Link>
                 <button
                   onClick={() => setShowUpgradeModal(false)}
                   style={{

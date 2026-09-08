@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
 
     // Reset daily chat_count if new day
     if (limitData.last_chat_date !== today) {
-      await supabase.from('user_limits').update({ chat_count: 0, last_chat_date: today }).eq('id', limitData.id);
+      await supabase.from('user_limits').update({ chat_count: 0, last_chat_date: today }).ilike('email', userEmail);
       limitData.chat_count = 0;
     }
 
@@ -222,12 +222,12 @@ export async function POST(req: NextRequest) {
             chat_count: limitData.chat_count + 1,
             lotus_count: limitData.lotus_count - 1,
           })
-          .eq('id', limitData.id);
+          .ilike('email', userEmail);
       } else {
         await supabase
           .from('user_limits')
           .update({ chat_count: limitData.chat_count + 1 })
-          .eq('id', limitData.id);
+          .ilike('email', userEmail);
       }
     }
 

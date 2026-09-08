@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
   // ★ Upsert user record case-insensitively and add lotus credits
   const { data: existingUsers, error: fetchUserError } = await supabase
     .from('user_limits')
-    .select('id, email, lotus_count')
+    .select('email, lotus_count')
     .ilike('email', customerEmail);
 
   if (fetchUserError) {
@@ -146,13 +146,13 @@ export async function POST(req: NextRequest) {
         lotus_count: newCount,
         email: customerEmail, // normalize to lowercase
       })
-      .eq('id', existing_user.id);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('[Webhook] Failed to update user_limits:', updateError);
       return NextResponse.json({ error: 'DB update failed.' }, { status: 500 });
     }
-    console.log(`[Webhook] ✅ Updated user ${existing_user.id} (${customerEmail}): ${existing_user.lotus_count} -> ${newCount} lotuses`);
+    console.log(`[Webhook] ✅ Updated user (${customerEmail}): ${existing_user.lotus_count} -> ${newCount} lotuses`);
   } else {
     const { error: insertError } = await supabase
       .from('user_limits')

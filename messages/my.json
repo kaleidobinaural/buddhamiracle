@@ -102,7 +102,8 @@
     "modalPrivate": "သီးသန့် (သင့်အတွက်သာ)",
     "modalSubmit": "ကောင်းကင်သို့ လွှတ်တင်မည်",
     "modalCancel": "ပယ်ဖျက်မည်",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "ထိပ်ဆုံးသို့"
   },
   "Pillars": {
     "eyebrow": "ထာဝရ အုတ်မြစ်",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 ကြာပန်း {count} ပွင့် လှူဒါန်းမှုကို သာဓုခေါ်ဆိုအပ်ပါသည်။"
+    "offeringSuccess": "🙏 ကြာပန်း {count} ပွင့် လှူဒါန်းမှုကို သာဓုခေါ်ဆိုအပ်ပါသည်။",
+    "loginRequiredTitle": "အကောင့်ဝင်ရန် လိုအပ်သည်",
+    "loginRequiredDesc": "အလှူပြုလုပ်ရန် ကျေးဇူးပြု၍ အကောင့်ဝင်ပေးပါ။",
+    "loginBtn": "အကောင့်ဝင်ရန်",
+    "returnBtn": "ပြန်သွားရန်"
   },
   "Chat": {
     "unauthMessage": "ဂုရုနှင့် စကားပြောရန် အလင်းထဲသို့ ဝင်ရောက်ပါ",

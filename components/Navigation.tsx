@@ -28,16 +28,32 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fetch lotus count
+  // Fetch lotus count & listen for live updates
   useEffect(() => {
-    if (session?.user) {
-      fetch('/api/user/lotus')
-        .then(res => res.json())
-        .then(data => {
-          if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count);
-        })
-        .catch(() => {});
-    }
+    const fetchCount = () => {
+      if (session?.user) {
+        fetch('/api/user/lotus')
+          .then(res => res.json())
+          .then(data => {
+            if (typeof data.lotus_count === 'number') setLotusCount(data.lotus_count);
+          })
+          .catch(() => {});
+      }
+    };
+
+    fetchCount();
+
+    const handleLotusUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<{ lotus_count?: number }>;
+      if (typeof customEvent.detail?.lotus_count === 'number') {
+        setLotusCount(customEvent.detail.lotus_count);
+      } else {
+        fetchCount();
+      }
+    };
+
+    window.addEventListener('lotus-updated', handleLotusUpdate);
+    return () => window.removeEventListener('lotus-updated', handleLotusUpdate);
   }, [session]);
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);

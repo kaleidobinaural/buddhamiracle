@@ -102,7 +102,8 @@
     "modalPrivate": "Private (Only for you)",
     "modalSubmit": "Release into the Sky",
     "modalCancel": "Cancel",
-    "sortDeep": "Deep Wishes"
+    "sortDeep": "Deep Wishes",
+    "scrollToTop": "Top of Sky"
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",
@@ -190,7 +191,11 @@
     "paypalFreeAmount": "As much as your heart gives",
     "paypalDesc": "Offer freely through PayPal — any amount, any currency. All sincere offerings are received with deep gratitude.",
     "buyMoreLotus": "Purchase Lotus",
-    "offeringSuccess": "🙏 Offering of {count} Lotus has been illuminated in the sanctuary."
+    "offeringSuccess": "🙏 Offering of {count} Lotus has been illuminated in the sanctuary.",
+    "loginRequiredTitle": "Sign In Required",
+    "loginRequiredDesc": "Please sign in to make an offering to the temple.",
+    "loginBtn": "Sign In",
+    "returnBtn": "Return"
   },
   "Chat": {
     "unauthMessage": "Step into the light to speak with the Guru.",
