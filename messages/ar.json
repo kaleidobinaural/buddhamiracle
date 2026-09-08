@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "هل أنت متأكد من رغبتك في حذف هذه الأمنية؟ لا يمكن التراجع عن هذا الإجراء.",
     "wishDeleted": "صعدت الأمنية إلى السماء وتم حذفها بنجاح.",
     "wishMadePublic": "أصبحت الأمنية عامة الآن.",
-    "wishMadePrivate": "أصبحت الأمنية خاصة الآن."
+    "wishMadePrivate": "أصبحت الأمنية خاصة الآن.",
+    "viewAllWishes": "عرض كل الأمنيات",
+    "viewingMyWishes": "أمنياتي ({count})"
   },
   "Pillars": {
     "eyebrow": "الأساس الأبدي",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "داعم",
-    "scrollToTop": "إلى الأعلى"
+    "scrollToTop": "إلى الأعلى",
+    "viewAll": "عرض الكل",
+    "searchResultCount": "النتائج ({count})"
   },
   "hall": {
     "title": "ملاذ النور",

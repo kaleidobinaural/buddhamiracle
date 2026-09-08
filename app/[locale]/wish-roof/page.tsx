@@ -362,6 +362,32 @@ export default function WishRoofPage() {
           </div>
         )}
 
+        {/* Active Filter / View All Reset Banner */}
+        {(showOnlyMine || searchQuery) && (
+          <div className="active-filter-banner-wrap animate-fade-up">
+            <div className="active-filter-banner">
+              <span className="filter-badge">
+                {showOnlyMine ? (
+                  <>👤 {t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
+                ) : (
+                  <>🔍 &ldquo;{searchQuery}&rdquo; ({wishes.length}개)</>
+                )}
+              </span>
+              <button
+                type="button"
+                className="btn-reset-filter"
+                onClick={() => {
+                  setShowOnlyMine(false);
+                  setSearchQuery('');
+                  fetchWishes('', sortBy, false);
+                }}
+              >
+                🌟 {t('viewAllWishes') || '전체 소원 보기'}
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Sacred Sky Frame / Viewport */}
         <div className="sacred-sky-frame">
           <div className="sky-fade-top" aria-hidden="true" />
@@ -959,6 +985,50 @@ export default function WishRoofPage() {
         }
         .btn-delete-confirm:hover {
           background: #d32f2f;
+        }
+
+        /* Active Filter / Reset Banner */
+        .active-filter-banner-wrap {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 24px;
+        }
+        .active-filter-banner {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.35);
+          border-radius: 40px;
+          padding: 8px 20px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 160, 23, 0.1);
+        }
+        .filter-badge {
+          font-size: 0.92rem;
+          color: #fff;
+          font-family: var(--font-ui);
+          font-weight: 500;
+        }
+        .btn-reset-filter {
+          background: linear-gradient(135deg, var(--primary-gold), #f3c75e);
+          border: none;
+          color: #000;
+          font-weight: 700;
+          font-size: 0.85rem;
+          padding: 7px 16px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-family: var(--font-ui);
+          box-shadow: 0 2px 10px rgba(212, 160, 23, 0.3);
+        }
+        .btn-reset-filter:hover {
+          background: #fff;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
         }
 
         .lantern-wrapper { transition: transform 0.4s var(--ease-expo); will-change: transform; }

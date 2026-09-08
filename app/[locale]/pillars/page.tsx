@@ -77,13 +77,6 @@ export default function PillarsPage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (viewMode === 'hall' && swiperInstance && searchQuery) {
-      const idx = pillars.findIndex(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-      if (idx !== -1) {
-        swiperInstance.slideTo(idx, 1000);
-        return;
-      }
-    }
     fetchPillars(searchQuery, sortBy, role);
   };
 
@@ -168,6 +161,24 @@ export default function PillarsPage() {
               ♡ {t('donate')}
             </Link>
           </div>
+
+          {searchQuery && (
+            <div className="active-filter-banner animate-fade-up">
+              <span className="filter-badge">
+                🔍 &ldquo;{searchQuery}&rdquo; ({pillars.length})
+              </span>
+              <button
+                type="button"
+                className="btn-reset-filter"
+                onClick={() => {
+                  setSearchQuery('');
+                  fetchPillars('', sortBy, role);
+                }}
+              >
+                ↺ {t('viewAll') || '전체 목록 보기'}
+              </button>
+            </div>
+          )}
         </div>
 
         <section className={`pillars-display ${viewMode}-mode`}>
@@ -190,7 +201,7 @@ export default function PillarsPage() {
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={'auto'}
-                    speed={400}
+                    speed={280}
                     touchRatio={1.3}
                     resistanceRatio={0.85}
                     touchAngle={50}
@@ -277,7 +288,7 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={400}
+                      speed={280}
                       touchRatio={1.3}
                       resistanceRatio={0.85}
                       touchAngle={50}
@@ -520,7 +531,7 @@ export default function PillarsPage() {
         /* Hall Mode (Coverflow Carousel) */
         .hall-mode { overflow: visible; padding: 40px 0; perspective: 1200px; }
         .pillars-swiper { width: 100%; padding-top: 50px; padding-bottom: 100px; overflow: visible; }
-        .pillar-slide { width: 320px; display: flex; justify-content: center; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .pillar-slide { width: 320px; display: flex; justify-content: center; will-change: transform; }
         .pillar-wrapper { width: 100%; cursor: pointer; }
         
         .swiper-slide-active .pillar-monument { filter: drop-shadow(0 20px 50px rgba(212, 160, 23, 0.4)); }
@@ -632,6 +643,44 @@ export default function PillarsPage() {
           box-shadow: 0 0 60px rgba(160, 120, 80, 0.15), 0 0 120px rgba(160, 120, 80, 0.08) !important;
         }
         .supporters-swiper { margin-top: 0; }
+
+        /* Active Filter Banner */
+        .active-filter-banner {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          border-radius: 40px;
+          padding: 8px 18px;
+          margin-top: 20px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .filter-badge {
+          font-size: 0.9rem;
+          color: #fff;
+          font-family: var(--font-ui);
+        }
+        .btn-reset-filter {
+          background: var(--primary-gold);
+          border: none;
+          color: #000;
+          font-weight: 700;
+          font-size: 0.82rem;
+          padding: 6px 14px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-family: var(--font-ui);
+        }
+        .btn-reset-filter:hover {
+          background: #fff;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
 
         /* Scroll To Top Controls */
         .pillars-scroll-controls {

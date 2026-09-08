@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "¿Estás seguro de eliminar este deseo? Esta acción no se puede deshacer.",
     "wishDeleted": "El deseo ha ascendido y fue eliminado.",
     "wishMadePublic": "El deseo ahora es público.",
-    "wishMadePrivate": "El deseo ahora es privado."
+    "wishMadePrivate": "El deseo ahora es privado.",
+    "viewAllWishes": "Ver todos los deseos",
+    "viewingMyWishes": "Mis deseos ({count})"
   },
   "Pillars": {
     "eyebrow": "La Fundación Eterna",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Partidario",
-    "scrollToTop": "Volver arriba"
+    "scrollToTop": "Volver arriba",
+    "viewAll": "Ver todos",
+    "searchResultCount": "Resultados ({count})"
   },
   "hall": {
     "title": "Santuario de Luz",

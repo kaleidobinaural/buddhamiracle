@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "คุณแน่ใจหรือไม่ว่าต้องการลบคำอธิษฐานนี้? การกระทำนี้ไม่สามารถยกเลิกได้",
     "wishDeleted": "คำอธิษฐานได้ลอยสู่ฟากฟ้าและถูกลบแล้ว",
     "wishMadePublic": "คำอธิษฐานถูกเปลี่ยนเป็นสาธารณะแล้ว",
-    "wishMadePrivate": "คำอธิษฐานถูกเปลี่ยนเป็นส่วนตัวแล้ว"
+    "wishMadePrivate": "คำอธิษฐานถูกเปลี่ยนเป็นส่วนตัวแล้ว",
+    "viewAllWishes": "ดูคำอธิษฐานทั้งหมด",
+    "viewingMyWishes": "คำอธิษฐานของฉัน ({count})"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "ผู้สนับสนุน",
-    "scrollToTop": "กลับขึ้นด้านบน"
+    "scrollToTop": "กลับขึ้นด้านบน",
+    "viewAll": "ดูทั้งหมด",
+    "searchResultCount": "ผลการค้นหา ({count})"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",

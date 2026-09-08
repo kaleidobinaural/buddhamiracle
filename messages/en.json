@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "Are you sure you want to delete this wish? This action cannot be undone.",
     "wishDeleted": "Wish has ascended and been removed.",
     "wishMadePublic": "Wish is now public.",
-    "wishMadePrivate": "Wish is now private."
+    "wishMadePrivate": "Wish is now private.",
+    "viewAllWishes": "View All Wishes",
+    "viewingMyWishes": "My Wishes ({count})"
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Supporter",
-    "scrollToTop": "Scroll to Top"
+    "scrollToTop": "Scroll to Top",
+    "viewAll": "View All",
+    "searchResultCount": "Results ({count})"
   },
   "hall": {
     "title": "Sanctuary of Light",

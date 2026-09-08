@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "ဤဆုတောင်းကို ဖျက်ရန် သေချာပါသလား? ပြန်လည်ရယူ၍ မရပါ။",
     "wishDeleted": "ဆုတောင်းကို ကောင်းကင်သို့ ပို့ဆောင်ဖျက်သိမ်းပြီးပါပြီ။",
     "wishMadePublic": "ဆုတောင်းကို အများမြင်အဖြစ် ပြောင်းလဲပြီးပါပြီ။",
-    "wishMadePrivate": "ဆုတောင်းကို သီးသန့်အဖြစ် ပြောင်းလဲပြီးပါပြီ။"
+    "wishMadePrivate": "ဆုတောင်းကို သီးသန့်အဖြစ် ပြောင်းလဲပြီးပါပြီ။",
+    "viewAllWishes": "ဆုတောင်းအားလုံးကြည့်မည်",
+    "viewingMyWishes": "ကျွန်ုပ်၏ ဆုတောင်းများ ({count})"
   },
   "Pillars": {
     "eyebrow": "ထာဝရ အုတ်မြစ်",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "ထောက်ခံသူ",
-    "scrollToTop": "ထိပ်ဆုံးသို့"
+    "scrollToTop": "ထိပ်ဆုံးသို့",
+    "viewAll": "အားလုံးကြည့်မည်",
+    "searchResultCount": "ရလဒ်များ ({count})"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",

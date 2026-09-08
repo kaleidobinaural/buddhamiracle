@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "Êtes-vous sûr de vouloir supprimer ce vœu ? Cette action est irréversible.",
     "wishDeleted": "Le vœu est monté au ciel et a été supprimé.",
     "wishMadePublic": "Le vœu est désormais public.",
-    "wishMadePrivate": "Le vœu est désormais privé."
+    "wishMadePrivate": "Le vœu est désormais privé.",
+    "viewAllWishes": "Voir tous les vœux",
+    "viewingMyWishes": "Mes vœux ({count})"
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Soutien",
-    "scrollToTop": "Haut de page"
+    "scrollToTop": "Haut de page",
+    "viewAll": "Tout afficher",
+    "searchResultCount": "Résultats ({count})"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",

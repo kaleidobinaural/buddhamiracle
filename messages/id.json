@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "Yakin ingin menghapus doa ini? Tindakan ini tidak dapat dibatalkan.",
     "wishDeleted": "Doa telah terangkat ke langit dan dihapus.",
     "wishMadePublic": "Doa kini bersifat publik.",
-    "wishMadePrivate": "Doa kini bersifat pribadi."
+    "wishMadePrivate": "Doa kini bersifat pribadi.",
+    "viewAllWishes": "Lihat Semua Doa",
+    "viewingMyWishes": "Doa Saya ({count})"
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Pendukung",
-    "scrollToTop": "Ke Atas"
+    "scrollToTop": "Ke Atas",
+    "viewAll": "Lihat Semua",
+    "searchResultCount": "Hasil ({count})"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",

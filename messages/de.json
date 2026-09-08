@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "Möchten Sie diesen Wunsch wirklich löschen? Dies kann nicht rückgängig gemacht werden.",
     "wishDeleted": "Der Wunsch ist zum Himmel aufgestiegen und gelöscht.",
     "wishMadePublic": "Der Wunsch ist nun öffentlich.",
-    "wishMadePrivate": "Der Wunsch ist nun privat."
+    "wishMadePrivate": "Der Wunsch ist nun privat.",
+    "viewAllWishes": "Alle Wünsche anzeigen",
+    "viewingMyWishes": "Meine Wünsche ({count})"
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Unterstützer",
-    "scrollToTop": "Nach oben"
+    "scrollToTop": "Nach oben",
+    "viewAll": "Alle anzeigen",
+    "searchResultCount": "Ergebnisse ({count})"
   },
   "hall": {
     "title": "Heiligtum des Lichts",

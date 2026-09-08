@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "តើអ្នកប្រាកដជាចង់លុបបំណងប្រាថ្នានេះមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។",
     "wishDeleted": "បំណងប្រាថ្នាត្រូវបានឧទ្ទិសទៅលើមេឃ និងលុបរួចរាល់។",
     "wishMadePublic": "បំណងប្រាថ្នាត្រូវបានដាក់ជាសាធារណៈ។",
-    "wishMadePrivate": "បំណងប្រាថ្នាត្រូវបានដាក់ជាឯកជន។"
+    "wishMadePrivate": "បំណងប្រាថ្នាត្រូវបានដាក់ជាឯកជន។",
+    "viewAllWishes": "មើលបំណងប្រាថ្នាទាំងអស់",
+    "viewingMyWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ ({count})"
   },
   "Pillars": {
     "eyebrow": "គ្រឹះអមតៈ",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "អ្នកគាំទ្រ",
-    "scrollToTop": "ទៅខាងលើ"
+    "scrollToTop": "ទៅខាងលើ",
+    "viewAll": "មើលទាំងអស់",
+    "searchResultCount": "លទ្ធផល ({count})"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",

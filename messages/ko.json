@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "이 소원을 삭제하시겠습니까? 삭제된 소원은 복구할 수 없습니다.",
     "wishDeleted": "소원이 하늘로 회향되어 삭제되었습니다.",
     "wishMadePublic": "공개 소원으로 전환되었습니다.",
-    "wishMadePrivate": "비공개 소원으로 전환되었습니다."
+    "wishMadePrivate": "비공개 소원으로 전환되었습니다.",
+    "viewAllWishes": "전체 소원 보기",
+    "viewingMyWishes": "내 소원 ({count}개)"
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",
@@ -144,7 +146,9 @@
     "sortNewest": "최신순",
     "sortOldest": "과거순",
     "rankSupporter": "후원자",
-    "scrollToTop": "맨 위로"
+    "scrollToTop": "맨 위로",
+    "viewAll": "전체 목록 보기",
+    "searchResultCount": "검색 결과 ({count}개)"
   },
   "hall": {
     "title": "빛의 성소",

@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "您确定要删除此心愿吗？删除后将无法恢复。",
     "wishDeleted": "心愿已升华归天并删除。",
     "wishMadePublic": "心愿已设为公开。",
-    "wishMadePrivate": "心愿已设为私密。"
+    "wishMadePrivate": "心愿已设为私密。",
+    "viewAllWishes": "查看全部心愿",
+    "viewingMyWishes": "我的心愿 ({count}条)"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "支持者",
-    "scrollToTop": "回到顶部"
+    "scrollToTop": "回到顶部",
+    "viewAll": "查看全部",
+    "searchResultCount": "搜索结果 ({count}条)"
   },
   "hall": {
     "title": "光明圣殿",

@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "Bạn có chắc chắn muốn xóa ước nguyện này? Hành động này không thể hoàn tác.",
     "wishDeleted": "Ước nguyện đã hồi hướng lên bầu trời và được xóa.",
     "wishMadePublic": "Ước nguyện hiện đã công khai.",
-    "wishMadePrivate": "Ước nguyện hiện đã chuyển riêng tư."
+    "wishMadePrivate": "Ước nguyện hiện đã chuyển riêng tư.",
+    "viewAllWishes": "Xem tất cả ước nguyện",
+    "viewingMyWishes": "Nguyện vọng của tôi ({count})"
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "Người Ủng Hộ",
-    "scrollToTop": "Lên đầu trang"
+    "scrollToTop": "Lên đầu trang",
+    "viewAll": "Xem tất cả",
+    "searchResultCount": "Kết quả ({count})"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",

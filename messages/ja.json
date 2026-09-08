@@ -112,7 +112,9 @@
     "confirmDeleteWishDesc": "この願いを削除してもよろしいですか？削除後は復元できません。",
     "wishDeleted": "願いが空へと昇華し、削除されました。",
     "wishMadePublic": "願いが公開に設定されました。",
-    "wishMadePrivate": "願いが非公開に設定されました。"
+    "wishMadePrivate": "願いが非公開に設定されました。",
+    "viewAllWishes": "すべての願いを表示",
+    "viewingMyWishes": "私の願い ({count}件)"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",
@@ -144,7 +146,9 @@
     "sortNewest": "Newest",
     "sortOldest": "Oldest",
     "rankSupporter": "サポーター",
-    "scrollToTop": "トップへ"
+    "scrollToTop": "トップへ",
+    "viewAll": "すべて表示",
+    "searchResultCount": "検索結果 ({count}件)"
   },
   "hall": {
     "title": "光の聖域",
