@@ -116,7 +116,10 @@
     "viewAllWishes": "عرض كل الأمنيات",
     "viewingMyWishes": "أمنياتي ({count})",
     "searchResultCount": "النتائج ({count})",
-    "loginRequired": "تسجيل الدخول مطلوب. يرجى تسجيل الدخول لعرض أمنياتك المنقوشة."
+    "loginRequired": "تسجيل الدخول مطلوب. يرجى تسجيل الدخول لعرض أمنياتك المنقوشة.",
+    "loginRequiredTitle": "تسجيل الدخول مطلوب",
+    "loginRequiredDesc": "يرجى تسجيل الدخول لكتابة أو عرض أمنياتك.",
+    "signInBtn": "تسجيل الدخول"
   },
   "Pillars": {
     "eyebrow": "الأساس الأبدي",
@@ -150,7 +153,10 @@
     "rankSupporter": "داعم",
     "scrollToTop": "إلى الأعلى",
     "viewAll": "عرض الكل",
-    "searchResultCount": "النتائج ({count})"
+    "searchResultCount": "النتائج ({count})",
+    "loginRequiredTitle": "تسجيل الدخول مطلوب",
+    "loginRequiredDesc": "يرجى تسجيل الدخول لتقديم قربان للمعبد.",
+    "signInBtn": "تسجيل الدخول"
   },
   "hall": {
     "title": "ملاذ النور",
@@ -312,7 +318,9 @@
     "desc": "من سيول إلى ساو باولو، سافرت لحظات السكون هذه عبر العالم.",
     "related": "فيديوهات ذات صلة",
     "followBtn": "تابع @buddha_miracle على تيك توك",
-    "eyebrow": "الصدى العالمي"
+    "eyebrow": "الصدى العالمي",
+    "globalCommunity": "مجتمع المعبد العالمي",
+    "redirecting": "جارٍ الانتقال إلى قناة تيك توك الرسمية... ✨"
   },
   "Profile": {
     "myWishes": "أمنياتي",

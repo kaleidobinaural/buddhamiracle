@@ -116,7 +116,10 @@
     "viewAllWishes": "Lihat Semua Doa",
     "viewingMyWishes": "Doa Saya ({count})",
     "searchResultCount": "Hasil ({count})",
-    "loginRequired": "Diperlukan masuk. Silakan masuk untuk melihat doa yang Anda tinggalkan."
+    "loginRequired": "Diperlukan masuk. Silakan masuk untuk melihat doa yang Anda tinggalkan.",
+    "loginRequiredTitle": "Diperlukan Masuk",
+    "loginRequiredDesc": "Silakan masuk untuk menulis atau melihat doa Anda.",
+    "signInBtn": "Masuk"
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",
@@ -150,7 +153,10 @@
     "rankSupporter": "Pendukung",
     "scrollToTop": "Ke Atas",
     "viewAll": "Lihat Semua",
-    "searchResultCount": "Hasil ({count})"
+    "searchResultCount": "Hasil ({count})",
+    "loginRequiredTitle": "Diperlukan Masuk",
+    "loginRequiredDesc": "Silakan masuk untuk mempersembahkan ke kuil.",
+    "signInBtn": "Masuk"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
@@ -312,7 +318,9 @@
     "desc": "Dari Seoul hingga Sao Paulo, momen-momen keheningan ini telah melintasi dunia.",
     "related": "Video terkait",
     "followBtn": "Ikuti @buddha_miracle di TikTok",
-    "eyebrow": "RESONANSI GLOBAL"
+    "eyebrow": "RESONANSI GLOBAL",
+    "globalCommunity": "Komunitas Suci Global",
+    "redirecting": "Menghubungkan ke saluran resmi TikTok... ✨"
   },
   "Profile": {
     "myWishes": "Keinginan Saya",

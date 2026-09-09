@@ -116,7 +116,10 @@
     "viewAllWishes": "Xem tất cả ước nguyện",
     "viewingMyWishes": "Nguyện vọng của tôi ({count})",
     "searchResultCount": "Kết quả ({count})",
-    "loginRequired": "Yêu cầu đăng nhập. Vui lòng đăng nhập để xem những lời nguyện của bạn."
+    "loginRequired": "Yêu cầu đăng nhập. Vui lòng đăng nhập để xem những lời nguyện của bạn.",
+    "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
+    "loginRequiredDesc": "Vui lòng đăng nhập để viết hoặc xem lời nguyện.",
+    "signInBtn": "Đăng Nhập"
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",
@@ -150,7 +153,10 @@
     "rankSupporter": "Người Ủng Hộ",
     "scrollToTop": "Lên đầu trang",
     "viewAll": "Xem tất cả",
-    "searchResultCount": "Kết quả ({count})"
+    "searchResultCount": "Kết quả ({count})",
+    "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
+    "loginRequiredDesc": "Vui lòng đăng nhập để dâng hoa cúng dường lên đền.",
+    "signInBtn": "Đăng Nhập"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -312,7 +318,9 @@
     "desc": "Từ Seoul đến Sao Paulo, những khoảnh khắc tĩnh lặng này đã lan tỏa khắp thế giới.",
     "related": "Video liên quan",
     "followBtn": "Theo dõi @buddha_miracle trên TikTok",
-    "eyebrow": "CỘNG HƯỞNG TOÀN CẦU"
+    "eyebrow": "CỘNG HƯỞNG TOÀN CẦU",
+    "globalCommunity": "Cộng Đồng Tâm Linh Toàn Cầu",
+    "redirecting": "Đang chuyển đến kênh TikTok chính thức... ✨"
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",

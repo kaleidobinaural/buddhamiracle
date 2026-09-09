@@ -564,8 +564,13 @@ export default function DharmaPage() {
           border: 1px solid rgba(212,160,23,0.3); border-radius: 100px;
           padding: 10px 24px; cursor: pointer;
           transition: 0.4s var(--ease-expo);
+          -webkit-tap-highlight-color: transparent;
+          outline: none;
+          -webkit-appearance: none;
+          touch-action: manipulation;
         }
         .btn-parchment-read:hover { background: rgba(212,160,23,0.1); border-color: rgba(212,160,23,0.7); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,160,23,0.15); }
+        .btn-parchment-read:active { background: rgba(212,160,23,0.15); transform: scale(0.98); }
         .btn-parchment-icon { font-size: 1rem; }
 
         /* ── Gold button (Today's Wisdom) ── */
@@ -629,13 +634,21 @@ export default function DharmaPage() {
         }
 
         .parchment-close {
-          position: absolute; top: 16px; right: 20px;
-          font-size: 28px; color: #5a3e10; opacity: 0.3;
+          position: absolute; top: 8px; right: 12px;
+          font-size: 28px; color: #5a3e10; opacity: 0.45;
           background: none; border: none; cursor: pointer;
-          transition: opacity 0.3s, transform 0.4s;
+          transition: opacity 0.25s, transform 0.35s;
           z-index: 10; line-height: 1;
+          /* Expand hit area to 48x48 for comfortable mobile touch */
+          min-width: 48px; min-height: 48px;
+          display: flex; align-items: center; justify-content: center;
+          border-radius: 50%;
+          -webkit-tap-highlight-color: transparent;
+          outline: none;
+          touch-action: manipulation;
         }
-        .parchment-close:hover { opacity: 0.7; transform: rotate(90deg); }
+        .parchment-close:hover { opacity: 0.85; transform: rotate(90deg); background: rgba(90,62,16,0.08); }
+        .parchment-close:active { opacity: 1; transform: rotate(90deg) scale(0.92); }
 
         .parchment-watermark {
           position: absolute; top: 50%; left: 50%;

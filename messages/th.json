@@ -116,7 +116,10 @@
     "viewAllWishes": "ดูคำอธิษฐานทั้งหมด",
     "viewingMyWishes": "คำอธิษฐานของฉัน ({count})",
     "searchResultCount": "ผลการค้นหา ({count})",
-    "loginRequired": "ต้องเข้าสู่ระบบ โปรดเข้าสู่ระบบเพื่อดูคำอธิษฐานที่คุณจารึกไว้"
+    "loginRequired": "ต้องเข้าสู่ระบบ โปรดเข้าสู่ระบบเพื่อดูคำอธิษฐานที่คุณจารึกไว้",
+    "loginRequiredTitle": "ต้องเข้าสู่ระบบ",
+    "loginRequiredDesc": "โปรดเข้าสู่ระบบเพื่อจารึกหรือดูคำอธิษฐานของคุณ",
+    "signInBtn": "เข้าสู่ระบบ"
   },
   "Pillars": {
     "eyebrow": "รากฐานอันเป็นนิรันดร์",
@@ -150,7 +153,10 @@
     "rankSupporter": "ผู้สนับสนุน",
     "scrollToTop": "กลับขึ้นด้านบน",
     "viewAll": "ดูทั้งหมด",
-    "searchResultCount": "ผลการค้นหา ({count})"
+    "searchResultCount": "ผลการค้นหา ({count})",
+    "loginRequiredTitle": "ต้องเข้าสู่ระบบ",
+    "loginRequiredDesc": "โปรดเข้าสู่ระบบเพื่อถวายดอกบัวแก่พระวิหาร",
+    "signInBtn": "เข้าสู่ระบบ"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",
@@ -312,7 +318,9 @@
     "desc": "จากโซลถึงเซาเปาโล ช่วงเวลาแห่งความสงบเหล่านี้ได้เดินทางไปทั่วโลก",
     "related": "วิดีโอที่เกี่ยวข้อง",
     "followBtn": "ติดตาม @buddha_miracle บน TikTok",
-    "eyebrow": "เสียงสะท้อนระดับโลก"
+    "eyebrow": "เสียงสะท้อนระดับโลก",
+    "globalCommunity": "ชุมชนศักดิ์สิทธิ์ระดับโลก",
+    "redirecting": "กำลังเชื่อมต่อไปยังช่อง TikTok ทางการ... ✨"
   },
   "Profile": {
     "myWishes": "ความปรารถนาของฉัน",

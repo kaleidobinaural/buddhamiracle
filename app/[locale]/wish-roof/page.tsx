@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Link } from '@/i18n/navigation';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import CharacterAvatar from '@/components/CharacterAvatar';
 
@@ -42,9 +42,11 @@ export default function WishRoofPage() {
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [isActionSubmitting, setIsActionSubmitting] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const snackbarTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const wishSectionRef = useRef<HTMLDivElement>(null);
+  const searchResultsRef = useRef<HTMLDivElement>(null);
 
   const handleTogglePublic = async (wish: Wish) => {
     setIsActionSubmitting(true);
@@ -145,6 +147,12 @@ export default function WishRoofPage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchWishes(searchQuery, sortBy, showOnlyMine);
+    // Scroll to result banner after data loads
+    setTimeout(() => {
+      if (searchResultsRef.current) {
+        searchResultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 400);
   };
 
   const showMessage = (msg: string) => {
@@ -258,10 +266,18 @@ export default function WishRoofPage() {
 
   const handleToggleMine = () => {
     if (!session?.user) {
-      showMessage(t('loginRequired') || '로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요.');
+      setShowLoginModal(true);
       return;
     }
     setShowOnlyMine(prev => !prev);
+  };
+
+  const handleInscribeClick = () => {
+    if (!session?.user) {
+      setShowLoginModal(true);
+      return;
+    }
+    setIsModalOpen(true);
   };
 
   return (
@@ -350,7 +366,7 @@ export default function WishRoofPage() {
 
           <button 
             className="btn-gold-glow-v2" 
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleInscribeClick}
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Ascending...' : t('btnInscribe')}
@@ -370,21 +386,23 @@ export default function WishRoofPage() {
           </div>
         )}
 
-        {/* Search / Filter Status Badge */}
-        {(showOnlyMine || searchQuery) && (
-          <div className="search-status-banner animate-fade-up">
-            <div className="search-status-chip">
-              <span className="search-status-icon">{showOnlyMine ? '👤' : '🔍'}</span>
-              <span className="search-status-text">
-                {showOnlyMine ? (
-                  <>{t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
-                ) : (
-                  <>&ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: wishes.length }) || `검색 결과 (${wishes.length}개)`}</>
-                )}
-              </span>
+        {/* Search result count banner — auto-scroll target, placed ABOVE results */}
+        <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
+          {(showOnlyMine || searchQuery) && (
+            <div className="search-status-banner animate-fade-up">
+              <div className="search-status-chip">
+                <span className="search-status-icon">{showOnlyMine ? '👤' : '🔍'}</span>
+                <span className="search-status-text">
+                  {showOnlyMine ? (
+                    <>{t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
+                  ) : (
+                    <>&ldquo;{searchQuery}&rdquo;{' '}{t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`}</>
+                  )}
+                </span>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Sacred Sky Frame / Viewport */}
         <div className="sacred-sky-frame">
@@ -682,15 +700,21 @@ export default function WishRoofPage() {
         @keyframes particle-float { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.6; } 100% { transform: translateY(-100vh); opacity: 0; } }
 
         .wish-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
-        .page-header { text-align: center; margin-bottom: 60px; }
-        .header-eyebrow { font-size: 0.95rem; color: var(--primary-gold); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 24px; font-weight: 600; }
-        .page-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-family: var(--font-serif); margin-bottom: 28px; }
-        .page-subtitle { font-size: 1.15rem; color: var(--text-tertiary); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+        .page-header { text-align: center; margin-bottom: 32px; }
+        .header-eyebrow { font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+        .page-title { font-size: clamp(2.3rem, 5.5vw, 4.2rem); font-family: var(--font-serif); margin-bottom: 12px; }
+        .page-subtitle { font-size: 1.05rem; color: var(--text-tertiary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
         .wish-controls { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 32px; }
         .control-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
 
-        .sort-selector { display: flex; background: rgba(255,255,255,0.03); padding: 5px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); gap: 4px; }
-        .btn-sort { padding: 8px 16px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 10px; font-size: 0.85rem; transition: all 0.3s; white-space: nowrap; }
+        .sort-selector { display: flex; background: rgba(255,255,255,0.03); padding: 4px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); gap: 2px; }
+        .btn-sort { 
+          padding: 7px 14px; border: none; background: transparent; color: var(--text-tertiary);
+          cursor: pointer; border-radius: 8px; font-size: 0.85rem; transition: all 0.25s; white-space: nowrap;
+          -webkit-tap-highlight-color: transparent;
+          outline: none;
+          touch-action: manipulation;
+        }
         .btn-sort.active { background: var(--primary-gold); color: #000; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3); }
         .btn-sort:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; }
 
@@ -774,8 +798,15 @@ export default function WishRoofPage() {
         }
 
         /* View Selector */
-        .view-selector { display: flex; background: rgba(255,255,255,0.03); padding: 5px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); }
-        .btn-view { padding: 10px 20px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 10px; font-size: 0.95rem; transition: all 0.3s; }
+        .view-selector { display: flex; background: rgba(255,255,255,0.03); padding: 4px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+        .btn-view { 
+          padding: 7px 16px; border: none; background: transparent; color: var(--text-tertiary); 
+          cursor: pointer; border-radius: 8px; font-size: 0.88rem; transition: all 0.25s;
+          -webkit-tap-highlight-color: transparent;
+          outline: none;
+          touch-action: manipulation;
+          white-space: nowrap;
+        }
         .btn-view.active { background: var(--primary-gold); color: #000; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3); }
 
         /* Sacred Sky Viewport Frame */
@@ -1192,7 +1223,134 @@ export default function WishRoofPage() {
           border: 1px solid rgba(255,255,255,0.3);
         }
         .snackbar.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* ── Sacred Login Modal ── */
+        .sacred-login-overlay {
+          position: fixed; inset: 0;
+          background: rgba(0,0,0,0.88);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          z-index: 199999;
+          display: flex; align-items: center; justify-content: center;
+          padding: 24px;
+          animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .sacred-login-card {
+          position: relative;
+          max-width: 420px; width: 100%;
+          background: linear-gradient(145deg, rgba(20, 17, 12, 0.97) 0%, rgba(10, 9, 7, 0.99) 100%);
+          border: 1px solid rgba(212,160,23,0.4);
+          border-radius: 24px;
+          padding: 48px 36px 40px;
+          text-align: center;
+          box-shadow: 0 0 80px rgba(212,160,23,0.2), 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08);
+          animation: sacred-zoom 0.45s cubic-bezier(0.2, 0, 0, 1) forwards;
+        }
+        .sacred-login-close {
+          position: absolute; top: 12px; right: 12px;
+          min-width: 44px; min-height: 44px;
+          display: flex; align-items: center; justify-content: center;
+          background: none; border: none; cursor: pointer;
+          color: rgba(255,255,255,0.4); font-size: 1.3rem;
+          border-radius: 50%;
+          transition: color 0.2s, background 0.2s;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        .sacred-login-close:hover { color: #fff; background: rgba(255,255,255,0.06); }
+        .sacred-login-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+        .sacred-login-title {
+          font-family: var(--font-serif);
+          font-size: 1.7rem;
+          background: linear-gradient(135deg, #FFD700, #D4A017);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          margin-bottom: 12px;
+        }
+        .sacred-login-desc {
+          font-size: 0.95rem;
+          color: rgba(255,255,255,0.65);
+          line-height: 1.65;
+          margin-bottom: 32px;
+        }
+        .sacred-login-divider {
+          height: 1px;
+          background: linear-gradient(to right, transparent, rgba(212,160,23,0.25), transparent);
+          margin-bottom: 28px;
+        }
+        .btn-sacred-signin {
+          display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+          background: linear-gradient(135deg, #f6e27a, #d4a017, #aa7c11);
+          color: #080807;
+          font-weight: 900;
+          font-size: 1.05rem;
+          padding: 16px 36px;
+          border-radius: 100px;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          letter-spacing: 0.03em;
+          box-shadow: 0 10px 30px rgba(212,160,23,0.4);
+          transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+          text-decoration: none;
+        }
+        .btn-sacred-signin:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 40px rgba(212,160,23,0.55); }
+        .btn-sacred-signin:active { transform: scale(0.97); }
+
+        @media (max-width: 768px) {
+          .wish-page { padding: calc(var(--nav-height, 80px) + 12px) 16px 60px; }
+          .page-header { margin-bottom: 18px; }
+          .header-eyebrow { margin-bottom: 6px; font-size: 0.78rem; }
+          .page-title { margin-bottom: 6px; }
+          .page-subtitle { font-size: 0.9rem; line-height: 1.5; }
+          .wish-controls { gap: 14px; margin-bottom: 20px; }
+          /* ── 2-row compact layout on mobile ── */
+          .control-group {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+          }
+          .control-group > * {
+            display: flex;
+            justify-content: center;
+          }
+          .btn-view { padding: 7px 12px; font-size: 0.82rem; }
+          .btn-sort { padding: 7px 10px; font-size: 0.82rem; }
+          .wish-primary-action { gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+          .btn-gold-glow-v2 { padding: 12px 28px; font-size: 1rem; }
+          .btn-mine-v2 { padding: 12px 20px; }
+          .sacred-sky-scroll-area { height: clamp(440px, 62vh, 640px); }
+          .sacred-login-card { padding: 36px 20px 28px; }
+        }
       `}</style>
+
+      {/* ── Sacred Login Modal (내소원 / 소원적기 auth guard) ── */}
+      {showLoginModal && (
+        <div className="sacred-login-overlay" onClick={() => setShowLoginModal(false)}>
+          <div className="sacred-login-card" onClick={e => e.stopPropagation()}>
+            <button
+              className="sacred-login-close"
+              onClick={() => setShowLoginModal(false)}
+              aria-label="Close"
+            >✕</button>
+            <span className="sacred-login-icon">🪷</span>
+            <h2 className="sacred-login-title">{t('loginRequired') || '로그인이 필요합니다'}</h2>
+            <p className="sacred-login-desc">
+              {t('loginRequiredDesc') || '소원을 적거나 내 소원을 확인하려면\n먼저 신성한 사원에 입장해 주세요.'}
+            </p>
+            <div className="sacred-login-divider" />
+            <button
+              className="btn-sacred-signin"
+              onClick={() => { setShowLoginModal(false); signIn('google'); }}
+            >
+              <span>✨</span>
+              <span>{t('signInBtn') || '구글로 로그인하기'}</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── Lotus Upgrade Modal ── */}
       {showUpgradeModal && (

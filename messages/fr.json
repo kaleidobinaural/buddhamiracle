@@ -116,7 +116,10 @@
     "viewAllWishes": "Voir tous les vœux",
     "viewingMyWishes": "Mes vœux ({count})",
     "searchResultCount": "Résultats ({count})",
-    "loginRequired": "Connexion requise. Veuillez vous connecter pour voir vos vœux inscrits."
+    "loginRequired": "Connexion requise. Veuillez vous connecter pour voir vos vœux inscrits.",
+    "loginRequiredTitle": "Connexion Requise",
+    "loginRequiredDesc": "Connectez-vous pour inscrire ou consulter vos vœux.",
+    "signInBtn": "Se Connecter"
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",
@@ -150,7 +153,10 @@
     "rankSupporter": "Soutien",
     "scrollToTop": "Haut de page",
     "viewAll": "Tout afficher",
-    "searchResultCount": "Résultats ({count})"
+    "searchResultCount": "Résultats ({count})",
+    "loginRequiredTitle": "Connexion Requise",
+    "loginRequiredDesc": "Veuillez vous connecter pour faire une offrande.",
+    "signInBtn": "Se Connecter"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -312,7 +318,9 @@
     "desc": "De Séoul à Sao Paulo, ces moments de silence ont voyagé à travers le monde.",
     "related": "Vidéos associées",
     "followBtn": "Suivez @buddha_miracle sur TikTok",
-    "eyebrow": "RÉSONANCE MONDIALE"
+    "eyebrow": "RÉSONANCE MONDIALE",
+    "globalCommunity": "Communauté Sacrée Mondiale",
+    "redirecting": "Connexion à la chaîne TikTok officielle... ✨"
   },
   "Profile": {
     "myWishes": "Mes Vœux",

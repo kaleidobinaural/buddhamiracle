@@ -116,7 +116,10 @@
     "viewAllWishes": "전체 소원 보기",
     "viewingMyWishes": "내 소원 ({count}개)",
     "searchResultCount": "검색 결과 ({count}개)",
-    "loginRequired": "로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요."
+    "loginRequired": "로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요.",
+    "loginRequiredTitle": "로그인이 필요합니다",
+    "loginRequiredDesc": "소원을 남기거나 내 소원을 확인하려면 먼저 로그인해 주세요.",
+    "signInBtn": "로그인하기"
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",
@@ -150,7 +153,10 @@
     "rankSupporter": "후원자",
     "scrollToTop": "맨 위로",
     "viewAll": "전체 목록 보기",
-    "searchResultCount": "검색 결과 ({count}개)"
+    "searchResultCount": "검색 결과 ({count}개)",
+    "loginRequiredTitle": "로그인이 필요합니다",
+    "loginRequiredDesc": "사원에 공양을 올리시려면 먼저 로그인해 주세요.",
+    "signInBtn": "로그인하기"
   },
   "hall": {
     "title": "빛의 성소",
@@ -312,7 +318,9 @@
     "desc": "서울에서 상파울루까지, 이 고요의 순간들이 전 세계로 퍼져나갔습니다.",
     "related": "관련 영상",
     "followBtn": "TikTok에서 @buddha_miracle 팔로우하기",
-    "eyebrow": "글로벌 울림"
+    "eyebrow": "글로벌 울림",
+    "globalCommunity": "글로벌 성소 커뮤니티",
+    "redirecting": "틱톡 공식 채널로 이동 중... ✨"
   },
   "Profile": {
     "myWishes": "내 소원",

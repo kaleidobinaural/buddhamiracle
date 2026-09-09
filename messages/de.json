@@ -116,7 +116,10 @@
     "viewAllWishes": "Alle Wünsche anzeigen",
     "viewingMyWishes": "Meine Wünsche ({count})",
     "searchResultCount": "Ergebnisse ({count})",
-    "loginRequired": "Anmeldung erforderlich. Bitte melden Sie sich an, um Ihre hinterlassenen Wünsche zu sehen."
+    "loginRequired": "Anmeldung erforderlich. Bitte melden Sie sich an, um Ihre hinterlassenen Wünsche zu sehen.",
+    "loginRequiredTitle": "Anmeldung Erforderlich",
+    "loginRequiredDesc": "Melden Sie sich an, um Wünsche einzutragen oder einzusehen.",
+    "signInBtn": "Anmelden"
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",
@@ -150,7 +153,10 @@
     "rankSupporter": "Unterstützer",
     "scrollToTop": "Nach oben",
     "viewAll": "Alle anzeigen",
-    "searchResultCount": "Ergebnisse ({count})"
+    "searchResultCount": "Ergebnisse ({count})",
+    "loginRequiredTitle": "Anmeldung Erforderlich",
+    "loginRequiredDesc": "Bitte melden Sie sich an, um eine Opfergabe darzubringen.",
+    "signInBtn": "Anmelden"
   },
   "hall": {
     "title": "Heiligtum des Lichts",
@@ -312,7 +318,9 @@
     "desc": "Von Seoul bis Sao Paulo sind diese Momente der Stille um die Welt gereist.",
     "related": "Ähnliche Videos",
     "followBtn": "Folge @buddha_miracle auf TikTok",
-    "eyebrow": "GLOBALE RESONANZ"
+    "eyebrow": "GLOBALE RESONANZ",
+    "globalCommunity": "Globale Heilige Gemeinschaft",
+    "redirecting": "Verbindung zum offiziellen TikTok-Kanal... ✨"
   },
   "Profile": {
     "myWishes": "Meine Wünsche",

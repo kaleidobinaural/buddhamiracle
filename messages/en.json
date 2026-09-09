@@ -116,7 +116,10 @@
     "viewAllWishes": "View All Wishes",
     "viewingMyWishes": "My Wishes ({count})",
     "searchResultCount": "Results ({count})",
-    "loginRequired": "Sign in required. Please log in to view your inscribed wishes."
+    "loginRequired": "Sign in required. Please log in to view your inscribed wishes.",
+    "loginRequiredTitle": "Sign In Required",
+    "loginRequiredDesc": "Please sign in first to inscribe or view your wishes.",
+    "signInBtn": "Sign In"
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",
@@ -150,7 +153,10 @@
     "rankSupporter": "Supporter",
     "scrollToTop": "Scroll to Top",
     "viewAll": "View All",
-    "searchResultCount": "Results ({count})"
+    "searchResultCount": "Results ({count})",
+    "loginRequiredTitle": "Sign In Required",
+    "loginRequiredDesc": "Please sign in first to make an offering to the temple.",
+    "signInBtn": "Sign In"
   },
   "hall": {
     "title": "Sanctuary of Light",
@@ -312,7 +318,9 @@
     "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
     "related": "Related videos",
     "followBtn": "Follow @buddha_miracle on TikTok",
-    "eyebrow": "GLOBAL RESONANCE"
+    "eyebrow": "GLOBAL RESONANCE",
+    "globalCommunity": "Global Sacred Community",
+    "redirecting": "Connecting to TikTok Official Channel... ✨"
   },
   "Profile": {
     "myWishes": "My Wishes",

@@ -116,7 +116,10 @@
     "viewAllWishes": "查看全部心愿",
     "viewingMyWishes": "我的心愿 ({count}条)",
     "searchResultCount": "搜索结果 ({count}条)",
-    "loginRequired": "需要登录。请先登录以查看您留下的心愿。"
+    "loginRequired": "需要登录。请先登录以查看您留下的心愿。",
+    "loginRequiredTitle": "需要登录",
+    "loginRequiredDesc": "请先登录以许愿或查看您的心愿。",
+    "signInBtn": "登录"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
@@ -150,7 +153,10 @@
     "rankSupporter": "支持者",
     "scrollToTop": "回到顶部",
     "viewAll": "查看全部",
-    "searchResultCount": "搜索结果 ({count}条)"
+    "searchResultCount": "搜索结果 ({count}条)",
+    "loginRequiredTitle": "需要登录",
+    "loginRequiredDesc": "请先登录以向寺庙供奉功德。",
+    "signInBtn": "登录"
   },
   "hall": {
     "title": "光明圣殿",
@@ -312,7 +318,9 @@
     "desc": "从首尔到圣保罗，这些宁静的时刻传遍了全世界。",
     "related": "相关视频",
     "followBtn": "在TikTok上关注 @buddha_miracle",
-    "eyebrow": "全球共鸣"
+    "eyebrow": "全球共鸣",
+    "globalCommunity": "全球圣所社群",
+    "redirecting": "正在前往TikTok官方频道... ✨"
   },
   "Profile": {
     "myWishes": "我的心愿",

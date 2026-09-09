@@ -116,7 +116,10 @@
     "viewAllWishes": "Ver todos los deseos",
     "viewingMyWishes": "Mis deseos ({count})",
     "searchResultCount": "Resultados ({count})",
-    "loginRequired": "Inicio de sesión requerido. Inicia sesión para ver tus deseos inscritos."
+    "loginRequired": "Inicio de sesión requerido. Inicia sesión para ver tus deseos inscritos.",
+    "loginRequiredTitle": "Inicio de Sesión Requerido",
+    "loginRequiredDesc": "Inicia sesión para inscribir o ver tus deseos.",
+    "signInBtn": "Iniciar Sesión"
   },
   "Pillars": {
     "eyebrow": "La Fundación Eterna",
@@ -150,7 +153,10 @@
     "rankSupporter": "Partidario",
     "scrollToTop": "Volver arriba",
     "viewAll": "Ver todos",
-    "searchResultCount": "Resultados ({count})"
+    "searchResultCount": "Resultados ({count})",
+    "loginRequiredTitle": "Inicio de Sesión Requerido",
+    "loginRequiredDesc": "Por favor, inicia sesión para realizar una ofrenda.",
+    "signInBtn": "Iniciar Sesión"
   },
   "hall": {
     "title": "Santuario de Luz",
@@ -312,7 +318,9 @@
     "desc": "Desde Seúl hasta Sao Paulo, estos momentos de quietud han viajado por el mundo.",
     "related": "Videos relacionados",
     "followBtn": "Sigue a @buddha_miracle en TikTok",
-    "eyebrow": "RESONANCIA GLOBAL"
+    "eyebrow": "RESONANCIA GLOBAL",
+    "globalCommunity": "Comunidad Sagrada Global",
+    "redirecting": "Conectando con el canal oficial de TikTok... ✨"
   },
   "Profile": {
     "myWishes": "Mis Deseos",

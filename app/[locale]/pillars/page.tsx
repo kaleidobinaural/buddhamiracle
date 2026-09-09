@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Keyboard, Mousewheel } from 'swiper/modules';
@@ -33,8 +33,10 @@ export default function PillarsPage() {
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
   const [mounted, setMounted] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const pillarsTopRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const searchResultsRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
     if (scrollAreaRef.current) {
@@ -85,6 +87,20 @@ export default function PillarsPage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchPillars(searchQuery, sortBy, role);
+    // After a short delay (data load) scroll to result banner
+    setTimeout(() => {
+      if (searchResultsRef.current) {
+        searchResultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 400);
+  };
+
+  const handleDonateClick = () => {
+    if (!session?.user) {
+      setShowLoginModal(true);
+      return;
+    }
+    window.location.href = '/donate';
   };
 
   return (
@@ -164,17 +180,26 @@ export default function PillarsPage() {
           </form>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-            <Link href="/donate" className="btn-gold-glow-v2" style={{ padding: '12px 32px' }}>
-              ♡ {t('donate')}
-            </Link>
+            <button
+              className="btn-gold-glow-v2"
+              style={{ padding: '12px 32px' }}
+              onClick={handleDonateClick}
+            >
+              ♥ {t('donate')}
+            </button>
           </div>
 
+        </div>
+
+        {/* Search result count banner — placed ABOVE results, auto-scroll target */}
+        <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
           {searchQuery && (
             <div className="search-status-banner animate-fade-up">
               <div className="search-status-chip">
                 <span className="search-status-icon">🔍</span>
                 <span className="search-status-text">
-                  &ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: pillars.length }) || `검색 결과 (${pillars.length}개)`}
+                  &ldquo;{searchQuery}&rdquo;{' '}
+                  {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
                 </span>
               </div>
             </div>
@@ -512,6 +537,39 @@ export default function PillarsPage() {
         )}
       </div>
 
+      {/* ── Sacred Login Modal (공양하기 auth guard) ── */}
+      {showLoginModal && (
+        <div
+          style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.88)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', zIndex:199999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', animation:'fadeIn 0.25s ease' }}
+          onClick={() => setShowLoginModal(false)}
+        >
+          <div
+            style={{ position:'relative', maxWidth:'420px', width:'100%', background:'linear-gradient(145deg, rgba(20,17,12,0.97) 0%, rgba(10,9,7,0.99) 100%)', border:'1px solid rgba(212,160,23,0.4)', borderRadius:'24px', padding:'48px 36px 40px', textAlign:'center', boxShadow:'0 0 80px rgba(212,160,23,0.2), 0 30px 60px rgba(0,0,0,0.8)' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              style={{ position:'absolute', top:'12px', right:'12px', minWidth:'44px', minHeight:'44px', display:'flex', alignItems:'center', justifyContent:'center', background:'none', border:'none', cursor:'pointer', color:'rgba(255,255,255,0.4)', fontSize:'1.3rem', borderRadius:'50%', WebkitTapHighlightColor:'transparent' }}
+              onClick={() => setShowLoginModal(false)}
+            >✕</button>
+            <span style={{ fontSize:'3.5rem', marginBottom:'16px', display:'block' }}>🪷</span>
+            <h2 style={{ fontFamily:'var(--font-serif)', fontSize:'1.7rem', background:'linear-gradient(135deg,#FFD700,#D4A017)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', marginBottom:'12px' }}>
+              {t('loginRequiredTitle') || '로그인이 필요합니다'}
+            </h2>
+            <p style={{ fontSize:'0.95rem', color:'rgba(255,255,255,0.65)', lineHeight:1.65, marginBottom:'28px' }}>
+              {t('loginRequiredDesc') || '공양을 올리려면 먼저 신성한 사원에 입장해 주세요.'}
+            </p>
+            <div style={{ height:'1px', background:'linear-gradient(to right, transparent, rgba(212,160,23,0.25), transparent)', marginBottom:'28px' }} />
+            <button
+              style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', gap:'10px', background:'linear-gradient(135deg,#f6e27a,#d4a017,#aa7c11)', color:'#080807', fontWeight:900, fontSize:'1.05rem', padding:'16px 36px', borderRadius:'100px', border:'none', cursor:'pointer', width:'100%', letterSpacing:'0.03em', boxShadow:'0 10px 30px rgba(212,160,23,0.4)', WebkitTapHighlightColor:'transparent' }}
+              onClick={() => { setShowLoginModal(false); signIn('google'); }}
+            >
+              <span>✨</span>
+              <span>{t('signInBtn') || '구글로 로그인하기'}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
       <style>{`
         .pillars-page { min-height: 100vh; padding: calc(var(--nav-height, 80px) + 20px) 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
         .hall-atmosphere { position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(212, 160, 23, 0.05) 0%, transparent 70%); pointer-events: none; }
@@ -570,8 +628,15 @@ export default function PillarsPage() {
         .btn-music-glass:hover { background: rgba(255,255,255,0.1); transform: scale(1.05); }
 
         /* View & Sort Selectors */
-        .view-selector, .sort-selector { display: flex; background: rgba(255,255,255,0.03); padding: 5px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); }
-        .btn-view, .btn-sort { padding: 8px 20px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 10px; font-size: 0.9rem; transition: all 0.3s; }
+        .view-selector, .sort-selector { display: flex; background: rgba(255,255,255,0.03); padding: 4px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+        .btn-view, .btn-sort { 
+          padding: 7px 16px; border: none; background: transparent; color: var(--text-tertiary); 
+          cursor: pointer; border-radius: 8px; font-size: 0.88rem; transition: all 0.25s;
+          -webkit-tap-highlight-color: transparent;
+          outline: none;
+          touch-action: manipulation;
+          white-space: nowrap;
+        }
         .btn-view.active, .btn-sort.active { background: var(--primary-gold); color: #000; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3); }
 
         .search-box-v2 { 
@@ -935,11 +1000,33 @@ export default function PillarsPage() {
 
         @media (max-width: 768px) {
           .pillars-page { padding: calc(var(--nav-height, 80px) + 12px) 16px 60px; }
-          .page-header { margin-bottom: 22px; }
-          .header-eyebrow { margin-bottom: 6px; }
-          .page-title { margin-bottom: 8px; }
-          .page-subtitle { font-size: 0.95rem; line-height: 1.5; }
-          .pillars-top-actions { gap: 16px; margin-bottom: 18px; }
+          .page-header { margin-bottom: 16px; }
+          .header-eyebrow { margin-bottom: 4px; font-size: 0.78rem; }
+          .page-title { margin-bottom: 6px; }
+          .page-subtitle { font-size: 0.9rem; line-height: 1.5; }
+          .pillars-top-actions { gap: 12px; margin-bottom: 14px; }
+          /* ── 2-row compact layout: Row1=Role+View, Row2=Sort ── */
+          .control-group.multi-toggles {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+          }
+          .control-group.multi-toggles > * {
+            display: flex;
+            justify-content: center;
+          }
+          /* Row 1: Role selector + View selector side by side */
+          .control-group.multi-toggles .role-selector,
+          .control-group.multi-toggles .view-selector:not(.role-selector) {
+            flex: 1;
+          }
+          /* Stack row1 into a horizontal flex */
+          .control-group.multi-toggles::before {
+            content: '';
+            display: none;
+          }
+          .btn-view { padding: 7px 12px; font-size: 0.82rem; }
+          .btn-sort { padding: 7px 10px; font-size: 0.82rem; }
           .sacred-hall-scroll-area { height: clamp(440px, 62vh, 600px); padding: 20px 12px 30px; }
           .golden-plaques-grid { grid-template-columns: 1fr; gap: 14px; }
           .pillar-slide { width: 270px; }

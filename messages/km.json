@@ -116,7 +116,10 @@
     "viewAllWishes": "មើលបំណងប្រាថ្នាទាំងអស់",
     "viewingMyWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ ({count})",
     "searchResultCount": "លទ្ធផល ({count})",
-    "loginRequired": "ទាមទារការចូលគណនី។ សូមចូលគណនីដើម្បីមើលការបួងសួងរបស់អ្នក។"
+    "loginRequired": "ទាមទារការចូលគណនី។ សូមចូលគណនីដើម្បីមើលការបួងសួងរបស់អ្នក។",
+    "loginRequiredTitle": "ទាមទារការចូលគណនី",
+    "loginRequiredDesc": "សូមចូលគណនីដើម្បីសរសេរ ឬមើលការបួងសួងរបស់អ្នក។",
+    "signInBtn": "ចូលគណនី"
   },
   "Pillars": {
     "eyebrow": "គ្រឹះអមតៈ",
@@ -150,7 +153,10 @@
     "rankSupporter": "អ្នកគាំទ្រ",
     "scrollToTop": "ទៅខាងលើ",
     "viewAll": "មើលទាំងអស់",
-    "searchResultCount": "លទ្ធផល ({count})"
+    "searchResultCount": "លទ្ធផល ({count})",
+    "loginRequiredTitle": "ទាមទារការចូលគណនី",
+    "loginRequiredDesc": "សូមចូលគណនីដើម្បីថ្វាយដង្វាយដល់ព្រះវិហារ។",
+    "signInBtn": "ចូលគណនី"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",
@@ -312,7 +318,9 @@
     "desc": "ពីទីក្រុងសេអ៊ូលដល់ទីក្រុងសៅប៉ូឡូ ពេលវេលានៃភាពស្ងៀមស្ងាត់ទាំងនេះបានធ្វើដំណើរជុំវិញពិភពលោក។",
     "related": "វីដេអូពាក់ព័ន្ធ",
     "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok",
-    "eyebrow": "សំឡេងជ្រួញជ្រើសសកល"
+    "eyebrow": "សំឡេងជ្រួញជ្រើសសកល",
+    "globalCommunity": "សហគមន៍ពិសិដ្ឋសកល",
+    "redirecting": "កំពុងភ្ជាប់ទៅកាន់ឆានែល TikTok ផ្លូវការ... ✨"
   },
   "Profile": {
     "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",

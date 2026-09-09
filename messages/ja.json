@@ -116,7 +116,10 @@
     "viewAllWishes": "すべての願いを表示",
     "viewingMyWishes": "私の願い ({count}件)",
     "searchResultCount": "検索結果 ({count}件)",
-    "loginRequired": "ログインが必要です。ご自身が残した願い事を見るには、まずログインしてください。"
+    "loginRequired": "ログインが必要です。ご自身が残した願い事を見るには、まずログインしてください。",
+    "loginRequiredTitle": "ログインが必要です",
+    "loginRequiredDesc": "願い事を刻む、またはご自身の願いを見るにはログインしてください。",
+    "signInBtn": "ログイン"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",
@@ -150,7 +153,10 @@
     "rankSupporter": "サポーター",
     "scrollToTop": "トップへ",
     "viewAll": "すべて表示",
-    "searchResultCount": "検索結果 ({count}件)"
+    "searchResultCount": "検索結果 ({count}件)",
+    "loginRequiredTitle": "ログインが必要です",
+    "loginRequiredDesc": "寺院にご供養を捧げるには、まずログインしてください。",
+    "signInBtn": "ログイン"
   },
   "hall": {
     "title": "光の聖域",
@@ -312,7 +318,9 @@
     "desc": "ソウルからサンパウロまで、この静寂の瞬間が世界中を旅しました。",
     "related": "関連動画",
     "followBtn": "TikTokで@buddha_miracleをフォロー",
-    "eyebrow": "グローバル・レゾナンス"
+    "eyebrow": "グローバル・レゾナンス",
+    "globalCommunity": "世界中の祈りの輪",
+    "redirecting": "TikTok公式チャンネルへ移動中... ✨"
   },
   "Profile": {
     "myWishes": "私の願い",

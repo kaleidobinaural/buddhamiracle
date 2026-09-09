@@ -1,32 +1,73 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 export default function ResonancePage() {
   const t = useTranslations('Resonance');
+  const [followerCount, setFollowerCount] = useState<number | null>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  useEffect(() => {
+    fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
+      .then(res => res.json())
+      .then(data => { if (data.followerCount) setFollowerCount(data.followerCount); })
+      .catch(() => {});
+  }, []);
+
+  const formatFollowers = (count: number | null) => {
+    if (!count) return '366,000+';
+    if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M+`;
+    if (count >= 1000) return `${Math.floor(count / 1000).toLocaleString()}K+`;
+    return `${count.toLocaleString()}+`;
+  };
+
+  const handleTikTokRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsRedirecting(true);
+    // Reset after a delay in case tab doesn't close
+    setTimeout(() => setIsRedirecting(false), 4000);
+  };
 
   const HIGHLIGHTS = [
     {
-      title: 'Om Mani Padme Hum 5Hz',
-      sub: '5Hz Theta Waves • Cosmic Healing',
-      tag: 'Viral 1.2M+'
+      titleKey: 'highlight1Title',
+      subKey: 'highlight1Sub',
+      tagKey: 'highlight1Tag',
+      titleFallback: 'Om Mani Padme Hum 5Hz',
+      subFallback: '5Hz Theta Waves • Cosmic Healing',
+      tagFallback: 'Viral 1.2M+'
     },
     {
-      title: 'Miracle of Inner Peace',
-      sub: 'Daily Evening Tranquility Ritual',
-      tag: 'Daily Meditation'
+      titleKey: 'highlight2Title',
+      subKey: 'highlight2Sub',
+      tagKey: 'highlight2Tag',
+      titleFallback: 'Miracle of Inner Peace',
+      subFallback: 'Daily Evening Tranquility Ritual',
+      tagFallback: 'Daily Meditation'
     },
     {
-      title: 'Golden Light Mandala',
-      sub: 'Sacred Geometry & Frequency Resonance',
-      tag: 'Sacred Sound'
+      titleKey: 'highlight3Title',
+      subKey: 'highlight3Sub',
+      tagKey: 'highlight3Tag',
+      titleFallback: 'Golden Light Mandala',
+      subFallback: 'Sacred Geometry & Frequency Resonance',
+      tagFallback: 'Sacred Sound'
     }
   ];
+
+  const safeT = (key: string, fallback: string) => {
+    try {
+      const result = t(key as any);
+      return result === key ? fallback : result;
+    } catch {
+      return fallback;
+    }
+  };
 
   return (
     <main className="resonance-page">
       <div className="store-bg-glow" />
-      <section className="store-section store-tiktok-section" style={{ paddingTop: '130px', maxWidth: '960px', margin: '0 auto' }}>
+      <section className="store-section store-tiktok-section" style={{ paddingTop: 'calc(var(--nav-height, 80px) + 50px)', maxWidth: '960px', margin: '0 auto' }}>
         <p className="store-tiktok-eyebrow animate-fade-up">{t('eyebrow')}</p>
         <h1 className="store-section-title animate-fade-up animate-delay-100">{t('title')}</h1>
         <p className="resonance-lead animate-fade-up animate-delay-150">
@@ -41,49 +82,68 @@ export default function ResonancePage() {
               <div className="channel-avatar">☸</div>
             </div>
             <div className="channel-meta">
-              <div className="channel-badge">Official TikTok Channel</div>
+              <div className="channel-badge">{safeT('officialChannel', 'Official TikTok Channel')}</div>
               <h2 className="channel-handle">@buddha_miracle</h2>
-              <div className="channel-stats">
-                <span className="stat-pill">✨ 366,000+ Followers</span>
-                <span className="stat-pill">🌏 Global Community</span>
+              {/* Stats as plain text info — NOT button-like */}
+              <div className="channel-stats-info">
+                <span className="stat-info-item">
+                  <span className="stat-info-icon">✨</span>
+                  <span className="stat-info-count">{formatFollowers(followerCount)}</span>
+                  <span className="stat-info-label">{safeT('followers', 'Followers')}</span>
+                </span>
+                <span className="stat-info-sep">•</span>
+                <span className="stat-info-item">
+                  <span className="stat-info-icon">🌏</span>
+                  <span className="stat-info-label">{t('globalCommunity')}</span>
+                </span>
               </div>
             </div>
           </div>
 
           <p className="channel-intro">
-            매일 수만 명의 순례자들이 틱톡에서 신성한 주파수와 지혜의 울림을 함께 나누고 있습니다.
-            지금 공식 채널을 팔로우하고 일상 속 평온의 기적을 경험해 보세요.
+            {safeT('channelIntro', '매일 수만 명의 순례자들이 틱톡에서 신성한 주파수와 지혜의 울림을 함께 나누고 있습니다. 지금 공식 채널을 팔로우하고 일상 속 평온의 기적을 경험해 보세요.')}
           </p>
 
           {/* Quick Highlight Cards */}
           <div className="highlights-grid">
             {HIGHLIGHTS.map((h, i) => (
-              <a 
-                key={i} 
-                href="https://www.tiktok.com/@buddha_miracle" 
-                target="_blank" 
+              <a
+                key={i}
+                href="https://www.tiktok.com/@buddha_miracle"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="highlight-card"
+                onClick={handleTikTokRedirect}
               >
-                <div className="highlight-tag">{h.tag}</div>
-                <div className="highlight-title">{h.title}</div>
-                <div className="highlight-sub">{h.sub}</div>
-                <div className="highlight-link">TikTok에서 보기 ↗</div>
+                <div className="highlight-tag">{safeT(h.tagKey, h.tagFallback)}</div>
+                <div className="highlight-title">{safeT(h.titleKey, h.titleFallback)}</div>
+                <div className="highlight-sub">{safeT(h.subKey, h.subFallback)}</div>
+                <div className="highlight-link">{safeT('viewOnTikTok', 'TikTok에서 보기 ↗')}</div>
               </a>
             ))}
           </div>
 
           {/* High-Performance Direct Follow CTA */}
           <div className="portal-cta-wrap">
-            <a 
-              href="https://www.tiktok.com/@buddha_miracle" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-tiktok-gold"
+            <a
+              href="https://www.tiktok.com/@buddha_miracle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn-tiktok-gold ${isRedirecting ? 'redirecting' : ''}`}
+              onClick={handleTikTokRedirect}
             >
-              <span className="tiktok-icon">🎵</span>
-              <span className="tiktok-cta-text">{t('followBtn')}</span>
-              <span className="tiktok-arrow">↗</span>
+              {isRedirecting ? (
+                <>
+                  <span className="tiktok-icon redirect-spin">🌀</span>
+                  <span className="tiktok-cta-text">{safeT('redirecting', '틱톡 공식 채널로 이동 중... ✨')}</span>
+                </>
+              ) : (
+                <>
+                  <span className="tiktok-icon">🎵</span>
+                  <span className="tiktok-cta-text">{t('followBtn')}</span>
+                  <span className="tiktok-arrow">↗</span>
+                </>
+              )}
             </a>
           </div>
         </div>
@@ -207,22 +267,32 @@ export default function ResonancePage() {
           font-size: clamp(1.4rem, 3.5vw, 1.9rem);
           font-weight: 800;
           color: #fff;
-          margin: 0 0 8px 0;
+          margin: 0 0 10px 0;
           letter-spacing: -0.01em;
         }
-        .channel-stats {
+
+        /* Stats as plain informational text — NOT buttons */
+        .channel-stats-info {
           display: flex;
+          align-items: center;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 8px;
+          font-size: 0.9rem;
+          color: rgba(255,255,255,0.7);
         }
-        .stat-pill {
-          font-size: 0.85rem;
-          color: rgba(255,255,255,0.75);
-          background: rgba(255,255,255,0.05);
-          padding: 4px 12px;
-          border-radius: 100px;
-          border: 1px solid rgba(255,255,255,0.08);
+        .stat-info-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
         }
+        .stat-info-icon { font-size: 0.95rem; }
+        .stat-info-count {
+          font-weight: 700;
+          color: var(--primary-gold, #d4a017);
+          font-size: 1.05rem;
+        }
+        .stat-info-label { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+        .stat-info-sep { color: rgba(255,255,255,0.2); }
 
         .channel-intro {
           font-size: 0.98rem;
@@ -235,7 +305,7 @@ export default function ResonancePage() {
 
         .highlights-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 16px;
           margin-bottom: 40px;
         }
@@ -248,12 +318,15 @@ export default function ResonancePage() {
           transition: transform 0.25s, border-color 0.25s, background 0.25s;
           display: flex;
           flex-direction: column;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
         }
         .highlight-card:hover {
           transform: translateY(-4px);
           border-color: rgba(212,160,23,0.5);
           background: rgba(212,160,23,0.04);
         }
+        .highlight-card:active { transform: scale(0.98); }
         .highlight-tag {
           font-size: 0.72rem;
           color: #d4a017;
@@ -290,25 +363,31 @@ export default function ResonancePage() {
           background: linear-gradient(135deg, #f6e27a 0%, #d4a017 50%, #aa7c11 100%);
           color: #080807;
           font-weight: 900;
-          font-size: 1.15rem;
+          font-size: 1.1rem;
           padding: 18px 36px;
           border-radius: 100px;
           text-decoration: none;
           letter-spacing: 0.02em;
           box-shadow: 0 12px 35px rgba(212,160,23,0.4);
-          transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+          transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s;
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+          min-height: 56px;
         }
         .btn-tiktok-gold:hover {
           transform: translateY(-3px) scale(1.02);
           box-shadow: 0 18px 45px rgba(212,160,23,0.6);
         }
-        .btn-tiktok-gold:active {
-          transform: translateY(0) scale(0.98);
+        .btn-tiktok-gold:active { transform: scale(0.97); }
+        .btn-tiktok-gold.redirecting {
+          background: linear-gradient(135deg, rgba(212,160,23,0.7), rgba(212,160,23,0.9));
+          cursor: default;
+          pointer-events: none;
+          opacity: 0.9;
         }
-        .tiktok-icon {
-          font-size: 1.3rem;
-        }
+
+        .tiktok-icon { font-size: 1.3rem; }
         .tiktok-arrow {
           font-size: 1.2rem;
           transition: transform 0.2s;
@@ -316,18 +395,19 @@ export default function ResonancePage() {
         .btn-tiktok-gold:hover .tiktok-arrow {
           transform: translate(2px, -2px);
         }
+        @keyframes redirect-pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        .redirect-spin {
+          animation: redirect-pulse 1s ease-in-out infinite;
+        }
 
         @media (max-width: 640px) {
-          .resonance-portal-card {
-            padding: 32px 20px;
-          }
-          .channel-header {
-            flex-direction: column;
-            text-align: center;
-          }
-          .channel-stats {
-            justify-content: center;
-          }
+          .resonance-portal-card { padding: 28px 18px; }
+          .channel-header { flex-direction: column; text-align: center; }
+          .channel-stats-info { justify-content: center; }
+          .highlights-grid { grid-template-columns: 1fr; gap: 12px; }
           .btn-tiktok-gold {
             width: 100%;
             padding: 16px 20px;
