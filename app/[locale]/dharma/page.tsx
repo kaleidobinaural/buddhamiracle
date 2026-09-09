@@ -590,12 +590,13 @@ export default function DharmaPage() {
         /* ══════════════════════════════════════ */
         .parchment-overlay {
           position: fixed; inset: 0; z-index: 1000;
-          background: rgba(0, 0, 0, 0.92);
-          backdrop-filter: blur(20px);
+          background: rgba(0, 0, 0, 0.88);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           display: flex; align-items: flex-start; justify-content: center;
           padding: calc(var(--nav-height, 80px) + 20px) 16px 60px;
           overflow-y: auto; box-sizing: border-box;
-          animation: fade-in-overlay 0.35s ease;
+          animation: fade-in-overlay 0.25s ease;
         }
         @keyframes fade-in-overlay { from { opacity: 0; } to { opacity: 1; } }
 
@@ -613,23 +614,18 @@ export default function DharmaPage() {
         .parchment-body {
           position: relative;
           background:
-            linear-gradient(to bottom, #f5e6c3 0%, #eeddb0 40%, #e8d4a0 100%);
+            radial-gradient(ellipse at 50% 25%, #faf0d8 0%, #f3e3bc 50%, #e6ce92 100%);
           border-left: 3px solid rgba(100,70,20,0.15);
           border-right: 3px solid rgba(100,70,20,0.15);
           padding: 64px 56px 56px;
           margin: -16px 0;
           box-shadow:
-            inset 0 0 80px rgba(120,80,20,0.12),
-            inset 0 0 200px rgba(0,0,0,0.06),
-            0 60px 120px rgba(0,0,0,0.8);
+            inset 0 0 60px rgba(120,80,20,0.14),
+            inset 0 0 120px rgba(0,0,0,0.06),
+            0 30px 80px rgba(0,0,0,0.7);
           box-sizing: border-box;
           overflow-y: auto;
           max-height: 70vh;
-          /* Aged paper texture */
-          background-image:
-            linear-gradient(to bottom, #f5e6c3 0%, #eeddb0 40%, #e8d4a0 100%),
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-          background-blend-mode: multiply;
         }
 
         .parchment-close {

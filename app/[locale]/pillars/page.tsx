@@ -34,8 +34,12 @@ export default function PillarsPage() {
   const [mounted, setMounted] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const pillarsTopRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     if (pillarsTopRef.current) {
       pillarsTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
@@ -50,6 +54,9 @@ export default function PillarsPage() {
   useEffect(() => {
     setMounted(true);
     fetchPillars(searchQuery, sortBy, role);
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [sortBy, role]);
 
   // Reactive search reset
@@ -354,79 +361,102 @@ export default function PillarsPage() {
               )}
             </>
           ) : (
-            /* ─── Grid View (both sections) ─── */
-            <div className="pillars-scroll-area animate-fade-up">
-              {role === 'founder' && founderPillars.length > 0 && (
-                <>
-                  <div className="pillar-section-header founder" style={{ gridColumn: '1 / -1' }}>
-                    <span className="pillar-section-icon">🏛️</span>
-                    <h2 className="pillar-section-title">{t('foundersHall')}</h2>
-                  </div>
-                  {founderPillars.map((pillar) => (
-                    <div
-                      key={pillar.id}
-                      className="pillar-wrapper"
-                      onClick={() => setSelectedPillar(pillar)}
-                    >
-                      <article className={`pillar-monument founder-pillar ${pillar.pillar_type} ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                        <div className="pillar-cap" />
-                        <div className="pillar-body">
-                          <div className="pillar-texture" />
-                          <div className="pillar-content">
-                            <h3 className="donor-name">{pillar.name}</h3>
-                            <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
-                          </div>
-                          <div className="pillar-engraving-glow" />
-                        </div>
-                        <div className="pillar-base" />
-                        <div className="pillar-aura" />
-                      </article>
+            /* ─── Bounded Box Grid View with Golden Plaques ─── */
+            <div className="sacred-hall-frame animate-fade-up">
+              <div className="hall-frame-fade-top" aria-hidden="true" />
+              <div className="sacred-hall-scroll-area custom-scrollbar" ref={scrollAreaRef}>
+                {role === 'founder' && (
+                  <>
+                    <div className="pillar-section-header founder">
+                      <span className="pillar-section-icon">🏛️</span>
+                      <h2 className="pillar-section-title">{t('foundersHall')}</h2>
+                      <p className="pillar-section-desc">{t('foundersDesc')}</p>
                     </div>
-                  ))}
-                </>
-              )}
-              {role === 'founder' && founderPillars.length === 0 && (
-                <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  {t('empty')}
-                </div>
-              )}
-              {role === 'supporter' && (
-                <>
-                  <div className="pillar-section-header supporter" style={{ gridColumn: '1 / -1', marginTop: '0' }}>
-                    <span className="pillar-section-icon">📿</span>
-                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
-                  </div>
-                  {supporterPillars.length > 0 ? (
-                    <>
-                      {supporterPillars.map((pillar) => (
-                        <div
-                          key={pillar.id}
-                          className="pillar-wrapper"
-                          onClick={() => setSelectedPillar(pillar)}
-                        >
-                          <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                            <div className="pillar-cap" />
-                            <div className="pillar-body">
-                              <div className="pillar-texture" />
-                              <div className="pillar-content">
-                                <h3 className="donor-name">{pillar.name}</h3>
-                                <p className="donor-rank">Supporter</p>
-                              </div>
-                              <div className="pillar-engraving-glow" />
+                    {founderPillars.length > 0 ? (
+                      <div className="golden-plaques-grid">
+                        {founderPillars.map((pillar) => {
+                          const isMine = pillar.user_email === session?.user?.email;
+                          const rankLabel = pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout');
+                          return (
+                            <div
+                              key={pillar.id}
+                              className="plaque-wrapper"
+                              onClick={() => setSelectedPillar(pillar)}
+                            >
+                              <article className={`golden-plaque founder-plaque ${pillar.pillar_type} ${isMine ? 'is-mine' : ''}`}>
+                                <div className="plaque-corner-ornament tl" />
+                                <div className="plaque-corner-ornament tr" />
+                                <div className="plaque-corner-ornament bl" />
+                                <div className="plaque-corner-ornament br" />
+                                <div className="plaque-header">
+                                  <span className="plaque-badge">🏛️ {rankLabel}</span>
+                                  {isMine && <span className="plaque-mine-tag">MY PILLAR</span>}
+                                </div>
+                                <h3 className="plaque-name">{pillar.name}</h3>
+                                {pillar.message && (
+                                  <p className="plaque-message-preview">“{pillar.message}”</p>
+                                )}
+                                <div className="plaque-footer">
+                                  <span className="plaque-devotion">✨ {Number(pillar.amount).toLocaleString()} P</span>
+                                </div>
+                                <div className="plaque-glow" />
+                              </article>
                             </div>
-                            <div className="pillar-base" />
-                            <div className="pillar-aura" />
-                          </article>
-                        </div>
-                      ))}
-                    </>
-                  ) : (
-                    <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                      {t('emptySupporter')}
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="empty-state">{t('empty')}</div>
+                    )}
+                  </>
+                )}
+
+                {role === 'supporter' && (
+                  <>
+                    <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
+                      <span className="pillar-section-icon">📿</span>
+                      <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                      <p className="pillar-section-desc">{t('supportersDesc')}</p>
                     </div>
-                  )}
-                </>
-              )}
+                    {supporterPillars.length > 0 ? (
+                      <div className="golden-plaques-grid">
+                        {supporterPillars.map((pillar) => {
+                          const isMine = pillar.user_email === session?.user?.email;
+                          return (
+                            <div
+                              key={pillar.id}
+                              className="plaque-wrapper"
+                              onClick={() => setSelectedPillar(pillar)}
+                            >
+                              <article className={`golden-plaque supporter-plaque ${isMine ? 'is-mine' : ''}`}>
+                                <div className="plaque-corner-ornament tl" />
+                                <div className="plaque-corner-ornament tr" />
+                                <div className="plaque-corner-ornament bl" />
+                                <div className="plaque-corner-ornament br" />
+                                <div className="plaque-header">
+                                  <span className="plaque-badge">📿 {t('rankSupporter')}</span>
+                                  {isMine && <span className="plaque-mine-tag">MY PILLAR</span>}
+                                </div>
+                                <h3 className="plaque-name">{pillar.name}</h3>
+                                {pillar.message && (
+                                  <p className="plaque-message-preview">“{pillar.message}”</p>
+                                )}
+                                <div className="plaque-footer">
+                                  <span className="plaque-devotion">✨ {Number(pillar.amount).toLocaleString()} P</span>
+                                </div>
+                                <div className="plaque-glow" />
+                              </article>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="empty-state">{t('emptySupporter')}</div>
+                    )}
+                  </>
+                )}
+              </div>
+              <div className="hall-frame-fade-bottom" aria-hidden="true" />
             </div>
           )}
         </section>
@@ -483,7 +513,7 @@ export default function PillarsPage() {
       </div>
 
       <style>{`
-        .pillars-page { min-height: 100vh; padding: 120px 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
+        .pillars-page { min-height: 100vh; padding: calc(var(--nav-height, 80px) + 20px) 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
         .hall-atmosphere { position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(212, 160, 23, 0.05) 0%, transparent 70%); pointer-events: none; }
         
         /* Fog Effects - Balanced for clarity */
@@ -499,19 +529,19 @@ export default function PillarsPage() {
         }
 
         .pillars-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
-        .page-header { text-align: center; margin-bottom: 60px; }
-        .header-eyebrow { font-size: 0.95rem; color: var(--primary-gold); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 24px; font-weight: 600; }
-        .page-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-family: var(--font-serif); margin-bottom: 28px; }
-        .page-subtitle { font-size: 1.15rem; color: var(--text-tertiary); max-width: 600px; margin: 0 auto; line-height: 1.8; }
-        .loading-state, .empty-state { text-align: center; padding: 100px 0; color: var(--text-tertiary); font-style: italic; font-size: 1.1rem; width: 100%; }
+        .page-header { text-align: center; margin-bottom: 36px; }
+        .header-eyebrow { font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+        .page-title { font-size: clamp(2.3rem, 5.5vw, 4.2rem); font-family: var(--font-serif); margin-bottom: 14px; }
+        .page-subtitle { font-size: 1.05rem; color: var(--text-tertiary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .loading-state, .empty-state { text-align: center; padding: 60px 0; color: var(--text-tertiary); font-style: italic; font-size: 1.05rem; width: 100%; }
         
-        .pillars-top-actions { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 28px; }
-        .control-group { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .pillars-top-actions { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 24px; }
+        .control-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
 
         .search-status-banner {
           display: flex;
           justify-content: center;
-          margin-top: 16px;
+          margin-top: 12px;
           margin-bottom: 4px;
           width: 100%;
         }
@@ -560,7 +590,7 @@ export default function PillarsPage() {
 
         /* Hall Mode (Coverflow Carousel) */
         .hall-mode { overflow: visible; padding: 16px 0 32px; perspective: 1200px; }
-        .pillars-swiper { width: 100%; padding-top: 50px; padding-bottom: 100px; overflow: visible; }
+        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 90px; overflow: visible; }
         .pillar-slide { width: 320px; display: flex; justify-content: center; will-change: transform; }
         .pillar-wrapper { width: 100%; cursor: pointer; }
         
@@ -569,37 +599,194 @@ export default function PillarsPage() {
         .swiper-slide-active .donor-name { color: var(--primary-gold); text-shadow: 0 0 20px rgba(212, 160, 23, 0.8); transform: scale(1.1); }
         .swiper-slide-active .pillar-aura { opacity: 1; }
 
-        /* Grid Mode */
-        .pillars-display.grid-mode, .grid-mode {
+        /* ─── Sacred Hall Frame (Bounded Box for Grid View) ─── */
+        .sacred-hall-frame {
+          position: relative;
           width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+          background: rgba(10, 9, 8, 0.75);
+          border: 1px solid rgba(212, 160, 23, 0.25);
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          overflow: hidden;
+        }
+
+        .sacred-hall-scroll-area {
+          height: clamp(500px, 65vh, 720px);
+          overflow-y: auto;
+          padding: 32px 24px 40px;
+          box-sizing: border-box;
+          scroll-behavior: smooth;
+        }
+
+        .hall-frame-fade-top,
+        .hall-frame-fade-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 36px;
+          pointer-events: none;
+          z-index: 10;
+        }
+        .hall-frame-fade-top {
+          top: 0;
+          background: linear-gradient(to bottom, rgba(10, 9, 8, 0.95) 0%, transparent 100%);
+        }
+        .hall-frame-fade-bottom {
+          bottom: 0;
+          background: linear-gradient(to top, rgba(10, 9, 8, 0.95) 0%, transparent 100%);
+        }
+
+        /* ─── Golden Plaques Grid ─── */
+        .golden-plaques-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 20px;
+          width: 100%;
+          padding: 8px 4px 20px;
+          box-sizing: border-box;
+        }
+
+        .plaque-wrapper {
+          cursor: pointer;
+          transition: transform 0.25s ease;
+        }
+        .plaque-wrapper:hover {
+          transform: translateY(-4px);
+        }
+
+        .golden-plaque {
+          position: relative;
+          background: linear-gradient(145deg, rgba(26, 22, 16, 0.9) 0%, rgba(13, 11, 8, 0.95) 100%);
+          border: 1px solid rgba(212, 160, 23, 0.3);
+          border-radius: 14px;
+          padding: 20px 18px;
+          min-height: 150px;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 160, 23, 0.03);
+          overflow: hidden;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .grid-mode .pillars-scroll-area {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
-          justify-content: center;
-          align-content: center;
-          justify-items: center;
-          gap: 60px 40px;
-          width: 100%;
-          max-width: 1300px;
-          margin: 0 auto;
-          min-height: 400px;
+        .golden-plaque:hover {
+          border-color: rgba(212, 160, 23, 0.7);
+          box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 160, 23, 0.2);
         }
-        .grid-mode .pillar-section-header {
-          grid-column: 1 / -1;
-          width: 100%;
-          text-align: center;
+
+        .golden-plaque.is-mine {
+          border-color: var(--primary-gold);
+          box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
         }
-        .grid-mode .pillar-wrapper {
-          width: 320px;
-          max-width: 100%;
-          margin: 0 auto;
+
+        /* Plaque Corner Ornaments */
+        .plaque-corner-ornament {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          border-color: rgba(212, 160, 23, 0.5);
+          pointer-events: none;
+        }
+        .plaque-corner-ornament.tl { top: 6px; left: 6px; border-top: 1px solid; border-left: 1px solid; }
+        .plaque-corner-ornament.tr { top: 6px; right: 6px; border-top: 1px solid; border-right: 1px solid; }
+        .plaque-corner-ornament.bl { bottom: 6px; left: 6px; border-bottom: 1px solid; border-left: 1px solid; }
+        .plaque-corner-ornament.br { bottom: 6px; right: 6px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        .plaque-header {
           display: flex;
-          justify-content: center;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          margin-bottom: 10px;
+        }
+        .plaque-badge {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+          font-weight: 600;
+          letter-spacing: 0.05em;
+        }
+        .founder-plaque .plaque-badge {
+          color: var(--primary-gold);
+        }
+        .supporter-plaque .plaque-badge {
+          color: #d4b896;
+        }
+
+        .plaque-mine-tag {
+          font-size: 0.65rem;
+          background: rgba(212, 160, 23, 0.18);
+          color: var(--primary-gold);
+          border: 1px solid rgba(212, 160, 23, 0.4);
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+        }
+
+        .plaque-name {
+          font-family: var(--font-serif);
+          font-size: 1.35rem;
+          font-weight: 700;
+          color: #fff;
+          margin: 0 0 8px 0;
+          letter-spacing: 0.04em;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .golden-plaque:hover .plaque-name {
+          color: var(--primary-gold);
+        }
+
+        .plaque-message-preview {
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.6);
+          font-style: italic;
+          line-height: 1.4;
+          margin: 0 0 12px 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          flex-grow: 1;
+        }
+
+        .plaque-footer {
+          margin-top: auto;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding-top: 8px;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .plaque-devotion {
+          font-size: 0.78rem;
+          color: rgba(212, 160, 23, 0.85);
+          font-weight: 600;
+          letter-spacing: 0.03em;
+        }
+
+        .plaque-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 0%, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        /* ─── Custom Scrollbars ─── */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(212, 160, 23, 0.3);
+          border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(212, 160, 23, 0.6);
         }
 
         /* Pillar Monument Design */
@@ -746,7 +933,15 @@ export default function PillarsPage() {
           letter-spacing: 0.05em;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .pillars-page { padding: calc(var(--nav-height, 80px) + 12px) 16px 60px; }
+          .page-header { margin-bottom: 22px; }
+          .header-eyebrow { margin-bottom: 6px; }
+          .page-title { margin-bottom: 8px; }
+          .page-subtitle { font-size: 0.95rem; line-height: 1.5; }
+          .pillars-top-actions { gap: 16px; margin-bottom: 18px; }
+          .sacred-hall-scroll-area { height: clamp(440px, 62vh, 600px); padding: 20px 12px 30px; }
+          .golden-plaques-grid { grid-template-columns: 1fr; gap: 14px; }
           .pillar-slide { width: 270px; }
           .pillar-body { height: 390px; }
           .donor-name { font-size: 1.65rem; }

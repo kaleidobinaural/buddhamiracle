@@ -48,7 +48,10 @@ export async function GET(req: NextRequest) {
     }
 
     // Filter Logic:
-    if (showMine && userEmail) {
+    if (showMine) {
+      if (!userEmail) {
+        return NextResponse.json([]);
+      }
       query = query.eq('user_email', userEmail);
     } else if (isAdmin && adminView) {
       // Admin dashboard sees all wishes, no privacy filter applied

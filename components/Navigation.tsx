@@ -264,11 +264,6 @@ export default function Navigation() {
                   {t('signIn')}
                 </Link>
               )}
-              <div className="bloom-10" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '14px' }}>
-                <Link href="/privacy" className="mobile-nav-link" style={{ fontSize: '1.05rem', color: '#777', textDecoration: 'none' }} onClick={() => setMobileOpen(false)}>
-                  {t('privacyPolicy')}
-                </Link>
-              </div>
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select
                 className="mobile-nav-link bloom-9"

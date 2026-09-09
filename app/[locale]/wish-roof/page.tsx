@@ -256,6 +256,14 @@ export default function WishRoofPage() {
 
 
 
+  const handleToggleMine = () => {
+    if (!session?.user) {
+      showMessage(t('loginRequired') || '로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요.');
+      return;
+    }
+    setShowOnlyMine(prev => !prev);
+  };
+
   return (
     <main className={`wish-page time-${timeOfDay}`}>
       <div className="roof-atmosphere" />
@@ -337,7 +345,7 @@ export default function WishRoofPage() {
         <div className="wish-primary-action animate-fade-up animate-delay-300">
           <button 
             className={`btn-mine-v2 ${showOnlyMine ? 'active' : ''}`}
-            onClick={() => setShowOnlyMine(!showOnlyMine)}
+            onClick={handleToggleMine}
           >👤 {t('btnMyWishes')}</button>
 
           <button 

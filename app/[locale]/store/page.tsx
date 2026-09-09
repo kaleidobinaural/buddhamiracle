@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { useTranslations, useLocale } from 'next-intl';
 
 const PRODUCTS = {
@@ -25,7 +25,7 @@ export default function StorePage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [vvipSpots, setVvipSpots] = useState(3);
   const [videoInteractive, setVideoInteractive] = useState(false);
-  const [purchaseError, setPurchaseError] = useState<{ title: string; message: string } | null>(null);
+  const [purchaseError, setPurchaseError] = useState<{ title: string; message: string; isLogin?: boolean } | null>(null);
 
   useEffect(() => {
     // Follower Count Logic
@@ -88,6 +88,15 @@ export default function StorePage() {
 
   const handleBuyProduct = (e: React.MouseEvent, url: string, productName: string) => {
     e.preventDefault();
+    if (!session?.user) {
+      setPurchaseError({
+        title: t('loginRequiredTitle') || '로그인이 필요합니다',
+        message: t('loginRequiredDesc') || '상품 구매 및 연꽃(보상) 지급을 위해 먼저 로그인해 주세요.',
+        isLogin: true
+      });
+      return;
+    }
+
     if (!url || url === '#' || url.trim() === '') {
       setPurchaseError({
         title: t('purchaseErrorTitle') || '결제 안내',
@@ -447,35 +456,56 @@ export default function StorePage() {
       {purchaseError && (
         <div className="store-modal-overlay" style={{ zIndex: 100000 }} onClick={() => setPurchaseError(null)}>
           <div className="store-modal-content glass-card animate-fade-up" style={{ textAlign: 'center', maxWidth: '440px', padding: '36px 28px' }} onClick={e => e.stopPropagation()}>
-            <div style={{ fontSize: '3rem', marginBottom: '16px' }}>⚠️</div>
+            <div style={{ fontSize: '3rem', marginBottom: '16px' }}>{purchaseError.isLogin ? '🔐' : '⚠️'}</div>
             <h3 className="store-modal-title" style={{ fontSize: '1.4rem', marginBottom: '14px', color: 'var(--primary-gold)' }}>
               {purchaseError.title}
             </h3>
             <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '28px' }}>
               {purchaseError.message}
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-              <button
-                type="button"
-                className="store-cta-btn store-cta-gold"
-                style={{ flex: 1, padding: '12px', fontSize: '0.9rem', cursor: 'pointer', border: 'none' }}
-                onClick={() => setPurchaseError(null)}
-              >
-                {t('modalConfirm') || '확인'}
-              </button>
-              <button
-                type="button"
-                className="store-cta-btn store-cta-outline"
-                style={{ flex: 1, padding: '12px', fontSize: '0.85rem', cursor: 'pointer' }}
-                onClick={() => {
-                  setPurchaseError(null);
-                  setIsVvipModalOpen(true);
-                  setFormStatus('idle');
-                }}
-              >
-                {t('inquiryBtn') || '문의하기'}
-              </button>
-            </div>
+            {purchaseError.isLogin ? (
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  className="store-cta-btn store-cta-gold"
+                  style={{ flex: 1, padding: '12px', fontSize: '0.95rem', cursor: 'pointer', border: 'none' }}
+                  onClick={() => signIn()}
+                >
+                  {t('signInBtn') || '로그인하기'}
+                </button>
+                <button
+                  type="button"
+                  className="store-cta-btn store-cta-outline"
+                  style={{ flex: 1, padding: '12px', fontSize: '0.85rem', cursor: 'pointer' }}
+                  onClick={() => setPurchaseError(null)}
+                >
+                  {t('modalCancel') || '닫기'}
+                </button>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  className="store-cta-btn store-cta-gold"
+                  style={{ flex: 1, padding: '12px', fontSize: '0.9rem', cursor: 'pointer', border: 'none' }}
+                  onClick={() => setPurchaseError(null)}
+                >
+                  {t('modalConfirm') || '확인'}
+                </button>
+                <button
+                  type="button"
+                  className="store-cta-btn store-cta-outline"
+                  style={{ flex: 1, padding: '12px', fontSize: '0.85rem', cursor: 'pointer' }}
+                  onClick={() => {
+                    setPurchaseError(null);
+                    setIsVvipModalOpen(true);
+                    setFormStatus('idle');
+                  }}
+                >
+                  {t('inquiryBtn') || '문의하기'}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

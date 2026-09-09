@@ -115,7 +115,8 @@
     "wishMadePrivate": "비공개 소원으로 전환되었습니다.",
     "viewAllWishes": "전체 소원 보기",
     "viewingMyWishes": "내 소원 ({count}개)",
-    "searchResultCount": "검색 결과 ({count}개)"
+    "searchResultCount": "검색 결과 ({count}개)",
+    "loginRequired": "로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요."
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",
@@ -301,7 +302,10 @@
     "paymentCancelledTitle": "결제 취소 안내",
     "paymentCancelledDesc": "결제가 취소되었습니다. 언제든 준비되셨을 때 다시 이용해 주세요.",
     "modalConfirm": "확인",
-    "inquiryBtn": "문의하기"
+    "inquiryBtn": "문의하기",
+    "loginRequiredTitle": "로그인이 필요합니다",
+    "loginRequiredDesc": "상품 구매 및 연꽃(보상) 지급을 위해 먼저 로그인해 주세요.",
+    "signInBtn": "로그인하기"
   },
   "Resonance": {
     "title": "주파수가 닿은 수백만의 영혼들",

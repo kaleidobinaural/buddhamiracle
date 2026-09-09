@@ -115,7 +115,8 @@
     "wishMadePrivate": "Wish is now private.",
     "viewAllWishes": "View All Wishes",
     "viewingMyWishes": "My Wishes ({count})",
-    "searchResultCount": "Results ({count})"
+    "searchResultCount": "Results ({count})",
+    "loginRequired": "Sign in required. Please log in to view your inscribed wishes."
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",
@@ -301,7 +302,10 @@
     "paymentCancelledTitle": "Payment Cancelled",
     "paymentCancelledDesc": "The payment process was cancelled. You may return whenever you are ready.",
     "modalConfirm": "OK",
-    "inquiryBtn": "Contact Support"
+    "inquiryBtn": "Contact Support",
+    "loginRequiredTitle": "Sign In Required",
+    "loginRequiredDesc": "Please sign in first to purchase and receive your offerings and rewards.",
+    "signInBtn": "Sign In"
   },
   "Resonance": {
     "title": "Millions Touched by the Frequency",
