@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { useRouter, Link } from '@/i18n/navigation';
+import { useRouter, Link, usePathname as useIntlPathname } from '@/i18n/navigation';
 import { useSession, signOut, signIn } from "next-auth/react";
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 
 export default function Navigation() {
-  const pathname = usePathname();
+  const pathname = usePathname(); // includes locale prefix — for active link detection
+  const intlPathname = useIntlPathname(); // locale-free path — for router.replace
   const router = useRouter();
   const t = useTranslations('Nav');
   const locale = useLocale();
@@ -73,8 +74,8 @@ export default function Navigation() {
   // SPA language change: uses next-intl router.replace() — no page reload, menu stays open
   const handleLanguageChange = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-    // router.replace with locale option switches locale without page reload
-    router.replace(pathname as any, { locale: nextLocale, scroll: false });
+    // Use locale-free intlPathname so router.replace doesn't duplicate locale prefix
+    router.replace(intlPathname as any, { locale: nextLocale, scroll: false });
   };
 
   // Close mobile menu on actual route change (not locale change)
