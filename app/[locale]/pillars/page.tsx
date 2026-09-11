@@ -81,18 +81,19 @@ export default function PillarsPage() {
       console.error('Error fetching pillars:', err);
     } finally {
       setIsLoading(false);
+      // Scroll to results AFTER data is loaded
+      if (query) {
+        requestAnimationFrame(() => {
+          searchResultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
   };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchPillars(searchQuery, sortBy, role);
-    // After a short delay (data load) scroll to result banner
-    setTimeout(() => {
-      if (searchResultsRef.current) {
-        searchResultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 400);
+    // Scroll is now handled inside fetchPillars finally block
   };
 
   const handleDonateClick = () => {
@@ -586,7 +587,17 @@ export default function PillarsPage() {
           z-index: 150; pointer-events: none; 
         }
 
+
+        /* Swiper anti-flicker */
+        .swiper-slide {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
         .pillars-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
+
         .page-header { text-align: center; margin-bottom: 36px; }
         .header-eyebrow { font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
         .page-title { font-size: clamp(2.3rem, 5.5vw, 4.2rem); font-family: var(--font-serif); margin-bottom: 14px; }

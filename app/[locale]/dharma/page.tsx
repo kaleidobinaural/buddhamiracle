@@ -446,19 +446,21 @@ export default function DharmaPage() {
             className="parchment-modal animate-fade-up"
             onClick={e => e.stopPropagation()}
           >
+            {/* X close button — outside parchment-body so scroll can't eat the tap */}
+            <button
+              className="parchment-close"
+              onClick={() => setReadingScripture(null)}
+              aria-label="Close"
+              style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+            >
+              ×
+            </button>
+
             {/* Scroll rod top */}
             <div className="scroll-top" />
 
             {/* Parchment body */}
             <div className="parchment-body custom-scrollbar">
-              <button
-                className="parchment-close"
-                onClick={() => setReadingScripture(null)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-
               {/* Dharma wheel watermark */}
               <div className="parchment-watermark" aria-hidden="true">☸</div>
 
@@ -486,7 +488,7 @@ export default function DharmaPage() {
 
                 {/* Footer */}
                 <div className="parchment-footer">
-                  <div className="parchment-ornament">— ✦ —</div>
+                  <div className="parchment-ornament">&mdash; ✦ &mdash;</div>
                   <p className="parchment-footer-text">{t('mayWisdomLight')}</p>
                 </div>
               </div>
@@ -638,7 +640,7 @@ export default function DharmaPage() {
           font-size: 28px; color: #5a3e10; opacity: 0.45;
           background: none; border: none; cursor: pointer;
           transition: opacity 0.25s, transform 0.35s;
-          z-index: 10; line-height: 1;
+          z-index: 20; line-height: 1;
           /* Expand hit area to 48x48 for comfortable mobile touch */
           min-width: 48px; min-height: 48px;
           display: flex; align-items: center; justify-content: center;
@@ -646,6 +648,8 @@ export default function DharmaPage() {
           -webkit-tap-highlight-color: transparent;
           outline: none;
           touch-action: manipulation;
+          /* Must be above parchment-body scroll layer */
+          pointer-events: all;
         }
         .parchment-close:hover { opacity: 0.85; transform: rotate(90deg); background: rgba(90,62,16,0.08); }
         .parchment-close:active { opacity: 1; transform: rotate(90deg) scale(0.92); }

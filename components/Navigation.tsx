@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter, Link } from '@/i18n/navigation';
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, signIn } from "next-auth/react";
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 
@@ -16,6 +16,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -116,7 +117,8 @@ export default function Navigation() {
     { href: '/store', key: 'store' },
   ];
 
-  const mobileNavLinks = navLinks.filter(link => link.key !== 'home');
+  // Mobile nav includes ALL links including home
+  const mobileNavLinks = navLinks;
 
   return (
     <>
@@ -186,9 +188,16 @@ export default function Navigation() {
               </div>
             )}
 
-            <Link href="/donate" className="btn-gold" id="nav-donate-btn">
+            <button
+              className="btn-gold"
+              id="nav-donate-btn"
+              onClick={() => {
+                if (!session?.user) { setShowLoginModal(true); return; }
+                router.push('/donate');
+              }}
+            >
               <span>♡ {t('donate')}</span>
-            </Link>
+            </button>
 
             {session?.user ? (
               <div className="profile-menu-wrap">
@@ -256,9 +265,18 @@ export default function Navigation() {
                   {t(link.key)}
                 </Link>
               ))}
-              <Link href="/donate" className="mobile-nav-link bloom-8" onClick={() => setMobileOpen(false)}>
+              {/* Auth-gated donate in mobile nav */}
+              <button
+                className="mobile-nav-link bloom-8"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%' }}
+                onClick={() => {
+                  setMobileOpen(false);
+                  if (!session?.user) { setShowLoginModal(true); return; }
+                  router.push('/donate');
+                }}
+              >
                 {t('donate')}
-              </Link>
+              </button>
               {!session?.user && (
                 <Link href="/login" className="mobile-nav-link bloom-9" style={{ color: 'var(--primary-gold)', fontStyle: 'italic' }} onClick={() => setMobileOpen(false)}>
                   {t('signIn')}
@@ -297,6 +315,73 @@ export default function Navigation() {
         </nav>
       </nav>
 
+      {/* Sacred Login Modal — Navigation */}
+      {showLoginModal && (
+        <div
+          onClick={() => setShowLoginModal(false)}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0,0,0,0.85)',
+            backdropFilter: 'blur(18px)',
+            zIndex: 99999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'linear-gradient(145deg,#12100e,#1a1510)',
+              border: '1px solid rgba(212,160,23,0.25)',
+              borderRadius: '24px',
+              padding: '44px 36px 36px',
+              maxWidth: '360px', width: '90%',
+              textAlign: 'center',
+              position: 'relative',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.7),0 0 80px rgba(212,160,23,0.08)',
+            }}
+          >
+            <button
+              onClick={() => setShowLoginModal(false)}
+              aria-label="Close"
+              style={{
+                position: 'absolute', top: '12px', right: '16px',
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'rgba(255,255,255,0.4)', fontSize: '1.5rem',
+                lineHeight: 1, padding: '8px',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >✕</button>
+            <span style={{ fontSize: '3.5rem', marginBottom: '16px', display: 'block' }}>🐚</span>
+            <h2 style={{
+              fontFamily: 'var(--font-serif)', fontSize: '1.6rem',
+              background: 'linear-gradient(135deg,#FFD700,#D4A017)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+              marginBottom: '12px'
+            }}>
+              {t('loginRequired') || '로그인이 필요합니다'}
+            </h2>
+            <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, marginBottom: '28px' }}>
+              {t('loginRequiredDesc') || '수행을 시작하려면 먼저 신성한 사원에 입장해 주세요.'}
+            </p>
+            <div style={{ height: '1px', background: 'linear-gradient(to right,transparent,rgba(212,160,23,0.25),transparent)', marginBottom: '28px' }} />
+            <button
+              onClick={() => { setShowLoginModal(false); signIn('google'); }}
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                gap: '10px', width: '100%', padding: '16px 24px',
+                background: 'linear-gradient(135deg,#D4A017,#FFD700)',
+                color: '#1a1200', fontWeight: 700, fontSize: '1rem',
+                border: 'none', borderRadius: '14px', cursor: 'pointer',
+                boxShadow: '0 8px 24px rgba(212,160,23,0.35)',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              <span>✨</span>
+              <span>{t('signInBtn') || '구글로 로그인하기'}</span>
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

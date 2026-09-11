@@ -217,7 +217,8 @@
     "loginRequiredTitle": "Diperlukan Masuk",
     "loginRequiredDesc": "Silakan masuk untuk mempersembahkan ke kuil.",
     "loginBtn": "Masuk",
-    "returnBtn": "Kembali"
+    "returnBtn": "Kembali",
+    "offerBtn": "Persembahkan {count} Lotus"
   },
   "Chat": {
     "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
@@ -320,7 +321,20 @@
     "followBtn": "Ikuti @buddha_miracle di TikTok",
     "eyebrow": "RESONANSI GLOBAL",
     "globalCommunity": "Komunitas Suci Global",
-    "redirecting": "Menghubungkan ke saluran resmi TikTok... ✨"
+    "redirecting": "Menghubungkan ke saluran resmi TikTok... ✨",
+    "officialChannel": "Saluran TikTok Resmi",
+    "followers": "Pengikut",
+    "channelIntro": "Setiap hari, jutaan pencari berbagi momen ketenangan, kebijaksanaan, dan kebangkitan di TikTok. Ikuti saluran resmi kami.",
+    "highlight1Tag": "MOMEN TERBAIK",
+    "highlight1Title": "Meditasi Viral",
+    "highlight1Sub": "3,2 juta penayangan dalam 24 jam",
+    "highlight2Tag": "KEBIJAKSANAAN",
+    "highlight2Title": "Berkah Pagi",
+    "highlight2Sub": "1,8 juta hati — resonansi global",
+    "highlight3Tag": "KOMUNITAS",
+    "highlight3Title": "Sangha Global",
+    "highlight3Sub": "630K+ jiwa terhubung di seluruh dunia",
+    "viewOnTikTok": "Tonton di TikTok ↗"
   },
   "Profile": {
     "myWishes": "Keinginan Saya",

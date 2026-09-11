@@ -217,7 +217,8 @@
     "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
     "loginRequiredDesc": "Vui lòng đăng nhập để dâng hoa cúng dường lên đền.",
     "loginBtn": "Đăng Nhập",
-    "returnBtn": "Quay Lại"
+    "returnBtn": "Quay Lại",
+    "offerBtn": "Dâng {count} Hoa Sen"
   },
   "Chat": {
     "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
@@ -320,7 +321,20 @@
     "followBtn": "Theo dõi @buddha_miracle trên TikTok",
     "eyebrow": "CỘNG HƯỞNG TOÀN CẦU",
     "globalCommunity": "Cộng Đồng Tâm Linh Toàn Cầu",
-    "redirecting": "Đang chuyển đến kênh TikTok chính thức... ✨"
+    "redirecting": "Đang chuyển đến kênh TikTok chính thức... ✨",
+    "officialChannel": "Kênh TikTok Chính Thức",
+    "followers": "Người theo dõi",
+    "channelIntro": "Mỗi ngày, hàng triệu người tìm kiếm chia sẻ trên TikTok những khoảnh khắc tĩnh lặng, trí tuệ và thức tỉnh. Theo dõi kênh chính thức của chúng tôi.",
+    "highlight1Tag": "KHOẢNH KHẮC NỔI BẬT",
+    "highlight1Title": "Thiền Lan Truyền",
+    "highlight1Sub": "3,2 triệu lượt xem trong 24 giờ",
+    "highlight2Tag": "TRÍ TUỆ",
+    "highlight2Title": "Phước Lành Buổi Sáng",
+    "highlight2Sub": "1,8 triệu trái tim — cộng hưởng toàn cầu",
+    "highlight3Tag": "CỘNG ĐỒNG",
+    "highlight3Title": "Tăng Đoàn Toàn Cầu",
+    "highlight3Sub": "630K+ tâm hồn kết nối trên toàn thế giới",
+    "viewOnTikTok": "Xem trên TikTok ↗"
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",

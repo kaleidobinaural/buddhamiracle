@@ -81,6 +81,27 @@ export async function POST(req: Request) {
         .ilike('email', userEmail);
 
       if (updateError) throw updateError;
+
+      // ── If this was a lotus offering (not a chat spend), record as a pillar supporter ──
+      const reason: string = body?.reason || '';
+      if (reason.startsWith('offering_')) {
+        const tierMap: Record<string, number> = {
+          offering_wish: 10,
+          offering_wisdom: 54,
+          offering_sanctuary: 333,
+        };
+        const offeringAmount = tierMap[reason] ?? amount;
+        const userName = session?.user?.name || 'Anonymous Pilgrim';
+        // Best-effort insert — if pillars table doesn't exist or insert fails, ignore
+        await supabase.from('pillars').insert([{
+          user_email: userEmail,
+          name: userName,
+          amount: offeringAmount,
+          pillar_type: 'donor',
+          is_public: true,
+          message: `Lotus Offering — ${offeringAmount} lotuses`,
+        }]).then(() => {}).catch(() => {});
+      }
     }
 
     return NextResponse.json({

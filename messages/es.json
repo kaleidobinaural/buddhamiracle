@@ -217,7 +217,8 @@
     "loginRequiredTitle": "Inicio de Sesión Requerido",
     "loginRequiredDesc": "Inicia sesión para realizar una ofrenda al templo.",
     "loginBtn": "Iniciar Sesión",
-    "returnBtn": "Volver"
+    "returnBtn": "Volver",
+    "offerBtn": "Ofrecer {count} Loto"
   },
   "Chat": {
     "unauthMessage": "Entra en la luz para hablar con el Guru.",
@@ -320,7 +321,20 @@
     "followBtn": "Sigue a @buddha_miracle en TikTok",
     "eyebrow": "RESONANCIA GLOBAL",
     "globalCommunity": "Comunidad Sagrada Global",
-    "redirecting": "Conectando con el canal oficial de TikTok... ✨"
+    "redirecting": "Conectando con el canal oficial de TikTok... ✨",
+    "officialChannel": "Canal TikTok Oficial",
+    "followers": "Seguidores",
+    "channelIntro": "Cada día, millones de buscadores comparten en TikTok momentos de quietud, sabiduría y despertar. Sigue nuestro canal oficial.",
+    "highlight1Tag": "MOMENTO TOP",
+    "highlight1Title": "Meditación Viral",
+    "highlight1Sub": "3,2M vistas en 24 horas",
+    "highlight2Tag": "SABIDURÍA",
+    "highlight2Title": "Bendición Matutina",
+    "highlight2Sub": "1,8M corazones — resonancia global",
+    "highlight3Tag": "COMUNIDAD",
+    "highlight3Title": "Sangha Global",
+    "highlight3Sub": "630K+ almas conectadas en el mundo",
+    "viewOnTikTok": "Ver en TikTok ↗"
   },
   "Profile": {
     "myWishes": "Mis Deseos",

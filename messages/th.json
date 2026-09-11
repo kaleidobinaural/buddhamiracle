@@ -217,7 +217,8 @@
     "loginRequiredTitle": "ต้องเข้าสู่ระบบ",
     "loginRequiredDesc": "โปรดเข้าสู่ระบบเพื่อถවายดอกบัวแก่พระวิหาร",
     "loginBtn": "เข้าสู่ระบบ",
-    "returnBtn": "ย้อนกลับ"
+    "returnBtn": "ย้อนกลับ",
+    "offerBtn": "ถวาย {count} ดอกบัว"
   },
   "Chat": {
     "unauthMessage": "ก้าวเข้าสู่แสงสว่างเพื่อพูดคุยกับครูบาอาจารย์",
@@ -320,7 +321,20 @@
     "followBtn": "ติดตาม @buddha_miracle บน TikTok",
     "eyebrow": "เสียงสะท้อนระดับโลก",
     "globalCommunity": "ชุมชนศักดิ์สิทธิ์ระดับโลก",
-    "redirecting": "กำลังเชื่อมต่อไปยังช่อง TikTok ทางการ... ✨"
+    "redirecting": "กำลังเชื่อมต่อไปยังช่อง TikTok ทางการ... ✨",
+    "officialChannel": "ช่อง TikTok ทางการ",
+    "followers": "ผู้ติดตาม",
+    "channelIntro": "ทุกวัน ผู้แสวงหาหลายล้านคนแบ่งปันช่วงเวลาแห่งความสงบ ปัญญา และการตื่นรู้บน TikTok ติดตามช่องทางการของเราได้เลย",
+    "highlight1Tag": "ช่วงเวลาสูงสุด",
+    "highlight1Title": "การทำสมาธิไวรัล",
+    "highlight1Sub": "3.2 ล้านวิวใน 24 ชั่วโมง",
+    "highlight2Tag": "ปัญญา",
+    "highlight2Title": "พรยามเช้า",
+    "highlight2Sub": "1.8 ล้านหัวใจ — สะท้อนทั่วโลก",
+    "highlight3Tag": "ชุมชน",
+    "highlight3Title": "สังฆะโลก",
+    "highlight3Sub": "630K+ จิตวิญญาณเชื่อมต่อทั่วโลก",
+    "viewOnTikTok": "ดูบน TikTok ↗"
   },
   "Profile": {
     "myWishes": "ความปรารถนาของฉัน",

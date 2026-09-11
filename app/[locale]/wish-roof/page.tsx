@@ -141,18 +141,19 @@ export default function WishRoofPage() {
       console.error('Error fetching wishes:', err);
     } finally {
       setIsLoading(false);
+      // Scroll to results AFTER data is loaded (not on fixed timeout)
+      if (query || mine) {
+        requestAnimationFrame(() => {
+          searchResultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
   }
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchWishes(searchQuery, sortBy, showOnlyMine);
-    // Scroll to result banner after data loads
-    setTimeout(() => {
-      if (searchResultsRef.current) {
-        searchResultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 400);
+    // Scroll is now handled inside fetchWishes finally block
   };
 
   const showMessage = (msg: string) => {
@@ -677,7 +678,7 @@ export default function WishRoofPage() {
       </div>
 
       <style>{`
-        .wish-page { min-height: 100vh; padding: 120px 24px 80px; position: relative; overflow-x: hidden; transition: background 2s ease; }
+        .wish-page { min-height: 100vh; padding: calc(var(--nav-height, 70px) + 16px) 24px 80px; position: relative; overflow-x: hidden; transition: background 2s ease; }
         
         /* Time of Day Styles */
         .wish-page.time-night { background: #050505; }

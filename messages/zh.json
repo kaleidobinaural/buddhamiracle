@@ -217,7 +217,8 @@
     "loginRequiredTitle": "需要登录",
     "loginRequiredDesc": "请先登录以向寺庙供奉。",
     "loginBtn": "去登录",
-    "returnBtn": "返回"
+    "returnBtn": "返回",
+    "offerBtn": "供奉 {count} 朵莲花"
   },
   "Chat": {
     "unauthMessage": "踏入光明，与大师交流。",
@@ -320,7 +321,20 @@
     "followBtn": "在TikTok上关注 @buddha_miracle",
     "eyebrow": "全球共鸣",
     "globalCommunity": "全球圣所社群",
-    "redirecting": "正在前往TikTok官方频道... ✨"
+    "redirecting": "正在前往TikTok官方频道... ✨",
+    "officialChannel": "官方TikTok频道",
+    "followers": "粉丝",
+    "channelIntro": "每天，数百万修行者在TikTok上分享宁静、智慧与觉醒的时刻。关注我们的官方频道，在您的信息流中体验奇迹。",
+    "highlight1Tag": "热门视频",
+    "highlight1Title": "冥想病毒式传播",
+    "highlight1Sub": "24小时内320万次观看",
+    "highlight2Tag": "智慧",
+    "highlight2Title": "早晨祝福",
+    "highlight2Sub": "180万爱心 — 全球共鸣",
+    "highlight3Tag": "社区",
+    "highlight3Title": "全球僧伽",
+    "highlight3Sub": "全球63万+灵魂相连",
+    "viewOnTikTok": "在TikTok上观看 ↗"
   },
   "Profile": {
     "myWishes": "我的心愿",

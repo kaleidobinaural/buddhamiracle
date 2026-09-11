@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BuddhaHall from '@/components/BuddhaHall';
@@ -17,6 +17,7 @@ export default function HallPage() {
   const [isEcoMode, setIsEcoMode] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   
   // Offering Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,12 +103,19 @@ export default function HallPage() {
               <span className="btn-icon" style={{ fontSize: '1.2rem', lineHeight: '1', display: 'block' }}>☸</span>
               {is3DMode ? t('returnToMeditation') : t('explore3d')}
             </button>
-            <button className="offering-btn" onClick={() => setIsModalOpen(true)}>
+            <button className="offering-btn" onClick={() => {
+              if (status !== 'authenticated') { setShowLoginModal(true); return; }
+              setIsModalOpen(true);
+            }}>
               <span className="btn-icon">🕯️</span>
               {t('writeWish')}
             </button>
             <button className="exit-btn" onClick={() => router.push('/')}>
-              <span className="btn-icon">←</span>
+              <span className="btn-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{display:'block'}}>
+                  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+              </span>
               {t('exit')}
             </button>
             <button
@@ -518,6 +526,53 @@ export default function HallPage() {
           }
         }
       `}</style>
+
+      {/* Sacred Login Modal — Hall */}
+      {showLoginModal && (
+        <div
+          onClick={() => setShowLoginModal(false)}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0,0,0,0.88)',
+            backdropFilter: 'blur(18px)',
+            zIndex: 99999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'linear-gradient(145deg,#12100e,#1a1510)',
+              border: '1px solid rgba(212,160,23,0.25)',
+              borderRadius: '24px',
+              padding: '44px 36px 36px',
+              maxWidth: '360px', width: '90%',
+              textAlign: 'center', position: 'relative',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.7)',
+            }}
+          >
+            <button
+              onClick={() => setShowLoginModal(false)}
+              style={{ position:'absolute',top:'12px',right:'16px',background:'none',border:'none',cursor:'pointer',color:'rgba(255,255,255,0.4)',fontSize:'1.5rem',padding:'8px',WebkitTapHighlightColor:'transparent' }}
+            >✕</button>
+            <span style={{ fontSize:'3.5rem', marginBottom:'16px', display:'block' }}>🪷</span>
+            <h2 style={{ fontFamily:'var(--font-serif)',fontSize:'1.6rem',background:'linear-gradient(135deg,#FFD700,#D4A017)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',marginBottom:'12px' }}>
+              {tWish('loginRequiredTitle') || '로그인이 필요합니다'}
+            </h2>
+            <p style={{ fontSize:'0.92rem',color:'rgba(255,255,255,0.6)',lineHeight:1.65,marginBottom:'28px' }}>
+              {tWish('loginRequiredDesc') || '소원을 적으려면 먼저 신성한 사원에 입장해 주세요.'}
+            </p>
+            <div style={{ height:'1px',background:'linear-gradient(to right,transparent,rgba(212,160,23,0.25),transparent)',marginBottom:'28px' }} />
+            <button
+              onClick={() => { setShowLoginModal(false); signIn('google'); }}
+              style={{ display:'flex',alignItems:'center',justifyContent:'center',gap:'10px',width:'100%',padding:'16px 24px',background:'linear-gradient(135deg,#D4A017,#FFD700)',color:'#1a1200',fontWeight:700,fontSize:'1rem',border:'none',borderRadius:'14px',cursor:'pointer',boxShadow:'0 8px 24px rgba(212,160,23,0.35)',WebkitTapHighlightColor:'transparent' }}
+            >
+              <span>✨</span>
+              <span>{tWish('signInBtn') || '구글로 로그인하기'}</span>
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

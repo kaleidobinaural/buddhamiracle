@@ -217,7 +217,8 @@
     "loginRequiredTitle": "Anmeldung Erforderlich",
     "loginRequiredDesc": "Bitte melden Sie sich an, um eine Opfergabe darzubringen.",
     "loginBtn": "Anmelden",
-    "returnBtn": "Zurück"
+    "returnBtn": "Zurück",
+    "offerBtn": "{count} Lotus opfern"
   },
   "Chat": {
     "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",
@@ -320,7 +321,20 @@
     "followBtn": "Folge @buddha_miracle auf TikTok",
     "eyebrow": "GLOBALE RESONANZ",
     "globalCommunity": "Globale Heilige Gemeinschaft",
-    "redirecting": "Verbindung zum offiziellen TikTok-Kanal... ✨"
+    "redirecting": "Verbindung zum offiziellen TikTok-Kanal... ✨",
+    "officialChannel": "Offizieller TikTok-Kanal",
+    "followers": "Follower",
+    "channelIntro": "Jeden Tag teilen Millionen Suchende auf TikTok Momente der Stille, Weisheit und des Erwachens. Folge unserem offiziellen Kanal.",
+    "highlight1Tag": "TOP MOMENT",
+    "highlight1Title": "Virале Meditation",
+    "highlight1Sub": "3,2M Aufrufe in 24 Stunden",
+    "highlight2Tag": "WEISHEIT",
+    "highlight2Title": "Morgensegen",
+    "highlight2Sub": "1,8M Herzen — globale Resonanz",
+    "highlight3Tag": "GEMEINSCHAFT",
+    "highlight3Title": "Globale Sangha",
+    "highlight3Sub": "630K+ Seelen weltweit verbunden",
+    "viewOnTikTok": "Auf TikTok ansehen ↗"
   },
   "Profile": {
     "myWishes": "Meine Wünsche",

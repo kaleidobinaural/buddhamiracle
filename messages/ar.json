@@ -217,7 +217,8 @@
     "loginRequiredTitle": "تسجيل الدخول مطلوب",
     "loginRequiredDesc": "يرجى تسجيل الدخول لتقديم قربان للمعبد.",
     "loginBtn": "تسجيل الدخول",
-    "returnBtn": "رجوع"
+    "returnBtn": "رجوع",
+    "offerBtn": "تقديم {count} لوتس"
   },
   "Chat": {
     "unauthMessage": "ادخل في النور للتحدث مع الغورو.",
@@ -320,7 +321,20 @@
     "followBtn": "تابع @buddha_miracle على تيك توك",
     "eyebrow": "الصدى العالمي",
     "globalCommunity": "مجتمع المعبد العالمي",
-    "redirecting": "جارٍ الانتقال إلى قناة تيك توك الرسمية... ✨"
+    "redirecting": "جارٍ الانتقال إلى قناة تيك توك الرسمية... ✨",
+    "officialChannel": "قناة TikTok الرسمية",
+    "followers": "متابع",
+    "channelIntro": "كل يوم، يتشارك ملايين الباحثين على TikTok لحظات من الهدوء والحكمة والصحوة. تابع قناتنا الرسمية.",
+    "highlight1Tag": "لحظة مميزة",
+    "highlight1Title": "تأمل فيروسي",
+    "highlight1Sub": "3.2 مليون مشاهدة في 24 ساعة",
+    "highlight2Tag": "حكمة",
+    "highlight2Title": "بركة الصباح",
+    "highlight2Sub": "1.8 مليون قلب — صدى عالمي",
+    "highlight3Tag": "مجتمع",
+    "highlight3Title": "سانغا عالمية",
+    "highlight3Sub": "630K+ روح متصلة حول العالم",
+    "viewOnTikTok": "شاهد على TikTok ↗"
   },
   "Profile": {
     "myWishes": "أمنياتي",

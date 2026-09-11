@@ -22,10 +22,12 @@ export default function ResonancePage() {
     return `${count.toLocaleString()}+`;
   };
 
-  const handleTikTokRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleTikTokRedirect = () => {
     setIsRedirecting(true);
-    // Reset after a delay in case tab doesn't close
-    setTimeout(() => setIsRedirecting(false), 4000);
+    // Navigate in SAME tab after brief delay so overlay is visible
+    setTimeout(() => {
+      window.location.href = 'https://www.tiktok.com/@buddha_miracle';
+    }, 350);
   };
 
   const HIGHLIGHTS = [
@@ -55,10 +57,12 @@ export default function ResonancePage() {
     }
   ];
 
-  const safeT = (key: string, fallback: string) => {
+  const safeT = (key: string, fallback: string): string => {
     try {
       const result = t(key as any);
-      return result === key ? fallback : result;
+      // next-intl returns 'Namespace.key' for missing keys — detect and use fallback
+      if (!result || result === key || result === `Resonance.${key}`) return fallback;
+      return result;
     } catch {
       return fallback;
     }
@@ -107,35 +111,31 @@ export default function ResonancePage() {
           {/* Quick Highlight Cards */}
           <div className="highlights-grid">
             {HIGHLIGHTS.map((h, i) => (
-              <a
+              <button
                 key={i}
-                href="https://www.tiktok.com/@buddha_miracle"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="highlight-card"
                 onClick={handleTikTokRedirect}
+                type="button"
               >
                 <div className="highlight-tag">{safeT(h.tagKey, h.tagFallback)}</div>
                 <div className="highlight-title">{safeT(h.titleKey, h.titleFallback)}</div>
                 <div className="highlight-sub">{safeT(h.subKey, h.subFallback)}</div>
                 <div className="highlight-link">{safeT('viewOnTikTok', 'TikTok에서 보기 ↗')}</div>
-              </a>
+              </button>
             ))}
           </div>
 
           {/* High-Performance Direct Follow CTA */}
           <div className="portal-cta-wrap">
-            <a
-              href="https://www.tiktok.com/@buddha_miracle"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               className={`btn-tiktok-gold ${isRedirecting ? 'redirecting' : ''}`}
               onClick={handleTikTokRedirect}
             >
               {isRedirecting ? (
                 <>
                   <span className="tiktok-icon redirect-spin">🌀</span>
-                  <span className="tiktok-cta-text">{safeT('redirecting', '틱톡 공식 채널로 이동 중... ✨')}</span>
+                  <span className="tiktok-cta-text">{safeT('redirecting', '틱톡 채널로 이동 중... ✨')}</span>
                 </>
               ) : (
                 <>
@@ -144,12 +144,32 @@ export default function ResonancePage() {
                   <span className="tiktok-arrow">↗</span>
                 </>
               )}
-            </a>
+            </button>
           </div>
         </div>
       </section>
 
+      {/* Full-screen redirect overlay */}
+      {isRedirecting && (
+        <div style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(5,5,4,0.96)',
+          backdropFilter: 'blur(12px)',
+          zIndex: 999999,
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          gap: '20px'
+        }}>
+          <span style={{ fontSize: '4rem', display: 'block', animation: 'spin 1.2s linear infinite' }}>🌀</span>
+          <p style={{ color: '#FFD700', fontSize: '1.3rem', fontWeight: 700, textAlign: 'center', padding: '0 24px' }}>
+            {safeT('redirecting', '틱톡 채널로 이동 중... ✨')}
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>@buddha_miracle</p>
+        </div>
+      )}
+
       <style>{`
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .resonance-page { 
           min-height: 100vh; 
           background: #080807; 

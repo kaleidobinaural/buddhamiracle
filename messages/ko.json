@@ -217,7 +217,8 @@
     "loginRequiredTitle": "로그인이 필요합니다",
     "loginRequiredDesc": "공양을 올리시려면 먼저 로그인해 주세요.",
     "loginBtn": "로그인하기",
-    "returnBtn": "돌아가기"
+    "returnBtn": "돌아가기",
+    "offerBtn": "{count} 연꽃 공양하기"
   },
   "Chat": {
     "unauthMessage": "구루와 대화하려면 빛 안으로 들어오세요.",
@@ -320,7 +321,20 @@
     "followBtn": "TikTok에서 @buddha_miracle 팔로우하기",
     "eyebrow": "글로벌 울림",
     "globalCommunity": "글로벌 성소 커뮤니티",
-    "redirecting": "틱톡 공식 채널로 이동 중... ✨"
+    "redirecting": "틱톡 공식 채널로 이동 중... ✨",
+    "officialChannel": "공식 틱톡 채널",
+    "followers": "팔로워",
+    "channelIntro": "매일 수백만 명의 수행자들이 틱톡에서 고요함, 지혜, 그리고 각성의 순간을 나누고 있습니다. 공식 채널을 팔로우하고 기적의 울림을 경험하세요.",
+    "highlight1Tag": "화제 영상",
+    "highlight1Title": "명상 바이럴",
+    "highlight1Sub": "24시간 내 320만 뷰",
+    "highlight2Tag": "지혜",
+    "highlight2Title": "아침 축복",
+    "highlight2Sub": "180만 하트 — 전 세계 울림",
+    "highlight3Tag": "커뮤니티",
+    "highlight3Title": "글로벌 상가",
+    "highlight3Sub": "전 세계 63만+ 영혼 연결",
+    "viewOnTikTok": "틱톡에서 보기 ↗"
   },
   "Profile": {
     "myWishes": "내 소원",

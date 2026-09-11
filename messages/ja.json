@@ -217,7 +217,8 @@
     "loginRequiredTitle": "ログインが必要です",
     "loginRequiredDesc": "ご供養を捧げるには、まずログインしてください。",
     "loginBtn": "ログイン",
-    "returnBtn": "戻る"
+    "returnBtn": "戻る",
+    "offerBtn": "{count} 蓮を捧げる"
   },
   "Chat": {
     "unauthMessage": "師と語るために、光の中に踏み込んでください。",
@@ -320,7 +321,20 @@
     "followBtn": "TikTokで@buddha_miracleをフォロー",
     "eyebrow": "グローバル・レゾナンス",
     "globalCommunity": "世界中の祈りの輪",
-    "redirecting": "TikTok公式チャンネルへ移動中... ✨"
+    "redirecting": "TikTok公式チャンネルへ移動中... ✨",
+    "officialChannel": "公式TikTokチャンネル",
+    "followers": "フォロワー",
+    "channelIntro": "毎日、数百万人の探求者がTikTokで静寂、智慧、そして目覚めの瞬間を分かち合っています。公式チャンネルをフォローして奇跡を体験してください。",
+    "highlight1Tag": "トップ動画",
+    "highlight1Title": "瞑想バイラル",
+    "highlight1Sub": "24時間で320万再生",
+    "highlight2Tag": "智慧",
+    "highlight2Title": "朝の祝福",
+    "highlight2Sub": "180万いいね — 世界的な共鳴",
+    "highlight3Tag": "コミュニティ",
+    "highlight3Title": "グローバル僧伽",
+    "highlight3Sub": "世界中で63万人以上の魂が繋がる",
+    "viewOnTikTok": "TikTokで見る ↗"
   },
   "Profile": {
     "myWishes": "私の願い",

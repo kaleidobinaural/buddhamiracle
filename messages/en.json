@@ -217,7 +217,8 @@
     "loginRequiredTitle": "Sign In Required",
     "loginRequiredDesc": "Please sign in to make an offering to the temple.",
     "loginBtn": "Sign In",
-    "returnBtn": "Return"
+    "returnBtn": "Return",
+    "offerBtn": "Offer {count} Lotus"
   },
   "Chat": {
     "unauthMessage": "Step into the light to speak with the Guru.",
@@ -320,7 +321,20 @@
     "followBtn": "Follow @buddha_miracle on TikTok",
     "eyebrow": "GLOBAL RESONANCE",
     "globalCommunity": "Global Sacred Community",
-    "redirecting": "Connecting to TikTok Official Channel... ✨"
+    "redirecting": "Connecting to TikTok Official Channel... ✨",
+    "officialChannel": "Official TikTok Channel",
+    "followers": "Followers",
+    "channelIntro": "Every day, millions of seekers on TikTok share moments of stillness, wisdom, and awakening. Follow our official channel to experience miracles in your feed.",
+    "highlight1Tag": "TOP MOMENT",
+    "highlight1Title": "Viral Meditation",
+    "highlight1Sub": "3.2M views in 24 hours",
+    "highlight2Tag": "WISDOM",
+    "highlight2Title": "Morning Blessing",
+    "highlight2Sub": "1.8M hearts — global resonance",
+    "highlight3Tag": "COMMUNITY",
+    "highlight3Title": "Global Sangha",
+    "highlight3Sub": "630K+ souls connected worldwide",
+    "viewOnTikTok": "Watch on TikTok ↗"
   },
   "Profile": {
     "myWishes": "My Wishes",

@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { createPortal } from 'react-dom';
 
 interface CharacterAvatarProps {
@@ -28,12 +29,24 @@ export default function CharacterAvatar({
   const [isBubbleClosed, setIsBubbleClosed] = useState(false);
   // Portal needs document to be available (client-side only)
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const mountedPath = useRef<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const timer = setTimeout(() => setIsVisible(true), delay);
+    const timer = setTimeout(() => {
+      mountedPath.current = pathname; // record the page where avatar appeared
+      setIsVisible(true);
+    }, delay);
     return () => clearTimeout(timer);
   }, [delay]);
+
+  // Auto-dismiss when user navigates away
+  useEffect(() => {
+    if (mountedPath.current && pathname !== mountedPath.current) {
+      setIsVisible(false);
+    }
+  }, [pathname]);
 
   if (!mounted || !isVisible || isBubbleClosed) return null;
 

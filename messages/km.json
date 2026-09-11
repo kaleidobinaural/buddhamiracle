@@ -217,7 +217,8 @@
     "loginRequiredTitle": "ទាមទារការចូលគណនី",
     "loginRequiredDesc": "សូមចូលគណនីដើម្បីថ្វាយដង្វាយដល់ព្រះវិហារ។",
     "loginBtn": "ចូលគណនី",
-    "returnBtn": "ត្រឡប់ក្រោយ"
+    "returnBtn": "ត្រឡប់ក្រោយ",
+    "offerBtn": "ថ្វាយ {count} ផ្កាឈូក"
   },
   "Chat": {
     "unauthMessage": "ចូលក្នុងពន្លឺដើម្បីនិយាយជាមួយ Guru",
@@ -320,7 +321,20 @@
     "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok",
     "eyebrow": "សំឡេងជ្រួញជ្រើសសកល",
     "globalCommunity": "សហគមន៍ពិសិដ្ឋសកល",
-    "redirecting": "កំពុងភ្ជាប់ទៅកាន់ឆានែល TikTok ផ្លូវការ... ✨"
+    "redirecting": "កំពុងភ្ជាប់ទៅកាន់ឆានែល TikTok ផ្លូវការ... ✨",
+    "officialChannel": "ឆានែល TikTok ផ្លូវការ",
+    "followers": "អ្នកតាម",
+    "channelIntro": "រៀងរាល់ថ្ងៃ អ្នករកអត្ថន័យជាច្រើនលាននាក់ចែករំលែកនៅ TikTok ពេលវេលាស្ងប់ស្ងាត់ ប្រាជ្ញា និងការភ្ញាក់ដឹង។ តាមដានឆានែលផ្លូវការរបស់យើង។",
+    "highlight1Tag": "ចំណុចខ្ពស់បំផុត",
+    "highlight1Title": "ការសមាធិ Viral",
+    "highlight1Sub": "3.2 លានមើលក្នុង 24 ម៉ោង",
+    "highlight2Tag": "ប្រាជ្ញា",
+    "highlight2Title": "ពរព្រឹក",
+    "highlight2Sub": "1.8 លានបេះដូង — ការអន្ទាក់ជាសកល",
+    "highlight3Tag": "សហគមន៍",
+    "highlight3Title": "សហគមន៍ជាសកល",
+    "highlight3Sub": "630K+ វិញ្ញាណភ្ជាប់ជុំវិញពិភពលោក",
+    "viewOnTikTok": "មើលនៅ TikTok ↗"
   },
   "Profile": {
     "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",
