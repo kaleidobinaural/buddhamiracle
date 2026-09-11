@@ -305,7 +305,14 @@ async function callGemini(
 // RTL layout supported for Arabic / Hebrew.
 // Pure CSS + inline SVG — no external image dependencies.
 // ─────────────────────────────────────────────────────────
-function buildEbookHtml(story: string, date: string, isRtl: boolean, title: string = 'Wisdom Story'): string {
+function buildEbookHtml(
+  story: string,
+  date: string,
+  isRtl: boolean,
+  title: string = 'Wisdom Story',
+  isKorean: boolean = false,
+  dateSlug: string = '',
+): string {
   const storyHtml = story
     .split(/\n{2,}/)
     .filter(p => p.trim())
@@ -324,18 +331,28 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean, title: stri
   const dropCapFloat  = isRtl ? 'right' : 'left';
   const dropCapMargin = isRtl ? '0.06em 0 0 0.09em' : '0.06em 0.09em 0 0';
 
+  const docTitle = isKorean
+    ? `${title} — 빛의 사원 (${dateSlug || '지혜이야기'})`
+    : `${title} — Temple of Light (${dateSlug || 'WisdomStory'})`;
+  const brandName = isKorean ? '빛의 사원' : 'Temple of Light';
+  const subtitle = isKorean ? '빛의 사원으로부터' : 'From the Temple of Light';
+  const disclaimer = isKorean
+    ? '본 이야기는 AI 그루와의 대화를 바탕으로 엮은 지혜의 이야기이며 문학적 재구성입니다. 전문적인 의학적, 법적, 재정적 조언을 대체하지 않습니다.'
+    : 'This story was woven from a conversation with an AI Guru and is a creative retelling. It does not replace professional medical, legal, or financial advice.';
+  const printBtnText = isKorean ? '🖨️ PDF로 저장 / 인쇄' : '🖨️ Print / Save as PDF';
+
   return `<!DOCTYPE html>
 <html${isRtl ? ' dir="rtl"' : ''}>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wisdom Story — Temple of Light</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;1,300&family=Noto+Serif+KR:wght@300;400&family=Noto+Serif+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+  <title>${docTitle}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;1,300&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Serif+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
   <style>
     :root{--gold:#B8952A;--gold-mid:#C9A84C;--gold-light:#E4CC7A;--ink:#0E0C0A;--parchment:#F8F4EC;--parchment-bg:#EDE7D9;--text:#241E18;--text-muted:#7A6E62;--border:#C8BCAA;--border-light:#DDD4C4}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     @media print{body{background:#fff!important}.no-print{display:none!important}.page{margin:0!important;box-shadow:none!important;border:none!important}}
-    body{background:var(--parchment-bg);color:var(--text);font-family:'Cormorant Garamond','Noto Serif KR','Noto Serif SC','Noto Serif',Georgia,serif;line-height:1.95;font-size:19px}
+    body{background:var(--parchment-bg);color:var(--text);font-family:'Noto Serif KR','Cormorant Garamond','Noto Serif SC','Noto Serif',Georgia,serif;line-height:1.95;font-size:19px}
     .page{max-width:700px;margin:48px auto 80px;background:var(--parchment);border:1px solid var(--border);box-shadow:0 2px 4px rgba(0,0,0,.04),0 12px 40px rgba(0,0,0,.10),0 40px 100px rgba(0,0,0,.06);position:relative}
     .gold-bar{height:6px;background:linear-gradient(90deg,#8B6914 0%,#C9A84C 25%,#F0D97A 50%,#C9A84C 75%,#8B6914 100%)}
     .corner{position:absolute;width:52px;height:52px;opacity:.3;pointer-events:none}.corner svg{width:100%;height:100%}
@@ -363,9 +380,10 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean, title: stri
     .footer{border-top:1px solid var(--border-light);padding-top:26px;margin-top:8px;text-align:center}
     .footer-sym{color:var(--gold);font-size:1.2rem;opacity:.35;margin-bottom:10px}
     .disclaimer{font-size:.7rem;color:var(--text-muted);line-height:1.7;font-style:italic;max-width:400px;margin:0 auto}
-    .print-btn{position:fixed;bottom:28px;right:28px;background:linear-gradient(135deg,#B8952A,#8B6914);color:#FAF6EC;border:none;border-radius:10px;padding:11px 22px;font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;letter-spacing:.04em;cursor:pointer;box-shadow:0 4px 24px rgba(184,149,42,.45);transition:all .25s ease}
+    .print-actions{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;gap:10px}
+    .print-btn{background:linear-gradient(135deg,#B8952A,#8B6914);color:#FAF6EC;border:none;border-radius:10px;padding:12px 24px;font-family:'Noto Serif KR','Cormorant Garamond',serif;font-size:.95rem;font-weight:600;letter-spacing:.04em;cursor:pointer;box-shadow:0 4px 24px rgba(184,149,42,.45);transition:all .25s ease}
     .print-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(184,149,42,.55)}
-    @media(max-width:720px){.page{margin:0;border:none;box-shadow:none}.inner{padding:36px 24px 56px}.title{font-size:2rem}.corner{display:none}}
+    @media(max-width:720px){.page{margin:0;border:none;box-shadow:none}.inner{padding:36px 24px 56px}.title{font-size:2rem}.corner{display:none}.print-actions{bottom:16px;right:16px}}
   </style>
 </head>
 <body>
@@ -379,7 +397,7 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean, title: stri
       <header class="header">
         <div class="brand">
           <span class="brand-icon">☸</span>
-          <span class="brand-name">Temple of Light</span>
+          <span class="brand-name">${brandName}</span>
           <span class="brand-icon">☸</span>
         </div>
         <div class="mandala">
@@ -404,7 +422,7 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean, title: stri
           <span class="rule-gem">✦</span>
           <div class="rule-line"></div>
         </div>
-        <p class="subtitle">From the Temple of Light</p>
+        <p class="subtitle">${subtitle}</p>
         <p class="date">${date}</p>
       </header>
       <div class="story-wrap">
@@ -416,12 +434,14 @@ function buildEbookHtml(story: string, date: string, isRtl: boolean, title: stri
         </div>
         <footer class="footer">
           <div class="footer-sym">☸</div>
-          <p class="disclaimer">This story was woven from a conversation with an AI Guru and is a creative retelling. It does not replace professional medical, legal, or financial advice.</p>
+          <p class="disclaimer">${disclaimer}</p>
         </footer>
       </div>
     </div>
   </div>
-  <button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+  <div class="print-actions no-print">
+    <button class="print-btn" onclick="window.print()">${printBtnText}</button>
+  </div>
 </body>
 </html>`;
 }
@@ -527,15 +547,18 @@ export async function POST(req: NextRequest) {
     }
 
     const newLotusCount = isAdmin ? limitData.lotus_count : limitData.lotus_count - EBOOK_COST;
-    const date = new Date().toLocaleDateString('en-US', {
-      year: 'numeric', month: 'long', day: 'numeric',
-    });
+    const isKorean = locale === 'ko' || langHint.toLowerCase().includes('korean');
+    const now = new Date();
+    const dateSlug = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+    const date = isKorean
+      ? now.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })
+      : now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
     // Extract title from stripped text, then build HTML with dynamic title
     const { title, storyBody } = extractTitle(check.strippedText, langHint);
-    const htmlContent = buildEbookHtml(storyBody, date, isRtl, title);
+    const htmlContent = buildEbookHtml(storyBody, date, isRtl, title, isKorean, dateSlug);
 
-    return NextResponse.json({ html: htmlContent, lotus_count: newLotusCount });
+    return NextResponse.json({ html: htmlContent, lotus_count: newLotusCount, title });
 
   } catch (err) {
     console.error('[eBook API Error]', err);

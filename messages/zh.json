@@ -74,7 +74,9 @@
     "rateLimitMsg": "殿堂请求片刻宁静。请稍候片刻再发言。",
     "unexpectedError": "导师回应异常。请再试一次。",
     "unauthMessage": "踏入光明，与大师交流。",
-    "signIn": "登录以寻求智慧"
+    "signIn": "登录以寻求智慧",
+    "ebookTip": "※ 故事生成期间（约10-15秒）请勿关闭或离开当前页面。（离开可能导致莲花被消耗且故事无法生成）",
+    "ebookDontLeave": "生成期间请勿离开此页面。"
   },
   "WishRoof": {
     "eyebrow": "永恒圣所",
@@ -156,7 +158,9 @@
     "searchResultCount": "搜索结果 ({count}条)",
     "loginRequiredTitle": "需要登录",
     "loginRequiredDesc": "请先登录以向寺庙供奉功德。",
-    "signInBtn": "登录"
+    "signInBtn": "登录",
+    "myDonations": "我的供养",
+    "myDonationsEmpty": "暂无供养记录。"
   },
   "hall": {
     "title": "光明圣殿",

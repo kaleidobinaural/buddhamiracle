@@ -74,7 +74,9 @@
     "rateLimitMsg": "Der Tempel bittet um Stille. Bitte warte einen Moment, bevor du erneut sprichst.",
     "unexpectedError": "Unerwartete Antwort des Gurus. Bitte versuche es erneut.",
     "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",
-    "signIn": "Anmelden, um Weisheit zu suchen"
+    "signIn": "Anmelden, um Weisheit zu suchen",
+    "ebookTip": "※ Bitte schließen oder verlassen Sie diesen Bildschirm nicht, während die Geschichte gewoben wird (~10–15 Sek.). Vorzeitiges Verlassen kann Lotosblüten verbrauchen.",
+    "ebookDontLeave": "Bitte verlassen Sie diesen Bildschirm während der Erstellung nicht."
   },
   "WishRoof": {
     "eyebrow": "Das ewige Heiligtum",
@@ -156,7 +158,9 @@
     "searchResultCount": "Ergebnisse ({count})",
     "loginRequiredTitle": "Anmeldung Erforderlich",
     "loginRequiredDesc": "Bitte melden Sie sich an, um eine Opfergabe darzubringen.",
-    "signInBtn": "Anmelden"
+    "signInBtn": "Anmelden",
+    "myDonations": "Meine Gaben",
+    "myDonationsEmpty": "Noch keine Gaben verzeichnet."
   },
   "hall": {
     "title": "Heiligtum des Lichts",

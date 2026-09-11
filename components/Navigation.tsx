@@ -121,7 +121,7 @@ export default function Navigation() {
     { href: '/wish-roof', key: 'wishRoof' },
     { href: '/hall', key: 'hall' },
     { href: '/dharma', key: 'dharma' },
-    { href: '/resonance', key: 'resonance' },
+    { href: 'https://www.tiktok.com/@buddha_miracle', key: 'resonance', external: true },
     { href: '/store', key: 'store' },
   ];
 
@@ -141,13 +141,25 @@ export default function Navigation() {
           {/* Desktop Nav Links */}
           <div className="nav-links">
             {navLinks.map((link) => (
-              <Link 
-                key={link.href} 
-                href={link.href as any} 
-                className={`nav-link ${pathname === link.href ? 'active' : ''}`}
-              >
-                {t(link.key)}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link"
+                >
+                  {t(link.key)} ↗
+                </a>
+              ) : (
+                <Link 
+                  key={link.href} 
+                  href={link.href as any} 
+                  className={`nav-link ${pathname === link.href ? 'active' : ''}`}
+                >
+                  {t(link.key)}
+                </Link>
+              )
             ))}
           </div>
 
@@ -238,12 +250,17 @@ export default function Navigation() {
                 </div>
               </div>
             ) : (
-              <Link href="/login" className="btn-ghost sign-in-icon">
+              <button 
+                onClick={() => setShowLoginModal(true)} 
+                className="btn-ghost sign-in-icon" 
+                aria-label="Sign In" 
+                style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="12" cy="8" r="4" />
                   <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
                 </svg>
-              </Link>
+              </button>
             )}
 
             {/* Hamburger Button */}
@@ -264,19 +281,32 @@ export default function Navigation() {
           <div className="mobile-nav-inner">
             <div className="mobile-nav-links">
               {mobileNavLinks.map((link, i) => (
-                <Link 
-                  key={link.href} 
-                  href={link.href as any} 
-                  className={`mobile-nav-link bloom-${i + 1}`} 
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {t(link.key)}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.key}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mobile-nav-link bloom-${i + 1}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {t(link.key)} ↗
+                  </a>
+                ) : (
+                  <Link 
+                    key={link.href} 
+                    href={link.href as any} 
+                    className={`mobile-nav-link bloom-${i + 1}`} 
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {t(link.key)}
+                  </Link>
+                )
               ))}
               {/* Auth-gated donate in mobile nav */}
               <button
                 className="mobile-nav-link bloom-8"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0 }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0, textAlign: 'left' }}
                 onClick={() => {
                   setMobileOpen(false);
                   if (!session?.user) { setShowLoginModal(true); return; }
@@ -286,9 +316,13 @@ export default function Navigation() {
                 {t('donate')}
               </button>
               {!session?.user && (
-                <Link href="/login" className="mobile-nav-link bloom-9" style={{ color: 'var(--primary-gold)', fontStyle: 'italic' }} onClick={() => setMobileOpen(false)}>
+                <button 
+                  className="mobile-nav-link bloom-9" 
+                  style={{ color: 'var(--primary-gold)', fontStyle: 'italic', background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left', padding: 0 }} 
+                  onClick={() => { setMobileOpen(false); setShowLoginModal(true); }}
+                >
                   {t('signIn')}
-                </Link>
+                </button>
               )}
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select
@@ -331,62 +365,86 @@ export default function Navigation() {
             position: 'fixed', inset: 0,
             background: 'rgba(0,0,0,0.85)',
             backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
             zIndex: 99999,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: '20px',
+            boxSizing: 'border-box',
           }}
         >
           <div
             onClick={e => e.stopPropagation()}
             style={{
               background: 'linear-gradient(145deg,#12100e,#1a1510)',
-              border: '1px solid rgba(212,160,23,0.25)',
+              border: '1px solid rgba(212,160,23,0.3)',
               borderRadius: '24px',
-              padding: '44px 36px 36px',
-              maxWidth: '360px', width: '90%',
+              padding: '40px 28px 32px',
+              maxWidth: '380px', width: '100%',
               textAlign: 'center',
               position: 'relative',
-              boxShadow: '0 32px 80px rgba(0,0,0,0.7),0 0 80px rgba(212,160,23,0.08)',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.8),0 0 80px rgba(212,160,23,0.1)',
             }}
           >
             <button
               onClick={() => setShowLoginModal(false)}
               aria-label="Close"
               style={{
-                position: 'absolute', top: '12px', right: '16px',
+                position: 'absolute', top: '14px', right: '16px',
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: 'rgba(255,255,255,0.4)', fontSize: '1.5rem',
+                color: 'rgba(255,255,255,0.5)', fontSize: '1.4rem',
                 lineHeight: 1, padding: '8px',
                 WebkitTapHighlightColor: 'transparent',
               }}
             >✕</button>
-            <span style={{ fontSize: '3.5rem', marginBottom: '16px', display: 'block' }}>🐚</span>
+
+            <span style={{ fontSize: '3rem', marginBottom: '14px', display: 'block' }}>☸</span>
             <h2 style={{
-              fontFamily: 'var(--font-serif)', fontSize: '1.6rem',
+              fontFamily: 'var(--font-serif)', fontSize: '1.5rem',
               background: 'linear-gradient(135deg,#FFD700,#D4A017)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              marginBottom: '12px'
+              marginBottom: '10px',
+              fontWeight: 700,
             }}>
-              로그인이 필요합니다
+              {locale === 'ko' ? '신성한 안식처로 입장' : (t('loginRequiredTitle') || 'Enter the Sacred Sanctuary')}
             </h2>
-            <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, marginBottom: '28px' }}>
-              공양을 올리려면 먼저 신성한 사원에 입장해 주세요.
+            <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
+              {locale === 'ko' 
+                ? '소원을 남기고, 구루와의 대화를 보존하며, 사찰 기둥 공양을 영구히 기록하려면 로그인하세요.' 
+                : (t('loginRequiredDesc') || 'Please sign in to preserve your conversation with the Guru and inscribe your sacred offerings.')}
             </p>
-            <div style={{ height: '1px', background: 'linear-gradient(to right,transparent,rgba(212,160,23,0.25),transparent)', marginBottom: '28px' }} />
+
             <button
               onClick={() => { setShowLoginModal(false); signIn('google'); }}
               style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                gap: '10px', width: '100%', padding: '16px 24px',
+                gap: '12px', width: '100%', padding: '14px 20px',
                 background: 'linear-gradient(135deg,#D4A017,#FFD700)',
-                color: '#1a1200', fontWeight: 700, fontSize: '1rem',
+                color: '#1a1200', fontWeight: 700, fontSize: '0.98rem',
                 border: 'none', borderRadius: '14px', cursor: 'pointer',
                 boxShadow: '0 8px 24px rgba(212,160,23,0.35)',
                 WebkitTapHighlightColor: 'transparent',
+                transition: 'transform 0.2s, box-shadow 0.2s',
               }}
             >
               <span>✨</span>
-              <span>구글로 로그인하기</span>
+              <span>{locale === 'ko' ? 'Google 계정으로 계속하기' : 'Continue with Google'}</span>
             </button>
+
+            <div style={{ marginTop: '20px', fontSize: '0.74rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>
+              {locale === 'ko' ? (
+                <>
+                  계속 진행하면 사원의{' '}
+                  <Link href="/terms" onClick={() => setShowLoginModal(false)} style={{ color: 'var(--primary-gold)', textDecoration: 'underline' }}>이용약관</Link> 및{' '}
+                  <Link href="/privacy" onClick={() => setShowLoginModal(false)} style={{ color: 'var(--primary-gold)', textDecoration: 'underline' }}>개인정보처리방침</Link>에 동의하는 것으로 간주됩니다.
+                </>
+              ) : (
+                <>
+                  By continuing, you agree to our{' '}
+                  <Link href="/terms" onClick={() => setShowLoginModal(false)} style={{ color: 'var(--primary-gold)', textDecoration: 'underline' }}>Terms</Link> &{' '}
+                  <Link href="/privacy" onClick={() => setShowLoginModal(false)} style={{ color: 'var(--primary-gold)', textDecoration: 'underline' }}>Privacy Policy</Link>.
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}

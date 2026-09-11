@@ -74,7 +74,9 @@
     "rateLimitMsg": "사원은 잠시 정적을 원합니다. 잠시 후 다시 시도해 주세요.",
     "unexpectedError": "예상치 못한 오류가 발생했습니다. 다시 시도해 주세요.",
     "unauthMessage": "구루와 대화하려면 빛 안으로 들어오세요.",
-    "signIn": "로그인하여 지혜를 구하세요"
+    "signIn": "로그인하여 지혜를 구하세요",
+    "ebookTip": "※ 이야기 생성 중(약 10~15초)에는 창을 닫거나 다른 화면으로 이동하지 마세요. (화면을 벗어나면 연꽃이 소모되고 생성이 중단될 수 있습니다)",
+    "ebookDontLeave": "생성 중에 화면을 벗어나면 연꽃만 소모되고 결과를 받지 못할 수 있습니다."
   },
   "WishRoof": {
     "eyebrow": "영원의 성소",
@@ -156,7 +158,9 @@
     "searchResultCount": "검색 결과 ({count}개)",
     "loginRequiredTitle": "로그인이 필요합니다",
     "loginRequiredDesc": "사원에 공양을 올리시려면 먼저 로그인해 주세요.",
-    "signInBtn": "로그인하기"
+    "signInBtn": "로그인하기",
+    "myDonations": "내 후원",
+    "myDonationsEmpty": "아직 후원 내역이 없습니다."
   },
   "hall": {
     "title": "빛의 성소",

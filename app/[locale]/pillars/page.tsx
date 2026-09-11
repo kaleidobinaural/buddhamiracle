@@ -57,13 +57,18 @@ export default function PillarsPage() {
   const founderPillars = pillars.filter(p => ['gold', 'marble', 'stone'].includes(p.pillar_type));
   const supporterPillars = pillars.filter(p => p.pillar_type === 'donor');
 
-  const fetchMyPillars = async () => {
+  const fetchMyPillars = async (query = '', sort = sortBy) => {
     if (!session?.user) return;
     setMyPillarsLoading(true);
     try {
-      const res = await fetch('/api/pillars?mine=true');
+      let url = `/api/pillars?mine=true&sort=${sort}`;
+      if (query) url += `&search=${encodeURIComponent(query)}`;
+      const res = await fetch(url);
       const data = await res.json();
-      if (!data.error) setMyPillars(data);
+      if (!data.error) {
+        setMyPillars(data);
+        if (activeTab === 'mine') setPillars(data);
+      }
     } catch (e) { console.error(e); }
     finally { setMyPillarsLoading(false); }
   };
@@ -75,6 +80,7 @@ export default function PillarsPage() {
       body: JSON.stringify({ id, is_public: !current }),
     });
     if (res.ok) {
+      setPillars(prev => prev.map(p => p.id === id ? { ...p, is_public: !current } : p));
       setMyPillars(prev => prev.map(p => p.id === id ? { ...p, is_public: !current } : p));
     }
   };
@@ -86,6 +92,7 @@ export default function PillarsPage() {
       body: JSON.stringify({ id }),
     });
     if (res.ok) {
+      setPillars(prev => prev.filter(p => p.id !== id));
       setMyPillars(prev => prev.filter(p => p.id !== id));
       setConfirmDeleteId(null);
     }
@@ -93,51 +100,64 @@ export default function PillarsPage() {
 
   useEffect(() => {
     setMounted(true);
-    fetchPillars(searchQuery, sortBy, role);
+    fetchPillars(searchQuery, sortBy, role, activeTab);
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [sortBy, role]);
+  }, [sortBy]);
 
   useEffect(() => {
-    if (activeTab === 'mine') fetchMyPillars();
-    else if (activeTab === 'founders') { setRole('founder'); fetchPillars('', sortBy, 'founder'); }
-    else { setRole('supporter'); fetchPillars('', sortBy, 'supporter'); }
+    if (activeTab === 'mine') {
+      fetchPillars(searchQuery, sortBy, role, 'mine');
+    } else if (activeTab === 'founders') {
+      setRole('founder');
+      fetchPillars(searchQuery, sortBy, 'founder', 'founders');
+    } else {
+      setRole('supporter');
+      fetchPillars(searchQuery, sortBy, 'supporter', 'supporters');
+    }
   }, [activeTab]);
 
   // Reactive search reset
   useEffect(() => {
     if (searchQuery === '') {
-      fetchPillars('', sortBy, role);
+      fetchPillars('', sortBy, role, activeTab);
     }
   }, [searchQuery]);
 
-  const fetchPillars = async (query = '', sort = sortBy, currentRole = role) => {
+  const fetchPillars = async (query = '', sort = sortBy, currentRole = role, currentTab = activeTab) => {
     setIsLoading(true);
     try {
-      const pillarType = currentRole === 'founder' ? 'founder' : 'supporter';
-      let url = `/api/pillars?sort=${sort}&type=${pillarType}`;
+      let url = `/api/pillars?sort=${sort}`;
+      if (currentTab === 'mine') {
+        url += '&mine=true';
+      } else {
+        const pillarType = currentRole === 'founder' ? 'founder' : 'supporter';
+        url += `&type=${pillarType}`;
+      }
       if (query) url += `&search=${encodeURIComponent(query)}`;
       const res = await fetch(url);
       const data = await res.json();
-      if (!data.error) setPillars(data);
+      if (!data.error) {
+        setPillars(data);
+        if (currentTab === 'mine') setMyPillars(data);
+      }
     } catch (err) {
       console.error('Error fetching pillars:', err);
     } finally {
       setIsLoading(false);
-      // Scroll to results AFTER data is loaded
+      // Scroll smoothly to results so banner & corridor enter view together
       if (query) {
-        requestAnimationFrame(() => {
+        setTimeout(() => {
           searchResultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        }, 120);
       }
     }
   };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchPillars(searchQuery, sortBy, role);
-    // Scroll is now handled inside fetchPillars finally block
+    fetchPillars(searchQuery, sortBy, role, activeTab);
   };
 
   const handleDonateClick = () => {
@@ -181,257 +201,104 @@ export default function PillarsPage() {
           )}
         </div>
 
-        {/* Search/sort controls — hidden when My Donations tab is active */}
-        {activeTab !== 'mine' && (
-          <div className="pillars-top-actions animate-fade-up animate-delay-200">
-            <div className="control-group multi-toggles">
-              {/* View Mode Toggle */}
-              <div className="view-selector">
-                <button 
-                  className={`btn-view ${viewMode === 'hall' ? 'active' : ''}`}
-                  onClick={() => setViewMode('hall')}
-                >👁️‍🗨️ {t('viewHall')}</button>
-                <button 
-                  className={`btn-view ${viewMode === 'grid' ? 'active' : ''}`}
-                  onClick={() => setViewMode('grid')}
-                >🔲 {t('viewGrid')}</button>
-              </div>
-
-              {/* Sort Toggle */}
-              <div className="sort-selector">
-                <button 
-                  className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
-                  onClick={() => setSortBy('amount')}
-                >💎 {t('sortAmount')}</button>
-                <button 
-                  className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
-                  onClick={() => setSortBy('date')}
-                >⬇️ {t('sortNewest')}</button>
-                <button 
-                  className={`btn-sort ${sortBy === 'oldest' ? 'active' : ''}`}
-                  onClick={() => setSortBy('oldest')}
-                >⬆️ {t('sortOldest')}</button>
-              </div>
+        {/* Search, Sort, and View Controls — ALWAYS VISIBLE across all tabs */}
+        <div className="pillars-top-actions animate-fade-up animate-delay-200">
+          <div className="control-group multi-toggles">
+            {/* View Mode Toggle */}
+            <div className="view-selector">
+              <button 
+                className={`btn-view ${viewMode === 'hall' ? 'active' : ''}`}
+                onClick={() => setViewMode('hall')}
+              >👁️‍🗨️ {t('viewHall')}</button>
+              <button 
+                className={`btn-view ${viewMode === 'grid' ? 'active' : ''}`}
+                onClick={() => setViewMode('grid')}
+              >🔲 {t('viewGrid')}</button>
             </div>
 
-            <form className="search-box-v2" onSubmit={handleSearch}>
-              <input 
-                type="text" 
-                placeholder={t('searchPlaceholder')} 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
-              />
-              {searchQuery && (
-                <button 
-                  type="button" 
-                  className="btn-clear-search" 
-                  onClick={() => setSearchQuery('')}
-                >✕</button>
-              )}
-              <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
-            </form>
-
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-              <button
-                className="btn-gold-glow-v2"
-                style={{ padding: '12px 32px' }}
-                onClick={handleDonateClick}
-              >
-                ♥ {t('donate')}
-              </button>
+            {/* Sort Toggle */}
+            <div className="sort-selector">
+              <button 
+                className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
+                onClick={() => setSortBy('amount')}
+              >💎 {t('sortAmount')}</button>
+              <button 
+                className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
+                onClick={() => setSortBy('date')}
+              >⬇️ {t('sortNewest')}</button>
+              <button 
+                className={`btn-sort ${sortBy === 'oldest' ? 'active' : ''}`}
+                onClick={() => setSortBy('oldest')}
+              >⬆️ {t('sortOldest')}</button>
             </div>
           </div>
-        )}
 
-        {/* ── My Donations Section ── */}
-        {activeTab === 'mine' && (
-          <section className="my-donations-section animate-fade-up">
-            {!session?.user ? (
-              <div className="empty-state">로그인 후 내 후원 내역을 확인하세요.</div>
-            ) : myPillarsLoading ? (
-              <div className="loading-state">{t('loading')}</div>
-            ) : myPillars.length === 0 ? (
-              <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🪷</div>
-                <p>{t('myDonationsEmpty') || '아직 후원 내역이 없습니다.'}</p>
-                <button onClick={handleDonateClick} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
-                  ♥ {t('donate')}
-                </button>
-              </div>
-            ) : (
-              <div className="my-donations-list">
-                {myPillars.map(p => (
-                  <div key={p.id} className="my-donation-card">
-                    <div className="my-donation-info">
-                      <span className="my-donation-icon">{p.pillar_type === 'donor' ? '📿' : '🏛️'}</span>
-                      <div>
-                        <p className="my-donation-name">{p.name}</p>
-                        <p className="my-donation-meta">
-                          🪷 {p.amount} · {new Date(p.created_at).toLocaleDateString()}
-                          {p.message && <span style={{ opacity: 0.6 }}> · "{p.message.slice(0, 30)}{p.message.length > 30 ? '…' : ''}"</span>}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="my-donation-actions">
-                      <button
-                        className={`btn-toggle-public ${p.is_public ? 'public' : 'private'}`}
-                        onClick={() => handleTogglePublic(p.id, p.is_public)}
-                        title={p.is_public ? '비공개로 전환' : '공개로 전환'}
-                      >
-                        {p.is_public ? '👁️ 공개' : '🔒 비공개'}
-                      </button>
-                      {confirmDeleteId === p.id ? (
-                        <div className="delete-confirm">
-                          <span style={{ fontSize: '0.8rem', color: '#ff8888' }}>삭제 시 복구 불가. 진행?</span>
-                          <button className="btn-confirm-delete" onClick={() => handleDeleteMyPillar(p.id)}>삭제</button>
-                          <button className="btn-cancel-delete" onClick={() => setConfirmDeleteId(null)}>취소</button>
-                        </div>
-                      ) : (
-                        <button className="btn-delete-pillar" onClick={() => setConfirmDeleteId(p.id)} title="삭제">🗑️</button>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <form className="search-box-v2" onSubmit={handleSearch}>
+            <input 
+              type="text" 
+              placeholder={t('searchPlaceholder')} 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="search-input"
+            />
+            {searchQuery && (
+              <button 
+                type="button" 
+                className="btn-clear-search" 
+                onClick={() => setSearchQuery('')}
+              >✕</button>
             )}
-          </section>
-        )}
+            <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
+          </form>
 
-        {/* ── Main Gallery (Founders / Supporters) ── */}
-        {activeTab !== 'mine' && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <button
+              className="btn-gold-glow-v2"
+              style={{ padding: '12px 32px' }}
+              onClick={handleDonateClick}
+            >
+              ♥ {t('donate')}
+            </button>
+          </div>
+        </div>
+
+        {/* ── Main Gallery (Founders / Supporters / My Donations) ── */}
         <section className={`pillars-display ${viewMode}-mode`}>
           {isLoading ? (
             <div className="loading-state">{t('loading')}</div>
-          ) : pillars.length === 0 ? (
-            <div className="empty-state">{t('empty')}</div>
           ) : viewMode === 'hall' ? (
             <>
               {/* ─── Founders' Hall ─── */}
-              {role === 'founder' && founderPillars.length > 0 && (
+              {activeTab === 'founders' && (
                 <>
-                  {/* Search result banner above founders carousel */}
-                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
-                    {searchQuery && (
-                      <div className="search-status-banner animate-fade-up">
-                        <div className="search-status-chip">
-                          <span className="search-status-icon">🔍</span>
-                          <span className="search-status-text">
-                            &ldquo;{searchQuery}&rdquo;{' '}
-                            {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
                   <div className="pillar-section-header founder">
                     <span className="pillar-section-icon">🏛️</span>
                     <h2 className="pillar-section-title">{t('foundersHall')}</h2>
                     <p className="pillar-section-desc">{t('foundersDesc')}</p>
                   </div>
-                  <Swiper
-                    effect={'coverflow'}
-                    grabCursor={true}
-                    centeredSlides={true}
-                    slidesPerView={'auto'}
-                    speed={280}
-                    touchRatio={1.3}
-                    resistanceRatio={0.85}
-                    touchAngle={50}
-                    shortSwipes={true}
-                    longSwipes={true}
-                    longSwipesRatio={0.15}
-                    touchReleaseOnEdges={true}
-                    nested={true}
-                    coverflowEffect={{
-                      rotate: 0,
-                      stretch: 150,
-                      depth: 300,
-                      modifier: 1.2,
-                      slideShadows: false,
-                    }}
-                    breakpoints={{
-                      0: {
-                        coverflowEffect: {
-                          rotate: 0,
-                          stretch: 50,
-                          depth: 160,
-                          modifier: 1.0,
-                          slideShadows: false,
-                        },
-                      },
-                      768: {
-                        coverflowEffect: {
-                          rotate: 0,
-                          stretch: 150,
-                          depth: 300,
-                          modifier: 1.2,
-                          slideShadows: false,
-                        },
-                      },
-                    }}
-                    keyboard={{ enabled: true }}
-                    mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
-                    modules={[EffectCoverflow, Keyboard, Mousewheel]}
-                    onSwiper={setSwiperInstance}
-                    className="pillars-swiper"
-                  >
-                    {founderPillars.map((pillar) => (
-                      <SwiperSlide key={pillar.id} className="pillar-slide">
-                        <div
-                          className="pillar-wrapper"
-                          onClick={() => setSelectedPillar(pillar)}
-                        >
-                          <article className={`pillar-monument founder-pillar ${pillar.pillar_type} ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                            <div className="pillar-cap" />
-                            <div className="pillar-body">
-                              <div className="pillar-texture" />
-                              <div className="pillar-content">
-                                <h3 className="donor-name">{pillar.name}</h3>
-                                <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
-                              </div>
-                              <div className="pillar-engraving-glow" />
-                            </div>
-                            <div className="pillar-base" />
-                            <div className="pillar-aura" />
-                          </article>
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </>
-              )}
-              {role === 'founder' && founderPillars.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                  {t('empty')}
-                </div>
-              )}
 
-              {/* ─── Supporter's Wall ─── */}
-              {role === 'supporter' && (
-                <>
-                  {/* Search result banner above supporters carousel */}
-                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
+                  {/* ★ Search result banner — exactly between Header and Swiper Corridor ★ */}
+                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 20px)' }}>
                     {searchQuery && (
                       <div className="search-status-banner animate-fade-up">
                         <div className="search-status-chip">
                           <span className="search-status-icon">🔍</span>
                           <span className="search-status-text">
                             &ldquo;{searchQuery}&rdquo;{' '}
-                            {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
+                            {t('searchResultCount', { count: founderPillars.length }) || `— 검색 결과 ${founderPillars.length}개`}
                           </span>
                         </div>
                       </div>
                     )}
                   </div>
-                  <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
-                    <span className="pillar-section-icon">📿</span>
-                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
-                    <p className="pillar-section-desc">{t('supportersDesc')}</p>
-                  </div>
-                  {supporterPillars.length > 0 ? (
+
+                  {founderPillars.length > 0 ? (
                     <Swiper
+                      key={`swiper-founder-${founderPillars.length}`}
                       effect={'coverflow'}
+                      watchSlidesProgress={true}
+                      observer={true}
+                      observeParents={true}
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
@@ -446,9 +313,9 @@ export default function PillarsPage() {
                       nested={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 120,
-                        depth: 250,
-                        modifier: 1.0,
+                        stretch: 150,
+                        depth: 300,
+                        modifier: 1.2,
                         slideShadows: false,
                       }}
                       breakpoints={{
@@ -464,8 +331,114 @@ export default function PillarsPage() {
                         768: {
                           coverflowEffect: {
                             rotate: 0,
-                            stretch: 120,
-                            depth: 250,
+                            stretch: 150,
+                            depth: 300,
+                            modifier: 1.2,
+                            slideShadows: false,
+                          },
+                        },
+                      }}
+                      keyboard={{ enabled: true }}
+                      mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
+                      modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                      onSwiper={setSwiperInstance}
+                      className="pillars-swiper"
+                    >
+                      {founderPillars.map((pillar) => (
+                        <SwiperSlide key={pillar.id} className="pillar-slide">
+                          <div
+                            className="pillar-wrapper"
+                            onClick={() => setSelectedPillar(pillar)}
+                          >
+                            <article className={`pillar-monument founder-pillar ${pillar.pillar_type} ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                              <div className="pillar-cap" />
+                              <div className="pillar-body">
+                                <div className="pillar-texture" />
+                                <div className="pillar-content">
+                                  <h3 className="donor-name">{pillar.name}</h3>
+                                  <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
+                                </div>
+                                <div className="pillar-engraving-glow" />
+                              </div>
+                              <div className="pillar-base" />
+                              <div className="pillar-aura" />
+                            </article>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  ) : (
+                    <div className="empty-state">{t('empty')}</div>
+                  )}
+                </>
+              )}
+
+              {/* ─── Supporter's Wall ─── */}
+              {activeTab === 'supporters' && (
+                <>
+                  <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
+                    <span className="pillar-section-icon">📿</span>
+                    <h2 className="pillar-section-title">{t('supportersWall')}</h2>
+                    <p className="pillar-section-desc">{t('supportersDesc')}</p>
+                  </div>
+
+                  {/* ★ Search result banner — exactly between Header and Swiper Corridor ★ */}
+                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 20px)' }}>
+                    {searchQuery && (
+                      <div className="search-status-banner animate-fade-up">
+                        <div className="search-status-chip">
+                          <span className="search-status-icon">🔍</span>
+                          <span className="search-status-text">
+                            &ldquo;{searchQuery}&rdquo;{' '}
+                            {t('searchResultCount', { count: supporterPillars.length }) || `— 검색 결과 ${supporterPillars.length}개`}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {supporterPillars.length > 0 ? (
+                    <Swiper
+                      key={`swiper-supporter-${supporterPillars.length}`}
+                      effect={'coverflow'}
+                      watchSlidesProgress={true}
+                      observer={true}
+                      observeParents={true}
+                      onSwiper={setSwiperInstance}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={'auto'}
+                      speed={280}
+                      touchRatio={1.3}
+                      resistanceRatio={0.85}
+                      touchAngle={50}
+                      shortSwipes={true}
+                      longSwipes={true}
+                      longSwipesRatio={0.15}
+                      touchReleaseOnEdges={true}
+                      nested={true}
+                      coverflowEffect={{
+                        rotate: 0,
+                        stretch: 80,
+                        depth: 200,
+                        modifier: 1.0,
+                        slideShadows: false,
+                      }}
+                      breakpoints={{
+                        0: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 40,
+                            depth: 140,
+                            modifier: 1.0,
+                            slideShadows: false,
+                          },
+                        },
+                        768: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 80,
+                            depth: 200,
                             modifier: 1.0,
                             slideShadows: false,
                           },
@@ -476,33 +449,155 @@ export default function PillarsPage() {
                       modules={[EffectCoverflow, Keyboard, Mousewheel]}
                       className="pillars-swiper supporters-swiper"
                     >
-                        {supporterPillars.map((pillar) => (
-                          <SwiperSlide key={pillar.id} className="pillar-slide">
-                            <div
-                              className="pillar-wrapper"
-                              onClick={() => setSelectedPillar(pillar)}
-                            >
-                              <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
-                                <div className="pillar-cap" />
-                                <div className="pillar-body">
-                                  <div className="pillar-texture" />
-                                  <div className="pillar-content">
-                                    <h3 className="donor-name">{pillar.name}</h3>
-                                    <p className="donor-rank">{t('rankSupporter')}</p>
-                                  </div>
-                                  <div className="pillar-engraving-glow" />
+                      {supporterPillars.map((pillar) => (
+                        <SwiperSlide key={pillar.id} className="pillar-slide">
+                          <div
+                            className="pillar-wrapper"
+                            onClick={() => setSelectedPillar(pillar)}
+                          >
+                            <article className={`pillar-monument donor-pillar ${pillar.user_email === session?.user?.email ? 'is-mine' : ''}`}>
+                              <div className="pillar-cap" />
+                              <div className="pillar-body">
+                                <div className="pillar-texture" />
+                                <div className="pillar-content">
+                                  <h3 className="donor-name">{pillar.name}</h3>
+                                  <p className="donor-rank">{t('rankSupporter')}</p>
                                 </div>
-                                <div className="pillar-base" />
-                                <div className="pillar-aura" />
-                              </article>
-                            </div>
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
+                                <div className="pillar-engraving-glow" />
+                              </div>
+                              <div className="pillar-base" />
+                              <div className="pillar-aura" />
+                            </article>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   ) : (
-                    <div style={{ textAlign: 'center', padding: '60px 0', color: '#888', fontStyle: 'italic' }}>
-                      {t('emptySupporter')}
+                    <div className="empty-state">{t('emptySupporter')}</div>
+                  )}
+                </>
+              )}
+
+              {/* ─── My Offerings (Hall View) ─── */}
+              {activeTab === 'mine' && (
+                <>
+                  <div className="pillar-section-header mine" style={{ marginTop: '0' }}>
+                    <span className="pillar-section-icon">🪷</span>
+                    <h2 className="pillar-section-title">{t('myDonations') || '내 후원'}</h2>
+                    <p className="pillar-section-desc">
+                      {session?.user 
+                        ? `${session.user.name || '순례자'} 님의 정성 어린 공양 기록입니다.` 
+                        : '로그인 후 내 공양 기록을 확인하세요.'}
+                    </p>
+                  </div>
+
+                  {/* ★ Search result banner — between Header and Corridor ★ */}
+                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 20px)' }}>
+                    {searchQuery && (
+                      <div className="search-status-banner animate-fade-up">
+                        <div className="search-status-chip">
+                          <span className="search-status-icon">🔍</span>
+                          <span className="search-status-text">
+                            &ldquo;{searchQuery}&rdquo;{' '}
+                            {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {!session?.user ? (
+                    <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center' }}>
+                      <p>로그인 후 내 후원 내역을 확인하세요.</p>
+                      <button onClick={() => setShowLoginModal(true)} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
+                        ✨ 로그인하기
+                      </button>
                     </div>
+                  ) : pillars.length === 0 ? (
+                    <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>
+                      <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🪷</div>
+                      <p>{t('myDonationsEmpty') || '아직 후원 내역이 없습니다.'}</p>
+                      <button onClick={handleDonateClick} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
+                        ♥ {t('donate')}
+                      </button>
+                    </div>
+                  ) : (
+                    <Swiper
+                      key={`swiper-mine-${pillars.length}`}
+                      effect={'coverflow'}
+                      watchSlidesProgress={true}
+                      observer={true}
+                      observeParents={true}
+                      onSwiper={setSwiperInstance}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={'auto'}
+                      speed={280}
+                      touchRatio={1.3}
+                      resistanceRatio={0.85}
+                      touchAngle={50}
+                      shortSwipes={true}
+                      longSwipes={true}
+                      longSwipesRatio={0.15}
+                      touchReleaseOnEdges={true}
+                      nested={true}
+                      coverflowEffect={{
+                        rotate: 0,
+                        stretch: 80,
+                        depth: 200,
+                        modifier: 1.0,
+                        slideShadows: false,
+                      }}
+                      breakpoints={{
+                        0: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 40,
+                            depth: 140,
+                            modifier: 1.0,
+                            slideShadows: false,
+                          },
+                        },
+                        768: {
+                          coverflowEffect: {
+                            rotate: 0,
+                            stretch: 80,
+                            depth: 200,
+                            modifier: 1.0,
+                            slideShadows: false,
+                          },
+                        },
+                      }}
+                      keyboard={{ enabled: true }}
+                      mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
+                      modules={[EffectCoverflow, Keyboard, Mousewheel]}
+                      className="pillars-swiper"
+                    >
+                      {pillars.map((pillar) => (
+                        <SwiperSlide key={pillar.id} className="pillar-slide">
+                          <div
+                            className="pillar-wrapper"
+                            onClick={() => setSelectedPillar(pillar)}
+                          >
+                            <article className={`pillar-monument ${pillar.pillar_type === 'donor' ? 'donor-pillar' : 'founder-pillar'} ${pillar.pillar_type} is-mine`}>
+                              <div className="pillar-cap" />
+                              <div className="pillar-body">
+                                <div className="pillar-texture" />
+                                <div className="pillar-content">
+                                  <h3 className="donor-name">{pillar.name}</h3>
+                                  <p className="donor-rank">
+                                    {pillar.pillar_type === 'donor' ? t('rankSupporter') : (pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout'))}
+                                  </p>
+                                </div>
+                                <div className="pillar-engraving-glow" />
+                              </div>
+                              <div className="pillar-base" />
+                              <div className="pillar-aura" />
+                            </article>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   )}
                 </>
               )}
@@ -512,7 +607,22 @@ export default function PillarsPage() {
             <div className="sacred-hall-frame animate-fade-up">
               <div className="hall-frame-fade-top" aria-hidden="true" />
               <div className="sacred-hall-scroll-area custom-scrollbar" ref={scrollAreaRef}>
-                {role === 'founder' && (
+                {/* Search result banner — between Header and Grid */}
+                <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 20px)' }}>
+                  {searchQuery && (
+                    <div className="search-status-banner animate-fade-up">
+                      <div className="search-status-chip">
+                        <span className="search-status-icon">🔍</span>
+                        <span className="search-status-text">
+                          &ldquo;{searchQuery}&rdquo;{' '}
+                          {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {activeTab === 'founders' && (
                   <>
                     <div className="pillar-section-header founder">
                       <span className="pillar-section-icon">🏛️</span>
@@ -558,7 +668,7 @@ export default function PillarsPage() {
                   </>
                 )}
 
-                {role === 'supporter' && (
+                {activeTab === 'supporters' && (
                   <>
                     <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
                       <span className="pillar-section-icon">📿</span>
@@ -602,12 +712,113 @@ export default function PillarsPage() {
                     )}
                   </>
                 )}
+
+                {activeTab === 'mine' && (
+                  <>
+                    <div className="pillar-section-header mine" style={{ marginTop: '0' }}>
+                      <span className="pillar-section-icon">🪷</span>
+                      <h2 className="pillar-section-title">{t('myDonations') || '내 후원'}</h2>
+                      <p className="pillar-section-desc">
+                        {session?.user 
+                          ? `${session.user.name || '순례자'} 님의 정성 어린 공양 기록입니다.` 
+                          : '로그인 후 내 공양 기록을 확인하세요.'}
+                      </p>
+                    </div>
+                    {!session?.user ? (
+                      <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center' }}>
+                        <p>로그인 후 내 후원 내역을 확인하세요.</p>
+                        <button onClick={() => setShowLoginModal(true)} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
+                          ✨ 로그인하기
+                        </button>
+                      </div>
+                    ) : pillars.length === 0 ? (
+                      <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>
+                        <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🪷</div>
+                        <p>{t('myDonationsEmpty') || '아직 후원 내역이 없습니다.'}</p>
+                        <button onClick={handleDonateClick} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
+                          ♥ {t('donate')}
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="golden-plaques-grid">
+                        {pillars.map((pillar) => (
+                          <div
+                            key={pillar.id}
+                            className="plaque-wrapper"
+                            onClick={() => setSelectedPillar(pillar)}
+                          >
+                            <article className={`golden-plaque ${pillar.pillar_type === 'donor' ? 'supporter-plaque' : 'founder-plaque'} is-mine`}>
+                              <div className="plaque-corner-ornament tl" />
+                              <div className="plaque-corner-ornament tr" />
+                              <div className="plaque-corner-ornament bl" />
+                              <div className="plaque-corner-ornament br" />
+                              <div className="plaque-header">
+                                <span className="plaque-badge">{pillar.pillar_type === 'donor' ? '📿 후원자' : '🏛️ 창립자'}</span>
+                                <span className="plaque-mine-tag">{pillar.is_public ? '👁️ 공개' : '🔒 비공개'}</span>
+                              </div>
+                              <h3 className="plaque-name">{pillar.name}</h3>
+                              {pillar.message && (
+                                <p className="plaque-message-preview">“{pillar.message}”</p>
+                              )}
+                              <div className="plaque-footer">
+                                <span className="plaque-devotion">✨ {Number(pillar.amount).toLocaleString()} P</span>
+                              </div>
+                              <div className="plaque-glow" />
+                            </article>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
               <div className="hall-frame-fade-bottom" aria-hidden="true" />
             </div>
           )}
         </section>
-        )} {/* end activeTab !== 'mine' */}
+
+        {/* ── My Donations Detailed Management List (available when My Donations tab is active) ── */}
+        {activeTab === 'mine' && session?.user && pillars.length > 0 && (
+          <section className="my-donations-section animate-fade-up">
+            <h3 style={{ textAlign: 'center', color: '#d4a017', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', marginBottom: '20px' }}>
+              ⚙️ 내 공양 관리 (공개 설정 및 삭제)
+            </h3>
+            <div className="my-donations-list">
+              {pillars.map(p => (
+                <div key={p.id} className="my-donation-card">
+                  <div className="my-donation-info">
+                    <span className="my-donation-icon">{p.pillar_type === 'donor' ? '📿' : '🏛️'}</span>
+                    <div>
+                      <p className="my-donation-name">{p.name}</p>
+                      <p className="my-donation-meta">
+                        🪷 {p.amount} · {new Date(p.created_at).toLocaleDateString()}
+                        {p.message && <span style={{ opacity: 0.6 }}> · "{p.message.slice(0, 30)}{p.message.length > 30 ? '…' : ''}"</span>}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="my-donation-actions">
+                    <button
+                      className={`btn-toggle-public ${p.is_public ? 'public' : 'private'}`}
+                      onClick={(e) => { e.stopPropagation(); handleTogglePublic(p.id, p.is_public); }}
+                      title={p.is_public ? '비공개로 전환' : '공개로 전환'}
+                    >
+                      {p.is_public ? '👁️ 공개' : '🔒 비공개'}
+                    </button>
+                    {confirmDeleteId === p.id ? (
+                      <div className="delete-confirm">
+                        <span style={{ fontSize: '0.8rem', color: '#ff8888' }}>삭제 시 복구 불가. 진행?</span>
+                        <button className="btn-confirm-delete" onClick={(e) => { e.stopPropagation(); handleDeleteMyPillar(p.id); }}>삭제</button>
+                        <button className="btn-cancel-delete" onClick={(e) => { e.stopPropagation(); setConfirmDeleteId(null); }}>취소</button>
+                      </div>
+                    ) : (
+                      <button className="btn-delete-pillar" onClick={(e) => { e.stopPropagation(); setConfirmDeleteId(p.id); }} title="삭제">🗑️</button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Bottom Actions: View All Reset (when active) + Scroll To Top */}
         <div className="pillars-bottom-controls animate-fade-up">

@@ -74,7 +74,9 @@
     "rateLimitMsg": "Le temple invite au calme. Veuillez patienter un instant avant de parler à nouveau.",
     "unexpectedError": "Une réponse inattendue du Guru. Veuillez réessayer.",
     "unauthMessage": "Entrez dans la lumière pour parler au Guru.",
-    "signIn": "Connectez-vous pour chercher la sagesse"
+    "signIn": "Connectez-vous pour chercher la sagesse",
+    "ebookTip": "※ Veuillez ne pas fermer ni quitter cet écran pendant le tissage de l'histoire (~10-15s). Quitter prématurément peut consommer des lotus sans finaliser l'histoire.",
+    "ebookDontLeave": "Veuillez ne pas quitter cet écran pendant la génération."
   },
   "WishRoof": {
     "eyebrow": "Le Sanctuaire Éternel",
@@ -156,7 +158,9 @@
     "searchResultCount": "Résultats ({count})",
     "loginRequiredTitle": "Connexion Requise",
     "loginRequiredDesc": "Veuillez vous connecter pour faire une offrande.",
-    "signInBtn": "Se Connecter"
+    "signInBtn": "Se Connecter",
+    "myDonations": "Mes Offrandes",
+    "myDonationsEmpty": "Aucune offrande enregistrée pour le moment."
   },
   "hall": {
     "title": "Sanctuaire de Lumière",

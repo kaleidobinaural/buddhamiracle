@@ -74,7 +74,9 @@
     "rateLimitMsg": "Kuil memohon keheningan. Harap tunggu sejenak sebelum berbicara lagi.",
     "unexpectedError": "Tanggapan tak terduga dari Guru. Silakan coba lagi.",
     "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
-    "signIn": "Masuk untuk mencari kebijaksanaan"
+    "signIn": "Masuk untuk mencari kebijaksanaan",
+    "ebookTip": "※ Jangan tutup atau tinggalkan layar ini saat cerita sedang dirangkai (~10-15 detik). Meninggalkan layar dapat menggunakan teratai tanpa menyelesaikan cerita.",
+    "ebookDontLeave": "Harap jangan tinggalkan layar ini selama proses berlangsung."
   },
   "WishRoof": {
     "eyebrow": "Tempat Suci Abadi",
@@ -156,7 +158,9 @@
     "searchResultCount": "Hasil ({count})",
     "loginRequiredTitle": "Diperlukan Masuk",
     "loginRequiredDesc": "Silakan masuk untuk mempersembahkan ke kuil.",
-    "signInBtn": "Masuk"
+    "signInBtn": "Masuk",
+    "myDonations": "Persembahan Saya",
+    "myDonationsEmpty": "Belum ada persembahan tercatat."
   },
   "hall": {
     "title": "Tempat Suci Cahaya",

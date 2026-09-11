@@ -74,7 +74,9 @@
     "rateLimitMsg": "Cõi thiền cần sự tĩnh lặng. Vui lòng đợi một chút trước khi tiếp tục trò chuyện.",
     "unexpectedError": "Phản hồi không xác định từ Bậc Giác Ngộ. Vui lòng thử lại.",
     "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
-    "signIn": "Đăng nhập để tìm kiếm trí tuệ"
+    "signIn": "Đăng nhập để tìm kiếm trí tuệ",
+    "ebookTip": "※ Vui lòng không đóng hoặc rời khỏi màn hình trong khi câu chuyện đang được tạo (~10–15 giây). Rời sớm có thể làm mất hoa sen mà không nhận được truyện.",
+    "ebookDontLeave": "Vui lòng không rời màn hình khi đang tạo truyện."
   },
   "WishRoof": {
     "eyebrow": "Thánh Địa Vĩnh Hằng",
@@ -156,7 +158,9 @@
     "searchResultCount": "Kết quả ({count})",
     "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
     "loginRequiredDesc": "Vui lòng đăng nhập để dâng hoa cúng dường lên đền.",
-    "signInBtn": "Đăng Nhập"
+    "signInBtn": "Đăng Nhập",
+    "myDonations": "Cúng Dường Của Tôi",
+    "myDonationsEmpty": "Chưa có ghi nhận cúng dường nào."
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",

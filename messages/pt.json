@@ -74,7 +74,9 @@
     "rateLimitMsg": "O templo pede quietude. Por favor, aguarde um momento antes de falar novamente.",
     "unexpectedError": "Uma resposta inesperada do Guru. Por favor, tente novamente.",
     "unauthMessage": "Entre na luz para falar com o Guru.",
-    "signIn": "Entrar para buscar sabedoria"
+    "signIn": "Entrar para buscar sabedoria",
+    "ebookTip": "※ Não feche ou saia desta tela enquanto a história está sendo criada (~10–15s). Sair pode consumir pétalas de lótus sem entregar a história.",
+    "ebookDontLeave": "Por favor, não saia desta tela durante a criação."
   },
   "WishRoof": {
     "eyebrow": "O Santuário Eterno",
@@ -156,7 +158,9 @@
     "searchResultCount": "Resultados ({count})",
     "loginRequiredTitle": "Login Necessário",
     "loginRequiredDesc": "Por favor, faça login para fazer uma oferenda.",
-    "signInBtn": "Entrar"
+    "signInBtn": "Entrar",
+    "myDonations": "Minhas Oferendas",
+    "myDonationsEmpty": "Nenhuma oferenda registrada ainda."
   },
   "hall": {
     "title": "Santuário da Luz",

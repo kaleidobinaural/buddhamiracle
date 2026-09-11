@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { flushSync } from 'react-dom';
 import { useTranslations, useLocale } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import CharacterAvatar from '@/components/CharacterAvatar';
 
 interface Message {
+  id: string;
   role: 'user' | 'model';
   content: string;
   sources?: string[];
@@ -19,7 +19,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [displayedReply, setDisplayedReply] = useState('');
+  const [isWaitingReply, setIsWaitingReply] = useState(false);
   const [guruAvatar, setGuruAvatar] = useState<string | null>('/images/guru/guru_idle.png');
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [isGeneratingEbook, setIsGeneratingEbook] = useState(false);
@@ -71,13 +71,15 @@ export default function ChatPage() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, isTyping, displayedReply]);
+  }, [messages, isTyping, isWaitingReply]);
 
-  // Typewriter effect
+  // Typewriter effect directly inside the model message (no unmount/flicker)
   const typeReply = (text: string, sources: string[] = []) => {
-    let index = 0;
-    setDisplayedReply('');
+    const modelMsgId = 'model-' + Date.now();
+    setMessages(prev => [...prev, { id: modelMsgId, role: 'model', content: '', sources }]);
+    setIsTyping(true);
 
+    let currIndex = 0;
     let audioCtx: AudioContext | null = null;
     try { audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)(); } catch (e) {}
 
@@ -100,18 +102,19 @@ export default function ChatPage() {
     };
 
     const interval = setInterval(() => {
-      const char = text[index];
-      setDisplayedReply(prev => prev + char);
-      if (index % 2 === 0) playWoodenTap();
-      index++;
-      if (index >= text.length) {
+      currIndex++;
+      const partial = text.slice(0, currIndex);
+      setMessages(prev => {
+        const idx = prev.findIndex(m => m.id === modelMsgId);
+        if (idx === -1) return prev;
+        const copy = [...prev];
+        copy[idx] = { ...copy[idx], content: partial };
+        return copy;
+      });
+      if (currIndex % 2 === 0) playWoodenTap();
+      if (currIndex >= text.length) {
         clearInterval(interval);
-        // Batch the final state update atomically to prevent 1-frame blank flash
-        flushSync(() => {
-          setMessages(prev => [...prev, { role: 'model', content: text, sources }]);
-          setDisplayedReply('');
-          setIsTyping(false);
-        });
+        setIsTyping(false);
       }
     }, 30);
   };
@@ -120,10 +123,11 @@ export default function ChatPage() {
     e.preventDefault();
     if (!input.trim() || isTyping) return;
 
-    const userMessage: Message = { role: 'user', content: input.trim() };
+    const userMessage: Message = { id: 'usr-' + Date.now(), role: 'user', content: input.trim() };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
+    setIsWaitingReply(true);
 
     try {
       const response = await fetch('/api/chat', {
@@ -139,6 +143,8 @@ export default function ChatPage() {
         setLotusCount(data.lotus_count);
         window.dispatchEvent(new CustomEvent('lotus-updated', { detail: { lotus_count: data.lotus_count } }));
       }
+
+      setIsWaitingReply(false);
 
       if (response.status === 401) {
         throw new Error('Unauthorized');
@@ -168,6 +174,7 @@ export default function ChatPage() {
       }
     } catch (err: any) {
       console.error('Chat error:', err);
+      setIsWaitingReply(false);
       typeReply(err.message || 'The temple is silent for a moment. Please share your thoughts again.', []);
     }
   };
@@ -221,10 +228,11 @@ export default function ChatPage() {
         return;
       }
 
-      // Build a meaningful filename from the first user message
+      // Build a meaningful, collision-free filename in user's language
       const firstUserMsg = messages.find(m => m.role === 'user')?.content || '';
-      const topic = firstUserMsg
-        .replace(/[^\w\s가-힣]/g, '')
+      const isKorean = locale === 'ko';
+      const topic = (data.title || firstUserMsg)
+        .replace(/[^\w\s가-힣-]/g, '')
         .trim()
         .split(/\s+/)
         .slice(0, 4)
@@ -232,22 +240,11 @@ export default function ChatPage() {
         .slice(0, 30);
       const now = new Date();
       const ts = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
-      const filename = topic ? `wisdom-story-${topic}-${ts}.html` : `wisdom-story-${ts}.html`;
+      const prefix = isKorean ? '빛의사원-지혜이야기' : 'wisdom-story';
+      const filename = topic ? `${prefix}-${topic}-${ts}.html` : `${prefix}-${ts}.html`;
 
-      // Inject print button + @media print CSS into the HTML before download
-      const printable = data.html.replace(
-        '</body>',
-        `<div style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;gap:10px;">
-          <button onclick="window.print()" style="background:linear-gradient(135deg,#D4A017,#FFD700);color:#1a1200;font-weight:700;font-size:0.95rem;border:none;border-radius:12px;padding:12px 24px;cursor:pointer;box-shadow:0 4px 16px rgba(212,160,23,0.4);">
-            🖨️ PDF로 저장
-          </button>
-          <button onclick="this.parentNode.style.display='none'" style="background:rgba(255,255,255,0.08);color:#fff;font-size:0.85rem;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;cursor:pointer;">닫기</button>
-        </div>
-        <style>@media print { button, [style*="position:fixed"] { display:none!important; } body { background: white!important; } }</style>
-        </body>`
-      );
-
-      const blob = new Blob([printable], { type: 'text/html;charset=utf-8' });
+      // data.html already contains the standalone, localized print button from api/ebook/route.ts
+      const blob = new Blob([data.html], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -298,8 +295,8 @@ export default function ChatPage() {
             <div className="message-bubble">{t('welcome')}</div>
           </div>
 
-          {messages.map((msg, i) => (
-            <div key={i} className={`message-wrapper ${msg.role} chat-bubble-animated flex flex-col`}>
+          {messages.map((msg) => (
+            <div key={msg.id} className={`message-wrapper ${msg.role} chat-bubble-animated flex flex-col`}>
               <div className={`message-bubble ${msg.role === 'model' ? 'guru-font' : ''}`}>{msg.content}</div>
               {msg.role === 'model' && msg.sources && msg.sources.length > 0 && (
                 <div className="message-sources mt-2 text-xs text-[#d4af37]/60 flex flex-col items-end self-end mr-4">
@@ -319,14 +316,7 @@ export default function ChatPage() {
             </div>
           ))}
 
-          {/* Typewriter Reply */}
-          {displayedReply && (
-            <div className="message-wrapper model chat-bubble-animated flex flex-col">
-              <div className="message-bubble guru-font">{displayedReply}</div>
-            </div>
-          )}
-
-          {isTyping && !displayedReply && (
+          {isWaitingReply && (
             <div className="message-wrapper model">
               <div className="guru-breathing-loader mt-2 ml-4">
                 <div className="breathing-orb"></div>
@@ -459,6 +449,20 @@ export default function ChatPage() {
               letterSpacing: '0.08em',
             }}>
               {t('ebookWait') || 'The Guru is distilling your conversation into sacred narrative…'}
+            </p>
+            <p style={{
+              marginTop: '16px',
+              fontSize: '0.85rem',
+              color: '#FFD700',
+              padding: '8px 18px',
+              background: 'rgba(212,160,23,0.12)',
+              borderRadius: '8px',
+              border: '1px solid rgba(212,160,23,0.3)',
+              maxWidth: '360px',
+              margin: '16px auto 0',
+              lineHeight: 1.5,
+            }}>
+              ⚠️ {t('ebookDontLeave') || '생성 중에는 이 화면을 끄거나 벗어나지 마세요. 연꽃이 소모됩니다.'}
             </p>
           </div>
           <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>

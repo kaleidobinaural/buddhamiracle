@@ -442,20 +442,19 @@ export default function DharmaPage() {
           aria-modal="true"
           aria-label={`Reading: ${readingScripture.source}`}
         >
+          {/* Floating X close button — fixed on viewport so scrolling down never hides it */}
+          <button
+            className="parchment-floating-close"
+            onClick={() => setReadingScripture(null)}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
           <div
             className="parchment-modal animate-fade-up"
             onClick={e => e.stopPropagation()}
           >
-            {/* X close button — outside parchment-body so scroll can't eat the tap */}
-            <button
-              className="parchment-close"
-              onClick={() => setReadingScripture(null)}
-              aria-label="Close"
-              style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-            >
-              ×
-            </button>
-
             {/* Scroll rod top */}
             <div className="scroll-top" />
 
@@ -566,18 +565,34 @@ export default function DharmaPage() {
           border: 1px solid rgba(212,160,23,0.3); border-radius: 100px;
           padding: 10px 24px; cursor: pointer;
           transition: 0.4s var(--ease-expo);
-          -webkit-tap-highlight-color: transparent;
-          outline: none;
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
           -webkit-appearance: none;
           touch-action: manipulation;
         }
         .btn-parchment-read:hover { background: rgba(212,160,23,0.1); border-color: rgba(212,160,23,0.7); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,160,23,0.15); }
+        .btn-parchment-read:focus,
+        .btn-parchment-read:focus-visible {
+          outline: none !important;
+          box-shadow: 0 0 16px rgba(212,160,23,0.3) !important;
+          border-color: rgba(212,160,23,0.7) !important;
+        }
         .btn-parchment-read:active { background: rgba(212,160,23,0.15); transform: scale(0.98); }
         .btn-parchment-icon { font-size: 1rem; }
 
         /* ── Gold button (Today's Wisdom) ── */
-        .btn-premium-gold { background: var(--primary-gold); color: #000; padding: 14px 36px; border-radius: 100px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.6s var(--ease-expo); box-shadow: 0 10px 30px rgba(212,160,23,0.2); }
+        .btn-premium-gold {
+          background: var(--primary-gold); color: #000; padding: 14px 36px; border-radius: 100px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.6s var(--ease-expo); box-shadow: 0 10px 30px rgba(212,160,23,0.2);
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+          touch-action: manipulation;
+        }
         .btn-premium-gold:hover { background: #fff; transform: translateY(-4px) scale(1.05); box-shadow: 0 20px 60px rgba(212,160,23,0.5); }
+        .btn-premium-gold:focus,
+        .btn-premium-gold:focus-visible {
+          outline: none !important;
+          box-shadow: 0 0 20px rgba(212,160,23,0.6) !important;
+        }
 
         /* ── Load More ── */
         .load-more-wrap { display: flex; justify-content: center; margin-top: 60px; }
@@ -607,10 +622,33 @@ export default function DharmaPage() {
         }
         @keyframes fade-in-overlay { from { opacity: 0; } to { opacity: 1; } }
 
+        .parchment-floating-close {
+          position: fixed; top: calc(var(--nav-height, 80px) + 16px); right: 20px;
+          width: 44px; height: 44px; border-radius: 50%;
+          background: rgba(18, 14, 10, 0.88);
+          border: 1.5px solid #d4a017;
+          color: #ffd700; font-size: 1.3rem; font-weight: bold;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; z-index: 10001;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 16px rgba(212,160,23,0.3);
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+          touch-action: manipulation;
+          transition: transform 0.25s, background 0.25s, color 0.25s;
+        }
+        .parchment-floating-close:hover {
+          transform: scale(1.08);
+          background: #d4a017;
+          color: #000;
+        }
+        .parchment-floating-close:active {
+          transform: scale(0.94);
+        }
+
         .parchment-modal {
           width: 100%; max-width: 820px;
           padding: 0 20px; box-sizing: border-box;
-          position: relative; /* Required for parchment-close absolute positioning */
+          position: relative;
         }
 
         /* Reuse scroll rod styles */
