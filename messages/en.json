@@ -50,7 +50,8 @@
     "allLoaded": "All {count} passages have been revealed",
     "mayWisdomLight": "May this wisdom light your path",
     "translating": "Translating...",
-    "passagesFound": "{count} passages found"
+    "passagesFound": "{count} passages found",
+    "close": "Close Scroll"
   },
   "Guru": {
     "title": "The Enlightened Guide",
@@ -160,7 +161,16 @@
     "loginRequiredDesc": "Please sign in first to make an offering to the temple.",
     "signInBtn": "Sign In",
     "myDonations": "My Offerings",
-    "myDonationsEmpty": "No offerings inscribed yet."
+    "myDonationsEmpty": "No offerings inscribed yet.",
+    "myPillarBadge": "My Offering",
+    "makePrivate": "Make Private",
+    "makePublic": "Make Public",
+    "deletePillar": "Delete Offering",
+    "confirmDeletePillarTitle": "Confirm Deletion",
+    "confirmDeletePillarDesc": "Are you sure you want to delete this offering? This action cannot be undone.",
+    "modalCancel": "Cancel",
+    "btnConfirmDelete": "Delete",
+    "allPillars": "All Offerings"
   },
   "hall": {
     "title": "Sanctuary of Light",

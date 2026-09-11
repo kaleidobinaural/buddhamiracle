@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 import { auth } from '@/auth';
 
 export async function GET(request: Request) {
@@ -9,12 +9,14 @@ export async function GET(request: Request) {
   const type = searchParams.get('type'); // 'founder' | 'supporter'
   const showMine = searchParams.get('mine') === 'true';
   const session = await auth();
-  const userEmail = session?.user?.email;
+  const rawEmail = session?.user?.email;
+  const userEmail = rawEmail ? rawEmail.trim().toLowerCase() : null;
   const adminView = searchParams.get('admin') === 'true';
-  const adminEmails = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [];
+  const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
   const isAdmin = userEmail ? adminEmails.includes(userEmail) : false;
 
   try {
+    const supabase = getSupabaseAdmin();
     let query = supabase.from('pillars').select('*');
 
     if (sort === 'amount') {
@@ -34,11 +36,11 @@ export async function GET(request: Request) {
 
     // Privacy Logic:
     if (showMine && userEmail) {
-      query = query.eq('user_email', userEmail);
+      query = query.ilike('user_email', userEmail);
     } else if (isAdmin && adminView) {
       // Admin sees all pillars, no filter applied
     } else if (userEmail) {
-      query = query.or(`is_public.eq.true,user_email.eq.${userEmail}`);
+      query = query.or(`is_public.eq.true,user_email.ilike.${userEmail}`);
     } else {
       query = query.eq('is_public', true);
     }
@@ -62,6 +64,7 @@ export async function POST(request: Request) {
     const session = await auth();
     const body = await request.json();
     const { name, amount, message, is_public, pillar_type } = body;
+    const supabase = getSupabaseAdmin();
 
     const { data, error } = await supabase
       .from('pillars')
@@ -85,66 +88,98 @@ export async function POST(request: Request) {
 }
 
 /**
- * PATCH: User can toggle is_public on their own pillar.
+ * PATCH: User can toggle is_public on their own pillar (or admin).
  */
 export async function PATCH(request: Request) {
   const session = await auth();
-  if (!session?.user?.email) {
+  const rawEmail = session?.user?.email;
+  if (!rawEmail) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  const userEmail = rawEmail.trim().toLowerCase();
+  const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+  const isAdmin = adminEmails.includes(userEmail);
 
   try {
-    const { id, is_public } = await request.json();
+    const supabase = getSupabaseAdmin();
+    const body = await request.json();
+    const { id, is_public } = body;
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
 
-    // Only allow updating own pillar
-    const { data, error } = await supabase
+    // Fetch existing pillar to verify ownership
+    const { data: pillar, error: fetchError } = await supabase
       .from('pillars')
-      .update({ is_public })
+      .select('id, is_public, user_email')
       .eq('id', id)
-      .eq('user_email', session.user.email)
+      .single();
+
+    if (fetchError || !pillar) {
+      return NextResponse.json({ error: 'Record not found' }, { status: 404 });
+    }
+
+    const isOwner = pillar.user_email && pillar.user_email.trim().toLowerCase() === userEmail;
+    if (!isAdmin && !isOwner) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    const nextIsPublic = typeof is_public === 'boolean' ? is_public : !pillar.is_public;
+
+    const { data: updated, error: updateError } = await supabase
+      .from('pillars')
+      .update({ is_public: nextIsPublic })
+      .eq('id', id)
       .select();
 
-    if (error) throw error;
-    if (!data || data.length === 0) {
-      return NextResponse.json({ error: 'Record not found or not owned by user' }, { status: 404 });
-    }
-    return NextResponse.json({ success: true, data: data[0] });
+    if (updateError) throw updateError;
+    return NextResponse.json({ success: true, data: updated[0] });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 /**
- * DELETE: Admin can delete any pillar. Users can delete their own.
+ * DELETE: Admin or owner can delete a pillar by ID.
  */
 export async function DELETE(request: Request) {
   const session = await auth();
-  if (!session?.user?.email) {
+  const rawEmail = session?.user?.email;
+  if (!rawEmail) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-
-  const adminEmails = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [];
-  const isAdmin = adminEmails.includes(session.user.email);
+  const userEmail = rawEmail.trim().toLowerCase();
+  const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+  const isAdmin = adminEmails.includes(userEmail);
 
   try {
-    const { getSupabaseAdmin } = await import('@/lib/supabase');
-    const db = isAdmin ? getSupabaseAdmin() : supabase;
-
-    const { id } = await request.json();
+    const supabase = getSupabaseAdmin();
+    const body = await request.json();
+    const { id } = body;
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
 
-    let deleteQuery = db.from('pillars').delete().eq('id', id);
-    // Non-admins can only delete their own records
-    if (!isAdmin) {
-      deleteQuery = deleteQuery.eq('user_email', session.user.email);
+    const { data: pillar, error: fetchError } = await supabase
+      .from('pillars')
+      .select('id, user_email')
+      .eq('id', id)
+      .single();
+
+    if (fetchError || !pillar) {
+      return NextResponse.json({ error: 'Record not found' }, { status: 404 });
     }
 
-    const { error } = await deleteQuery;
-    if (error) throw error;
+    const isOwner = pillar.user_email && pillar.user_email.trim().toLowerCase() === userEmail;
+    if (!isAdmin && !isOwner) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
 
+    const { error: deleteError } = await supabase
+      .from('pillars')
+      .delete()
+      .eq('id', id);
+
+    if (deleteError) throw deleteError;
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+

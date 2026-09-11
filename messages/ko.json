@@ -50,7 +50,8 @@
     "allLoaded": "모든 {count}개의 구절이 밝혀졌습니다",
     "mayWisdomLight": "이 지혜가 당신의 길을 밝히기를 소망합니다",
     "translating": "번역 중...",
-    "passagesFound": "{count}개의 구절을 찾았습니다"
+    "passagesFound": "{count}개의 구절을 찾았습니다",
+    "close": "두루마리 닫기"
   },
   "Guru": {
     "title": "지혜로운 안내자",
@@ -160,7 +161,16 @@
     "loginRequiredDesc": "사원에 공양을 올리시려면 먼저 로그인해 주세요.",
     "signInBtn": "로그인하기",
     "myDonations": "내 후원",
-    "myDonationsEmpty": "아직 후원 내역이 없습니다."
+    "myDonationsEmpty": "아직 후원 내역이 없습니다.",
+    "myPillarBadge": "내 공양",
+    "makePrivate": "비공개로 전환",
+    "makePublic": "공개로 전환",
+    "deletePillar": "공양 삭제",
+    "confirmDeletePillarTitle": "공양 삭제 확인",
+    "confirmDeletePillarDesc": "이 공양 기록을 삭제하시겠습니까? 삭제된 기록은 복구할 수 없습니다.",
+    "modalCancel": "취소",
+    "btnConfirmDelete": "삭제 확인",
+    "allPillars": "전체 후원 보기"
   },
   "hall": {
     "title": "빛의 성소",

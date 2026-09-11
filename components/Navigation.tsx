@@ -70,6 +70,26 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
+  // Bulletproof language change: preserves current pathname, hash, and search parameters
+  const handleLanguageChange = (nextLocale: string) => {
+    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
+    const supportedLocales = ['en', 'ko', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'ar', 'vi', 'th', 'id', 'my', 'km'];
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+    const currentSearch = typeof window !== 'undefined' ? window.location.search : '';
+    const currentHash = typeof window !== 'undefined' ? window.location.hash : '';
+
+    const segments = currentPath.split('/').filter(Boolean);
+    if (segments.length > 0 && supportedLocales.includes(segments[0])) {
+      segments[0] = nextLocale;
+    } else {
+      segments.unshift(nextLocale);
+    }
+
+    const newPath = '/' + segments.join('/') + currentSearch + currentHash;
+    setMobileOpen(false);
+    window.location.href = newPath;
+  };
+
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
@@ -170,12 +190,7 @@ export default function Navigation() {
               <select
                 className="btn-ghost locale-btn"
                 value={locale}
-                onChange={(e) => {
-                  const nextLocale = e.target.value;
-                  document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
-                  router.replace(pathWithoutLocale, { locale: nextLocale });
-                }}
+                onChange={(e) => handleLanguageChange(e.target.value)}
                 style={{ appearance: 'auto', cursor: 'pointer', paddingRight: '12px' }}
               >
                 <option value="en">English</option>
@@ -329,13 +344,7 @@ export default function Navigation() {
                 className="mobile-nav-link bloom-9"
                 style={{ fontSize: '1rem', color: '#888', background: 'none', border: 'none', cursor: 'pointer', marginTop: '4px', appearance: 'auto', textAlign: 'center', textAlignLast: 'center', margin: '4px auto 0', display: 'block' }}
                 value={locale}
-                onChange={(e) => {
-                  const nextLocale = e.target.value;
-                  document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-                  const pathWithoutLocale = pathname.replace(/^\/(en|ko|ja|zh|es|fr|de|pt|ar|vi|th|id|my|km)(\/|$)/, '/') || '/';
-                  router.replace(pathWithoutLocale, { locale: nextLocale });
-                  setMobileOpen(false);
-                }}
+                onChange={(e) => handleLanguageChange(e.target.value)}
               >
                 <option value="en">🌐 English</option>
                 <option value="ko">🌐 한국어</option>
