@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter, Link, usePathname as useIntlPathname } from '@/i18n/navigation';
 import { useSession, signOut, signIn } from "next-auth/react";
@@ -71,15 +71,24 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
+  // Flag to skip menu-close when only locale changes (not actual navigation)
+  const isLocaleChanging = useRef(false);
+
   // SPA language change: uses next-intl router.replace() — no page reload, menu stays open
   const handleLanguageChange = (nextLocale: string) => {
+    if (nextLocale === locale) return; // same locale, do nothing
+    isLocaleChanging.current = true;
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
     // Use locale-free intlPathname so router.replace doesn't duplicate locale prefix
     router.replace(intlPathname as any, { locale: nextLocale, scroll: false });
   };
 
-  // Close mobile menu on actual route change (not locale change)
+  // Close mobile menu on actual page navigation, but NOT on locale-only changes
   useEffect(() => {
+    if (isLocaleChanging.current) {
+      isLocaleChanging.current = false;
+      return; // locale just changed — keep menu open
+    }
     setMobileOpen(false);
   }, [pathname]);
 
