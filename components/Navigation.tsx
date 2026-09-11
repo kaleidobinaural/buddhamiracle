@@ -306,7 +306,7 @@ export default function Navigation() {
               {/* Auth-gated donate in mobile nav */}
               <button
                 className="mobile-nav-link bloom-8"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0, textAlign: 'left' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0, textAlign: 'center' }}
                 onClick={() => {
                   setMobileOpen(false);
                   if (!session?.user) { setShowLoginModal(true); return; }
@@ -318,7 +318,7 @@ export default function Navigation() {
               {!session?.user && (
                 <button 
                   className="mobile-nav-link bloom-9" 
-                  style={{ color: 'var(--primary-gold)', fontStyle: 'italic', background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left', padding: 0 }} 
+                  style={{ color: 'var(--primary-gold)', fontStyle: 'italic', background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'center', padding: 0 }} 
                   onClick={() => { setMobileOpen(false); setShowLoginModal(true); }}
                 >
                   {t('signIn')}
@@ -327,7 +327,7 @@ export default function Navigation() {
               {/* Language switcher — hidden from top bar on mobile, available here */}
               <select
                 className="mobile-nav-link bloom-9"
-                style={{ fontSize: '1rem', color: '#555', background: 'none', border: 'none', cursor: 'pointer', marginTop: '4px', appearance: 'auto', paddingLeft: '0' }}
+                style={{ fontSize: '1rem', color: '#888', background: 'none', border: 'none', cursor: 'pointer', marginTop: '4px', appearance: 'auto', textAlign: 'center', textAlignLast: 'center', margin: '4px auto 0', display: 'block' }}
                 value={locale}
                 onChange={(e) => {
                   const nextLocale = e.target.value;

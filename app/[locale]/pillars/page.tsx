@@ -82,6 +82,7 @@ export default function PillarsPage() {
     if (res.ok) {
       setPillars(prev => prev.map(p => p.id === id ? { ...p, is_public: !current } : p));
       setMyPillars(prev => prev.map(p => p.id === id ? { ...p, is_public: !current } : p));
+      setSelectedPillar(prev => prev?.id === id ? { ...prev, is_public: !current } : prev);
     }
   };
 
@@ -95,8 +96,64 @@ export default function PillarsPage() {
       setPillars(prev => prev.filter(p => p.id !== id));
       setMyPillars(prev => prev.filter(p => p.id !== id));
       setConfirmDeleteId(null);
+      setSelectedPillar(prev => prev?.id === id ? null : prev);
     }
   };
+
+  const renderPillarCardActions = (pillar: Pillar, isPlaque = false) => (
+    <div
+      className={isPlaque ? 'plaque-card-actions' : 'pillar-card-actions'}
+      onClick={e => e.stopPropagation()}
+    >
+      <button
+        type="button"
+        className={`btn-card-toggle ${pillar.is_public ? 'public' : 'private'}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleTogglePublic(pillar.id, pillar.is_public);
+        }}
+        title={pillar.is_public ? '비공개로 전환' : '공개로 전환'}
+      >
+        {pillar.is_public ? '👁️ 공개' : '🔒 비공개'}
+      </button>
+      {confirmDeleteId === pillar.id ? (
+        <div className="card-delete-confirm">
+          <button
+            type="button"
+            className="btn-card-confirm-del"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteMyPillar(pillar.id);
+            }}
+          >
+            삭제
+          </button>
+          <button
+            type="button"
+            className="btn-card-cancel-del"
+            onClick={(e) => {
+              e.stopPropagation();
+              setConfirmDeleteId(null);
+            }}
+          >
+            취소
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          className="btn-card-del"
+          onClick={(e) => {
+            e.stopPropagation();
+            setConfirmDeleteId(pillar.id);
+          }}
+          title="공양 삭제"
+        >
+          🗑️
+        </button>
+      )}
+    </div>
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -183,22 +240,22 @@ export default function PillarsPage() {
           </p>
         </header>
 
-        {/* Main Tab Selector */}
-        <div className="pillars-main-tabs animate-fade-up" style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
+        {/* Main Tab Selector — Founders & Supporters */}
+        <div className="pillars-main-tabs animate-fade-up" style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
           <button
             className={`btn-main-tab ${activeTab === 'founders' ? 'active' : ''}`}
-            onClick={() => setActiveTab('founders')}
+            onClick={() => {
+              setSearchQuery('');
+              setActiveTab('founders');
+            }}
           >🏛️ {t('viewFounders')}</button>
           <button
             className={`btn-main-tab ${activeTab === 'supporters' ? 'active' : ''}`}
-            onClick={() => setActiveTab('supporters')}
+            onClick={() => {
+              setSearchQuery('');
+              setActiveTab('supporters');
+            }}
           >📿 {t('viewSupporters')}</button>
-          {session?.user && (
-            <button
-              className={`btn-main-tab ${activeTab === 'mine' ? 'active' : ''}`}
-              onClick={() => setActiveTab('mine')}
-            >🪷 {t('myDonations') || '내 후원'}</button>
-          )}
         </div>
 
         {/* Search, Sort, and View Controls — ALWAYS VISIBLE across all tabs */}
@@ -251,7 +308,8 @@ export default function PillarsPage() {
             <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
           </form>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          {/* Action Row: Donate button & My Donations button side-by-side */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '20px', flexWrap: 'wrap' }}>
             <button
               className="btn-gold-glow-v2"
               style={{ padding: '12px 32px' }}
@@ -259,6 +317,29 @@ export default function PillarsPage() {
             >
               ♥ {t('donate')}
             </button>
+            {session?.user && (
+              <button
+                className={`btn-gold-glow-v2 ${activeTab === 'mine' ? 'active' : ''}`}
+                style={{
+                  padding: '12px 28px',
+                  background: activeTab === 'mine' ? 'rgba(212, 160, 23, 0.25)' : 'rgba(212, 160, 23, 0.08)',
+                  borderColor: activeTab === 'mine' ? 'var(--primary-gold)' : 'rgba(212, 160, 23, 0.35)',
+                  color: '#ffd700',
+                  fontWeight: activeTab === 'mine' ? 'bold' : 'normal',
+                  boxShadow: activeTab === 'mine' ? '0 0 15px rgba(212, 160, 23, 0.3)' : 'none',
+                }}
+                onClick={() => {
+                  setSearchQuery('');
+                  if (activeTab === 'mine') {
+                    setActiveTab('founders');
+                  } else {
+                    setActiveTab('mine');
+                  }
+                }}
+              >
+                🪷 {activeTab === 'mine' ? (t('allPillars') || '전체 후원 보기') : (t('myDonations') || '내 후원')}
+              </button>
+            )}
           </div>
         </div>
 
@@ -357,6 +438,7 @@ export default function PillarsPage() {
                                 <div className="pillar-content">
                                   <h3 className="donor-name">{pillar.name}</h3>
                                   <p className="donor-rank">{pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout')}</p>
+                                  {pillar.user_email === session?.user?.email && renderPillarCardActions(pillar, false)}
                                 </div>
                                 <div className="pillar-engraving-glow" />
                               </div>
@@ -419,17 +501,17 @@ export default function PillarsPage() {
                       nested={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 80,
-                        depth: 200,
-                        modifier: 1.0,
+                        stretch: 150,
+                        depth: 300,
+                        modifier: 1.2,
                         slideShadows: false,
                       }}
                       breakpoints={{
                         0: {
                           coverflowEffect: {
                             rotate: 0,
-                            stretch: 40,
-                            depth: 140,
+                            stretch: 50,
+                            depth: 160,
                             modifier: 1.0,
                             slideShadows: false,
                           },
@@ -437,9 +519,9 @@ export default function PillarsPage() {
                         768: {
                           coverflowEffect: {
                             rotate: 0,
-                            stretch: 80,
-                            depth: 200,
-                            modifier: 1.0,
+                            stretch: 150,
+                            depth: 300,
+                            modifier: 1.2,
                             slideShadows: false,
                           },
                         },
@@ -447,7 +529,7 @@ export default function PillarsPage() {
                       keyboard={{ enabled: true }}
                       mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
                       modules={[EffectCoverflow, Keyboard, Mousewheel]}
-                      className="pillars-swiper supporters-swiper"
+                      className="pillars-swiper"
                     >
                       {supporterPillars.map((pillar) => (
                         <SwiperSlide key={pillar.id} className="pillar-slide">
@@ -462,6 +544,7 @@ export default function PillarsPage() {
                                 <div className="pillar-content">
                                   <h3 className="donor-name">{pillar.name}</h3>
                                   <p className="donor-rank">{t('rankSupporter')}</p>
+                                  {pillar.user_email === session?.user?.email && renderPillarCardActions(pillar, false)}
                                 </div>
                                 <div className="pillar-engraving-glow" />
                               </div>
@@ -543,17 +626,17 @@ export default function PillarsPage() {
                       nested={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 80,
-                        depth: 200,
-                        modifier: 1.0,
+                        stretch: 150,
+                        depth: 300,
+                        modifier: 1.2,
                         slideShadows: false,
                       }}
                       breakpoints={{
                         0: {
                           coverflowEffect: {
                             rotate: 0,
-                            stretch: 40,
-                            depth: 140,
+                            stretch: 50,
+                            depth: 160,
                             modifier: 1.0,
                             slideShadows: false,
                           },
@@ -561,9 +644,9 @@ export default function PillarsPage() {
                         768: {
                           coverflowEffect: {
                             rotate: 0,
-                            stretch: 80,
-                            depth: 200,
-                            modifier: 1.0,
+                            stretch: 150,
+                            depth: 300,
+                            modifier: 1.2,
                             slideShadows: false,
                           },
                         },
@@ -588,6 +671,7 @@ export default function PillarsPage() {
                                   <p className="donor-rank">
                                     {pillar.pillar_type === 'donor' ? t('rankSupporter') : (pillar.amount >= 5000 ? t('rankCelestial') : t('rankDevout'))}
                                   </p>
+                                  {renderPillarCardActions(pillar, false)}
                                 </div>
                                 <div className="pillar-engraving-glow" />
                               </div>
@@ -647,7 +731,7 @@ export default function PillarsPage() {
                                 <div className="plaque-corner-ornament br" />
                                 <div className="plaque-header">
                                   <span className="plaque-badge">🏛️ {rankLabel}</span>
-                                  {isMine && <span className="plaque-mine-tag">MY PILLAR</span>}
+                                  {isMine && renderPillarCardActions(pillar, true)}
                                 </div>
                                 <h3 className="plaque-name">{pillar.name}</h3>
                                 {pillar.message && (
@@ -692,7 +776,7 @@ export default function PillarsPage() {
                                 <div className="plaque-corner-ornament br" />
                                 <div className="plaque-header">
                                   <span className="plaque-badge">📿 {t('rankSupporter')}</span>
-                                  {isMine && <span className="plaque-mine-tag">MY PILLAR</span>}
+                                  {isMine && renderPillarCardActions(pillar, true)}
                                 </div>
                                 <h3 className="plaque-name">{pillar.name}</h3>
                                 {pillar.message && (
@@ -754,7 +838,7 @@ export default function PillarsPage() {
                               <div className="plaque-corner-ornament br" />
                               <div className="plaque-header">
                                 <span className="plaque-badge">{pillar.pillar_type === 'donor' ? '📿 후원자' : '🏛️ 창립자'}</span>
-                                <span className="plaque-mine-tag">{pillar.is_public ? '👁️ 공개' : '🔒 비공개'}</span>
+                                {renderPillarCardActions(pillar, true)}
                               </div>
                               <h3 className="plaque-name">{pillar.name}</h3>
                               {pillar.message && (
@@ -776,49 +860,6 @@ export default function PillarsPage() {
             </div>
           )}
         </section>
-
-        {/* ── My Donations Detailed Management List (available when My Donations tab is active) ── */}
-        {activeTab === 'mine' && session?.user && pillars.length > 0 && (
-          <section className="my-donations-section animate-fade-up">
-            <h3 style={{ textAlign: 'center', color: '#d4a017', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', marginBottom: '20px' }}>
-              ⚙️ 내 공양 관리 (공개 설정 및 삭제)
-            </h3>
-            <div className="my-donations-list">
-              {pillars.map(p => (
-                <div key={p.id} className="my-donation-card">
-                  <div className="my-donation-info">
-                    <span className="my-donation-icon">{p.pillar_type === 'donor' ? '📿' : '🏛️'}</span>
-                    <div>
-                      <p className="my-donation-name">{p.name}</p>
-                      <p className="my-donation-meta">
-                        🪷 {p.amount} · {new Date(p.created_at).toLocaleDateString()}
-                        {p.message && <span style={{ opacity: 0.6 }}> · "{p.message.slice(0, 30)}{p.message.length > 30 ? '…' : ''}"</span>}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="my-donation-actions">
-                    <button
-                      className={`btn-toggle-public ${p.is_public ? 'public' : 'private'}`}
-                      onClick={(e) => { e.stopPropagation(); handleTogglePublic(p.id, p.is_public); }}
-                      title={p.is_public ? '비공개로 전환' : '공개로 전환'}
-                    >
-                      {p.is_public ? '👁️ 공개' : '🔒 비공개'}
-                    </button>
-                    {confirmDeleteId === p.id ? (
-                      <div className="delete-confirm">
-                        <span style={{ fontSize: '0.8rem', color: '#ff8888' }}>삭제 시 복구 불가. 진행?</span>
-                        <button className="btn-confirm-delete" onClick={(e) => { e.stopPropagation(); handleDeleteMyPillar(p.id); }}>삭제</button>
-                        <button className="btn-cancel-delete" onClick={(e) => { e.stopPropagation(); setConfirmDeleteId(null); }}>취소</button>
-                      </div>
-                    ) : (
-                      <button className="btn-delete-pillar" onClick={(e) => { e.stopPropagation(); setConfirmDeleteId(p.id); }} title="삭제">🗑️</button>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* Bottom Actions: View All Reset (when active) + Scroll To Top */}
         <div className="pillars-bottom-controls animate-fade-up">
@@ -863,6 +904,17 @@ export default function PillarsPage() {
                   <div className="detail-footer">
                     <span className="detail-amount">{t('devotion', { amount: Number(selectedPillar.amount).toLocaleString() })}</span>
                   </div>
+
+                  {/* If this is the user's pillar, show direct management options in modal */}
+                  {selectedPillar.user_email === session?.user?.email && (
+                    <div className="modal-management-section">
+                      <div className="modal-management-divider" />
+                      <div className="modal-management-row">
+                        <span className="modal-management-label">내 공양 관리:</span>
+                        {renderPillarCardActions(selectedPillar, false)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <button className="btn-close-zoom" onClick={() => setSelectedPillar(null)}>✕ {t('btnReturn')}</button>
@@ -942,37 +994,114 @@ export default function PillarsPage() {
         .btn-main-tab:hover { background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.3); color: #d4a017; }
         .btn-main-tab.active { background: rgba(212,160,23,0.12); border-color: rgba(212,160,23,0.5); color: #FFD700; font-weight: 600; }
 
-        /* My Donations Section */
-        .my-donations-section { padding: 8px 0 60px; }
-        .my-donations-list { display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 0 auto; }
-        .my-donation-card {
-          display: flex; align-items: center; justify-content: space-between; gap: 16px;
-          background: rgba(255,255,255,0.03); border: 1px solid rgba(212,160,23,0.15);
-          border-radius: 16px; padding: 16px 20px;
-          transition: border-color 0.3s; flex-wrap: wrap;
+        /* ─── Inline Pillar Card & Plaque Actions (Item 6) ─── */
+        .pillar-card-actions {
+          margin-top: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          position: relative;
+          z-index: 20;
         }
-        .my-donation-card:hover { border-color: rgba(212,160,23,0.35); }
-        .my-donation-info { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
-        .my-donation-icon { font-size: 1.8rem; flex-shrink: 0; }
-        .my-donation-name { color: #eee; font-size: 1rem; font-weight: 500; margin: 0 0 4px; }
-        .my-donation-meta { color: rgba(255,255,255,0.45); font-size: 0.82rem; margin: 0; }
-        .my-donation-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .btn-toggle-public {
-          padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; cursor: pointer;
-          border: 1px solid; transition: all 0.25s; -webkit-tap-highlight-color: transparent;
+        .plaque-card-actions {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          margin-left: auto;
         }
-        .btn-toggle-public.public { background: rgba(212,160,23,0.1); border-color: rgba(212,160,23,0.4); color: #d4a017; }
-        .btn-toggle-public.private { background: rgba(100,100,100,0.1); border-color: rgba(150,150,150,0.3); color: #999; }
-        .btn-toggle-public:hover { opacity: 0.75; }
-        .btn-delete-pillar {
-          background: none; border: 1px solid rgba(255,100,100,0.25); border-radius: 8px;
-          color: rgba(255,120,120,0.7); padding: 6px 10px; cursor: pointer; font-size: 1rem;
-          transition: all 0.25s; -webkit-tap-highlight-color: transparent;
+        .btn-card-toggle {
+          padding: 3px 10px;
+          border-radius: 100px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          cursor: pointer;
+          border: 1px solid;
+          transition: all 0.2s ease;
+          -webkit-tap-highlight-color: transparent;
+          white-space: nowrap;
+          touch-action: manipulation;
         }
-        .btn-delete-pillar:hover { background: rgba(255,80,80,0.08); border-color: rgba(255,100,100,0.5); color: #ff8888; }
-        .delete-confirm { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .btn-confirm-delete { background: rgba(200,50,50,0.8); color: #fff; border: none; border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 0.82rem; -webkit-tap-highlight-color: transparent; }
-        .btn-cancel-delete { background: rgba(255,255,255,0.07); color: #aaa; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 0.82rem; -webkit-tap-highlight-color: transparent; }
+        .btn-card-toggle.public {
+          background: rgba(212, 160, 23, 0.15);
+          border-color: rgba(212, 160, 23, 0.5);
+          color: #FFD700;
+        }
+        .btn-card-toggle.private {
+          background: rgba(120, 120, 120, 0.15);
+          border-color: rgba(180, 180, 180, 0.35);
+          color: #bbb;
+        }
+        .btn-card-toggle:hover {
+          opacity: 0.85;
+          transform: scale(1.03);
+        }
+        .btn-card-del {
+          background: rgba(255, 70, 70, 0.1);
+          border: 1px solid rgba(255, 100, 100, 0.3);
+          border-radius: 6px;
+          color: rgba(255, 120, 120, 0.85);
+          padding: 3px 7px;
+          cursor: pointer;
+          font-size: 0.85rem;
+          line-height: 1;
+          transition: all 0.2s ease;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        .btn-card-del:hover {
+          background: rgba(255, 70, 70, 0.25);
+          border-color: rgba(255, 100, 100, 0.6);
+          color: #ff8888;
+        }
+        .card-delete-confirm {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .btn-card-confirm-del {
+          background: rgba(220, 40, 40, 0.85);
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          padding: 3px 8px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        .btn-card-cancel-del {
+          background: rgba(255, 255, 255, 0.1);
+          color: #aaa;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 6px;
+          padding: 3px 7px;
+          font-size: 0.72rem;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        .modal-management-section {
+          margin-top: 24px;
+          padding-top: 16px;
+        }
+        .modal-management-divider {
+          height: 1px;
+          background: linear-gradient(to right, transparent, rgba(212, 160, 23, 0.3), transparent);
+          margin-bottom: 16px;
+        }
+        .modal-management-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .modal-management-label {
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
 
         .page-header { text-align: center; margin-bottom: 36px; }
         .header-eyebrow { font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }

@@ -134,8 +134,12 @@ export default function DharmaPage() {
     return ['all', ...uniqueSources];
   }, [scriptures]);
 
-  const visibleScriptures = filteredScriptures.slice(0, visibleCount);
+  const visibleScriptures = useMemo(() => {
+    return filteredScriptures.slice(0, visibleCount);
+  }, [filteredScriptures, visibleCount]);
   const hasMore = visibleCount < filteredScriptures.length;
+
+  const inFlightRef = useRef<Set<string>>(new Set());
 
   // Background Translation logic — todayQuote is ALWAYS translated first
   useEffect(() => {
@@ -143,26 +147,23 @@ export default function DharmaPage() {
 
     // ★ PRIORITY: todayQuote goes to the FRONT of the translation queue
     const itemsToCheck: Scripture[] = [];
-    if (todayQuote && !todayQuote.translations?.[locale] && !translatingIds.has(todayQuote.id)) {
+    if (todayQuote && !todayQuote.translations?.[locale] && !inFlightRef.current.has(todayQuote.id)) {
       itemsToCheck.push(todayQuote); // highest priority
     }
-    // Then visible scriptures (excluding todayQuote to avoid duplicate)
     visibleScriptures.forEach(item => {
       if (item.id !== todayQuote?.id) itemsToCheck.push(item);
     });
 
-    // Filter items that don't have the current locale translation and are not currently translating or failed
     const missing = itemsToCheck.filter(
-      (item) => !item.translations?.[locale] && !translatingIds.has(item.id) && !failedIds.has(item.id)
+      (item) => !item.translations?.[locale] && !inFlightRef.current.has(item.id) && !failedIds.has(item.id)
     );
 
     if (missing.length === 0) return;
 
+    missing.forEach(item => inFlightRef.current.add(item.id));
     const missingIds = missing.map(m => m.id);
     setTranslatingIds(prev => new Set([...prev, ...missingIds]));
 
-    // Translate sequentially (not all at once) to avoid overwhelming the API
-    // todayQuote is first in the array so it always resolves first
     missing.forEach(async (item) => {
       try {
         const res = await fetch('/api/translate-scripture', {
@@ -182,9 +183,9 @@ export default function DharmaPage() {
         }
       } catch (e) {
         console.error('Translation failed for', item.id, e);
-        // Mark as failed so we don't retry endlessly
         setFailedIds(prev => new Set([...prev, item.id]));
       } finally {
+        inFlightRef.current.delete(item.id);
         setTranslatingIds(prev => {
           const next = new Set(prev);
           next.delete(item.id);
@@ -192,7 +193,7 @@ export default function DharmaPage() {
         });
       }
     });
-  }, [visibleScriptures, todayQuote, locale, scriptures.length, failedIds]);
+  }, [visibleScriptures, todayQuote?.id, locale, scriptures.length, failedIds]);
 
   const getLocalizedContent = (scripture: Scripture | null) => {
     if (!scripture) return { text: '', isTranslating: false };
@@ -442,19 +443,19 @@ export default function DharmaPage() {
           aria-modal="true"
           aria-label={`Reading: ${readingScripture.source}`}
         >
-          {/* Floating X close button — fixed on viewport so scrolling down never hides it */}
-          <button
-            className="parchment-floating-close"
-            onClick={() => setReadingScripture(null)}
-            aria-label="Close"
-          >
-            ✕
-          </button>
-
           <div
             className="parchment-modal animate-fade-up"
             onClick={e => e.stopPropagation()}
           >
+            {/* Anchored top-right close button right on the parchment card */}
+            <button
+              className="parchment-card-close"
+              onClick={() => setReadingScripture(null)}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
             {/* Scroll rod top */}
             <div className="scroll-top" />
 
@@ -489,6 +490,15 @@ export default function DharmaPage() {
                 <div className="parchment-footer">
                   <div className="parchment-ornament">&mdash; ✦ &mdash;</div>
                   <p className="parchment-footer-text">{t('mayWisdomLight')}</p>
+                  
+                  <div style={{ marginTop: '28px', textAlign: 'center' }}>
+                    <button
+                      className="btn-parchment-bottom-close"
+                      onClick={() => setReadingScripture(null)}
+                    >
+                      ✕ {t('close') || '두루마리 닫기'}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -582,12 +592,13 @@ export default function DharmaPage() {
 
         /* ── Gold button (Today's Wisdom) ── */
         .btn-premium-gold {
-          background: var(--primary-gold); color: #000; padding: 14px 36px; border-radius: 100px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.6s var(--ease-expo); box-shadow: 0 10px 30px rgba(212,160,23,0.2);
+          background: var(--primary-gold); color: #000; padding: 14px 36px; border-radius: 100px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; border: none; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 10px 30px rgba(212,160,23,0.2);
           -webkit-tap-highlight-color: transparent !important;
           outline: none !important;
           touch-action: manipulation;
         }
-        .btn-premium-gold:hover { background: #fff; transform: translateY(-4px) scale(1.05); box-shadow: 0 20px 60px rgba(212,160,23,0.5); }
+        .btn-premium-gold:hover { background: #fff; transform: translateY(-2px) scale(1.02); box-shadow: 0 15px 40px rgba(212,160,23,0.4); }
+        .btn-premium-gold:active { transform: scale(0.96); }
         .btn-premium-gold:focus,
         .btn-premium-gold:focus-visible {
           outline: none !important;
@@ -596,16 +607,16 @@ export default function DharmaPage() {
 
         /* ── Load More ── */
         .load-more-wrap { display: flex; justify-content: center; margin-top: 60px; }
-        .btn-load-more { display: flex; flex-direction: column; align-items: center; gap: 6px; font-family: var(--font-serif); font-size: 1rem; color: #d4a017; background: none; border: 1px solid rgba(212,160,23,0.25); border-radius: 100px; padding: 18px 48px; cursor: pointer; letter-spacing: 0.15em; transition: 0.5s var(--ease-expo); }
+        .btn-load-more { display: flex; flex-direction: column; align-items: center; gap: 6px; font-family: var(--font-serif); font-size: 1rem; color: #d4a017; background: none; border: 1px solid rgba(212,160,23,0.25); border-radius: 100px; padding: 18px 48px; cursor: pointer; letter-spacing: 0.15em; transition: 0.2s ease; }
         .btn-load-more small { font-size: 0.7rem; color: rgba(212,160,23,0.4); letter-spacing: 0.15em; font-style: italic; }
-        .btn-load-more:hover { background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.6); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(212,160,23,0.15); }
+        .btn-load-more:hover { background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.6); transform: translateY(-2px); box-shadow: 0 20px 60px rgba(212,160,23,0.15); }
         .all-loaded-msg { text-align: center; margin-top: 60px; font-family: var(--font-serif); font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,0.2); letter-spacing: 0.2em; }
         .empty-state { color: rgba(255,255,255,0.3); }
 
         /* ── FAB ── */
-        .fab-top { position: fixed; bottom: 100px; right: 28px; z-index: 500; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #d4a017, #8a6d1a); color: #000; font-size: 1.4rem; font-weight: 900; border: none; cursor: pointer; box-shadow: 0 8px 32px rgba(212,160,23,0.35); transition: opacity 0.4s, transform 0.4s; opacity: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+        .fab-top { position: fixed; bottom: 100px; right: 28px; z-index: 500; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #d4a017, #8a6d1a); color: #000; font-size: 1.4rem; font-weight: 900; border: none; cursor: pointer; box-shadow: 0 8px 32px rgba(212,160,23,0.35); transition: opacity 0.3s, transform 0.2s; opacity: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
         .fab-top.visible { opacity: 1; pointer-events: all; }
-        .fab-top:hover { transform: translateY(-6px) scale(1.08); box-shadow: 0 16px 48px rgba(212,160,23,0.5); }
+        .fab-top:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 16px 48px rgba(212,160,23,0.5); }
 
         /* ══════════════════════════════════════ */
         /* ★ PARCHMENT MODAL                    */
@@ -618,31 +629,63 @@ export default function DharmaPage() {
           display: flex; align-items: flex-start; justify-content: center;
           padding: calc(var(--nav-height, 80px) + 20px) 16px 60px;
           overflow-y: auto; box-sizing: border-box;
-          animation: fade-in-overlay 0.25s ease;
+          animation: fade-in-overlay 0.2s ease;
         }
         @keyframes fade-in-overlay { from { opacity: 0; } to { opacity: 1; } }
 
-        .parchment-floating-close {
-          position: fixed; top: calc(var(--nav-height, 80px) + 16px); right: 20px;
-          width: 44px; height: 44px; border-radius: 50%;
-          background: rgba(18, 14, 10, 0.88);
-          border: 1.5px solid #d4a017;
-          color: #ffd700; font-size: 1.3rem; font-weight: bold;
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer; z-index: 10001;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 16px rgba(212,160,23,0.3);
+        .parchment-card-close {
+          position: absolute;
+          top: -12px;
+          right: 4px;
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: #1c150c;
+          border: 2px solid #d4a017;
+          color: #ffd700;
+          font-size: 1.2rem;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 1000;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 15px rgba(212,160,23,0.4);
+          transition: transform 0.15s ease, background 0.15s ease;
+          touch-action: manipulation;
           -webkit-tap-highlight-color: transparent !important;
           outline: none !important;
-          touch-action: manipulation;
-          transition: transform 0.25s, background 0.25s, color 0.25s;
         }
-        .parchment-floating-close:hover {
-          transform: scale(1.08);
+        .parchment-card-close:hover {
           background: #d4a017;
           color: #000;
+          transform: scale(1.08);
         }
-        .parchment-floating-close:active {
-          transform: scale(0.94);
+        .parchment-card-close:active {
+          transform: scale(0.92);
+        }
+
+        .btn-parchment-bottom-close {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 8px 24px;
+          background: rgba(90, 62, 16, 0.1);
+          border: 1px solid rgba(90, 62, 16, 0.3);
+          border-radius: 100px;
+          color: #5a3e10;
+          font-family: var(--font-serif);
+          font-size: 0.88rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+        }
+        .btn-parchment-bottom-close:hover {
+          background: #5a3e10;
+          color: #faf0d8;
         }
 
         .parchment-modal {

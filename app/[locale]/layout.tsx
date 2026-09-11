@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
 import CustomCursor from '@/components/CustomCursor';
 import AmbientAudio from '@/components/AmbientAudio';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: {
@@ -72,6 +73,9 @@ export default async function RootLayout({
 
             {/* Navigation */}
             <Navigation />
+
+            {/* Always scroll to top on page change */}
+            <ScrollToTop />
 
             {/* Custom Cursor */}
             <CustomCursor />
