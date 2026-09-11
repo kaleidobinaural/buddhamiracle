@@ -106,6 +106,14 @@ export default function Navigation() {
     return () => window.removeEventListener('ambient-audio-changed', handleAudioChange);
   }, []);
 
+  // Dispatch event when mobile menu opens so CharacterAvatar can auto-dismiss
+  const handleMobileMenuToggle = (open: boolean) => {
+    setMobileOpen(open);
+    if (open) {
+      window.dispatchEvent(new CustomEvent('mobile-menu-opened'));
+    }
+  };
+
   const navLinks = [
     { href: '/', key: 'home' },
     { href: '/chat', key: 'chat' },
@@ -241,7 +249,7 @@ export default function Navigation() {
             {/* Hamburger Button */}
             <button
               className={`hamburger ${mobileOpen ? 'open' : ''}`}
-              onClick={() => setMobileOpen(!mobileOpen)}
+              onClick={() => handleMobileMenuToggle(!mobileOpen)}
               aria-label="Menu"
             >
               <div className="hamburger-box">
@@ -268,7 +276,7 @@ export default function Navigation() {
               {/* Auth-gated donate in mobile nav */}
               <button
                 className="mobile-nav-link bloom-8"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0 }}
                 onClick={() => {
                   setMobileOpen(false);
                   if (!session?.user) { setShowLoginModal(true); return; }
@@ -358,10 +366,10 @@ export default function Navigation() {
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               marginBottom: '12px'
             }}>
-              {t('loginRequired') || '로그인이 필요합니다'}
+              로그인이 필요합니다
             </h2>
             <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, marginBottom: '28px' }}>
-              {t('loginRequiredDesc') || '수행을 시작하려면 먼저 신성한 사원에 입장해 주세요.'}
+              공양을 올리려면 먼저 신성한 사원에 입장해 주세요.
             </p>
             <div style={{ height: '1px', background: 'linear-gradient(to right,transparent,rgba(212,160,23,0.25),transparent)', marginBottom: '28px' }} />
             <button
@@ -377,7 +385,7 @@ export default function Navigation() {
               }}
             >
               <span>✨</span>
-              <span>{t('signInBtn') || '구글로 로그인하기'}</span>
+              <span>구글로 로그인하기</span>
             </button>
           </div>
         </div>

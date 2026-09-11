@@ -37,6 +37,10 @@ export default function PillarsPage() {
   const pillarsTopRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<'founders'|'supporters'|'mine'>('founders');
+  const [myPillars, setMyPillars] = useState<Pillar[]>([]);
+  const [myPillarsLoading, setMyPillarsLoading] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string|null>(null);
 
   const scrollToTop = () => {
     if (scrollAreaRef.current) {
@@ -53,6 +57,40 @@ export default function PillarsPage() {
   const founderPillars = pillars.filter(p => ['gold', 'marble', 'stone'].includes(p.pillar_type));
   const supporterPillars = pillars.filter(p => p.pillar_type === 'donor');
 
+  const fetchMyPillars = async () => {
+    if (!session?.user) return;
+    setMyPillarsLoading(true);
+    try {
+      const res = await fetch('/api/pillars?mine=true');
+      const data = await res.json();
+      if (!data.error) setMyPillars(data);
+    } catch (e) { console.error(e); }
+    finally { setMyPillarsLoading(false); }
+  };
+
+  const handleTogglePublic = async (id: string, current: boolean) => {
+    const res = await fetch('/api/pillars', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, is_public: !current }),
+    });
+    if (res.ok) {
+      setMyPillars(prev => prev.map(p => p.id === id ? { ...p, is_public: !current } : p));
+    }
+  };
+
+  const handleDeleteMyPillar = async (id: string) => {
+    const res = await fetch('/api/pillars', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    if (res.ok) {
+      setMyPillars(prev => prev.filter(p => p.id !== id));
+      setConfirmDeleteId(null);
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     fetchPillars(searchQuery, sortBy, role);
@@ -60,6 +98,12 @@ export default function PillarsPage() {
       scrollAreaRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [sortBy, role]);
+
+  useEffect(() => {
+    if (activeTab === 'mine') fetchMyPillars();
+    else if (activeTab === 'founders') { setRole('founder'); fetchPillars('', sortBy, 'founder'); }
+    else { setRole('supporter'); fetchPillars('', sortBy, 'supporter'); }
+  }, [activeTab]);
 
   // Reactive search reset
   useEffect(() => {
@@ -119,94 +163,143 @@ export default function PillarsPage() {
           </p>
         </header>
 
-        <div className="pillars-top-actions animate-fade-up animate-delay-200">
-          <div className="control-group multi-toggles">
-            {/* Role Toggle */}
-            <div className="view-selector role-selector">
-              <button 
-                className={`btn-view ${role === 'founder' ? 'active' : ''}`}
-                onClick={() => setRole('founder')}
-              >🏛️ {t('viewFounders')}</button>
-              <button 
-                className={`btn-view ${role === 'supporter' ? 'active' : ''}`}
-                onClick={() => setRole('supporter')}
-              >📿 {t('viewSupporters')}</button>
-            </div>
-
-            {/* View Mode Toggle */}
-            <div className="view-selector">
-              <button 
-                className={`btn-view ${viewMode === 'hall' ? 'active' : ''}`}
-                onClick={() => setViewMode('hall')}
-              >👁️‍🗨️ {t('viewHall')}</button>
-              <button 
-                className={`btn-view ${viewMode === 'grid' ? 'active' : ''}`}
-                onClick={() => setViewMode('grid')}
-              >🔲 {t('viewGrid')}</button>
-            </div>
-
-            {/* Sort Toggle */}
-            <div className="sort-selector">
-              <button 
-                className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
-                onClick={() => setSortBy('amount')}
-              >💎 {t('sortAmount')}</button>
-              <button 
-                className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
-                onClick={() => setSortBy('date')}
-              >⬇️ {t('sortNewest')}</button>
-              <button 
-                className={`btn-sort ${sortBy === 'oldest' ? 'active' : ''}`}
-                onClick={() => setSortBy('oldest')}
-              >⬆️ {t('sortOldest')}</button>
-            </div>
-          </div>
-
-          <form className="search-box-v2" onSubmit={handleSearch}>
-            <input 
-              type="text" 
-              placeholder={t('searchPlaceholder')} 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
-            />
-            {searchQuery && (
-              <button 
-                type="button" 
-                className="btn-clear-search" 
-                onClick={() => setSearchQuery('')}
-              >✕</button>
-            )}
-            <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
-          </form>
-
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        {/* Main Tab Selector */}
+        <div className="pillars-main-tabs animate-fade-up" style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
+          <button
+            className={`btn-main-tab ${activeTab === 'founders' ? 'active' : ''}`}
+            onClick={() => setActiveTab('founders')}
+          >🏛️ {t('viewFounders')}</button>
+          <button
+            className={`btn-main-tab ${activeTab === 'supporters' ? 'active' : ''}`}
+            onClick={() => setActiveTab('supporters')}
+          >📿 {t('viewSupporters')}</button>
+          {session?.user && (
             <button
-              className="btn-gold-glow-v2"
-              style={{ padding: '12px 32px' }}
-              onClick={handleDonateClick}
-            >
-              ♥ {t('donate')}
-            </button>
-          </div>
-
-        </div>
-
-        {/* Search result count banner — placed ABOVE results, auto-scroll target */}
-        <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
-          {searchQuery && (
-            <div className="search-status-banner animate-fade-up">
-              <div className="search-status-chip">
-                <span className="search-status-icon">🔍</span>
-                <span className="search-status-text">
-                  &ldquo;{searchQuery}&rdquo;{' '}
-                  {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
-                </span>
-              </div>
-            </div>
+              className={`btn-main-tab ${activeTab === 'mine' ? 'active' : ''}`}
+              onClick={() => setActiveTab('mine')}
+            >🪷 {t('myDonations') || '내 후원'}</button>
           )}
         </div>
 
+        {/* Search/sort controls — hidden when My Donations tab is active */}
+        {activeTab !== 'mine' && (
+          <div className="pillars-top-actions animate-fade-up animate-delay-200">
+            <div className="control-group multi-toggles">
+              {/* View Mode Toggle */}
+              <div className="view-selector">
+                <button 
+                  className={`btn-view ${viewMode === 'hall' ? 'active' : ''}`}
+                  onClick={() => setViewMode('hall')}
+                >👁️‍🗨️ {t('viewHall')}</button>
+                <button 
+                  className={`btn-view ${viewMode === 'grid' ? 'active' : ''}`}
+                  onClick={() => setViewMode('grid')}
+                >🔲 {t('viewGrid')}</button>
+              </div>
+
+              {/* Sort Toggle */}
+              <div className="sort-selector">
+                <button 
+                  className={`btn-sort ${sortBy === 'amount' ? 'active' : ''}`}
+                  onClick={() => setSortBy('amount')}
+                >💎 {t('sortAmount')}</button>
+                <button 
+                  className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
+                  onClick={() => setSortBy('date')}
+                >⬇️ {t('sortNewest')}</button>
+                <button 
+                  className={`btn-sort ${sortBy === 'oldest' ? 'active' : ''}`}
+                  onClick={() => setSortBy('oldest')}
+                >⬆️ {t('sortOldest')}</button>
+              </div>
+            </div>
+
+            <form className="search-box-v2" onSubmit={handleSearch}>
+              <input 
+                type="text" 
+                placeholder={t('searchPlaceholder')} 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
+              {searchQuery && (
+                <button 
+                  type="button" 
+                  className="btn-clear-search" 
+                  onClick={() => setSearchQuery('')}
+                >✕</button>
+              )}
+              <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
+            </form>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <button
+                className="btn-gold-glow-v2"
+                style={{ padding: '12px 32px' }}
+                onClick={handleDonateClick}
+              >
+                ♥ {t('donate')}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ── My Donations Section ── */}
+        {activeTab === 'mine' && (
+          <section className="my-donations-section animate-fade-up">
+            {!session?.user ? (
+              <div className="empty-state">로그인 후 내 후원 내역을 확인하세요.</div>
+            ) : myPillarsLoading ? (
+              <div className="loading-state">{t('loading')}</div>
+            ) : myPillars.length === 0 ? (
+              <div className="empty-state" style={{ padding: '60px 0', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🪷</div>
+                <p>{t('myDonationsEmpty') || '아직 후원 내역이 없습니다.'}</p>
+                <button onClick={handleDonateClick} className="btn-gold-glow-v2" style={{ marginTop: '20px', padding: '12px 28px' }}>
+                  ♥ {t('donate')}
+                </button>
+              </div>
+            ) : (
+              <div className="my-donations-list">
+                {myPillars.map(p => (
+                  <div key={p.id} className="my-donation-card">
+                    <div className="my-donation-info">
+                      <span className="my-donation-icon">{p.pillar_type === 'donor' ? '📿' : '🏛️'}</span>
+                      <div>
+                        <p className="my-donation-name">{p.name}</p>
+                        <p className="my-donation-meta">
+                          🪷 {p.amount} · {new Date(p.created_at).toLocaleDateString()}
+                          {p.message && <span style={{ opacity: 0.6 }}> · "{p.message.slice(0, 30)}{p.message.length > 30 ? '…' : ''}"</span>}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="my-donation-actions">
+                      <button
+                        className={`btn-toggle-public ${p.is_public ? 'public' : 'private'}`}
+                        onClick={() => handleTogglePublic(p.id, p.is_public)}
+                        title={p.is_public ? '비공개로 전환' : '공개로 전환'}
+                      >
+                        {p.is_public ? '👁️ 공개' : '🔒 비공개'}
+                      </button>
+                      {confirmDeleteId === p.id ? (
+                        <div className="delete-confirm">
+                          <span style={{ fontSize: '0.8rem', color: '#ff8888' }}>삭제 시 복구 불가. 진행?</span>
+                          <button className="btn-confirm-delete" onClick={() => handleDeleteMyPillar(p.id)}>삭제</button>
+                          <button className="btn-cancel-delete" onClick={() => setConfirmDeleteId(null)}>취소</button>
+                        </div>
+                      ) : (
+                        <button className="btn-delete-pillar" onClick={() => setConfirmDeleteId(p.id)} title="삭제">🗑️</button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* ── Main Gallery (Founders / Supporters) ── */}
+        {activeTab !== 'mine' && (
         <section className={`pillars-display ${viewMode}-mode`}>
           {isLoading ? (
             <div className="loading-state">{t('loading')}</div>
@@ -217,6 +310,20 @@ export default function PillarsPage() {
               {/* ─── Founders' Hall ─── */}
               {role === 'founder' && founderPillars.length > 0 && (
                 <>
+                  {/* Search result banner above founders carousel */}
+                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
+                    {searchQuery && (
+                      <div className="search-status-banner animate-fade-up">
+                        <div className="search-status-chip">
+                          <span className="search-status-icon">🔍</span>
+                          <span className="search-status-text">
+                            &ldquo;{searchQuery}&rdquo;{' '}
+                            {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   <div className="pillar-section-header founder">
                     <span className="pillar-section-icon">🏛️</span>
                     <h2 className="pillar-section-title">{t('foundersHall')}</h2>
@@ -303,6 +410,20 @@ export default function PillarsPage() {
               {/* ─── Supporter's Wall ─── */}
               {role === 'supporter' && (
                 <>
+                  {/* Search result banner above supporters carousel */}
+                  <div ref={searchResultsRef} style={{ scrollMarginTop: 'calc(var(--nav-height, 80px) + 16px)' }}>
+                    {searchQuery && (
+                      <div className="search-status-banner animate-fade-up">
+                        <div className="search-status-chip">
+                          <span className="search-status-icon">🔍</span>
+                          <span className="search-status-text">
+                            &ldquo;{searchQuery}&rdquo;{' '}
+                            {t('searchResultCount', { count: pillars.length }) || `— 검색 결과 ${pillars.length}개`}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   <div className="pillar-section-header supporter" style={{ marginTop: '0' }}>
                     <span className="pillar-section-icon">📿</span>
                     <h2 className="pillar-section-title">{t('supportersWall')}</h2>
@@ -486,6 +607,7 @@ export default function PillarsPage() {
             </div>
           )}
         </section>
+        )} {/* end activeTab !== 'mine' */}
 
         {/* Bottom Actions: View All Reset (when active) + Scroll To Top */}
         <div className="pillars-bottom-controls animate-fade-up">
@@ -572,7 +694,7 @@ export default function PillarsPage() {
       )}
 
       <style>{`
-        .pillars-page { min-height: 100vh; padding: calc(var(--nav-height, 80px) + 20px) 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
+        .pillars-page { min-height: 100vh; padding: 16px 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
         .hall-atmosphere { position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(212, 160, 23, 0.05) 0%, transparent 70%); pointer-events: none; }
         
         /* Fog Effects - Balanced for clarity */
@@ -597,6 +719,49 @@ export default function PillarsPage() {
         }
 
         .pillars-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
+
+        /* Main Tab Buttons */
+        .btn-main-tab {
+          padding: 10px 22px; border-radius: 100px;
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.55); font-size: 0.9rem; cursor: pointer;
+          transition: all 0.3s; -webkit-tap-highlight-color: transparent;
+          font-family: var(--font-ui);
+        }
+        .btn-main-tab:hover { background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.3); color: #d4a017; }
+        .btn-main-tab.active { background: rgba(212,160,23,0.12); border-color: rgba(212,160,23,0.5); color: #FFD700; font-weight: 600; }
+
+        /* My Donations Section */
+        .my-donations-section { padding: 8px 0 60px; }
+        .my-donations-list { display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 0 auto; }
+        .my-donation-card {
+          display: flex; align-items: center; justify-content: space-between; gap: 16px;
+          background: rgba(255,255,255,0.03); border: 1px solid rgba(212,160,23,0.15);
+          border-radius: 16px; padding: 16px 20px;
+          transition: border-color 0.3s; flex-wrap: wrap;
+        }
+        .my-donation-card:hover { border-color: rgba(212,160,23,0.35); }
+        .my-donation-info { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+        .my-donation-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .my-donation-name { color: #eee; font-size: 1rem; font-weight: 500; margin: 0 0 4px; }
+        .my-donation-meta { color: rgba(255,255,255,0.45); font-size: 0.82rem; margin: 0; }
+        .my-donation-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .btn-toggle-public {
+          padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; cursor: pointer;
+          border: 1px solid; transition: all 0.25s; -webkit-tap-highlight-color: transparent;
+        }
+        .btn-toggle-public.public { background: rgba(212,160,23,0.1); border-color: rgba(212,160,23,0.4); color: #d4a017; }
+        .btn-toggle-public.private { background: rgba(100,100,100,0.1); border-color: rgba(150,150,150,0.3); color: #999; }
+        .btn-toggle-public:hover { opacity: 0.75; }
+        .btn-delete-pillar {
+          background: none; border: 1px solid rgba(255,100,100,0.25); border-radius: 8px;
+          color: rgba(255,120,120,0.7); padding: 6px 10px; cursor: pointer; font-size: 1rem;
+          transition: all 0.25s; -webkit-tap-highlight-color: transparent;
+        }
+        .btn-delete-pillar:hover { background: rgba(255,80,80,0.08); border-color: rgba(255,100,100,0.5); color: #ff8888; }
+        .delete-confirm { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .btn-confirm-delete { background: rgba(200,50,50,0.8); color: #fff; border: none; border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 0.82rem; -webkit-tap-highlight-color: transparent; }
+        .btn-cancel-delete { background: rgba(255,255,255,0.07); color: #aaa; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 0.82rem; -webkit-tap-highlight-color: transparent; }
 
         .page-header { text-align: center; margin-bottom: 36px; }
         .header-eyebrow { font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
@@ -1010,7 +1175,7 @@ export default function PillarsPage() {
         }
 
         @media (max-width: 768px) {
-          .pillars-page { padding: calc(var(--nav-height, 80px) + 12px) 16px 60px; }
+          .pillars-page { padding: 12px 16px 60px; }
           .page-header { margin-bottom: 16px; }
           .header-eyebrow { margin-bottom: 4px; font-size: 0.78rem; }
           .page-title { margin-bottom: 6px; }

@@ -48,6 +48,13 @@ export default function CharacterAvatar({
     }
   }, [pathname]);
 
+  // Auto-dismiss when hamburger mobile menu opens
+  useEffect(() => {
+    const onMobileMenu = () => setIsVisible(false);
+    window.addEventListener('mobile-menu-opened', onMobileMenu);
+    return () => window.removeEventListener('mobile-menu-opened', onMobileMenu);
+  }, []);
+
   if (!mounted || !isVisible || isBubbleClosed) return null;
 
   // ★ Portal: render directly under <body> to escape any parent transform

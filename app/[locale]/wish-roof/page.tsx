@@ -678,7 +678,7 @@ export default function WishRoofPage() {
       </div>
 
       <style>{`
-        .wish-page { min-height: 100vh; padding: calc(var(--nav-height, 70px) + 16px) 24px 80px; position: relative; overflow-x: hidden; transition: background 2s ease; }
+        .wish-page { min-height: 100vh; padding: 16px 24px 80px; position: relative; overflow-x: hidden; transition: background 2s ease; }
         
         /* Time of Day Styles */
         .wish-page.time-night { background: #050505; }
@@ -1301,7 +1301,7 @@ export default function WishRoofPage() {
         .btn-sacred-signin:active { transform: scale(0.97); }
 
         @media (max-width: 768px) {
-          .wish-page { padding: calc(var(--nav-height, 80px) + 12px) 16px 60px; }
+          .wish-page { padding: 12px 16px 60px; }
           .page-header { margin-bottom: 18px; }
           .header-eyebrow { margin-bottom: 6px; font-size: 0.78rem; }
           .page-title { margin-bottom: 6px; }

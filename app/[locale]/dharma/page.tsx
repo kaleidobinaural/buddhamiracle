@@ -540,7 +540,7 @@ export default function DharmaPage() {
 
         /* ── Accordion Cards ── */
         .scripture-list { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-        .scripture-accordion { border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; background: rgba(255,255,255,0.02); padding: 24px 28px; cursor: pointer; transition: background 0.4s, border-color 0.4s, transform 0.3s; width: 100%; box-sizing: border-box; user-select: none; }
+        .scripture-accordion { border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; background: rgba(255,255,255,0.02); padding: 24px 28px; cursor: pointer; transition: background 0.4s, border-color 0.4s, transform 0.3s; width: 100%; box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
         .scripture-accordion:hover { background: rgba(255,255,255,0.04); border-color: rgba(212,160,23,0.2); transform: translateX(4px); }
         .scripture-accordion.open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); transform: none; }
 
@@ -610,6 +610,7 @@ export default function DharmaPage() {
         .parchment-modal {
           width: 100%; max-width: 820px;
           padding: 0 20px; box-sizing: border-box;
+          position: relative; /* Required for parchment-close absolute positioning */
         }
 
         /* Reuse scroll rod styles */

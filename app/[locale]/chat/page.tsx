@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { flushSync } from 'react-dom';
 import { useTranslations, useLocale } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -105,9 +106,12 @@ export default function ChatPage() {
       index++;
       if (index >= text.length) {
         clearInterval(interval);
-        setMessages(prev => [...prev, { role: 'model', content: text, sources }]);
-        setDisplayedReply('');
-        setIsTyping(false);
+        // Batch the final state update atomically to prevent 1-frame blank flash
+        flushSync(() => {
+          setMessages(prev => [...prev, { role: 'model', content: text, sources }]);
+          setDisplayedReply('');
+          setIsTyping(false);
+        });
       }
     }, 30);
   };
@@ -168,6 +172,18 @@ export default function ChatPage() {
     }
   };
 
+  // #17: Warn user not to leave during story generation
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isGeneratingEbook) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isGeneratingEbook]);
+
   const handleGenerateEbook = async () => {
     if (messages.length === 0) {
       setEbookError(t('ebookNoMessages') || 'Please have a conversation with the Guru first.');
@@ -205,12 +221,37 @@ export default function ChatPage() {
         return;
       }
 
-      // Trigger HTML file download
-      const blob = new Blob([data.html], { type: 'text/html;charset=utf-8' });
+      // Build a meaningful filename from the first user message
+      const firstUserMsg = messages.find(m => m.role === 'user')?.content || '';
+      const topic = firstUserMsg
+        .replace(/[^\w\s가-힣]/g, '')
+        .trim()
+        .split(/\s+/)
+        .slice(0, 4)
+        .join('-')
+        .slice(0, 30);
+      const now = new Date();
+      const ts = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+      const filename = topic ? `wisdom-story-${topic}-${ts}.html` : `wisdom-story-${ts}.html`;
+
+      // Inject print button + @media print CSS into the HTML before download
+      const printable = data.html.replace(
+        '</body>',
+        `<div style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;gap:10px;">
+          <button onclick="window.print()" style="background:linear-gradient(135deg,#D4A017,#FFD700);color:#1a1200;font-weight:700;font-size:0.95rem;border:none;border-radius:12px;padding:12px 24px;cursor:pointer;box-shadow:0 4px 16px rgba(212,160,23,0.4);">
+            🖨️ PDF로 저장
+          </button>
+          <button onclick="this.parentNode.style.display='none'" style="background:rgba(255,255,255,0.08);color:#fff;font-size:0.85rem;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;cursor:pointer;">닫기</button>
+        </div>
+        <style>@media print { button, [style*="position:fixed"] { display:none!important; } body { background: white!important; } }</style>
+        </body>`
+      );
+
+      const blob = new Blob([printable], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `wisdom-story-${Date.now()}.html`;
+      a.download = filename;
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
@@ -336,6 +377,23 @@ export default function ChatPage() {
                     <span>🪷 × 5 — {t('ebookButton') || 'Create Wisdom Story'}</span>
                   )}
                 </button>
+              )}
+              {/* #17: warn user not to leave during generation */}
+              {isGeneratingEbook ? (
+                <p style={{
+                  fontSize: '0.78rem', color: '#FFD700', textAlign: 'center',
+                  padding: '6px 12px', background: 'rgba(212,160,23,0.1)',
+                  borderRadius: '8px', border: '1px solid rgba(212,160,23,0.25)',
+                  marginTop: '8px', lineHeight: 1.5,
+                }}>
+                  ⚠️ {t('ebookDontLeave') || '생성 중에는 이 화면을 끄거나 벗어나지 마세요. 연꽃이 소모됩니다.'}
+                </p>
+              ) : (
+                messages.length >= 2 && (
+                  <p style={{ fontSize: '0.72rem', color: 'rgba(212,160,23,0.45)', textAlign: 'center', marginTop: '6px' }}>
+                    {t('ebookTip') || '※ 생성 중에는 화면을 벗어나지 마세요'}
+                  </p>
+                )
               )}
               <p className="ai-disclaimer">
                 {t('aiDisclaimer') || '이 대화는 AI 에이전트와의 대화입니다. 전문적 의료·법률·금융 상담을 대체하지 않습니다.'}

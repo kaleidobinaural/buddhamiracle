@@ -131,7 +131,7 @@ export default function DonatePage() {
                 className="btn-gold tier-btn"
                 id={"btn-offer-" + tier.id}
               >
-                Offer {tier.lotus} Lotus
+                {tDonate('offerBtn' as any, { count: tier.lotus })}
               </button>
             </article>
           ))}
