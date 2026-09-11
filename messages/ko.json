@@ -156,6 +156,8 @@
     "rankSupporter": "후원자",
     "scrollToTop": "맨 위로",
     "viewAll": "전체 목록 보기",
+    "viewAllSupporters": "전체 후원자",
+    "viewAllFounders": "전체 창립자",
     "searchResultCount": "검색 결과 ({count}개)",
     "loginRequiredTitle": "로그인이 필요합니다",
     "loginRequiredDesc": "사원에 공양을 올리시려면 먼저 로그인해 주세요.",

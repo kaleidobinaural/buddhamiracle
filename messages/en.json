@@ -156,6 +156,8 @@
     "rankSupporter": "Supporter",
     "scrollToTop": "Scroll to Top",
     "viewAll": "View All",
+    "viewAllSupporters": "All Supporters",
+    "viewAllFounders": "All Founders",
     "searchResultCount": "Results ({count})",
     "loginRequiredTitle": "Sign In Required",
     "loginRequiredDesc": "Please sign in first to make an offering to the temple.",

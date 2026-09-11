@@ -14,7 +14,12 @@ export default function Navigation() {
   const locale = useLocale();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
+      return true;
+    }
+    return false;
+  });
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -70,14 +75,6 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  // Restore mobile menu if opened during language switch
-  useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
-      sessionStorage.removeItem('restore_mobile_menu');
-      setMobileOpen(true);
-    }
-  }, []);
-
   // Bulletproof language change: preserves current pathname, hash, and search parameters
   const handleLanguageChange = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
@@ -102,7 +99,10 @@ export default function Navigation() {
 
   // Close mobile menu on route change unless restoring after language change
   useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') return;
+    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
+      sessionStorage.removeItem('restore_mobile_menu');
+      return;
+    }
     setMobileOpen(false);
   }, [pathname]);
 

@@ -341,7 +341,6 @@ export default function PillarsPage() {
                     <Swiper
                       key={`swiper-founder-${founderPillars.length}`}
                       effect={'coverflow'}
-                      watchSlidesProgress={true}
                       observer={true}
                       observeParents={true}
                       grabCursor={true}
@@ -358,30 +357,10 @@ export default function PillarsPage() {
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 100,
-                        depth: 160,
+                        stretch: 60,
+                        depth: 140,
                         modifier: 1.0,
                         slideShadows: false,
-                      }}
-                      breakpoints={{
-                        0: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 40,
-                            depth: 120,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
-                        768: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 100,
-                            depth: 160,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
                       }}
                       keyboard={{ enabled: true }}
                       mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
@@ -450,7 +429,6 @@ export default function PillarsPage() {
                     <Swiper
                       key={`swiper-supporter-${supporterPillars.length}`}
                       effect={'coverflow'}
-                      watchSlidesProgress={true}
                       observer={true}
                       observeParents={true}
                       onSwiper={setSwiperInstance}
@@ -468,30 +446,10 @@ export default function PillarsPage() {
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 100,
-                        depth: 160,
+                        stretch: 60,
+                        depth: 140,
                         modifier: 1.0,
                         slideShadows: false,
-                      }}
-                      breakpoints={{
-                        0: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 40,
-                            depth: 120,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
-                        768: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 100,
-                            depth: 160,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
                       }}
                       keyboard={{ enabled: true }}
                       mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
@@ -578,7 +536,6 @@ export default function PillarsPage() {
                     <Swiper
                       key={`swiper-mine-${pillars.length}`}
                       effect={'coverflow'}
-                      watchSlidesProgress={true}
                       observer={true}
                       observeParents={true}
                       onSwiper={setSwiperInstance}
@@ -596,30 +553,10 @@ export default function PillarsPage() {
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
-                        stretch: 100,
-                        depth: 160,
+                        stretch: 60,
+                        depth: 140,
                         modifier: 1.0,
                         slideShadows: false,
-                      }}
-                      breakpoints={{
-                        0: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 40,
-                            depth: 120,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
-                        768: {
-                          coverflowEffect: {
-                            rotate: 0,
-                            stretch: 100,
-                            depth: 160,
-                            modifier: 1.0,
-                            slideShadows: false,
-                          },
-                        },
                       }}
                       keyboard={{ enabled: true }}
                       mousewheel={{ forceToAxis: true, sensitivity: 1, thresholdDelta: 20, releaseOnEdges: true }}
@@ -839,14 +776,16 @@ export default function PillarsPage() {
               className="btn-bottom-pill"
               onClick={() => {
                 setSearchQuery('');
-                setActiveTab(activeTab === 'mine' ? 'supporters' : activeTab);
+                if (activeTab === 'mine') {
+                  setActiveTab('supporters');
+                }
               }}
             >
-              <span className="btn-bottom-icon">{activeTab === 'mine' ? '📿' : '🏛️'}</span>
+              <span className="btn-bottom-icon">{activeTab === 'founders' ? '🏛️' : '📿'}</span>
               <span className="btn-bottom-label">
-                {activeTab === 'mine' 
-                  ? (t('viewSupporters') || '후원자 전체보기')
-                  : (t('viewAll') || '전체 목록 보기')}
+                {activeTab === 'founders' 
+                  ? (t('viewAllFounders') || '전체 창립자')
+                  : (t('viewAllSupporters') || '전체 후원자')}
               </span>
             </button>
           )}
@@ -1509,7 +1448,37 @@ export default function PillarsPage() {
           background-image: url('https://www.transparenttextures.com/patterns/pavement.png');
         }
 
-        .pillar-content { position: relative; z-index: 10; text-align: center; padding: 30px; }
+        /* Force Swiper slides always visible and permanently suppress black shadow overlays */
+        .swiper-slide {
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        .swiper-slide-invisible-blank {
+          visibility: visible !important;
+          display: block !important;
+        }
+        .swiper-slide-shadow,
+        .swiper-slide-shadow-left,
+        .swiper-slide-shadow-right,
+        .swiper-slide-shadow-top,
+        .swiper-slide-shadow-bottom,
+        .swiper-slide-shadow-coverflow,
+        .swiper-3d .swiper-slide-shadow,
+        .swiper-3d .swiper-slide-shadow-left,
+        .swiper-3d .swiper-slide-shadow-right,
+        .swiper-3d .swiper-slide-shadow-top,
+        .swiper-3d .swiper-slide-shadow-bottom {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          width: 0 !important;
+          height: 0 !important;
+          pointer-events: none !important;
+          background: transparent !important;
+          background-image: none !important;
+        }
+
+        .pillar-content { position: relative; z-index: 30; text-align: center; padding: 30px; }
         .donor-name { 
           font-family: var(--font-serif); font-size: 1.95rem; font-weight: 700; color: #fff; 
           margin-bottom: 8px; letter-spacing: 0.1em; transition: 0.3s;
@@ -1575,19 +1544,28 @@ export default function PillarsPage() {
 
         /* ─── Donor Pillar: warm terracotta stone (distinct from gold founders) ─── */
         .donor-pillar .pillar-body {
-          background: linear-gradient(180deg, #2a1f14 0%, #1a1208 100%) !important;
-          border-left: 3px solid rgba(160, 120, 80, 0.5) !important;
-          border-right: 3px solid rgba(160, 120, 80, 0.5) !important;
+          background: linear-gradient(180deg, #382718 0%, #26190f 50%, #1c120a 100%) !important;
+          border-left: 3px solid rgba(212, 160, 100, 0.45) !important;
+          border-right: 3px solid rgba(212, 160, 100, 0.45) !important;
+          box-shadow: inset 0 0 30px rgba(0,0,0,0.35);
         }
         .donor-pillar .pillar-cap, .donor-pillar .pillar-base {
-          background: linear-gradient(135deg, #3a2a1a, #2a1f14) !important;
-          border-color: rgba(160, 120, 80, 0.4) !important;
+          background: linear-gradient(135deg, #4d3824, #332315) !important;
+          border-color: rgba(212, 160, 100, 0.45) !important;
         }
         .donor-pillar .pillar-engraving-glow {
-          background: radial-gradient(ellipse at 50% 50%, rgba(160,120,80,0.15) 0%, transparent 70%) !important;
+          background: radial-gradient(ellipse at 50% 50%, rgba(212,160,23,0.18) 0%, transparent 70%) !important;
         }
         .donor-pillar .pillar-aura {
-          box-shadow: 0 0 60px rgba(160, 120, 80, 0.15), 0 0 120px rgba(160, 120, 80, 0.08) !important;
+          box-shadow: 0 0 60px rgba(212, 160, 23, 0.25), 0 0 120px rgba(200, 150, 100, 0.12) !important;
+        }
+        .donor-pillar .donor-name {
+          color: #FAF9F6;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+        }
+        .swiper-slide-active .donor-pillar .donor-name {
+          color: #FFD700;
+          text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
         }
         .supporters-swiper { margin-top: 0; }
 
