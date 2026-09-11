@@ -70,6 +70,14 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
+  // Restore mobile menu if opened during language switch
+  useEffect(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
+      sessionStorage.removeItem('restore_mobile_menu');
+      setMobileOpen(true);
+    }
+  }, []);
+
   // Bulletproof language change: preserves current pathname, hash, and search parameters
   const handleLanguageChange = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
@@ -86,12 +94,15 @@ export default function Navigation() {
     }
 
     const newPath = '/' + segments.join('/') + currentSearch + currentHash;
-    setMobileOpen(false);
+    if (mobileOpen) {
+      sessionStorage.setItem('restore_mobile_menu', 'true');
+    }
     window.location.href = newPath;
   };
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change unless restoring after language change
   useEffect(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') return;
     setMobileOpen(false);
   }, [pathname]);
 

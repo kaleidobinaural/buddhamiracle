@@ -403,67 +403,92 @@ export default function ChatPage() {
       {/* ── eBook Loading Overlay ── */}
       {isGeneratingEbook && (
         <div style={{
-          position: 'fixed', inset: 0, zIndex: 9999,
-          background: 'rgba(8,6,4,0.88)',
-          backdropFilter: 'blur(12px)',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          gap: '28px',
+          position: 'fixed', inset: 0, zIndex: 99999,
+          background: 'rgba(0, 0, 0, 0.88)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '24px',
+          boxSizing: 'border-box',
         }}>
-          {/* Animated lotus spinner */}
-          <div style={{ position: 'relative', width: 80, height: 80 }}>
-            <svg viewBox="0 0 120 120" width="80" height="80"
-              style={{ animation: 'spin 6s linear infinite' }}
-              xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="og" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#E4CC7A"/>
-                  <stop offset="100%" stopColor="#8B6914"/>
-                </radialGradient>
-              </defs>
-              {[0,45,90,135,180,225,270,315].map(a => (
-                <ellipse key={a} cx="60" cy="28" rx="7" ry="18"
-                  fill="url(#og)" opacity="0.65"
-                  transform={`rotate(${a} 60 60)`}/>
-              ))}
-              {[0,60,120,180,240,300].map(a => (
-                <ellipse key={a} cx="60" cy="42" rx="5" ry="12"
-                  fill="url(#og)" opacity="0.85"
-                  transform={`rotate(${a} 60 60)`}/>
-              ))}
-              <circle cx="60" cy="60" r="10" fill="url(#og)" opacity="0.95"/>
-              <circle cx="60" cy="60" r="5" fill="#FAF0CC" opacity="0.9"/>
-            </svg>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '1.5rem', fontStyle: 'italic',
-              color: '#E4CC7A', marginBottom: '8px', letterSpacing: '0.04em',
-            }}>
-              {t('ebookGenerating') || 'Weaving your Wisdom Story…'}
-            </p>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '0.95rem', color: 'rgba(228,204,122,0.55)',
-              letterSpacing: '0.08em',
-            }}>
-              {t('ebookWait') || 'The Guru is distilling your conversation into sacred narrative…'}
-            </p>
-            <p style={{
-              marginTop: '16px',
-              fontSize: '0.85rem',
-              color: '#FFD700',
-              padding: '8px 18px',
-              background: 'rgba(212,160,23,0.12)',
-              borderRadius: '8px',
-              border: '1px solid rgba(212,160,23,0.3)',
-              maxWidth: '360px',
-              margin: '16px auto 0',
-              lineHeight: 1.5,
-            }}>
-              ⚠️ {t('ebookDontLeave') || '생성 중에는 이 화면을 끄거나 벗어나지 마세요. 연꽃이 소모됩니다.'}
-            </p>
+          <div style={{
+            background: 'linear-gradient(145deg, rgba(24, 20, 15, 0.97), rgba(12, 10, 8, 0.98))',
+            border: '1px solid rgba(212, 160, 23, 0.4)',
+            boxShadow: '0 24px 70px rgba(0, 0, 0, 0.85), 0 0 60px rgba(212, 160, 23, 0.15)',
+            borderRadius: '24px',
+            padding: '40px 32px 36px',
+            maxWidth: '520px',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '20px',
+            boxSizing: 'border-box',
+          }}>
+            {/* Animated lotus spinner */}
+            <div style={{ position: 'relative', width: 80, height: 80 }}>
+              <svg viewBox="0 0 120 120" width="80" height="80"
+                style={{ animation: 'spin 6s linear infinite' }}
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="og" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#E4CC7A"/>
+                    <stop offset="100%" stopColor="#8B6914"/>
+                  </radialGradient>
+                </defs>
+                {[0,45,90,135,180,225,270,315].map(a => (
+                  <ellipse key={a} cx="60" cy="28" rx="7" ry="18"
+                    fill="url(#og)" opacity="0.65"
+                    transform={`rotate(${a} 60 60)`}/>
+                ))}
+                {[0,60,120,180,240,300].map(a => (
+                  <ellipse key={a} cx="60" cy="42" rx="5" ry="12"
+                    fill="url(#og)" opacity="0.85"
+                    transform={`rotate(${a} 60 60)`}/>
+                ))}
+                <circle cx="60" cy="60" r="10" fill="url(#og)" opacity="0.95"/>
+                <circle cx="60" cy="60" r="5" fill="#FAF0CC" opacity="0.9"/>
+              </svg>
+            </div>
+            <div style={{ textAlign: 'center', width: '100%' }}>
+              <h3 style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: '1.45rem',
+                fontWeight: 500,
+                color: '#E4CC7A',
+                marginBottom: '10px',
+                letterSpacing: '0.04em',
+                lineHeight: 1.3,
+              }}>
+                {t('ebookGenerating') || '이야기를 엮는 중입니다…'}
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'rgba(228, 204, 122, 0.75)',
+                lineHeight: 1.6,
+                margin: 0,
+                wordBreak: 'keep-all',
+              }}>
+                {t('ebookWait') || '구루가 대화를 신성한 이야기로 가다듬고 있습니다. 최대 30초 정도 소요될 수 있습니다…'}
+              </p>
+              <div style={{
+                marginTop: '20px',
+                fontSize: '0.85rem',
+                color: '#FFD700',
+                padding: '12px 18px',
+                background: 'rgba(212, 160, 23, 0.12)',
+                borderRadius: '12px',
+                border: '1px solid rgba(212, 160, 23, 0.35)',
+                width: '100%',
+                boxSizing: 'border-box',
+                lineHeight: 1.55,
+                wordBreak: 'keep-all',
+                textAlign: 'center',
+              }}>
+                ⚠️ {t('ebookDontLeave') || '생성 중에는 이 화면을 끄거나 벗어나지 마세요. 연꽃이 소모됩니다.'}
+              </div>
+            </div>
           </div>
           <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
         </div>

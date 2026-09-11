@@ -279,7 +279,7 @@ export default function PillarsPage() {
           </form>
 
           {/* Action Row: My Donations on LEFT, Donate button on RIGHT (symmetrical to WishRoof) */}
-          <div className="pillars-primary-action animate-fade-up animate-delay-250" style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '20px', flexWrap: 'wrap' }}>
+          <div className="pillars-primary-action animate-fade-up animate-delay-250" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '20px', flexWrap: 'wrap' }}>
             {session?.user && (
               <button
                 type="button"
@@ -287,7 +287,7 @@ export default function PillarsPage() {
                 onClick={() => {
                   setSearchQuery('');
                   if (activeTab === 'mine') {
-                    setActiveTab('founders');
+                    setActiveTab('supporters');
                   } else {
                     setActiveTab('mine');
                   }
@@ -299,8 +299,7 @@ export default function PillarsPage() {
 
             <button
               type="button"
-              className="btn-gold-glow-v2"
-              style={{ padding: '12px 32px' }}
+              className="btn-gold-glow-v2 btn-pillar-donate"
               onClick={handleDonateClick}
             >
               ♥ {t('donate')}
@@ -349,14 +348,14 @@ export default function PillarsPage() {
                       centeredSlides={true}
                       slidesPerView={'auto'}
                       speed={280}
-                      touchRatio={1.3}
+                      threshold={5}
+                      touchRatio={1.2}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
                       longSwipesRatio={0.15}
                       touchReleaseOnEdges={true}
-                      nested={true}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 100,
@@ -459,14 +458,14 @@ export default function PillarsPage() {
                       centeredSlides={true}
                       slidesPerView={'auto'}
                       speed={280}
-                      touchRatio={1.3}
+                      threshold={5}
+                      touchRatio={1.2}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
                       longSwipesRatio={0.15}
                       touchReleaseOnEdges={true}
-                      nested={true}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 100,
@@ -587,14 +586,14 @@ export default function PillarsPage() {
                       centeredSlides={true}
                       slidesPerView={'auto'}
                       speed={280}
-                      touchRatio={1.3}
+                      threshold={5}
+                      touchRatio={1.2}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
                       longSwipesRatio={0.15}
                       touchReleaseOnEdges={true}
-                      nested={true}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 100,
@@ -840,11 +839,15 @@ export default function PillarsPage() {
               className="btn-bottom-pill"
               onClick={() => {
                 setSearchQuery('');
-                setActiveTab('founders');
+                setActiveTab(activeTab === 'mine' ? 'supporters' : activeTab);
               }}
             >
-              <span className="btn-bottom-icon">🏛️</span>
-              <span className="btn-bottom-label">{t('viewAll') || '전체 목록 보기'}</span>
+              <span className="btn-bottom-icon">{activeTab === 'mine' ? '📿' : '🏛️'}</span>
+              <span className="btn-bottom-label">
+                {activeTab === 'mine' 
+                  ? (t('viewSupporters') || '후원자 전체보기')
+                  : (t('viewAll') || '전체 목록 보기')}
+              </span>
             </button>
           )}
           <button
@@ -1061,16 +1064,19 @@ export default function PillarsPage() {
         }
         .pillar-owner-toolbar {
           display: flex;
-          gap: 12px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
           margin-top: 24px;
           width: 100%;
-          justify-content: center;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
+          box-sizing: border-box;
         }
         .btn-owner-action {
-          padding: 10px 20px;
+          padding: 9px 14px;
           border-radius: 100px;
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
@@ -1078,7 +1084,11 @@ export default function PillarsPage() {
           font-family: var(--font-ui);
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 6px;
+          flex: 1;
+          max-width: 180px;
+          box-sizing: border-box;
         }
         .btn-owner-toggle {
           background: rgba(255, 255, 255, 0.08);
@@ -1169,17 +1179,22 @@ export default function PillarsPage() {
         .btn-mine-v2 {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 12px 26px;
+          justify-content: center;
+          gap: 8px;
+          height: 48px;
+          min-width: 140px;
+          padding: 0 28px;
           border-radius: 100px;
           background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(212, 160, 23, 0.3);
+          border: 1px solid rgba(212, 160, 23, 0.35);
           color: var(--primary-gold);
           font-size: 0.95rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          box-sizing: border-box;
+          white-space: nowrap;
         }
         .btn-mine-v2:hover {
           background: rgba(212, 160, 23, 0.12);
@@ -1191,6 +1206,21 @@ export default function PillarsPage() {
           border-color: var(--primary-gold);
           color: #FFD700;
           box-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+        }
+
+        .btn-pillar-donate {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          height: 48px;
+          min-width: 140px;
+          padding: 0 28px !important;
+          font-size: 0.95rem !important;
+          font-weight: 700;
+          border-radius: 100px;
+          box-sizing: border-box;
+          white-space: nowrap;
         }
 
         .page-header { text-align: center; margin-bottom: 36px; }
