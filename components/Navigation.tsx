@@ -14,12 +14,7 @@ export default function Navigation() {
   const locale = useLocale();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
-      return true;
-    }
-    return false;
-  });
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -75,34 +70,15 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  // Bulletproof language change: preserves current pathname, hash, and search parameters
+  // SPA language change: uses next-intl router.replace() — no page reload, menu stays open
   const handleLanguageChange = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-    const supportedLocales = ['en', 'ko', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'ar', 'vi', 'th', 'id', 'my', 'km'];
-    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
-    const currentSearch = typeof window !== 'undefined' ? window.location.search : '';
-    const currentHash = typeof window !== 'undefined' ? window.location.hash : '';
-
-    const segments = currentPath.split('/').filter(Boolean);
-    if (segments.length > 0 && supportedLocales.includes(segments[0])) {
-      segments[0] = nextLocale;
-    } else {
-      segments.unshift(nextLocale);
-    }
-
-    const newPath = '/' + segments.join('/') + currentSearch + currentHash;
-    if (mobileOpen) {
-      sessionStorage.setItem('restore_mobile_menu', 'true');
-    }
-    window.location.href = newPath;
+    // router.replace with locale option switches locale without page reload
+    router.replace(pathname as any, { locale: nextLocale, scroll: false });
   };
 
-  // Close mobile menu on route change unless restoring after language change
+  // Close mobile menu on actual route change (not locale change)
   useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('restore_mobile_menu') === 'true') {
-      sessionStorage.removeItem('restore_mobile_menu');
-      return;
-    }
     setMobileOpen(false);
   }, [pathname]);
 

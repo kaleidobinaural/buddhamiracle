@@ -1230,9 +1230,14 @@ export default function PillarsPage() {
 
         /* Hall Mode (Coverflow Carousel) */
         .hall-mode { overflow: visible; padding: 16px 0 32px; perspective: 2500px; }
-        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 90px; overflow: visible; }
-        .pillar-slide { width: 320px; display: flex; justify-content: center; will-change: transform; }
-        .pillar-wrapper { width: 100%; cursor: pointer; }
+        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 90px; overflow: visible; background: transparent !important; }
+        .pillar-slide { 
+          width: 320px; display: flex; justify-content: center; 
+          will-change: transform; 
+          background: transparent !important;
+          transform-style: flat;
+        }
+        .pillar-wrapper { width: 100%; cursor: pointer; background: transparent !important; }
         
         .swiper-slide-active .pillar-monument { filter: drop-shadow(0 20px 50px rgba(212, 160, 23, 0.4)); }
         .swiper-slide-active .pillar-body { border-color: rgba(212, 160, 23, 0.5); background: linear-gradient(90deg, #0a0a0a 0%, #201a0a 50%, #0a0a0a 100%); }
@@ -1452,10 +1457,15 @@ export default function PillarsPage() {
         .swiper-slide {
           visibility: visible !important;
           opacity: 1 !important;
+          background: transparent !important;
+        }
+        .swiper-3d .swiper-slide {
+          transform-style: flat !important;
         }
         .swiper-slide-invisible-blank {
           visibility: visible !important;
           display: block !important;
+          background: transparent !important;
         }
         .swiper-slide-shadow,
         .swiper-slide-shadow-left,
