@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Immerse yourself in sacred scriptures and timeless Buddhist wisdom.",
     "cardStoreTitle": "Quiesan Store",
     "cardStoreDesc": "Explore lotus offerings and meditation art.",
-    "cardResonanceTitle": "TikTok Channel",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Resonate with seekers around the world.",
-    "heroBadge": "TikTok @buddha_miracle {count} Global Pilgrims"
+    "heroBadge": "TikTok @buddha_miracle {count} Global Pilgrims",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "{count} Pilgrims' Sanctuary"
   },
   "Nav": {
     "home": "Home",
@@ -31,7 +33,7 @@
     "dharma": "Dharma Library",
     "donate": "Donate",
     "store": "Quiesan Store",
-    "resonance": "TikTok Channel",
+    "resonance": "TikTok",
     "mySanctuary": "My Sanctuary",
     "privacyPolicy": "Privacy Policy",
     "signOut": "Sign out",
@@ -335,8 +337,8 @@
     "title": "Millions Touched by the Frequency",
     "desc": "From Seoul to Sao Paulo, these moments of stillness have traveled across the world.",
     "related": "Related videos",
-    "followBtn": "Follow @buddha_miracle on TikTok",
-    "eyebrow": "GLOBAL RESONANCE",
+    "followBtn": "Open in TikTok ↗",
+    "eyebrow": "Official TikTok Channel",
     "globalCommunity": "Global Sacred Community",
     "redirecting": "Connecting to TikTok Official Channel... ✨",
     "officialChannel": "Official TikTok Channel",
@@ -351,7 +353,11 @@
     "highlight3Tag": "COMMUNITY",
     "highlight3Title": "Global Sangha",
     "highlight3Sub": "630K+ souls connected worldwide",
-    "viewOnTikTok": "Watch on TikTok ↗"
+    "viewOnTikTok": "Watch on TikTok ↗",
+    "goToTikTok": "Open in TikTok ↗",
+    "noticeTitle": "Guiding to Official TikTok",
+    "noticeDesc": "Opening @buddha_miracle sanctuary in a new window. You can return to the Temple anytime.",
+    "noticeTimer": "Closing in {sec}s (or click ✕)"
   },
   "Profile": {
     "myWishes": "My Wishes",

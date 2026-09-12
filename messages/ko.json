@@ -18,9 +18,11 @@
     "cardDharmaDesc": "신성한 경전과 시간을 초월한 불교의 지혜 속으로 깊이 빠져보세요.",
     "cardStoreTitle": "Quiesan 스토어",
     "cardStoreDesc": "연꽃과 명상 아트를 만나보세요.",
-    "cardResonanceTitle": "틱톡 채널",
+    "cardResonanceTitle": "틱톡",
     "cardResonanceDesc": "틱톡 공식 채널에서 전 세계 순례자들과 기적과 평화의 순간을 함께 나누세요.",
-    "heroBadge": "틱톡 @buddha_miracle {count} 순례자의 공간"
+    "heroBadge": "틱톡 @buddha_miracle {count} 순례자의 공간",
+    "heroBadgeChannel": "틱톡 @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "{count} 순례자의 공간"
   },
   "Nav": {
     "home": "홈",
@@ -31,7 +33,7 @@
     "dharma": "경전 서재",
     "donate": "공양하기",
     "store": "Quiesan 스토어",
-    "resonance": "틱톡 채널",
+    "resonance": "틱톡",
     "mySanctuary": "내 성소",
     "privacyPolicy": "개인정보 처리방침",
     "signOut": "로그아웃",
@@ -335,7 +337,7 @@
     "title": "주파수가 닿은 수백만의 영혼들",
     "desc": "서울에서 상파울루까지, 이 고요의 순간들이 전 세계로 퍼져나갔습니다.",
     "related": "관련 영상",
-    "followBtn": "TikTok에서 @buddha_miracle 팔로우하기",
+    "followBtn": "틱톡 바로가기 ↗",
     "eyebrow": "공식 틱톡 채널",
     "globalCommunity": "글로벌 성소 커뮤니티",
     "redirecting": "틱톡 공식 채널로 이동 중... ✨",
@@ -351,7 +353,11 @@
     "highlight3Tag": "커뮤니티",
     "highlight3Title": "글로벌 상가",
     "highlight3Sub": "전 세계 63만+ 영혼 연결",
-    "viewOnTikTok": "틱톡에서 보기 ↗"
+    "viewOnTikTok": "틱톡에서 보기 ↗",
+    "goToTikTok": "틱톡 바로가기 ↗",
+    "noticeTitle": "틱톡 공식 채널로 이동합니다",
+    "noticeDesc": "새 창에서 @buddha_miracle 성소가 열립니다. 사원으로 언제든 다시 돌아오실 수 있습니다.",
+    "noticeTimer": "{sec}초 후 자동으로 닫힙니다 (또는 ✕ 클릭)"
   },
   "Profile": {
     "myWishes": "내 소원",

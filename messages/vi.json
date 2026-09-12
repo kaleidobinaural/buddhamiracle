@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Hòa mình vào kinh điển linh thiêng và trí tuệ Phật giáo vượt thời gian.",
     "cardStoreTitle": "Cửa hàng Quiesan",
     "cardStoreDesc": "Khám phá cúng dường sen và nghệ thuật thiền định.",
-    "cardResonanceTitle": "Kênh TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Cộng hưởng với những người tìm kiếm trên toàn thế giới.",
-    "heroBadge": "TikTok @buddha_miracle {count} Người Hành Hương"
+    "heroBadge": "TikTok @buddha_miracle {count} Người Hành Hương",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "Thánh địa của {count} Người hành hương"
   },
   "Nav": {
     "home": "Trang Chủ",
@@ -31,7 +33,7 @@
     "dharma": "Thư Viện Pháp",
     "donate": "Cúng Nhường",
     "store": "Quiesan Store",
-    "resonance": "Kênh TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "Thánh Địa Của Tôi",
     "privacyPolicy": "Chính Sách Bảo Mật",
     "signOut": "Đăng Xuất",
@@ -323,8 +325,8 @@
     "title": "Hàng Triệu Người Được Chạm Đến Bởi Tần Số",
     "desc": "Từ Seoul đến Sao Paulo, những khoảnh khắc tĩnh lặng này đã lan tỏa khắp thế giới.",
     "related": "Video liên quan",
-    "followBtn": "Theo dõi @buddha_miracle trên TikTok",
-    "eyebrow": "CỘNG HƯỞNG TOÀN CẦU",
+    "followBtn": "Đến TikTok ↗",
+    "eyebrow": "Kênh TikTok Chính Thức",
     "globalCommunity": "Cộng Đồng Tâm Linh Toàn Cầu",
     "redirecting": "Đang chuyển đến kênh TikTok chính thức... ✨",
     "officialChannel": "Kênh TikTok Chính Thức",
@@ -339,7 +341,11 @@
     "highlight3Tag": "CỘNG ĐỒNG",
     "highlight3Title": "Tăng Đoàn Toàn Cầu",
     "highlight3Sub": "630K+ tâm hồn kết nối trên toàn thế giới",
-    "viewOnTikTok": "Xem trên TikTok ↗"
+    "viewOnTikTok": "Xem trên TikTok ↗",
+    "goToTikTok": "Đến TikTok ↗",
+    "noticeTitle": "Đang chuyển đến Kênh TikTok Chính Thức",
+    "noticeDesc": "Đang mở @buddha_miracle trong cửa sổ mới. Bạn có thể quay lại điện thờ bất kỳ lúc nào.",
+    "noticeTimer": "Tự động đóng sau {sec} giây (hoặc nhấn ✕)"
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",

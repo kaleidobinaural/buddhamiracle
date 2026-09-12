@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   channelLabel?: string;
@@ -9,10 +10,11 @@ interface Props {
 }
 
 export default function HeroFollowerBadge({
-  channelLabel = '틱톡 @BUDDHA_MIRACLE',
-  communityTemplate = '{count} 순례자의 공간',
+  channelLabel,
+  communityTemplate,
   defaultCount = '636K+'
 }: Props) {
+  const t = useTranslations('Index');
   const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
@@ -35,15 +37,20 @@ export default function HeroFollowerBadge({
       });
   }, []);
 
-  const safeChannel = (!channelLabel || channelLabel.toUpperCase().includes('INDEX.'))
-    ? '틱톡 @BUDDHA_MIRACLE'
-    : channelLabel;
+  let translatedChannel = '';
+  try {
+    translatedChannel = t('heroBadgeChannel');
+  } catch {}
+  const safeChannel = channelLabel || 
+    (translatedChannel && !translatedChannel.includes('heroBadgeChannel') ? translatedChannel : 'TikTok @BUDDHA_MIRACLE');
 
-  const safeCommunity = (!communityTemplate || communityTemplate.toUpperCase().includes('INDEX.'))
-    ? '{count} 순례자의 공간'
-    : communityTemplate;
-
-  const communityText = safeCommunity.replace('{count}', count);
+  let translatedCommunity = '';
+  try {
+    translatedCommunity = t('heroBadgeCommunity', { count });
+  } catch {}
+  const safeCommunity = communityTemplate 
+    ? communityTemplate.replace('{count}', count)
+    : (translatedCommunity && !translatedCommunity.includes('heroBadgeCommunity') ? translatedCommunity : `${count} Pilgrims' Sanctuary`);
 
   return (
     <div className="hero-badge hero-follower-badge animate-fade-up">
@@ -52,7 +59,7 @@ export default function HeroFollowerBadge({
           <span className="badge-dot" />
           <span className="badge-channel-title">{safeChannel}</span>
         </div>
-        <span className="badge-community-count">{communityText}</span>
+        <span className="badge-community-count">{safeCommunity}</span>
       </div>
     </div>
   );

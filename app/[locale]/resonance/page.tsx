@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 export default function ResonancePage() {
   const t = useTranslations('Resonance');
   const [followerCount, setFollowerCount] = useState<number | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<typeof HIGHLIGHTS[0] | null>(null);
   const [showNotice, setShowNotice] = useState(false);
   const [noticeSeconds, setNoticeSeconds] = useState(5);
 
@@ -54,8 +53,7 @@ export default function ResonancePage() {
       tag: 'Living Buddha',
       title: 'One lifetime of devotion, one second of miracle. ✨🙏',
       sub: 'Một đời tận tụy, một giây phép màu. 🌸 Một đời đức tin',
-      frequency: 'Miracle of Devotion',
-      mantra: '#LivingBuddha #Miracle #Karma #Faith'
+      frequency: 'Miracle of Devotion'
     },
     {
       id: '7610752603353287954',
@@ -64,8 +62,7 @@ export default function ResonancePage() {
       tag: 'Pure Heart',
       title: 'A pure heart always receives the greatest miracle 😭✨',
       sub: 'Một trái tim thuần khiết luôn nhận được phép màu vĩ đại nhất 🌸',
-      frequency: 'Instant Karma & Grace',
-      mantra: '#TừBi #NhânQuả #Buddhism #Heartwarming'
+      frequency: 'Instant Karma & Grace'
     },
     {
       id: '7629342532014542098',
@@ -74,8 +71,7 @@ export default function ResonancePage() {
       tag: 'Divine Nature',
       title: 'Greed takes, but nature gives back to the Divine. ✨🙏',
       sub: 'Lòng tham cướp mất, nhưng thiên nhiên sẽ trả lại cho Đấng Thiêng Liêng 🌸',
-      frequency: 'Cosmic Justice',
-      mantra: '#Karma #Justice #Awe #NatureMagic'
+      frequency: 'Cosmic Justice'
     }
   ];
 
@@ -93,7 +89,7 @@ export default function ResonancePage() {
     <main className="resonance-page">
       <div className="store-bg-glow" />
       <section className="store-section store-tiktok-section">
-        <p className="store-tiktok-eyebrow animate-fade-up">공식 틱톡 채널</p>
+        <p className="store-tiktok-eyebrow animate-fade-up">{safeT('eyebrow', 'Official TikTok Channel')}</p>
         <h1 className="store-section-title animate-fade-up animate-delay-100">{t('title')}</h1>
         <p className="resonance-lead animate-fade-up animate-delay-150">
           {t('desc')}
@@ -104,7 +100,13 @@ export default function ResonancePage() {
           <div className="channel-header">
             <div className="channel-avatar-wrapper">
               <div className="avatar-glow-ring" />
-              <div className="channel-avatar">☸</div>
+              <div className="channel-avatar">
+                <img 
+                  src="/images/tiktok/profile.jpg" 
+                  alt="Buddha Miracle Official Profile" 
+                  className="channel-avatar-img" 
+                />
+              </div>
             </div>
             <div className="channel-meta">
               <div className="channel-badge">{safeT('officialChannel', 'Official TikTok Channel')}</div>
@@ -118,25 +120,25 @@ export default function ResonancePage() {
                 <span className="stat-info-sep">•</span>
                 <span className="stat-info-item">
                   <span className="stat-info-icon">🌏</span>
-                  <span className="stat-info-label">{t('globalCommunity')}</span>
+                  <span className="stat-info-label">{safeT('globalCommunity', 'Global Sacred Community')}</span>
                 </span>
               </div>
             </div>
           </div>
 
           <p className="channel-intro">
-            {safeT('channelIntro', '매일 수만 명의 순례자들이 틱톡에서 신성한 주파수와 지혜의 울림을 함께 나누고 있습니다. 지금 공식 채널을 팔로우하고 일상 속 평온의 기적을 경험해 보세요.')}
+            {safeT('channelIntro', 'Every day, millions of seekers share sacred frequency, wisdom, and miraculous moments on TikTok. Follow our official sanctuary to awaken inner peace.')}
           </p>
 
-          {/* Quick Highlight Cards (with real local thumbnails) */}
+          {/* Quick Highlight Cards (Direct Link to TikTok Video) */}
           <div className="highlights-grid">
             {HIGHLIGHTS.map((h) => (
               <button
                 key={h.id}
                 type="button"
-                onClick={() => setSelectedVideo(h)}
+                onClick={(e) => handleOpenTikTok(e, h.url)}
                 className="highlight-card"
-                aria-label={`Open ${h.title}`}
+                aria-label={`Open ${h.title} on TikTok`}
               >
                 <div className="highlight-thumb-wrap">
                   <img src={h.thumb} alt={h.title} className="highlight-thumb-img" />
@@ -148,7 +150,9 @@ export default function ResonancePage() {
                 <div className="highlight-card-body">
                   <div className="highlight-title">{h.title}</div>
                   <div className="highlight-sub">{h.sub}</div>
-                  <div className="highlight-link">▶ 사원에서 바로 감상하기</div>
+                  <div className="highlight-link">
+                    <span>{safeT('goToTikTok', 'Open in TikTok ↗')}</span>
+                  </div>
                 </div>
               </button>
             ))}
@@ -162,54 +166,11 @@ export default function ResonancePage() {
               className="btn-tiktok-gold"
             >
               <span className="tiktok-icon">🎵</span>
-              <span className="tiktok-cta-text">{t('followBtn')}</span>
-              <span className="tiktok-arrow">↗</span>
+              <span className="tiktok-cta-text">{safeT('followBtn', 'Open in TikTok ↗')}</span>
             </button>
           </div>
         </div>
       </section>
-
-      {/* Sacred Video Lightbox Modal */}
-      {selectedVideo && (
-        <div className="video-lightbox-overlay" onClick={() => setSelectedVideo(null)}>
-          <div className="video-lightbox-card glass-card animate-fade-up" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="lightbox-close-btn" 
-              onClick={() => setSelectedVideo(null)} 
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            
-            {/* Real Thumbnail Preview in 9:16 Aspect */}
-            <div className="lightbox-player-wrap">
-              <img src={selectedVideo.thumb} alt={selectedVideo.title} className="lightbox-video-thumb" />
-              <div className="lightbox-center-play">▶</div>
-              <div className="player-frequency-badge">{selectedVideo.frequency}</div>
-            </div>
-
-            <div className="lightbox-info">
-              <span className="lightbox-tag">{selectedVideo.tag}</span>
-              <h3 className="lightbox-title">{selectedVideo.title}</h3>
-              <p className="lightbox-desc">{selectedVideo.sub}</p>
-              <p className="lightbox-mantra">{selectedVideo.mantra}</p>
-            </div>
-
-            <button
-              type="button"
-              className="btn-lightbox-tiktok"
-              onClick={(e) => {
-                const targetUrl = selectedVideo.url;
-                setSelectedVideo(null);
-                handleOpenTikTok(e, targetUrl);
-              }}
-            >
-              <span className="tiktok-icon">🎵</span>
-              <span>TikTok에서 전체 영상 및 댓글 감상 ↗</span>
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* 5-Second Serene Transition Notice (with backdrop & ✕ close) */}
       {showNotice && (
@@ -225,13 +186,13 @@ export default function ResonancePage() {
             <div className="notice-icon-wrap">
               <span className="notice-icon-spin">☸</span>
             </div>
-            <h3 className="notice-title">공식 틱톡(@buddha_miracle)으로 연결되었습니다</h3>
-            <p className="notice-desc">새 창(또는 틱톡 앱)에서 신성한 울림을 만나보세요.</p>
+            <h3 className="notice-title">{safeT('noticeTitle', 'Guiding to Official TikTok')}</h3>
+            <p className="notice-desc">{safeT('noticeDesc', 'Opening @buddha_miracle sanctuary in a new window. You can return to the Temple anytime.')}</p>
             <div className="notice-progress-track">
               <div className="notice-progress-bar" />
             </div>
             <p className="notice-timer-text">
-              화면을 터치하거나 <strong>{noticeSeconds}초</strong> 후 사원으로 자동 복귀합니다.
+              {safeT('noticeTimer', '{sec}s').replace('{sec}', String(noticeSeconds))}
             </p>
           </div>
         </div>
@@ -306,9 +267,10 @@ export default function ResonancePage() {
         }
         .channel-avatar-wrapper {
           position: relative;
-          width: 72px;
-          height: 72px;
+          width: 84px;
+          height: 84px;
           flex-shrink: 0;
+          margin: 0 auto;
         }
         .avatar-glow-ring {
           position: absolute;
@@ -316,8 +278,8 @@ export default function ResonancePage() {
           border-radius: 50%;
           background: conic-gradient(from 0deg, #d4a017, #f6e27a, #8a6d1a, #d4a017);
           animation: spin-slow 12s linear infinite;
-          opacity: 0.8;
-          filter: blur(4px);
+          opacity: 0.85;
+          filter: blur(5px);
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
@@ -330,12 +292,14 @@ export default function ResonancePage() {
           border-radius: 50%;
           background: #14120f;
           border: 2px solid #d4a017;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: #d4a017;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.8), 0 0 20px rgba(212,160,23,0.3);
+        }
+        .channel-avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
 
         .channel-meta {
@@ -438,44 +402,54 @@ export default function ResonancePage() {
         .highlight-card:hover .highlight-thumb-img {
           transform: scale(1.05);
         }
+
         .highlight-play-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.35);
+          background: rgba(0,0,0,0.3);
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: background 0.3s;
+        }
+        .highlight-card:hover .highlight-play-overlay {
+          background: rgba(0,0,0,0.15);
         }
         .play-triangle {
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
-          background: rgba(212, 160, 23, 0.9);
-          color: #000;
+          background: rgba(0,0,0,0.7);
+          border: 1.5px solid var(--primary-gold);
+          color: var(--primary-gold);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           padding-left: 3px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-          transition: transform 0.2s;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+          transition: transform 0.3s;
         }
         .highlight-card:hover .play-triangle {
-          transform: scale(1.15);
-          background: #ffd700;
+          transform: scale(1.1);
+          background: var(--primary-gold);
+          color: #000;
         }
+
         .highlight-tag-badge {
           position: absolute;
           top: 10px;
           left: 10px;
-          font-size: 0.7rem;
-          color: #fff;
           background: rgba(0, 0, 0, 0.75);
           border: 1px solid rgba(212, 160, 23, 0.4);
-          padding: 3px 10px;
-          border-radius: 50px;
+          color: var(--primary-gold);
+          font-size: 0.7rem;
           font-weight: 700;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 3px 8px;
+          border-radius: 6px;
+          backdrop-filter: blur(8px);
         }
 
         .highlight-card-body {
@@ -507,9 +481,12 @@ export default function ResonancePage() {
           overflow: hidden;
         }
         .highlight-link {
-          font-size: 0.82rem;
-          font-weight: 600;
+          font-size: 0.85rem;
+          font-weight: 700;
           color: #d4a017;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
         }
 
         .portal-cta-wrap {
@@ -542,158 +519,6 @@ export default function ResonancePage() {
         .btn-tiktok-gold:active { transform: scale(0.97); }
 
         .tiktok-icon { font-size: 1.3rem; }
-        .tiktok-arrow {
-          font-size: 1.2rem;
-          transition: transform 0.2s;
-        }
-        .btn-tiktok-gold:hover .tiktok-arrow {
-          transform: translate(2px, -2px);
-        }
-
-        /* Lightbox Modal */
-        .video-lightbox-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.88);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          z-index: 100000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-        .video-lightbox-card {
-          position: relative;
-          background: rgba(20, 18, 14, 0.97);
-          border: 1px solid rgba(212, 160, 23, 0.4);
-          border-radius: 28px;
-          padding: 32px 24px 24px;
-          max-width: 440px;
-          width: 100%;
-          text-align: center;
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 160, 23, 0.15);
-        }
-        .lightbox-close-btn, .notice-close-btn {
-          position: absolute;
-          top: 14px;
-          right: 16px;
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          color: rgba(255, 255, 255, 0.8);
-          width: 34px;
-          height: 34px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: all 0.2s;
-          z-index: 2;
-        }
-        .lightbox-close-btn:hover, .notice-close-btn:hover {
-          background: rgba(212, 160, 23, 0.25);
-          border-color: var(--primary-gold);
-          color: #fff;
-          transform: scale(1.08);
-        }
-        .lightbox-player-wrap {
-          position: relative;
-          width: 100%;
-          max-width: 240px;
-          aspect-ratio: 9 / 14;
-          margin: 0 auto 20px;
-          border-radius: 16px;
-          overflow: hidden;
-          background: #000;
-          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
-        }
-        .lightbox-video-thumb {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .lightbox-center-play {
-          position: absolute;
-          inset: 0;
-          background: rgba(0,0,0,0.3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          font-size: 2.2rem;
-          filter: drop-shadow(0 0 12px rgba(212,160,23,0.8));
-        }
-        .player-frequency-badge {
-          position: absolute;
-          bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(0, 0, 0, 0.8);
-          border: 1px solid rgba(212, 160, 23, 0.5);
-          color: var(--primary-gold);
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          padding: 4px 12px;
-          border-radius: 50px;
-          white-space: nowrap;
-        }
-
-        .lightbox-tag {
-          display: inline-block;
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--primary-gold);
-          background: rgba(212, 160, 23, 0.12);
-          padding: 3px 12px;
-          border-radius: 50px;
-          border: 1px solid rgba(212, 160, 23, 0.25);
-          margin-bottom: 10px;
-        }
-        .lightbox-title {
-          font-family: var(--font-serif);
-          font-size: 1.3rem;
-          color: #fff;
-          margin-bottom: 6px;
-          line-height: 1.35;
-        }
-        .lightbox-desc {
-          font-size: 0.88rem;
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.5;
-          margin-bottom: 6px;
-        }
-        .lightbox-mantra {
-          font-size: 0.82rem;
-          color: var(--primary-gold);
-          font-style: italic;
-          margin-bottom: 20px;
-        }
-        .btn-lightbox-tiktok {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          padding: 14px 20px;
-          background: linear-gradient(135deg, #f6e27a, #d4a017);
-          color: #000;
-          font-weight: 700;
-          font-size: 0.92rem;
-          border-radius: 100px;
-          border: none;
-          cursor: pointer;
-          box-shadow: 0 8px 24px rgba(212, 160, 23, 0.3);
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn-lightbox-tiktok:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(212, 160, 23, 0.5);
-        }
 
         /* 5-Second Transition Notice */
         .tiktok-notice-overlay {
@@ -774,6 +599,26 @@ export default function ResonancePage() {
           color: var(--primary-gold);
           margin: 0;
           opacity: 0.9;
+        }
+        .notice-close-btn {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: #fff;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .notice-close-btn:hover {
+          background: rgba(255, 255, 255, 0.2);
         }
 
         @media (max-width: 640px) {

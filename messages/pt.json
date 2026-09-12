@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Mergulhe em escrituras sagradas e na sabedoria budista atemporal.",
     "cardStoreTitle": "Loja Quiesan",
     "cardStoreDesc": "Explore oferendas de lótus e arte de meditação.",
-    "cardResonanceTitle": "Canal do TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Ressoe com buscadores ao redor do mundo.",
-    "heroBadge": "TikTok @buddha_miracle {count} Peregrinos"
+    "heroBadge": "TikTok @buddha_miracle {count} Peregrinos",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "Santuário de {count} Peregrinos"
   },
   "Nav": {
     "home": "Início",
@@ -31,7 +33,7 @@
     "dharma": "Biblioteca do Dharma",
     "donate": "Doar",
     "store": "Quiesan Store",
-    "resonance": "Canal do TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "Meu Santuário",
     "privacyPolicy": "Política de Privacidade",
     "signOut": "Sair",
@@ -323,11 +325,11 @@
     "title": "Milhões Tocados pela Frequência",
     "desc": "De Seul a São Paulo, esses momentos de quietude viajaram pelo mundo.",
     "related": "Vídeos relacionados",
-    "followBtn": "Siga @buddha_miracle no TikTok",
-    "eyebrow": "RESSONÂNCIA GLOBAL",
+    "followBtn": "Abrir no TikTok ↗",
+    "eyebrow": "Canal Oficial do TikTok",
     "globalCommunity": "Comunidade Sagrada Global",
     "redirecting": "Conectando ao canal oficial do TikTok... ✨",
-    "officialChannel": "Canal TikTok Oficial",
+    "officialChannel": "Canal Oficial do TikTok",
     "followers": "Seguidores",
     "channelIntro": "Todos os dias, milhões de buscadores compartilham no TikTok momentos de quietude, sabedoria e despertar. Siga nosso canal oficial.",
     "highlight1Tag": "MOMENTO TOP",
@@ -339,7 +341,11 @@
     "highlight3Tag": "COMUNIDADE",
     "highlight3Title": "Sangha Global",
     "highlight3Sub": "630K+ almas conectadas no mundo",
-    "viewOnTikTok": "Ver no TikTok ↗"
+    "viewOnTikTok": "Ver no TikTok ↗",
+    "goToTikTok": "Abrir no TikTok ↗",
+    "noticeTitle": "Redirecionando para o canal oficial do TikTok",
+    "noticeDesc": "Abrindo @buddha_miracle em uma nova janela. Você pode voltar ao templo a qualquer momento.",
+    "noticeTimer": "Fechando em {sec}s (ou clique em ✕)"
   },
   "Profile": {
     "myWishes": "Meus Desejos",

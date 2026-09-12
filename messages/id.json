@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Hanyutkan diri Anda dalam kitab-kitab suci dan kebijaksanaan Buddhis yang abadi.",
     "cardStoreTitle": "Toko Quiesan",
     "cardStoreDesc": "Jelajahi persembahan lotus dan seni meditasi.",
-    "cardResonanceTitle": "Saluran TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Beresonansi dengan para pencari di seluruh dunia.",
-    "heroBadge": "TikTok @buddha_miracle {count} Peziarah"
+    "heroBadge": "TikTok @buddha_miracle {count} Peziarah",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "Suaka untuk {count} Peziarah"
   },
   "Nav": {
     "home": "Beranda",
@@ -31,7 +33,7 @@
     "dharma": "Perpustakaan Dharma",
     "donate": "Berdana",
     "store": "Quiesan Store",
-    "resonance": "Saluran TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "Tempat Suciku",
     "privacyPolicy": "Kebijakan Privasi",
     "signOut": "Keluar",
@@ -323,8 +325,8 @@
     "title": "Jutaan Orang Tersentuh oleh Frekuensi",
     "desc": "Dari Seoul hingga Sao Paulo, momen-momen keheningan ini telah melintasi dunia.",
     "related": "Video terkait",
-    "followBtn": "Ikuti @buddha_miracle di TikTok",
-    "eyebrow": "RESONANSI GLOBAL",
+    "followBtn": "Buka di TikTok ↗",
+    "eyebrow": "Saluran TikTok Resmi",
     "globalCommunity": "Komunitas Suci Global",
     "redirecting": "Menghubungkan ke saluran resmi TikTok... ✨",
     "officialChannel": "Saluran TikTok Resmi",
@@ -339,7 +341,11 @@
     "highlight3Tag": "KOMUNITAS",
     "highlight3Title": "Sangha Global",
     "highlight3Sub": "630K+ jiwa terhubung di seluruh dunia",
-    "viewOnTikTok": "Tonton di TikTok ↗"
+    "viewOnTikTok": "Tonton di TikTok ↗",
+    "goToTikTok": "Buka di TikTok ↗",
+    "noticeTitle": "Membuka Saluran Resmi TikTok",
+    "noticeDesc": "Membuka @buddha_miracle di jendela baru. Anda dapat kembali ke Kuil kapan saja.",
+    "noticeTimer": "Menutup otomatis dalam {sec} detik (atau klik ✕)"
   },
   "Profile": {
     "myWishes": "Keinginan Saya",

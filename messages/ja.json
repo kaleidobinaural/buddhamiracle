@@ -18,9 +18,11 @@
     "cardDharmaDesc": "聖なる経典と時代を超えた仏教の知恵に深く浸りましょう。",
     "cardStoreTitle": "Quiesan ストア",
     "cardStoreDesc": "蓮の花と瞑想アートを探求しましょう。",
-    "cardResonanceTitle": "TikTokチャンネル",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "世界中の探求者と共鳴しましょう。",
-    "heroBadge": "TikTok @buddha_miracle {count} 巡礼者の聖域"
+    "heroBadge": "TikTok @buddha_miracle {count} 巡礼者の聖域",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "{count} 巡礼者の聖域"
   },
   "Nav": {
     "home": "ホーム",
@@ -31,7 +33,7 @@
     "dharma": "法（ダルマ）の書庫",
     "donate": "寄進",
     "store": "Quiesan ストア",
-    "resonance": "TikTokチャンネル",
+    "resonance": "TikTok",
     "mySanctuary": "私の聖域",
     "privacyPolicy": "プライバシーポリシー",
     "signOut": "サインアウト",
@@ -323,8 +325,8 @@
     "title": "周波数に触れた何百万もの魂",
     "desc": "ソウルからサンパウロまで、この静寂の瞬間が世界中を旅しました。",
     "related": "関連動画",
-    "followBtn": "TikTokで@buddha_miracleをフォロー",
-    "eyebrow": "グローバル・レゾナンス",
+    "followBtn": "TikTokを開く ↗",
+    "eyebrow": "公式TikTokチャンネル",
     "globalCommunity": "世界中の祈りの輪",
     "redirecting": "TikTok公式チャンネルへ移動中... ✨",
     "officialChannel": "公式TikTokチャンネル",
@@ -339,7 +341,11 @@
     "highlight3Tag": "コミュニティ",
     "highlight3Title": "グローバル僧伽",
     "highlight3Sub": "世界中で63万人以上の魂が繋がる",
-    "viewOnTikTok": "TikTokで見る ↗"
+    "viewOnTikTok": "TikTokで見る ↗",
+    "goToTikTok": "TikTokを開く ↗",
+    "noticeTitle": "公式TikTokへご案内します",
+    "noticeDesc": "新しいウィンドウで @buddha_miracle が開きます。いつでも寺院に戻ることができます。",
+    "noticeTimer": "{sec}秒後に自動的に閉じます (または ✕ をクリック)"
   },
   "Profile": {
     "myWishes": "私の願い",

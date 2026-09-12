@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Tauche ein in heilige Schriften und zeitlose buddhistische Weisheit.",
     "cardStoreTitle": "Quiesan Shop",
     "cardStoreDesc": "Entdecken Sie Lotus-Angebote und Meditationskunst.",
-    "cardResonanceTitle": "TikTok-Kanal",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Resonieren Sie mit Suchenden aus aller Welt.",
-    "heroBadge": "TikTok @buddha_miracle {count} Pilger"
+    "heroBadge": "TikTok @buddha_miracle {count} Pilger",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "Zuflucht für {count} Pilger"
   },
   "Nav": {
     "home": "Startseite",
@@ -31,7 +33,7 @@
     "dharma": "Dharma-Bibliothek",
     "donate": "Spenden",
     "store": "Quiesan Store",
-    "resonance": "TikTok-Kanal",
+    "resonance": "TikTok",
     "mySanctuary": "Mein Heiligtum",
     "privacyPolicy": "Datenschutzrichtlinie",
     "signOut": "Abmelden",
@@ -323,8 +325,8 @@
     "title": "Millionen von der Frequenz berührt",
     "desc": "Von Seoul bis Sao Paulo sind diese Momente der Stille um die Welt gereist.",
     "related": "Ähnliche Videos",
-    "followBtn": "Folge @buddha_miracle auf TikTok",
-    "eyebrow": "GLOBALE RESONANZ",
+    "followBtn": "In TikTok öffnen ↗",
+    "eyebrow": "Offizieller TikTok-Kanal",
     "globalCommunity": "Globale Heilige Gemeinschaft",
     "redirecting": "Verbindung zum offiziellen TikTok-Kanal... ✨",
     "officialChannel": "Offizieller TikTok-Kanal",
@@ -339,7 +341,11 @@
     "highlight3Tag": "GEMEINSCHAFT",
     "highlight3Title": "Globale Sangha",
     "highlight3Sub": "630K+ Seelen weltweit verbunden",
-    "viewOnTikTok": "Auf TikTok ansehen ↗"
+    "viewOnTikTok": "Auf TikTok ansehen ↗",
+    "goToTikTok": "In TikTok öffnen ↗",
+    "noticeTitle": "Weiterleitung zum offiziellen TikTok-Kanal",
+    "noticeDesc": "Öffnet @buddha_miracle in einem neuen Fenster. Sie können jederzeit zum Tempel zurückkehren.",
+    "noticeTimer": "Schließt in {sec} Sek. (oder auf ✕ klicken)"
   },
   "Profile": {
     "myWishes": "Meine Wünsche",

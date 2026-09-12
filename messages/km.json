@@ -18,9 +18,11 @@
     "cardDharmaDesc": "ស្រូបយកចំណេះដឹងពីគម្ពីរដ៏វិសុទ្ធ និងប្រាជ្ញាព្រះពុទ្ធសាសនាគ្មានកាលកំណត់។",
     "cardStoreTitle": "ហាង Quiesan",
     "cardStoreDesc": "ស្វែងរកការផ្តល់ជូនផ្កាឈូក និងសិល្បៈសមាធិ",
-    "cardResonanceTitle": "ប៉ុស្តិ៍ TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "ចូលរួមជាមួយអ្នកស្វែងរកទូទាំងពិភពលោក",
-    "heroBadge": "TikTok @buddha_miracle {count} អ្នកធ្វើធម្មយាត្រា"
+    "heroBadge": "TikTok @buddha_miracle {count} អ្នកធ្វើធម្មយាត្រា",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "ទីសក្ការៈបូជានៃ {count} អ្នកធម្មយាត្រា"
   },
   "Nav": {
     "home": "ទំព័រដើម",
@@ -31,7 +33,7 @@
     "dharma": "បណ្ណាល័យព្រះធម៌",
     "donate": "បរិច្ចាគ",
     "store": "Quiesan Store",
-    "resonance": "ប៉ុស្តិ៍ TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "សន្ទ្រាន់របស់ខ្ញុំ",
     "privacyPolicy": "គោលការណ៍ភាពឯកជន",
     "signOut": "ចេញ",
@@ -323,11 +325,11 @@
     "title": "មនុស្សរាប់លាននាក់ត្រូវបានប៉ះដោយប្រេកង់",
     "desc": "ពីទីក្រុងសេអ៊ូលដល់ទីក្រុងសៅប៉ូឡូ ពេលវេលានៃភាពស្ងៀមស្ងាត់ទាំងនេះបានធ្វើដំណើរជុំវិញពិភពលោក។",
     "related": "វីដេអូពាក់ព័ន្ធ",
-    "followBtn": "តាមដាន @buddha_miracle នៅលើ TikTok",
-    "eyebrow": "សំឡេងជ្រួញជ្រើសសកល",
+    "followBtn": "បើកក្នុង TikTok ↗",
+    "eyebrow": "ប៉ុស្តិ៍ TikTok ផ្លូវការ",
     "globalCommunity": "សហគមន៍ពិសិដ្ឋសកល",
     "redirecting": "កំពុងភ្ជាប់ទៅកាន់ឆានែល TikTok ផ្លូវការ... ✨",
-    "officialChannel": "ឆានែល TikTok ផ្លូវការ",
+    "officialChannel": "ប៉ុស្តិ៍ TikTok ផ្លូវការ",
     "followers": "អ្នកតាម",
     "channelIntro": "រៀងរាល់ថ្ងៃ អ្នករកអត្ថន័យជាច្រើនលាននាក់ចែករំលែកនៅ TikTok ពេលវេលាស្ងប់ស្ងាត់ ប្រាជ្ញា និងការភ្ញាក់ដឹង។ តាមដានឆានែលផ្លូវការរបស់យើង។",
     "highlight1Tag": "ចំណុចខ្ពស់បំផុត",
@@ -339,7 +341,11 @@
     "highlight3Tag": "សហគមន៍",
     "highlight3Title": "សហគមន៍ជាសកល",
     "highlight3Sub": "630K+ វិញ្ញាណភ្ជាប់ជុំវិញពិភពលោក",
-    "viewOnTikTok": "មើលនៅ TikTok ↗"
+    "viewOnTikTok": "មើលនៅ TikTok ↗",
+    "goToTikTok": "បើកក្នុង TikTok ↗",
+    "noticeTitle": "កំពុងបញ្ជូនទៅប៉ុស្តិ៍ TikTok ផ្លូវការ",
+    "noticeDesc": "កំពុងបើក @buddha_miracle ក្នុងផ្ទាំងថ្មី។ អ្នកអាចត្រឡប់មកកាន់ព្រះវិហារវិញបានគ្រប់ពេល។",
+    "noticeTimer": "បិទដោយស្វ័យប្រវត្តិក្នុ {sec} វិនាទី (ឬចុច ✕)"
   },
   "Profile": {
     "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",

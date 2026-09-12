@@ -18,9 +18,11 @@
     "cardDharmaDesc": "Immergez-vous dans les écritures sacrées et la sagesse bouddhiste intemporelle.",
     "cardStoreTitle": "Boutique Quiesan",
     "cardStoreDesc": "Découvrez les offrandes de lotus et l'art de méditation.",
-    "cardResonanceTitle": "Chaîne TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "Résonnez avec des chercheurs du monde entier.",
-    "heroBadge": "TikTok @buddha_miracle {count} Pèlerins"
+    "heroBadge": "TikTok @buddha_miracle {count} Pèlerins",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "Sanctuaire de {count} Pèlerins"
   },
   "Nav": {
     "home": "Accueil",
@@ -31,7 +33,7 @@
     "dharma": "Bibliothèque du Dharma",
     "donate": "Faire une Offrande",
     "store": "Quiesan Store",
-    "resonance": "Chaîne TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "Mon Sanctuaire",
     "privacyPolicy": "Politique de Confidentialité",
     "signOut": "Déconnexion",
@@ -323,8 +325,8 @@
     "title": "Des Millions Touchés par la Fréquence",
     "desc": "De Séoul à Sao Paulo, ces moments de silence ont voyagé à travers le monde.",
     "related": "Vidéos associées",
-    "followBtn": "Suivez @buddha_miracle sur TikTok",
-    "eyebrow": "RÉSONANCE MONDIALE",
+    "followBtn": "Ouvrir dans TikTok ↗",
+    "eyebrow": "Chaîne TikTok Officielle",
     "globalCommunity": "Communauté Sacrée Mondiale",
     "redirecting": "Connexion à la chaîne TikTok officielle... ✨",
     "officialChannel": "Chaîne TikTok Officielle",
@@ -339,7 +341,11 @@
     "highlight3Tag": "COMMUNAUTÉ",
     "highlight3Title": "Sangha Global",
     "highlight3Sub": "630K+ âmes connectées dans le monde",
-    "viewOnTikTok": "Voir sur TikTok ↗"
+    "viewOnTikTok": "Voir sur TikTok ↗",
+    "goToTikTok": "Ouvrir dans TikTok ↗",
+    "noticeTitle": "Vers la chaîne TikTok officielle",
+    "noticeDesc": "Ouverture de @buddha_miracle dans une nouvelle fenêtre. Vous pouvez revenir au temple à tout moment.",
+    "noticeTimer": "Fermeture dans {sec}s (ou cliquez sur ✕)"
   },
   "Profile": {
     "myWishes": "Mes Vœux",

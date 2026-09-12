@@ -18,9 +18,11 @@
     "cardDharmaDesc": "မြင့်မြတ်သော စာပေများနှင့် ထာဝရ ဗုဒ္ဓတရားတော် ပညာများတွင် စိတ်နှစ်မြှုပ်လိုက်ပါ။",
     "cardStoreTitle": "Quiesan ဆိုင်",
     "cardStoreDesc": "ကြာပန်းပူဇော်မှုများနှင့် တရားထိုင်အနုပညာများကို ရှာဖွေပါ",
-    "cardResonanceTitle": "TikTok ချန်နယ်",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "ကမ္ဘာတဝှမ်းရှိ ရှာဖွေသူများနှင့် ပူးပေါင်းပါ",
-    "heroBadge": "TikTok @buddha_miracle {count} ဘုရားဖူးများ"
+    "heroBadge": "TikTok @buddha_miracle {count} ဘုရားဖူးများ",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "{count} ဘုရားဖူးများ၏ ဓမ္မရိပ်သာ"
   },
   "Nav": {
     "home": "ပင်မစာမျက်နှာ",
@@ -31,7 +33,7 @@
     "dharma": "ဓမ္မ စာကြည့်တိုက်",
     "donate": "လှူဒါန်းရန်",
     "store": "Quiesan Store",
-    "resonance": "TikTok ချန်နယ်",
+    "resonance": "TikTok",
     "mySanctuary": "ကျွန်ုပ်၏ ဘုရားကျောင်း",
     "privacyPolicy": "ကိုယ်ရေးကိုယ်တာ မူဝါဒ",
     "signOut": "ထွက်ရန်",
@@ -323,8 +325,8 @@
     "title": "ကြိမ်နှုန်းဖြင့် ထိတွေ့ခံရသူ သန်းပေါင်းများစွာ",
     "desc": "ဆိုးလ်မှ ဆော်ပေါ်လိုအထိ၊ ဤငြိမ်သက်ခြင်းအချိန်များသည် ကမ္ဘာတဝှမ်းသို့ ရောက်ရှိသွားသည်။",
     "related": "ဆက်စပ်ဗီဒီယိုများ",
-    "followBtn": "TikTok တွင် @buddha_miracle ကို Follow လုပ်ပါ",
-    "eyebrow": "ကမ္ဘာလုံးဆိုင်ရာ ပဲ့တင်သံ",
+    "followBtn": "TikTok သို့ ↗",
+    "eyebrow": "တရားဝင် TikTok ချန်နယ်",
     "globalCommunity": "ကမ္ဘာလုံးဆိုင်ရာ ဓမ္မအသိုက်အဝန်း",
     "redirecting": "တရားဝင် TikTok ချန်နယ်သို့ ချိတ်ဆက်နေပါသည်... ✨",
     "officialChannel": "တရားဝင် TikTok ချန်နယ်",
@@ -339,7 +341,11 @@
     "highlight3Tag": "အသိုင်းအဝိုင်း",
     "highlight3Title": "ကမ္ဘာ့ သံဃာ",
     "highlight3Sub": "ကမ္ဘာတစ်ဝှမ်းမှ ၆၃ သောင်းကျော် ဝိညာဉ်များ ချိတ်ဆက်",
-    "viewOnTikTok": "TikTok တွင် ကြည့်ရှုရန် ↗"
+    "viewOnTikTok": "TikTok တွင် ကြည့်ရှုရန် ↗",
+    "goToTikTok": "TikTok သို့ ↗",
+    "noticeTitle": "တရားဝင် TikTok သို့ ကူးပြောင်းနေသည်",
+    "noticeDesc": "ဝင်းဒိုးအသစ်တွင် @buddha_miracle ပွင့်လာပါမည်။ သင်သည် မည်သည့်အချိန်တွင်မဆို ပြန်လာနိုင်သည်။",
+    "noticeTimer": "{sec} စက္ကန့်အတွင်း အလိုအလျောက်ပိတ်ပါမည် (သို့မဟုတ် ✕ ကိုနှိပ်ပါ)"
   },
   "Profile": {
     "myWishes": "ကျွန်ုပ်၏ဆန္ဒများ",

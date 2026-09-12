@@ -18,9 +18,11 @@
     "cardDharmaDesc": "انغمس في النصوص المقدسة والحكمة البوذية الخالدة.",
     "cardStoreTitle": "متجر Quiesan",
     "cardStoreDesc": "استكشف عروض اللوتس وفن التأمل.",
-    "cardResonanceTitle": "قناة تيك توك",
+    "cardResonanceTitle": "تيك توك",
     "cardResonanceDesc": "تردد صداك مع الباحثين حول العالم.",
-    "heroBadge": "تيك توك @buddha_miracle {count} زائر روحي"
+    "heroBadge": "تيك توك @buddha_miracle {count} زائر روحي",
+    "heroBadgeChannel": "تيك توك @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "ملاذ {count} حاج"
   },
   "Nav": {
     "home": "الرئيسية",
@@ -31,7 +33,7 @@
     "dharma": "مكتبة الدرما",
     "donate": "تبرع",
     "store": "Quiesan Store",
-    "resonance": "قناة تيك توك",
+    "resonance": "تيك توك",
     "mySanctuary": "ملاذي",
     "privacyPolicy": "سياسة الخصوصية",
     "signOut": "تسجيل الخروج",
@@ -323,11 +325,11 @@
     "title": "ملايين تأثروا بالتردد",
     "desc": "من سيول إلى ساو باولو، سافرت لحظات السكون هذه عبر العالم.",
     "related": "فيديوهات ذات صلة",
-    "followBtn": "تابع @buddha_miracle على تيك توك",
-    "eyebrow": "الصدى العالمي",
+    "followBtn": "فتح في تيك توك ↗",
+    "eyebrow": "قناة تيك توك الرسمية",
     "globalCommunity": "مجتمع المعبد العالمي",
     "redirecting": "جارٍ الانتقال إلى قناة تيك توك الرسمية... ✨",
-    "officialChannel": "قناة TikTok الرسمية",
+    "officialChannel": "قناة تيك توك الرسمية",
     "followers": "متابع",
     "channelIntro": "كل يوم، يتشارك ملايين الباحثين على TikTok لحظات من الهدوء والحكمة والصحوة. تابع قناتنا الرسمية.",
     "highlight1Tag": "لحظة مميزة",
@@ -339,7 +341,11 @@
     "highlight3Tag": "مجتمع",
     "highlight3Title": "سانغا عالمية",
     "highlight3Sub": "630K+ روح متصلة حول العالم",
-    "viewOnTikTok": "شاهد على TikTok ↗"
+    "viewOnTikTok": "شاهد على TikTok ↗",
+    "goToTikTok": "فتح في تيك توك ↗",
+    "noticeTitle": "جاري الانتقال إلى قناة تيك توك الرسمية",
+    "noticeDesc": "يتم فتح @buddha_miracle في نافذة جديدة. يمكنك العودة إلى المعبد في أي وقت.",
+    "noticeTimer": "يُغلق تلقائيًا خلال {sec} ثوانٍ (أو انقر على ✕)"
   },
   "Profile": {
     "myWishes": "أمنياتي",

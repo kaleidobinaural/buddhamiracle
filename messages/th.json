@@ -18,9 +18,11 @@
     "cardDharmaDesc": "ดื่มด่ำกับพระคัมภีร์ศักดิ์สิทธิ์และปัญญาธรรมอันทรงคุณค่าแห่งพุทธศาสนา",
     "cardStoreTitle": "ร้าน Quiesan",
     "cardStoreDesc": "สำรวจเครื่องบูชาดอกบัวและศิลปะการทำสมาธิ",
-    "cardResonanceTitle": "ช่อง TikTok",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "สั่นสะเทือนร่วมกับผู้แสวงหาทั่วโลก",
-    "heroBadge": "TikTok @buddha_miracle {count} ผู้แสวงบุญ"
+    "heroBadge": "TikTok @buddha_miracle {count} ผู้แสวงบุญ",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "ดินแดนศักดิ์สิทธิ์ของ {count} ผู้แสวงบุญ"
   },
   "Nav": {
     "home": "หน้าแรก",
@@ -31,7 +33,7 @@
     "dharma": "หอพระธรรม",
     "donate": "ร่วมทำบุญ",
     "store": "Quiesan Store",
-    "resonance": "ช่อง TikTok",
+    "resonance": "TikTok",
     "mySanctuary": "ศาลเจ้าของฉัน",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "signOut": "ออกจากระบบ",
@@ -323,8 +325,8 @@
     "title": "หลายล้านคนสัมผัสได้ถึงคลื่นความถี่",
     "desc": "จากโซลถึงเซาเปาโล ช่วงเวลาแห่งความสงบเหล่านี้ได้เดินทางไปทั่วโลก",
     "related": "วิดีโอที่เกี่ยวข้อง",
-    "followBtn": "ติดตาม @buddha_miracle บน TikTok",
-    "eyebrow": "เสียงสะท้อนระดับโลก",
+    "followBtn": "เปิดใน TikTok ↗",
+    "eyebrow": "ช่อง TikTok ทางการ",
     "globalCommunity": "ชุมชนศักดิ์สิทธิ์ระดับโลก",
     "redirecting": "กำลังเชื่อมต่อไปยังช่อง TikTok ทางการ... ✨",
     "officialChannel": "ช่อง TikTok ทางการ",
@@ -339,7 +341,11 @@
     "highlight3Tag": "ชุมชน",
     "highlight3Title": "สังฆะโลก",
     "highlight3Sub": "630K+ จิตวิญญาณเชื่อมต่อทั่วโลก",
-    "viewOnTikTok": "ดูบน TikTok ↗"
+    "viewOnTikTok": "ดูบน TikTok ↗",
+    "goToTikTok": "เปิดใน TikTok ↗",
+    "noticeTitle": "กำลังไปยังช่อง TikTok ทางการ",
+    "noticeDesc": "กำลังเปิด @buddha_miracle ในหน้าต่างใหม่ ท่านสามารถกลับมายังวิหารได้ตลอดเวลา",
+    "noticeTimer": "ปิดอัตโนมัติใน {sec} วินาที (หรือคลิก ✕)"
   },
   "Profile": {
     "myWishes": "ความปรารถนาของฉัน",

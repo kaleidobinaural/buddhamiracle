@@ -18,9 +18,11 @@
     "cardDharmaDesc": "沉浸于神圣经文与永恒的佛法智慧之中。",
     "cardStoreTitle": "Quiesan 商店",
     "cardStoreDesc": "探索莲花供品和冥想艺术。",
-    "cardResonanceTitle": "TikTok频道",
+    "cardResonanceTitle": "TikTok",
     "cardResonanceDesc": "与世界各地的探索者共鸣。",
-    "heroBadge": "TikTok @buddha_miracle {count} 朝圣者的圣地"
+    "heroBadge": "TikTok @buddha_miracle {count} 朝圣者的圣地",
+    "heroBadgeChannel": "TikTok @BUDDHA_MIRACLE",
+    "heroBadgeCommunity": "{count} 朝圣者的圣所"
   },
   "Nav": {
     "home": "首页",
@@ -31,7 +33,7 @@
     "dharma": "佛法藏经阁",
     "donate": "供养",
     "store": "Quiesan 商店",
-    "resonance": "TikTok频道",
+    "resonance": "TikTok",
     "mySanctuary": "我的圣所",
     "privacyPolicy": "隐私政策",
     "signOut": "退出登录",
@@ -323,11 +325,11 @@
     "title": "数百万灵魂被频率触动",
     "desc": "从首尔到圣保罗，这些宁静的时刻传遍了全世界。",
     "related": "相关视频",
-    "followBtn": "在TikTok上关注 @buddha_miracle",
-    "eyebrow": "全球共鸣",
+    "followBtn": "前往 TikTok ↗",
+    "eyebrow": "官方 TikTok 频道",
     "globalCommunity": "全球圣所社群",
     "redirecting": "正在前往TikTok官方频道... ✨",
-    "officialChannel": "官方TikTok频道",
+    "officialChannel": "官方 TikTok 频道",
     "followers": "粉丝",
     "channelIntro": "每天，数百万修行者在TikTok上分享宁静、智慧与觉醒的时刻。关注我们的官方频道，在您的信息流中体验奇迹。",
     "highlight1Tag": "热门视频",
@@ -339,7 +341,11 @@
     "highlight3Tag": "社区",
     "highlight3Title": "全球僧伽",
     "highlight3Sub": "全球63万+灵魂相连",
-    "viewOnTikTok": "在TikTok上观看 ↗"
+    "viewOnTikTok": "在TikTok上观看 ↗",
+    "goToTikTok": "前往 TikTok ↗",
+    "noticeTitle": "正在前往官方 TikTok",
+    "noticeDesc": "正在新窗口中打开 @buddha_miracle 圣所。您可以随时返回光明寺院。",
+    "noticeTimer": "{sec} 秒后自动关闭（或点击 ✕）"
   },
   "Profile": {
     "myWishes": "我的心愿",
