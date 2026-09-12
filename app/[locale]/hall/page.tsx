@@ -230,10 +230,10 @@ export default function HallPage() {
 
         .hall-header {
           position: absolute;
-          top: 68px; /* Moved down to clear global navbar */
+          top: calc(var(--nav-height, 80px) + 12px);
           width: 100%;
           text-align: center;
-          padding: 20px 0;
+          padding: 0;
           overflow: visible;
         }
 
@@ -241,10 +241,10 @@ export default function HallPage() {
           font-family: var(--font-serif);
           font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: 300;
-          line-height: 1.4;
+          line-height: 1.2;
           text-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
-          padding-bottom: 20px;
-          margin-bottom: -20px;
+          padding-bottom: 0;
+          margin-bottom: 0;
         }
 
         .hall-footer {
@@ -497,8 +497,8 @@ export default function HallPage() {
         }
 
         @media (max-width: 768px) {
-          .hall-header { top: 12vh; }
-          .hall-title { font-size: 2.2rem; }
+          .hall-header { top: calc(var(--nav-height, 80px) + 8px); padding: 0; }
+          .hall-title { font-size: 2rem; }
           
           .hall-footer {
             right: 0;

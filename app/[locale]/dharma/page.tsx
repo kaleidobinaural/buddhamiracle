@@ -217,12 +217,13 @@ export default function DharmaPage() {
   return (
     <main className="dharma-page relative min-h-screen overflow-hidden">
       <div ref={topRef} />
+      <div className="dharma-fog-top" aria-hidden="true" />
       <div className="dharma-bg-glow" aria-hidden="true" />
 
       <div className="dharma-container animate-fade-up relative z-10">
 
         {/* ── Header ── */}
-        <header className="dharma-header mb-[60px] flex flex-col items-center justify-center w-full text-center">
+        <header className="dharma-header mb-[32px] flex flex-col items-center justify-center w-full text-center">
           <div className="guru-portrait-wrap">
             <img
               src="/images/guru/guru_meditating.png"
@@ -511,7 +512,8 @@ export default function DharmaPage() {
 
       <style>{`
         /* ── Base ── */
-        .dharma-page { min-height: 100vh; padding: calc(var(--nav-height) + 12px) 0 120px; background: #080807; position: relative; overflow-x: hidden; }
+        .dharma-page { min-height: 100vh; padding: 16px 0 120px; background: #080807; position: relative; overflow-x: hidden; }
+        .dharma-fog-top { position: fixed; top: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, #080807 0%, rgba(8,8,7,0.85) 40%, transparent 100%); z-index: 150; pointer-events: none; }
         .dharma-bg-glow { position: absolute; top: 0; right: 0; width: 100%; height: 1200px; background: radial-gradient(circle at 50% -10%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; }
         .dharma-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 24px; box-sizing: border-box; width: 100%; }
 
@@ -804,8 +806,12 @@ export default function DharmaPage() {
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-          .dharma-page { padding-top: calc(var(--nav-height) + 8px); }
+          .dharma-page { padding-top: 12px; }
           .dharma-container { padding: 0 16px; }
+          .guru-portrait-wrap { width: 110px; height: 110px; margin: 0 auto 16px auto; }
+          .dharma-header { margin-bottom: 16px; }
+          .dharma-title { font-size: 2.2rem; margin-bottom: 10px !important; }
+          .dharma-subtitle { font-size: 0.88rem; margin-bottom: 28px !important; line-height: 1.6; }
           .scripture-accordion { padding: 20px 18px; }
           .accordion-source { font-size: 0.9rem; }
           .btn-load-more { padding: 16px 32px; font-size: 0.9rem; }

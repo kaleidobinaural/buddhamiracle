@@ -92,6 +92,7 @@ export default function DonatePage() {
 
   return (
     <main className="donate-page" id="main-content">
+      <div className="donate-fog-top" aria-hidden="true" />
       <div className="donate-bg-glow" aria-hidden="true" />
       <div className="donate-container">
 
@@ -189,15 +190,25 @@ export default function DonatePage() {
       </div>
 
       <style>{`
-        .donate-page { min-height: calc(100dvh - var(--nav-height)); display: flex; align-items: flex-start; padding: 32px 24px 60px; position: relative; overflow: hidden; }
+        .donate-page { min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; padding: 16px 24px 60px; position: relative; overflow: hidden; }
+        .donate-fog-top { position: fixed; top: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, #080807 0%, rgba(8,8,7,0.85) 40%, transparent 100%); z-index: 150; pointer-events: none; }
         .donate-bg-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(212,160,23,0.04) 0%, transparent 70%); filter: blur(120px); pointer-events: none; }
-        .donate-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 48px; position: relative; z-index: 1; }
+        .donate-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 32px; position: relative; z-index: 1; }
         .donate-header { text-align: center; }
-        .header-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary-gold); margin-bottom: 24px; opacity: 0.8; }
-        .donate-title { font-size: clamp(3rem, 7vw, 5rem); margin-bottom: 24px; line-height: 1.1; }
-        .donate-subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 24px; line-height: 1.9; font-weight: 300; font-style: italic; }
+        .header-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--primary-gold); margin-bottom: 8px; opacity: 0.85; }
+        .donate-title { font-size: clamp(2.3rem, 6vw, 4.5rem); margin-bottom: 12px; line-height: 1.15; }
+        .donate-subtitle { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 16px; line-height: 1.6; font-weight: 300; font-style: italic; }
         .lotus-balance-badge { display: inline-block; color: var(--primary-gold); font-size: 1rem; background: rgba(212,160,23,0.08); padding: 8px 20px; border-radius: 100px; border: 1px solid rgba(212,160,23,0.2); }
         .donate-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: stretch; }
+        
+        @media (max-width: 768px) {
+          .donate-page { padding: 12px 16px 60px; }
+          .donate-container { gap: 24px; }
+          .header-eyebrow { margin-bottom: 6px; font-size: 0.78rem; letter-spacing: 0.2em; }
+          .donate-title { font-size: 2.2rem; margin-bottom: 8px; }
+          .donate-subtitle { font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px; }
+          .donate-grid-4 { grid-template-columns: 1fr; gap: 16px; }
+        }
         .donate-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 44px 24px 28px; gap: 14px; transition: all 0.5s var(--ease-expo); border-radius: 24px; }
         .donate-card:hover { transform: translateY(-10px); border-color: var(--primary-gold); box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 20px var(--primary-glow-soft); }
         .paypal-card { border-color: rgba(255,196,57,0.25); background: rgba(255,196,57,0.02); }

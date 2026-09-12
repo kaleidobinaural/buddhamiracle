@@ -146,6 +146,7 @@ export default function StorePage() {
 
   return (
     <main className="store-page">
+      <div className="store-fog-top" aria-hidden="true" />
       <div className="store-bg-glow" />
 
       {/* ══════════════════════════════════════
@@ -514,12 +515,22 @@ export default function StorePage() {
       <style>{`
         .store-page { min-height: 100vh; background: #080807; position: relative; overflow-x: hidden; padding-bottom: 120px; }
         .store-bg-glow { position: absolute; top: 0; left: 0; right: 0; height: 800px; background: radial-gradient(circle at 50% 0%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-        .store-section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: calc(var(--nav-height) + 20px) 24px 20px; }
-        .store-hero { text-align: center; padding-top: 0; }
-        .store-eyebrow { color: #d4a017; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase; }
-        .store-hero-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
-        .store-hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); color: #fff; margin-bottom: 16px; }
-        .store-hero-desc { font-size: 1.1rem; color: #888; max-width: 600px; margin: 0 auto 40px; }
+        .store-section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 20px 24px 20px; }
+        .store-fog-top { position: fixed; top: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, #080807 0%, rgba(8,8,7,0.85) 40%, transparent 100%); z-index: 150; pointer-events: none; }
+        .store-hero { text-align: center; padding-top: 8px; }
+        .store-eyebrow { color: #d4a017; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.25em; margin-bottom: 12px; text-transform: uppercase; }
+        .store-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.15; margin-bottom: 16px; color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .store-hero-sub { font-size: clamp(1.1rem, 2.8vw, 1.6rem); color: #fff; margin-bottom: 12px; }
+        .store-hero-desc { font-size: 0.98rem; color: #888; max-width: 600px; margin: 0 auto 32px; line-height: 1.6; }
+        
+        @media (max-width: 768px) {
+          .store-section { padding: 14px 16px 20px; }
+          .store-hero { padding-top: 4px; }
+          .store-eyebrow { font-size: 0.78rem; margin-bottom: 8px; letter-spacing: 0.2em; }
+          .store-hero-title { font-size: 2.2rem; margin-bottom: 12px; }
+          .store-hero-sub { font-size: 1.1rem; margin-bottom: 8px; }
+          .store-hero-desc { font-size: 0.88rem; margin-bottom: 24px; line-height: 1.5; }
+        }
         
         .store-video-wrap { position: relative; width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.05); }
         @media (max-width: 768px) {
