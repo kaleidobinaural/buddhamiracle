@@ -13,7 +13,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       
       <div className="hero-container">
         {/* Animated Live Follower Badge */}
-        <HeroFollowerBadge template={t('heroBadge')} defaultCount="636K+" />
+        <HeroFollowerBadge defaultCount="636K+" />
 
         {/* Main Heading */}
         <h1 className="hero-title animate-fade-up animate-delay-100 text-gradient-gold-v2">

@@ -152,7 +152,17 @@ export default function Navigation() {
         <div className="nav-inner">
           {/* Logo */}
           <Link href="/" className="nav-logo">
-            <span className="nav-logo-icon">☸</span>
+            <span className="nav-logo-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
+                <circle cx="12" cy="12" r="7" strokeWidth="0.8" opacity="0.7" />
+                <circle cx="12" cy="12" r="2.6" fill="currentColor" />
+                <line x1="12" y1="2.5" x2="12" y2="21.5" strokeWidth="1.5" />
+                <line x1="2.5" y1="12" x2="21.5" y2="12" strokeWidth="1.5" />
+                <line x1="5.3" y1="5.3" x2="18.7" y2="18.7" strokeWidth="1.5" />
+                <line x1="5.3" y1="18.7" x2="18.7" y2="5.3" strokeWidth="1.5" />
+              </svg>
+            </span>
             <span className="nav-logo-text">Temple of Light</span>
           </Link>
 

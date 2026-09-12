@@ -3,11 +3,16 @@
 import { useState, useEffect } from 'react';
 
 interface Props {
-  template: string; // e.g. "틱톡 @buddha_miracle {count} 순례자의 공간"
+  channelLabel?: string;
+  communityTemplate?: string;
   defaultCount?: string;
 }
 
-export default function HeroFollowerBadge({ template, defaultCount = '636K+' }: Props) {
+export default function HeroFollowerBadge({
+  channelLabel = '틱톡 @BUDDHA_MIRACLE',
+  communityTemplate = '{count} 순례자의 공간',
+  defaultCount = '636K+'
+}: Props) {
   const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
@@ -30,14 +35,25 @@ export default function HeroFollowerBadge({ template, defaultCount = '636K+' }: 
       });
   }, []);
 
-  const fallbackTemplate = '✨ 틱톡 @buddha_miracle {count} 순례자의 공간';
-  const effectiveTemplate = (!template || template.toUpperCase().includes('INDEX.')) ? fallbackTemplate : template;
-  const badgeText = effectiveTemplate.replace('{count}', count);
+  const safeChannel = (!channelLabel || channelLabel.toUpperCase().includes('INDEX.'))
+    ? '틱톡 @BUDDHA_MIRACLE'
+    : channelLabel;
+
+  const safeCommunity = (!communityTemplate || communityTemplate.toUpperCase().includes('INDEX.'))
+    ? '{count} 순례자의 공간'
+    : communityTemplate;
+
+  const communityText = safeCommunity.replace('{count}', count);
 
   return (
     <div className="hero-badge hero-follower-badge animate-fade-up">
-      <span className="badge-dot" />
-      <span className="badge-text">{badgeText}</span>
+      <div className="badge-text-stack">
+        <div className="badge-channel-row">
+          <span className="badge-dot" />
+          <span className="badge-channel-title">{safeChannel}</span>
+        </div>
+        <span className="badge-community-count">{communityText}</span>
+      </div>
     </div>
   );
 }
