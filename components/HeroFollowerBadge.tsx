@@ -7,7 +7,7 @@ interface Props {
   defaultCount?: string;
 }
 
-export default function HeroFollowerBadge({ template, defaultCount = '366,000+' }: Props) {
+export default function HeroFollowerBadge({ template, defaultCount = '636K+' }: Props) {
   const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function HeroFollowerBadge({ template, defaultCount = '366,000+' 
         }
       })
       .catch(() => {
-        // Safe silent catch — fallback remains 366,000+
+        // Safe silent catch — fallback remains 636K+
       });
   }, []);
 
@@ -35,16 +35,9 @@ export default function HeroFollowerBadge({ template, defaultCount = '366,000+' 
   const badgeText = effectiveTemplate.replace('{count}', count);
 
   return (
-    <a
-      href="https://www.tiktok.com/@buddha_miracle"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hero-badge hero-follower-badge animate-fade-up"
-      title="TikTok @buddha_miracle"
-      style={{ textDecoration: 'none', cursor: 'pointer' }}
-    >
+    <div className="hero-badge hero-follower-badge animate-fade-up">
       <span className="badge-dot" />
-      <span className="badge-text">{badgeText} ↗</span>
-    </a>
+      <span className="badge-text">{badgeText}</span>
+    </div>
   );
 }

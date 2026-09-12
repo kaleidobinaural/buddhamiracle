@@ -33,7 +33,7 @@ export default function ResonancePage() {
   }, [showNotice]);
 
   const formatFollowers = (count: number | null) => {
-    if (!count) return '366,000+';
+    if (!count) return '636K+';
     if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M+`;
     if (count >= 1000) return `${Math.floor(count / 1000).toLocaleString()}K+`;
     return `${count.toLocaleString()}+`;

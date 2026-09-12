@@ -132,14 +132,14 @@ export default function Navigation() {
     }
   };
 
-  const navLinks = [
+  const navLinks: { href: string; key: string; external?: boolean }[] = [
     { href: '/', key: 'home' },
     { href: '/chat', key: 'chat' },
     { href: '/pillars', key: 'pillars' },
     { href: '/wish-roof', key: 'wishRoof' },
     { href: '/hall', key: 'hall' },
     { href: '/dharma', key: 'dharma' },
-    { href: 'https://www.tiktok.com/@buddha_miracle', key: 'resonance', external: true },
+    { href: '/resonance', key: 'resonance' },
     { href: '/store', key: 'store' },
   ];
 
