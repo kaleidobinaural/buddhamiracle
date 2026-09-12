@@ -15,7 +15,17 @@ export default function Navigation() {
   const locale = useLocale();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(() => {
+    // Restore menu state after locale change (component remounts on locale change)
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('restore_mobile_menu');
+      if (saved === 'true') {
+        sessionStorage.removeItem('restore_mobile_menu');
+        return true;
+      }
+    }
+    return false;
+  });
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -71,9 +81,11 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  // SPA language change: uses next-intl router.replace() — no page reload, menu stays open
+  // SPA language change: save menu state → router.replace → restore on remount
   const handleLanguageChange = (nextLocale: string) => {
     if (nextLocale === locale) return;
+    // Save current menu state so we can restore it after component remounts
+    sessionStorage.setItem('restore_mobile_menu', mobileOpen ? 'true' : 'false');
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
     router.replace(intlPathname as any, { locale: nextLocale, scroll: false });
   };
