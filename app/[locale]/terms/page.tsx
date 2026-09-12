@@ -122,13 +122,17 @@ export default function TermsPage() {
         .terms-title {
           font-family: var(--font-serif);
           font-size: clamp(2.4rem, 6vw, 4rem);
-          line-height: 1.2;
+          line-height: 1.25;
           margin-bottom: 16px;
           background: linear-gradient(180deg, #FFF6D9 0%, #D4A017 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           display: inline-block;
+          padding-bottom: 0.18em;
+          margin-bottom: calc(16px - 0.18em);
+          box-decoration-break: clone;
+          -webkit-box-decoration-break: clone;
         }
 
         .terms-updated {

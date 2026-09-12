@@ -217,7 +217,6 @@ export default function DharmaPage() {
   return (
     <main className="dharma-page relative min-h-screen overflow-hidden">
       <div ref={topRef} />
-      <div className="dharma-fog-top" aria-hidden="true" />
       <div className="dharma-bg-glow" aria-hidden="true" />
 
       <div className="dharma-container animate-fade-up relative z-10">
@@ -513,7 +512,6 @@ export default function DharmaPage() {
       <style>{`
         /* ── Base ── */
         .dharma-page { min-height: 100vh; padding: 16px 0 120px; background: #080807; position: relative; overflow-x: hidden; }
-        .dharma-fog-top { position: fixed; top: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, #080807 0%, rgba(8,8,7,0.85) 40%, transparent 100%); z-index: 150; pointer-events: none; }
         .dharma-bg-glow { position: absolute; top: 0; right: 0; width: 100%; height: 1200px; background: radial-gradient(circle at 50% -10%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; }
         .dharma-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 24px; box-sizing: border-box; width: 100%; }
 

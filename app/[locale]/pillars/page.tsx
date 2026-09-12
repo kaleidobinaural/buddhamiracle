@@ -198,7 +198,6 @@ export default function PillarsPage() {
   return (
     <main className="pillars-page">
       <div className="hall-atmosphere" />
-      <div className="hall-fog-top" />
       <div className="hall-fog-bottom" />
       
       <div className="pillars-container" ref={pillarsTopRef}>
@@ -931,12 +930,7 @@ export default function PillarsPage() {
         .pillars-page { min-height: 100vh; padding: 16px 24px 80px; position: relative; overflow-x: hidden; background: #050505; }
         .hall-atmosphere { position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(212, 160, 23, 0.05) 0%, transparent 70%); pointer-events: none; }
         
-        /* Fog Effects - Balanced for clarity */
-        .hall-fog-top { 
-          position: fixed; top: 0; left: 0; right: 0; height: 180px; 
-          background: linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.8) 40%, transparent 100%); 
-          z-index: 150; pointer-events: none; 
-        }
+        /* Fog Effects - Bottom fade for cards */
         .hall-fog-bottom { 
           position: fixed; bottom: 0; left: 0; right: 0; height: 250px; 
           background: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.8) 40%, transparent 100%); 

@@ -427,7 +427,13 @@ img, video {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  padding-bottom: 0.1em;
+  display: inline-block;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+  padding-top: 0.05em;
+  margin-top: -0.05em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .text-gold {
@@ -544,6 +550,14 @@ img, video {
   background: linear-gradient(135deg, #fff 30%, var(--primary-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+  padding-top: 0.05em;
+  margin-top: -0.05em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* --------------------------------------------------------

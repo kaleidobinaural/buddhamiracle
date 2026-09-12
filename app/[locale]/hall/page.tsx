@@ -241,10 +241,10 @@ export default function HallPage() {
           font-family: var(--font-serif);
           font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: 300;
-          line-height: 1.2;
+          line-height: 1.35;
           text-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
-          padding-bottom: 0;
-          margin-bottom: 0;
+          padding-bottom: 14px;
+          margin-bottom: -14px;
         }
 
         .hall-footer {
