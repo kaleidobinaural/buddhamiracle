@@ -2,7 +2,7 @@
   "Index": {
     "title": "Templo da Luz",
     "subtitle": "Um Santuário Digital",
-    "heroTitle": "Templo da Luz",
+    "heroTitle": "Bem-vindo ao Buddha Miracle : Templo da Luz",
     "heroSubtitle": "Busque a clareza, encontrando o silêncio em meio ao ruído. Um santuário de paz, sabedoria e conexão.",
     "enterBtn": "Entrar no Templo",
     "wishBtn": "Inscrever um Desejo",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Loja Quiesan",
     "cardStoreDesc": "Explore oferendas de lótus e arte de meditação.",
     "cardResonanceTitle": "Ressonância Global",
-    "cardResonanceDesc": "Ressoe com buscadores ao redor do mundo."
+    "cardResonanceDesc": "Ressoe com buscadores ao redor do mundo.",
+    "heroBadge": "TikTok @buddha_miracle {count} Peregrinos"
   },
   "Nav": {
     "home": "Início",

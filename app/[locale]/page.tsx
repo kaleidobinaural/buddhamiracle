@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import HeroFollowerBadge from '@/components/HeroFollowerBadge';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -11,11 +12,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div className="hero-bg-glow" aria-hidden="true" />
       
       <div className="hero-container">
-        {/* Animated Badge */}
-        <div className="hero-badge animate-fade-up">
-          <span className="badge-dot" />
-          <span className="badge-text">{t('subtitle')}</span>
-        </div>
+        {/* Animated Live Follower Badge */}
+        <HeroFollowerBadge template={t('heroBadge')} defaultCount="366,000+" />
 
         {/* Main Heading */}
         <h1 className="hero-title animate-fade-up animate-delay-100 text-gradient-gold-v2">

@@ -2,7 +2,7 @@
   "Index": {
     "title": "Temple of Light",
     "subtitle": "A Digital Sanctuary",
-    "heroTitle": "Temple of Light",
+    "heroTitle": "Welcome to Buddha Miracle : Temple of Light",
     "heroSubtitle": "Seek clarity, finding quiet amidst the noise. A sanctuary for peace, wisdom, and connection.",
     "enterBtn": "Enter the Temple",
     "wishBtn": "Inscribe a Wish",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Quiesan Store",
     "cardStoreDesc": "Explore lotus offerings and meditation art.",
     "cardResonanceTitle": "Global Resonance",
-    "cardResonanceDesc": "Resonate with seekers around the world."
+    "cardResonanceDesc": "Resonate with seekers around the world.",
+    "heroBadge": "TikTok @buddha_miracle {count} Global Pilgrims"
   },
   "Nav": {
     "home": "Home",

@@ -2,7 +2,7 @@
   "Index": {
     "title": "光明殿",
     "subtitle": "一座数字心灵净土",
-    "heroTitle": "光明殿",
+    "heroTitle": "佛陀的奇迹，欢迎来到永恒的光之寺院",
     "heroSubtitle": "于喧嚣中寻得澄明与宁静。一处安放平和、智慧与联结的圣所。",
     "enterBtn": "步入光明殿",
     "wishBtn": "题写心愿",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Quiesan 商店",
     "cardStoreDesc": "探索莲花供品和冥想艺术。",
     "cardResonanceTitle": "全球共鸣",
-    "cardResonanceDesc": "与世界各地的探索者共鸣。"
+    "cardResonanceDesc": "与世界各地的探索者共鸣。",
+    "heroBadge": "TikTok @buddha_miracle {count} 朝圣者的圣地"
   },
   "Nav": {
     "home": "首页",

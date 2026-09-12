@@ -2,7 +2,7 @@
   "Index": {
     "title": "Kuil Cahaya",
     "subtitle": "Tempat Suci Digital",
-    "heroTitle": "Kuil Cahaya",
+    "heroTitle": "Selamat Datang di Buddha Miracle : Temple of Light",
     "heroSubtitle": "Cari kejelasan, temukan keheningan di tengah kebisingan. Tempat suci untuk kedamaian, kebijaksanaan, dan keterhubungan.",
     "enterBtn": "Masuk ke Kuil",
     "wishBtn": "Ukir Harapan",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Toko Quiesan",
     "cardStoreDesc": "Jelajahi persembahan lotus dan seni meditasi.",
     "cardResonanceTitle": "Resonansi Global",
-    "cardResonanceDesc": "Beresonansi dengan para pencari di seluruh dunia."
+    "cardResonanceDesc": "Beresonansi dengan para pencari di seluruh dunia.",
+    "heroBadge": "TikTok @buddha_miracle {count} Peziarah"
   },
   "Nav": {
     "home": "Beranda",

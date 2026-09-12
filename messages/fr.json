@@ -2,7 +2,7 @@
   "Index": {
     "title": "Temple de Lumière",
     "subtitle": "Un Sanctuaire Numérique",
-    "heroTitle": "Temple de Lumière",
+    "heroTitle": "Bienvenue à Buddha Miracle : Temple de la Lumière",
     "heroSubtitle": "Cherchez la clarté, trouvez le calme au milieu du tumulte. Un sanctuaire de paix, de sagesse et de connexion.",
     "enterBtn": "Entrer dans le Temple",
     "wishBtn": "Inscrire un Vœu",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Boutique Quiesan",
     "cardStoreDesc": "Découvrez les offrandes de lotus et l'art de méditation.",
     "cardResonanceTitle": "Résonance Mondiale",
-    "cardResonanceDesc": "Résonnez avec des chercheurs du monde entier."
+    "cardResonanceDesc": "Résonnez avec des chercheurs du monde entier.",
+    "heroBadge": "TikTok @buddha_miracle {count} Pèlerins"
   },
   "Nav": {
     "home": "Accueil",

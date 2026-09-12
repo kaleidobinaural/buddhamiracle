@@ -2,7 +2,7 @@
   "Index": {
     "title": "Tempel des Lichts",
     "subtitle": "Ein digitales Heiligtum",
-    "heroTitle": "Tempel des Lichts",
+    "heroTitle": "Willkommen bei Buddha Miracle : Tempel des Lichts",
     "heroSubtitle": "Suche nach Klarheit und finde Ruhe inmitten des Lärms. Ein Zufluchtsort für Frieden, Weisheit und Verbundenheit.",
     "enterBtn": "Den Tempel betreten",
     "wishBtn": "Einen Wunsch niederschreiben",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Quiesan Shop",
     "cardStoreDesc": "Entdecken Sie Lotus-Angebote und Meditationskunst.",
     "cardResonanceTitle": "Globale Resonanz",
-    "cardResonanceDesc": "Resonieren Sie mit Suchenden aus aller Welt."
+    "cardResonanceDesc": "Resonieren Sie mit Suchenden aus aller Welt.",
+    "heroBadge": "TikTok @buddha_miracle {count} Pilger"
   },
   "Nav": {
     "home": "Startseite",

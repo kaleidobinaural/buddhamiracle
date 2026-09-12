@@ -2,7 +2,7 @@
   "Index": {
     "title": "光の寺",
     "subtitle": "デジタル聖域",
-    "heroTitle": "光の寺",
+    "heroTitle": "仏陀の奇跡、永遠の光の寺院へようこそ",
     "heroSubtitle": "喧騒の中で静寂を見つけ、明晰さを求めましょう。平和、知恵、そして繋がりを育む聖域です。",
     "enterBtn": "寺へ入る",
     "wishBtn": "願いを刻む",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Quiesan ストア",
     "cardStoreDesc": "蓮の花と瞑想アートを探求しましょう。",
     "cardResonanceTitle": "グローバル共鳴",
-    "cardResonanceDesc": "世界中の探求者と共鳴しましょう。"
+    "cardResonanceDesc": "世界中の探求者と共鳴しましょう。",
+    "heroBadge": "TikTok @buddha_miracle {count} 巡礼者の聖域"
   },
   "Nav": {
     "home": "ホーム",

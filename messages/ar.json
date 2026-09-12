@@ -2,7 +2,7 @@
   "Index": {
     "title": "معبد النور",
     "subtitle": "ملاذ رقمي",
-    "heroTitle": "معبد النور",
+    "heroTitle": "مرحبًا بكم في معجزة بوذا : معبد النور",
     "heroSubtitle": "ابحث عن الصفاء، واجعل السكون مأواك وسط الصخب. ملاذ للسلام والحكمة والتواصل.",
     "enterBtn": "ادخل المعبد",
     "wishBtn": "دَوِّن أمنية",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "متجر Quiesan",
     "cardStoreDesc": "استكشف عروض اللوتس وفن التأمل.",
     "cardResonanceTitle": "الصدى العالمي",
-    "cardResonanceDesc": "تردد صداك مع الباحثين حول العالم."
+    "cardResonanceDesc": "تردد صداك مع الباحثين حول العالم.",
+    "heroBadge": "تيك توك @buddha_miracle {count} زائر روحي"
   },
   "Nav": {
     "home": "الرئيسية",

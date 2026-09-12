@@ -2,7 +2,7 @@
   "Index": {
     "title": "빛의 사원",
     "subtitle": "디지털 안식처",
-    "heroTitle": "빛의 사원",
+    "heroTitle": "부처님의 기적, 그 영원한 빛의 사원에 오신 것을 환영합니다",
     "heroSubtitle": "소음 속에서 고요함을 찾고 지혜를 구하세요. 평화와 지혜, 연결을 위한 안식처입니다.",
     "enterBtn": "사원 입장하기",
     "wishBtn": "소원 새기기",
@@ -19,7 +19,8 @@
     "cardStoreTitle": "Quiesan 스토어",
     "cardStoreDesc": "연꽃과 명상 아트를 만나보세요.",
     "cardResonanceTitle": "틱톡채널 바로가기",
-    "cardResonanceDesc": "틱톡 공식 채널에서 전 세계 순례자들과 기적과 평화의 순간을 함께 나누세요."
+    "cardResonanceDesc": "틱톡 공식 채널에서 전 세계 순례자들과 기적과 평화의 순간을 함께 나누세요.",
+    "heroBadge": "틱톡 @buddha_miracle {count} 순례자의 공간"
   },
   "Nav": {
     "home": "홈",
