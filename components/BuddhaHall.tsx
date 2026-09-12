@@ -79,7 +79,7 @@ function BuddhaModel() {
 
   return (
     <Float speed={1} rotationIntensity={0.05} floatIntensity={0.2}>
-      <Center top position={[0, -1.5, 0]}>
+      <Center top position={[0, -0.6, 0]}>
         <primitive object={scene} scale={2.0} />
       </Center>
     </Float>
@@ -100,11 +100,11 @@ function CameraReset({ is3DMode }: { is3DMode: boolean }) {
   const { camera, controls } = useThree();
   
   useEffect(() => {
-    // Reset camera when toggling modes
-    camera.position.set(0, 1.2, 8.0);
-    camera.lookAt(0, 1.2, 0);
+    // Reset camera when toggling modes - raised target to sit right below title
+    camera.position.set(0, 1.8, 7.5);
+    camera.lookAt(0, 1.8, 0);
     if (controls) {
-      (controls as any).target.set(0, 1.2, 0);
+      (controls as any).target.set(0, 1.8, 0);
       (controls as any).update();
     }
   }, [is3DMode, camera, controls]);
@@ -225,41 +225,42 @@ export default function BuddhaHall({ is3DMode = false, isEcoMode = false }) {
 
         .hero-image-container {
           position: absolute;
-          top: 50%;
+          top: calc(var(--nav-height, 80px) + 52px);
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translateX(-50%);
           z-index: 5;
           pointer-events: none;
-          transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
           width: 100%;
           display: flex;
           justify-content: center;
         }
 
         .hero-image {
-          height: 58vh;
-          max-height: calc(100vh - 160px);
+          height: 60vh;
+          max-height: calc(100vh - 170px);
           object-fit: contain;
           filter: drop-shadow(0 0 30px rgba(212, 160, 23, 0.2));
         }
 
         .fade-in {
           opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
+          transform: translateX(-50%) scale(1);
         }
 
         .fade-out {
           opacity: 0;
-          transform: translate(-50%, -50%) scale(1.1);
+          transform: translateX(-50%) scale(1.05);
           filter: blur(10px);
         }
 
         @media (max-width: 768px) {
           .hero-image-container {
-            top: 50%;
+            top: calc(var(--nav-height, 80px) + 40px);
           }
           .hero-image {
-            height: 50vh;
+            height: 52vh;
+            max-height: calc(100vh - 180px);
           }
         }
       `}</style>

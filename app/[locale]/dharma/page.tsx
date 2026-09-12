@@ -517,14 +517,17 @@ export default function DharmaPage() {
         .dharma-bg-glow { position: absolute; top: 0; right: 0; width: 100%; height: 1200px; background: radial-gradient(circle at 50% -10%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; }
         .dharma-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 24px; box-sizing: border-box; width: 100%; }
 
+        /* ── Header ── */
+        .dharma-header { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; text-align: center; }
+
         /* ── Guru Portrait ── */
-        .guru-portrait-wrap { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(212,160,23,0.4); box-shadow: 0 0 60px rgba(212,160,23,0.2), 0 0 120px rgba(212,160,23,0.1); margin: 0 auto 32px auto; }
-        .guru-portrait-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(20%) brightness(0.85); }
+        .guru-portrait-wrap { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(212,160,23,0.4); box-shadow: 0 0 60px rgba(212,160,23,0.2), 0 0 120px rgba(212,160,23,0.1); margin: 0 auto 32px auto; display: block; }
+        .guru-portrait-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(20%) brightness(0.85); display: block; }
         @media (max-width: 768px) { .guru-portrait-wrap { width: 120px; height: 120px; } }
 
         /* ── Typography ── */
-        .dharma-title { font-family: var(--font-serif); font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.2; padding-bottom: 10px; background-clip: text; -webkit-background-clip: text; margin-bottom: 20px !important; }
-        .dharma-subtitle { color: #888; font-style: italic; letter-spacing: 0.1em; line-height: 2.0; font-size: clamp(0.85rem, 2vw, 1.2rem); opacity: 0.7; margin-bottom: 60px !important; }
+        .dharma-title { font-family: var(--font-serif); font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.2; padding-bottom: 10px; background-clip: text; -webkit-background-clip: text; margin-bottom: 20px !important; text-align: center !important; width: 100%; display: block; margin-left: auto !important; margin-right: auto !important; }
+        .dharma-subtitle { color: #888; font-style: italic; letter-spacing: 0.1em; line-height: 2.0; font-size: clamp(0.85rem, 2vw, 1.2rem); opacity: 0.7; margin-bottom: 60px !important; text-align: center !important; }
         .result-count { font-size: 0.78rem; letter-spacing: 0.15em; color: rgba(212,160,23,0.4); text-transform: uppercase; margin-bottom: 24px; }
 
         /* ── Sacred Scroll (Today's Wisdom) ── */
