@@ -189,11 +189,11 @@ export default function DonatePage() {
       </div>
 
       <style>{`
-        .donate-page { min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; padding: 16px 24px 60px; position: relative; overflow: hidden; }
+        .donate-page { min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; padding: 8px 24px 60px; position: relative; overflow: hidden; }
         .donate-bg-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(212,160,23,0.04) 0%, transparent 70%); filter: blur(120px); pointer-events: none; }
         .donate-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 48px; position: relative; z-index: 1; }
-        .donate-header { text-align: center; }
-        .header-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary-gold); margin-bottom: 24px; opacity: 0.8; }
+        .donate-header { text-align: center; margin-top: 0; }
+        .header-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--primary-gold); margin-bottom: 24px; opacity: 0.95; }
         .donate-title { font-size: clamp(3rem, 7vw, 5rem); margin-bottom: 24px; line-height: 1.25; }
         .donate-subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 24px; line-height: 1.9; font-weight: 300; font-style: italic; }
         .lotus-balance-badge { display: inline-block; color: var(--primary-gold); font-size: 1rem; background: rgba(212,160,23,0.08); padding: 8px 20px; border-radius: 100px; border: 1px solid rgba(212,160,23,0.2); }
@@ -235,8 +235,7 @@ export default function DonatePage() {
         .store-textarea:focus { border-color: var(--primary-gold); }
         .notification-bar { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(120px); background: rgba(212,160,23,0.98); color: #000; padding: 14px 36px; border-radius: 50px; font-weight: 800; font-size: 1rem; transition: all 0.5s cubic-bezier(0.19,1,0.22,1); opacity: 0; z-index: 200000; pointer-events: none; max-width: 90vw; text-align: center; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px rgba(212,160,23,0.4); }
         .notification-bar.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-        @media (max-width: 1024px) { .donate-grid-4 { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .donate-page { padding: 70px 16px 60px; } .donate-grid-4 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .donate-grid-4 { grid-template-columns: 1fr; } }
       `}</style>
 
       <div className={`notification-bar ${notification.show ? 'show' : ''}`}>{notification.message}</div>
