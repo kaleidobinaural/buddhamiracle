@@ -230,7 +230,7 @@ export default function HallPage() {
 
         .hall-header {
           position: absolute;
-          top: 100px; /* Moved down to clear global navbar */
+          top: 68px; /* Moved down to clear global navbar */
           width: 100%;
           text-align: center;
           padding: 20px 0;

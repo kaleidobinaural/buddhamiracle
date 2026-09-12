@@ -189,7 +189,7 @@ export default function DonatePage() {
       </div>
 
       <style>{`
-        .donate-page { min-height: calc(100dvh - var(--nav-height)); display: flex; align-items: center; padding: 100px 24px 80px; position: relative; overflow: hidden; }
+        .donate-page { min-height: calc(100dvh - var(--nav-height)); display: flex; align-items: center; padding: 56px 24px 60px; position: relative; overflow: hidden; }
         .donate-bg-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(212,160,23,0.04) 0%, transparent 70%); filter: blur(120px); pointer-events: none; }
         .donate-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 48px; position: relative; z-index: 1; }
         .donate-header { text-align: center; }

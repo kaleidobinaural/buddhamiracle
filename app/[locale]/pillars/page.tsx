@@ -346,14 +346,14 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={280}
-                      threshold={5}
-                      touchRatio={1.2}
+                      speed={160}
+                      threshold={3}
+                      touchRatio={1.5}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.15}
+                      longSwipesRatio={0.08}
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
@@ -435,14 +435,14 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={280}
-                      threshold={5}
-                      touchRatio={1.2}
+                      speed={160}
+                      threshold={3}
+                      touchRatio={1.5}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.15}
+                      longSwipesRatio={0.08}
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
@@ -542,14 +542,14 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={280}
-                      threshold={5}
-                      touchRatio={1.2}
+                      speed={160}
+                      threshold={3}
+                      touchRatio={1.5}
                       resistanceRatio={0.85}
                       touchAngle={50}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.15}
+                      longSwipesRatio={0.08}
                       touchReleaseOnEdges={true}
                       coverflowEffect={{
                         rotate: 0,
@@ -1491,7 +1491,7 @@ export default function PillarsPage() {
         .pillar-content { position: relative; z-index: 30; text-align: center; padding: 30px; }
         .donor-name { 
           font-family: var(--font-serif); font-size: 1.95rem; font-weight: 700; color: #fff; 
-          margin-bottom: 8px; letter-spacing: 0.1em; transition: 0.3s;
+          margin-bottom: 8px; letter-spacing: 0.1em; transition: color 0.15s, transform 0.15s;
         }
         .pillar-monument:hover .donor-name { color: var(--primary-gold); transform: scale(1.1); }
         .donor-rank { font-size: 0.85rem; color: var(--text-tertiary); letter-spacing: 0.2em; text-transform: uppercase; }

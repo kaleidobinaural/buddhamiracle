@@ -511,7 +511,7 @@ export default function DharmaPage() {
 
       <style>{`
         /* ── Base ── */
-        .dharma-page { min-height: 100vh; padding: calc(var(--nav-height) + 40px) 0 120px; background: #080807; position: relative; overflow-x: hidden; }
+        .dharma-page { min-height: 100vh; padding: calc(var(--nav-height) + 12px) 0 120px; background: #080807; position: relative; overflow-x: hidden; }
         .dharma-bg-glow { position: absolute; top: 0; right: 0; width: 100%; height: 1200px; background: radial-gradient(circle at 50% -10%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; }
         .dharma-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 24px; box-sizing: border-box; width: 100%; }
 
@@ -804,7 +804,7 @@ export default function DharmaPage() {
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-          .dharma-page { padding-top: calc(var(--nav-height) + 20px); }
+          .dharma-page { padding-top: calc(var(--nav-height) + 8px); }
           .dharma-container { padding: 0 16px; }
           .scripture-accordion { padding: 20px 18px; }
           .accordion-source { font-size: 0.9rem; }

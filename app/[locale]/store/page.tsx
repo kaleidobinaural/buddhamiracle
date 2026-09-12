@@ -515,7 +515,7 @@ export default function StorePage() {
         .store-page { min-height: 100vh; background: #080807; position: relative; overflow-x: hidden; padding-bottom: 120px; }
         .store-bg-glow { position: absolute; top: 0; left: 0; right: 0; height: 800px; background: radial-gradient(circle at 50% 0%, rgba(212,160,23,0.15) 0%, transparent 70%); pointer-events: none; z-index: 0; }
         .store-section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 80px 24px 20px; }
-        .store-hero { text-align: center; padding-top: 140px; }
+        .store-hero { text-align: center; padding-top: 80px; }
         .store-eyebrow { color: #d4a017; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase; }
         .store-hero-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
         .store-hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); color: #fff; margin-bottom: 16px; }
