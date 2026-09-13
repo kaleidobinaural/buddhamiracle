@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { createPortal } from 'react-dom';
 
@@ -26,36 +26,111 @@ export default function CharacterAvatar({
   height = 240
 }: CharacterAvatarProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isBubbleClosed, setIsBubbleClosed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
   // Portal needs document to be available (client-side only)
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const mountedPath = useRef<string | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const mountedPath = useRef<string>(pathname);
+
+  // Normalize section identifier (e.g., "dharma", "wish-roof", "chat")
+  const sectionKey = (pathname || '')
+    .split('/')
+    .filter(p => p && !['en', 'ko', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'ar', 'vi', 'th', 'id', 'my', 'km'].includes(p))
+    .join('_') || 'home';
+  const storageKey = `bori_dismissed_${sectionKey}`;
+
+  // Complete dismiss: cancel timers, hide, and record dismissal in sessionStorage
+  const dismiss = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    setIsVisible(false);
+    setIsDismissed(true);
+    if (typeof window !== 'undefined') {
+      try {
+        sessionStorage.setItem(storageKey, 'true');
+      } catch (e) {
+        // ignore
+      }
+    }
+  }, [storageKey]);
 
   useEffect(() => {
     setMounted(true);
-    const timer = setTimeout(() => {
-      mountedPath.current = pathname; // record the page where avatar appeared
+    mountedPath.current = pathname;
+
+    // 1. Check if already dismissed in this session
+    if (typeof window !== 'undefined') {
+      try {
+        if (sessionStorage.getItem(storageKey) === 'true') {
+          setIsDismissed(true);
+          return;
+        }
+      } catch (e) {}
+
+      // 2. If mobile hamburger menu is already open, do not show
+      if (document.body.classList.contains('mobile-nav-open')) {
+        setIsVisible(false);
+        return;
+      }
+    }
+
+    // 3. Schedule appearance timer
+    timerRef.current = setTimeout(() => {
+      // Re-check conditions before showing:
+      if (typeof document !== 'undefined') {
+        if (document.body.classList.contains('mobile-nav-open')) {
+          setIsVisible(false);
+          return;
+        }
+        try {
+          if (sessionStorage.getItem(storageKey) === 'true') {
+            setIsDismissed(true);
+            setIsVisible(false);
+            return;
+          }
+        } catch (e) {}
+      }
       setIsVisible(true);
     }, delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
 
-  // Auto-dismiss when user navigates away
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [delay, storageKey, pathname]);
+
+  // Auto-dismiss immediately when navigating away (route changes)
   useEffect(() => {
     if (mountedPath.current && pathname !== mountedPath.current) {
-      setIsVisible(false);
+      dismiss();
     }
-  }, [pathname]);
+  }, [pathname, dismiss]);
 
-  // Auto-dismiss when hamburger mobile menu opens
+  // Auto-dismiss when hamburger mobile menu opens OR user navigates to another section
   useEffect(() => {
-    const onMobileMenu = () => setIsVisible(false);
-    window.addEventListener('mobile-menu-opened', onMobileMenu);
-    return () => window.removeEventListener('mobile-menu-opened', onMobileMenu);
-  }, []);
+    const handleDismissEvent = () => {
+      dismiss();
+    };
 
-  if (!mounted || !isVisible || isBubbleClosed) return null;
+    window.addEventListener('mobile-menu-opened', handleDismissEvent);
+    window.addEventListener('section-navigated', handleDismissEvent);
+    window.addEventListener('nav-link-clicked', handleDismissEvent);
+    window.addEventListener('beforeunload', handleDismissEvent);
+
+    return () => {
+      window.removeEventListener('mobile-menu-opened', handleDismissEvent);
+      window.removeEventListener('section-navigated', handleDismissEvent);
+      window.removeEventListener('nav-link-clicked', handleDismissEvent);
+      window.removeEventListener('beforeunload', handleDismissEvent);
+    };
+  }, [dismiss]);
+
+  if (!mounted || !isVisible || isDismissed) return null;
 
   // ★ Portal: render directly under <body> to escape any parent transform
   return createPortal(
@@ -78,9 +153,9 @@ export default function CharacterAvatar({
               className="bubble-close-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                setIsBubbleClosed(true);
+                dismiss();
               }}
-              aria-label="Close comment"
+              aria-label="Close"
             >
               ×
             </button>
@@ -107,12 +182,20 @@ export default function CharacterAvatar({
         /* ── Portal root: always fixed to viewport ── */
         .avatar-container {
           position: fixed;
-          z-index: 9000;      /* above everything including modals */
+          z-index: 9000;      /* above regular content */
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 16px;
           pointer-events: none;
+        }
+
+        /* Enforce absolute disappearance whenever mobile menu is open */
+        body.mobile-nav-open .avatar-container {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
         }
 
         .avatar-container.bottom-right {

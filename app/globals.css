@@ -770,8 +770,14 @@ img, video {
   }
 }
 
-body.mobile-nav-open .sanctuary-footer {
+body.mobile-nav-open .sanctuary-footer,
+body.mobile-nav-open .avatar-container,
+body.mobile-nav-open .avatar-message,
+body.mobile-nav-open .avatar-image-wrapper {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 .footer-divider { display: none; }
 .footer-content {

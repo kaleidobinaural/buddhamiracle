@@ -114,9 +114,12 @@ export default function Navigation() {
       if (isAudioPlaying) {
         window.dispatchEvent(new CustomEvent('toggle-ambient-audio'));
       }
+      // Ensure CharacterAvatar and floating items dismiss whenever mobile menu is open
+      window.dispatchEvent(new CustomEvent('mobile-menu-opened'));
     } else {
       document.body.classList.remove('mobile-nav-open');
       document.body.style.overflow = '';
+      window.dispatchEvent(new CustomEvent('mobile-menu-closed'));
     }
     return () => {
       document.body.classList.remove('mobile-nav-open');
@@ -163,7 +166,13 @@ export default function Navigation() {
       <nav className={`glass-nav${scrolled ? ' scrolled' : ''}`} role="navigation">
         <div className="nav-inner">
           {/* Logo */}
-          <Link href="/" className="nav-logo">
+          <Link 
+            href="/" 
+            className="nav-logo"
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('section-navigated'));
+            }}
+          >
             <span className="nav-logo-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
@@ -196,6 +205,9 @@ export default function Navigation() {
                   key={link.href} 
                   href={link.href as any} 
                   className={`nav-link ${pathname === link.href ? 'active' : ''}`}
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('section-navigated'));
+                  }}
                 >
                   {t(link.key)}
                 </Link>
@@ -323,7 +335,10 @@ export default function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`mobile-nav-link bloom-${i + 1}`}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      window.dispatchEvent(new CustomEvent('section-navigated'));
+                    }}
                   >
                     {t(link.key)} ↗
                   </a>
@@ -332,7 +347,10 @@ export default function Navigation() {
                     key={link.href} 
                     href={link.href as any} 
                     className={`mobile-nav-link bloom-${i + 1}`} 
-                    onClick={() => setMobileOpen(false)}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      window.dispatchEvent(new CustomEvent('section-navigated'));
+                    }}
                   >
                     {t(link.key)}
                   </Link>
@@ -344,6 +362,7 @@ export default function Navigation() {
                 style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', padding: 0, textAlign: 'center' }}
                 onClick={() => {
                   setMobileOpen(false);
+                  window.dispatchEvent(new CustomEvent('section-navigated'));
                   if (!session?.user) { setShowLoginModal(true); return; }
                   router.push('/donate');
                 }}

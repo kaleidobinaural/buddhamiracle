@@ -153,19 +153,24 @@ export default function DharmaPage() {
   useEffect(() => {
     if (locale === 'en' || scriptures.length === 0) return;
 
-    // ★ PRIORITY: todayQuote and readingScripture go to the FRONT of the translation queue
+    // ★ On-Demand Translation: only translate todayQuote, active modal, or open accordion
     const itemsToCheck: Scripture[] = [];
     if (todayQuote && !todayQuote.translations?.[locale] && !inFlightRef.current.has(todayQuote.id)) {
-      itemsToCheck.push(todayQuote); // highest priority for daily quote
+      itemsToCheck.push(todayQuote); // daily quote shown at top
     }
     if (readingScripture && !readingScripture.translations?.[locale] && !inFlightRef.current.has(readingScripture.id)) {
       if (!itemsToCheck.some(i => i.id === readingScripture.id)) {
-        itemsToCheck.push(readingScripture); // instant priority if user opened a modal
+        itemsToCheck.push(readingScripture); // instant priority for opened parchment modal
       }
     }
-    visibleScriptures.forEach(item => {
-      if (!itemsToCheck.some(i => i.id === item.id)) itemsToCheck.push(item);
-    });
+    if (expandedId) {
+      const expandedItem = scriptures.find(s => s.id === expandedId);
+      if (expandedItem && !expandedItem.translations?.[locale] && !inFlightRef.current.has(expandedItem.id)) {
+        if (!itemsToCheck.some(i => i.id === expandedItem.id)) {
+          itemsToCheck.push(expandedItem);
+        }
+      }
+    }
 
     const missing = itemsToCheck.filter(
       (item) => !item.translations?.[locale] && !inFlightRef.current.has(item.id) && !failedIds.has(item.id)
@@ -209,7 +214,7 @@ export default function DharmaPage() {
         });
       }
     });
-  }, [visibleScriptures, todayQuote?.id, readingScripture?.id, locale, scriptures.length, failedIds]);
+  }, [expandedId, todayQuote?.id, readingScripture?.id, locale, scriptures.length, failedIds]);
 
   const getLocalizedContent = (scripture: Scripture | null) => {
     if (!scripture) return { text: '', isTranslating: false };
