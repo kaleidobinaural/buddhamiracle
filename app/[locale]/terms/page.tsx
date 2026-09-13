@@ -80,7 +80,7 @@ export default function TermsPage() {
       <style>{`
         .terms-page {
           min-height: 100vh;
-          padding: calc(var(--nav-height) + 48px) 24px 80px;
+          padding: calc(var(--nav-height) + 20px) 24px 60px;
           background: #050505;
           position: relative;
           overflow-x: hidden;
@@ -106,7 +106,7 @@ export default function TermsPage() {
 
         .terms-header {
           text-align: center;
-          margin-bottom: 56px;
+          margin-bottom: 28px;
         }
 
         .terms-eyebrow {
@@ -116,7 +116,7 @@ export default function TermsPage() {
           text-transform: uppercase;
           color: var(--primary-gold);
           opacity: 0.7;
-          margin-bottom: 16px;
+          margin-bottom: 8px;
         }
 
         .terms-title {

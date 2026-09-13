@@ -98,7 +98,7 @@ export default function PrivacyPage() {
       <style>{`
         .privacy-page {
           min-height: 100vh;
-          padding: calc(var(--nav-height) + 48px) 24px 80px;
+          padding: calc(var(--nav-height) + 20px) 24px 60px;
           background: #050505;
           position: relative;
           overflow-x: hidden;
@@ -124,7 +124,7 @@ export default function PrivacyPage() {
 
         .privacy-header {
           text-align: center;
-          margin-bottom: 56px;
+          margin-bottom: 28px;
         }
 
         .privacy-eyebrow {
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
           text-transform: uppercase;
           color: var(--primary-gold);
           opacity: 0.7;
-          margin-bottom: 16px;
+          margin-bottom: 8px;
         }
 
         .privacy-title {

@@ -236,7 +236,7 @@ export default function DharmaPage() {
 
         {/* ── Sacred Scroll: Today's Wisdom ── */}
         {todayQuote && (
-          <div className="scroll-wrapper mb-[200px]">
+          <div className="scroll-wrapper mb-[36px] md:mb-[200px]">
             <div className="scroll-top" />
             <div className="scroll-body glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="quote-accent-icon">☸</div>
@@ -281,7 +281,7 @@ export default function DharmaPage() {
         )}
 
         {/* ── Explore Section ── */}
-        <section className="explore-section mt-[80px] w-full">
+        <section className="explore-section mt-[20px] md:mt-[80px] w-full">
           <div className="explore-header mb-8">
             <h2 className="section-title font-serif text-3xl mb-[40px] text-white/90 text-left">{t('explore')}</h2>
 
@@ -416,21 +416,25 @@ export default function DharmaPage() {
         </section>
       </div>
 
-      {/* ── Scroll-to-Top FAB ── */}
-      <button
-        className={`fab-top ${showFab ? 'visible' : ''}`}
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-      >
-        ↑
-      </button>
+      {/* ── Scroll-to-Top FAB & Character Avatar (hidden when modal is open) ── */}
+      {!readingScripture && (
+        <>
+          <button
+            className={`fab-top ${showFab ? 'visible' : ''}`}
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+          >
+            ↑
+          </button>
 
-      <CharacterAvatar
-        src="/images/bori/bori_tablet.png"
-        message={t('boriMessage')}
-        position="bottom-right"
-        delay={1000}
-      />
+          <CharacterAvatar
+            src="/images/bori/bori_tablet.png"
+            message={t('boriMessage')}
+            position="bottom-right"
+            delay={1000}
+          />
+        </>
+      )}
 
       {/* ══════════════════════════════════════════ */}
       {/* ★ PARCHMENT MODAL — Ancient scroll design ★ */}
@@ -444,7 +448,7 @@ export default function DharmaPage() {
           aria-label={`Reading: ${readingScripture.source}`}
         >
           <div
-            className="parchment-modal animate-fade-up"
+            className="parchment-modal parchment-animate-in"
             onClick={e => e.stopPropagation()}
           >
             {/* Scroll rod top */}
@@ -626,15 +630,32 @@ export default function DharmaPage() {
         /* ══════════════════════════════════════ */
         .parchment-overlay {
           position: fixed; inset: 0; z-index: 1000;
-          background: rgba(0, 0, 0, 0.88);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          background: rgba(0, 0, 0, 0.90);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           display: flex; align-items: flex-start; justify-content: center;
-          padding: calc(var(--nav-height, 80px) + 20px) 16px 60px;
+          padding: calc(var(--nav-height, 80px) + 12px) 16px 60px;
           overflow-y: auto; box-sizing: border-box;
-          animation: fade-in-overlay 0.2s ease;
+          animation: fade-in-overlay 0.15s ease;
         }
         @keyframes fade-in-overlay { from { opacity: 0; } to { opacity: 1; } }
+
+        .parchment-animate-in {
+          animation: parchmentEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes parchmentEnter {
+          from { opacity: 0; transform: scale(0.96) translateY(14px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+          .parchment-overlay {
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            padding: calc(var(--nav-height, 80px) + 8px) 12px 40px;
+          }
+        }
 
         .parchment-card-close {
           position: absolute;
@@ -809,6 +830,8 @@ export default function DharmaPage() {
         @media (max-width: 768px) {
           .dharma-page { padding-top: 12px; }
           .dharma-container { padding: 0 16px; }
+          .scroll-wrapper { margin: 0 auto 36px auto !important; padding: 0 16px !important; }
+          .explore-section { margin-top: 20px !important; }
           .guru-portrait-wrap { width: 110px; height: 110px; margin: 0 auto 16px auto; }
           .dharma-header { margin-bottom: 16px; }
           .dharma-title { font-size: 2.2rem; margin-bottom: 10px !important; }

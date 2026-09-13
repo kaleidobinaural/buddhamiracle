@@ -769,6 +769,10 @@ img, video {
     justify-content: center;
   }
 }
+
+body.mobile-nav-open .sanctuary-footer {
+  display: none !important;
+}
 .footer-divider { display: none; }
 .footer-content {
   display: flex;
@@ -1682,7 +1686,7 @@ img, video {
 .privacy-page {
   position: relative;
   min-height: 100vh;
-  padding: 120px 24px 80px;
+  padding: calc(var(--nav-height, 80px) + 20px) 24px 60px;
   background-color: var(--background-deep);
   color: var(--text-secondary);
 }

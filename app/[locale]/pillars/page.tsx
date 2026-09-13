@@ -345,15 +345,17 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={160}
+                      speed={200}
                       threshold={3}
-                      touchRatio={1.5}
-                      resistanceRatio={0.85}
-                      touchAngle={50}
+                      touchRatio={1.6}
+                      resistanceRatio={0}
+                      touchAngle={70}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.08}
+                      longSwipesRatio={0.05}
                       touchReleaseOnEdges={true}
+                      preventInteractionOnTransition={false}
+                      touchStartPreventDefault={false}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 60,
@@ -434,15 +436,17 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={160}
+                      speed={200}
                       threshold={3}
-                      touchRatio={1.5}
-                      resistanceRatio={0.85}
-                      touchAngle={50}
+                      touchRatio={1.6}
+                      resistanceRatio={0}
+                      touchAngle={70}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.08}
+                      longSwipesRatio={0.05}
                       touchReleaseOnEdges={true}
+                      preventInteractionOnTransition={false}
+                      touchStartPreventDefault={false}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 60,
@@ -541,15 +545,17 @@ export default function PillarsPage() {
                       grabCursor={true}
                       centeredSlides={true}
                       slidesPerView={'auto'}
-                      speed={160}
+                      speed={200}
                       threshold={3}
-                      touchRatio={1.5}
-                      resistanceRatio={0.85}
-                      touchAngle={50}
+                      touchRatio={1.6}
+                      resistanceRatio={0}
+                      touchAngle={70}
                       shortSwipes={true}
                       longSwipes={true}
-                      longSwipesRatio={0.08}
+                      longSwipesRatio={0.05}
                       touchReleaseOnEdges={true}
+                      preventInteractionOnTransition={false}
+                      touchStartPreventDefault={false}
                       coverflowEffect={{
                         rotate: 0,
                         stretch: 60,
@@ -1223,8 +1229,8 @@ export default function PillarsPage() {
         }
 
         /* Hall Mode (Coverflow Carousel) */
-        .hall-mode { overflow: visible; padding: 16px 0 32px; perspective: 2500px; }
-        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 90px; overflow: visible; background: transparent !important; }
+        .hall-mode { overflow: visible; padding: 16px 0 20px; perspective: 2500px; }
+        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 20px; overflow: visible; background: transparent !important; }
         .pillar-slide { 
           width: 320px; display: flex; justify-content: center; 
           will-change: transform; 

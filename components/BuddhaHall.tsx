@@ -123,12 +123,24 @@ function CameraReset({ is3DMode }: { is3DMode: boolean }) {
   const { camera, controls } = useThree();
   
   useEffect(() => {
-    // Camera framing aligned with desktop 2D Buddha bounds
-    camera.position.set(0, 1.40, 7.5);
-    camera.lookAt(0, 1.18, 0);
-    if (controls) {
-      (controls as any).target.set(0, 1.18, 0);
-      (controls as any).update();
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    if (isMobile) {
+      // Mobile camera framing: lower camera & target so Buddha sits higher on mobile screen,
+      // perfectly matching the mobile 2D Buddha anchor (top: 120px, 52vh).
+      camera.position.set(0, 0.90, 7.5);
+      camera.lookAt(0, 0.68, 0);
+      if (controls) {
+        (controls as any).target.set(0, 0.68, 0);
+        (controls as any).update();
+      }
+    } else {
+      // Desktop camera framing aligned with desktop 2D Buddha bounds
+      camera.position.set(0, 1.40, 7.5);
+      camera.lookAt(0, 1.18, 0);
+      if (controls) {
+        (controls as any).target.set(0, 1.18, 0);
+        (controls as any).update();
+      }
     }
   }, [is3DMode, camera, controls]);
 
@@ -141,6 +153,7 @@ function CameraReset({ is3DMode }: { is3DMode: boolean }) {
 export default function BuddhaHall({ is3DMode = false, isEcoMode = false }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [is3DVisible, setIs3DVisible] = useState(is3DMode);
   const isFirstMount = useRef(true);
 
   useEffect(() => {
@@ -155,8 +168,16 @@ export default function BuddhaHall({ is3DMode = false, isEcoMode = false }) {
       return;
     }
     setIsTransitioning(true);
+    // At t=350ms, the goldenBurst flash reaches peak 100% opacity.
+    // Reveal or hide the 3D model exactly at the peak of the flash!
+    const revealTimer = setTimeout(() => {
+      setIs3DVisible(is3DMode);
+    }, 350);
     const flashTimer = setTimeout(() => setIsTransitioning(false), 1300);
-    return () => clearTimeout(flashTimer);
+    return () => {
+      clearTimeout(revealTimer);
+      clearTimeout(flashTimer);
+    };
   }, [is3DMode]);
 
   return (
@@ -196,7 +217,7 @@ export default function BuddhaHall({ is3DMode = false, isEcoMode = false }) {
 
         <OrbitControls
           makeDefault
-          target={[0, 1.18, 0]}
+          target={typeof window !== 'undefined' && window.innerWidth <= 768 ? [0, 0.68, 0] : [0, 1.18, 0]}
           enabled={is3DMode}
           enablePan={is3DMode}
           enableZoom={is3DMode}
@@ -208,7 +229,7 @@ export default function BuddhaHall({ is3DMode = false, isEcoMode = false }) {
         />
 
         <Suspense fallback={null}>
-          <group visible={is3DMode}>
+          <group visible={is3DVisible}>
             <Environment preset="sunset" environmentIntensity={0.5} />
             <BuddhaModel />
           </group>
