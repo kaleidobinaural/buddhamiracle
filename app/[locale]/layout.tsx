@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation';
 import NextAuthSessionProvider from '@/components/auth/SessionProvider';
 import { NextIntlClientProvider } from 'next-intl';
 import Link from 'next/link';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
 import CustomCursor from '@/components/CustomCursor';
@@ -53,6 +53,9 @@ export default async function RootLayout({
   if (!locales.includes(locale as any)) {
     notFound();
   }
+
+  // Set request locale for Next.js 15 / next-intl
+  setRequestLocale(locale);
 
   // Load messages for the provider
   const messages = await getMessages({ locale });

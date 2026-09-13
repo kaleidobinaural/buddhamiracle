@@ -81,13 +81,14 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  // SPA language change: save menu state → router.replace → restore on remount
+  // Language change: save menu state → navigate to new locale URL
   const handleLanguageChange = (nextLocale: string) => {
     if (nextLocale === locale) return;
-    // Save current menu state so we can restore it after component remounts
+    // Save current menu state so it seamlessly restores on remount
     sessionStorage.setItem('restore_mobile_menu', mobileOpen ? 'true' : 'false');
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-    router.replace(intlPathname as any, { locale: nextLocale, scroll: false });
+    const targetPath = !intlPathname || intlPathname === '/' ? `/${nextLocale}` : `/${nextLocale}${intlPathname}`;
+    window.location.href = targetPath;
   };
 
   // Close mobile menu ONLY on explicit navigation (link click), NOT on locale change
