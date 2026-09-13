@@ -46,12 +46,12 @@ export default function ResonancePage() {
   const handleOpenTikTok = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
     if (isMobile) {
-      // Mobile: show redirect notice for 3.2s so user can comfortably read it, then navigate
+      // Show smooth buffer overlay to cleanly mask the OS black screen / app launch latency (~1.8s)
       setShowMobileRedirect(true);
       setTimeout(() => {
         window.location.href = 'https://www.tiktok.com/@buddha_miracle';
         setTimeout(() => setShowMobileRedirect(false), 3000);
-      }, 3200);
+      }, 1800);
     } else {
       window.open('https://www.tiktok.com/@buddha_miracle', '_blank', 'noopener,noreferrer');
     }
@@ -165,27 +165,20 @@ export default function ResonancePage() {
         </div>
       </section>
 
-      {/* Mobile Fullscreen Redirect Overlay */}
+      {/* Mobile Transition Buffer Overlay (masks black screen during app launch) */}
       {showMobileRedirect && (
-        <div className="mobile-redirect-overlay" onClick={() => { window.location.href = 'https://www.tiktok.com/@buddha_miracle'; }}>
-          <div className="mobile-redirect-content" onClick={e => e.stopPropagation()}>
+        <div className="mobile-redirect-overlay">
+          <div className="mobile-redirect-content">
             <div className="mobile-redirect-icon">🎵</div>
             <h2 className="mobile-redirect-title">{safeT('mobileRedirectTitle', 'Redirecting to TikTok')}</h2>
             <p className="mobile-redirect-desc">{safeT('mobileRedirectDesc', 'You will be connected to @buddha_miracle official channel shortly.')}</p>
-            <p className="mobile-redirect-note">{safeT('mobileRedirectNote', 'A black screen may appear for a few seconds while TikTok loads.')}</p>
             <div className="mobile-redirect-loader">
               <span /><span /><span />
             </div>
-            <button
-              type="button"
-              className="btn-redirect-now"
-              onClick={() => { window.location.href = 'https://www.tiktok.com/@buddha_miracle'; }}
-            >
-              {safeT('redirectNow', '지금 바로 이동 ↗')}
-            </button>
           </div>
         </div>
       )}
+
 
       <style>{`
         @keyframes spin-slow {
@@ -483,80 +476,7 @@ export default function ResonancePage() {
           transform: scale(0.98);
         }
 
-        /* ─── Mobile Fullscreen Redirect Overlay ─── */
-        .mobile-redirect-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 99999;
-          background: #000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          animation: mobile-redirect-fade-in 0.3s ease;
-        }
-        @keyframes mobile-redirect-fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
 
-        .mobile-redirect-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 40px 32px;
-          max-width: 340px;
-        }
-
-        .mobile-redirect-icon {
-          font-size: 4rem;
-          margin-bottom: 24px;
-          animation: mobile-redirect-pulse 1s ease-in-out infinite;
-        }
-        @keyframes mobile-redirect-pulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.12); opacity: 0.8; }
-        }
-
-        .mobile-redirect-title {
-          font-family: var(--font-serif);
-          font-size: 1.6rem;
-          color: #ffd700;
-          margin-bottom: 16px;
-          font-weight: 700;
-        }
-
-        .mobile-redirect-desc {
-          font-size: 0.95rem;
-          color: rgba(255,255,255,0.75);
-          line-height: 1.7;
-          margin-bottom: 12px;
-        }
-
-        .mobile-redirect-note {
-          font-size: 0.82rem;
-          color: rgba(255,255,255,0.4);
-          line-height: 1.6;
-          margin-bottom: 32px;
-        }
-
-        .mobile-redirect-loader {
-          display: flex;
-          gap: 8px;
-        }
-        .mobile-redirect-loader span {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #d4a017;
-          animation: mobile-redirect-dot 1.2s ease-in-out infinite;
-        }
-        .mobile-redirect-loader span:nth-child(2) { animation-delay: 0.2s; }
-        .mobile-redirect-loader span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes mobile-redirect-dot {
-          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-          40% { transform: scale(1); opacity: 1; }
-        }
 
         .tiktok-load-notice {
           margin: 0;
@@ -579,22 +499,78 @@ export default function ResonancePage() {
           font-size: 0.95rem;
         }
 
-        .btn-redirect-now {
-          margin-top: 24px;
-          padding: 10px 24px;
-          background: rgba(212, 160, 23, 0.15);
-          border: 1px solid rgba(212, 160, 23, 0.4);
-          border-radius: 30px;
-          color: var(--primary-gold);
-          font-size: 0.88rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
+        /* ─── Mobile Fullscreen Redirect Overlay ─── */
+        .mobile-redirect-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 99999;
+          background: rgba(8, 8, 7, 0.96);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: mobile-redirect-fade-in 0.25s ease forwards;
         }
-        .btn-redirect-now:hover {
-          background: var(--primary-gold);
-          color: #000;
+        @keyframes mobile-redirect-fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
+
+        .mobile-redirect-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 40px 32px;
+          max-width: 320px;
+        }
+
+        .mobile-redirect-icon {
+          font-size: 3.6rem;
+          margin-bottom: 20px;
+          animation: mobile-redirect-pulse 1.2s ease-in-out infinite;
+        }
+        @keyframes mobile-redirect-pulse {
+          0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 15px rgba(212,160,23,0.3)); }
+          50% { transform: scale(1.1); opacity: 0.85; filter: drop-shadow(0 0 25px rgba(212,160,23,0.6)); }
+        }
+
+        .mobile-redirect-title {
+          font-family: var(--font-serif);
+          font-size: 1.5rem;
+          color: #ffd700;
+          margin-bottom: 12px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+        }
+
+        .mobile-redirect-desc {
+          font-size: 0.92rem;
+          color: rgba(255,255,255,0.7);
+          line-height: 1.6;
+          margin-bottom: 28px;
+        }
+
+        .mobile-redirect-loader {
+          display: flex;
+          gap: 8px;
+        }
+        .mobile-redirect-loader span {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #d4a017;
+          animation: mobile-redirect-dot 1.2s ease-in-out infinite;
+        }
+        .mobile-redirect-loader span:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-redirect-loader span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes mobile-redirect-dot {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+          40% { transform: scale(1); opacity: 1; }
+        }
+
+
 
         @media (max-width: 768px) {
           .store-tiktok-section { padding: 12px 16px 60px; }
