@@ -221,6 +221,16 @@ export default function DharmaPage() {
     return { text: scripture.content, isTranslating: translatingIds.has(scripture.id) };
   };
 
+  const safeT = (key: string, fallback: string): string => {
+    try {
+      const result = t(key as any);
+      if (!result || result === key || result === `Dharma.${key}`) return fallback;
+      return result;
+    } catch {
+      return fallback;
+    }
+  };
+
   const handleAccordion = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));
   };
@@ -485,13 +495,16 @@ export default function DharmaPage() {
               <div className="parchment-watermark" aria-hidden="true">☸</div>
 
               <div className="parchment-inner">
-                {/* Source + chapter */}
+                {/* Source + optional chapter */}
                 <div className="parchment-eyebrow">
                   {currentReadingScripture.source}
                 </div>
-                <p className="parchment-chapter text-center">
-                  {currentReadingScripture.metadata?.chapter || 'VIRTUAL TEMPLE'}
-                </p>
+                {currentReadingScripture.metadata?.chapter && 
+                 currentReadingScripture.metadata.chapter.trim().toUpperCase() !== 'VIRTUAL TEMPLE' && (
+                  <p className="parchment-chapter text-center">
+                    {currentReadingScripture.metadata.chapter}
+                  </p>
+                )}
                 <div className="parchment-divider" />
                 
                 {/* Full text */}
@@ -516,7 +529,7 @@ export default function DharmaPage() {
                       className="btn-parchment-bottom-close"
                       onClick={() => setReadingScripture(null)}
                     >
-                      ✕ {t('close')}
+                      ✕ {safeT('close', 'Close')}
                     </button>
                   </div>
                 </div>
@@ -782,9 +795,17 @@ export default function DharmaPage() {
           font-size: 0.78rem; letter-spacing: 0.35em;
           text-transform: uppercase;
           color: #7a5010; font-weight: 700;
-          margin-bottom: 12px;
+          margin-bottom: 8px;
         }
-        .parchment-chapter { opacity: 0.6; font-weight: 400; letter-spacing: 0.2em; }
+        .parchment-chapter {
+          color: #6e4a16;
+          font-family: var(--font-serif);
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          margin: 0 0 10px 0;
+          opacity: 0.9;
+        }
 
         .parchment-ornament {
           font-family: var(--font-serif);

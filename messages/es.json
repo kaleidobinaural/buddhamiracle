@@ -53,7 +53,8 @@
     "allLoaded": "Todos los {count} pasajes han sido revelados",
     "mayWisdomLight": "Que esta sabiduría ilumine tu camino",
     "translating": "Traduciendo...",
-    "passagesFound": "{count} pasajes encontrados"
+    "passagesFound": "{count} pasajes encontrados",
+    "close": "Cerrar pergamino"
   },
   "Guru": {
     "title": "El Guía Iluminado",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "Por favor, inicia sesión para realizar una ofrenda.",
     "signInBtn": "Iniciar Sesión",
     "myDonations": "Mis Ofrendas",
-    "myDonationsEmpty": "Aún no hay ofrendas registradas."
+    "myDonationsEmpty": "Aún no hay ofrendas registradas.",
+    "viewAllSupporters": "Todos los benefactores",
+    "viewAllFounders": "Todos los fundadores",
+    "myPillarBadge": "Mi ofrenda",
+    "makePrivate": "Hacer privado",
+    "makePublic": "Hacer público",
+    "deletePillar": "Eliminar ofrenda",
+    "confirmDeletePillarTitle": "Confirmar eliminación",
+    "confirmDeletePillarDesc": "¿Estás seguro de que deseas eliminar esta ofrenda? Esta acción no se puede deshacer.",
+    "modalCancel": "Cancelar",
+    "btnConfirmDelete": "Eliminar",
+    "allPillars": "Ver todas las ofrendas"
   },
   "hall": {
     "title": "Santuario de Luz",
@@ -349,7 +361,8 @@
     "livingMiracle": "Milagro Vivo · Santuario Digital",
     "mobileRedirectTitle": "Redirigiendo a TikTok",
     "mobileRedirectDesc": "Serás conectado pronto al canal oficial @buddha_miracle.",
-    "mobileRedirectNote": "Puede aparecer una pantalla negra durante unos segundos mientras TikTok carga."
+    "mobileRedirectNote": "Puede aparecer una pantalla negra durante unos segundos mientras TikTok carga.",
+    "redirectNow": "Ir a TikTok ahora ↗"
   },
   "Profile": {
     "myWishes": "Mis Deseos",

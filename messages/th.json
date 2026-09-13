@@ -53,7 +53,8 @@
     "allLoaded": "เปิดเผยบทธรรมทั้งหมด {count} บทแล้ว",
     "mayWisdomLight": "ขอให้ปัญญานี้ส่องสว่างนำทางท่าน",
     "translating": "กำลังแปลภาษา...",
-    "passagesFound": "พบ {count} บทธรรม"
+    "passagesFound": "พบ {count} บทธรรม",
+    "close": "ปิดคัมภีร์"
   },
   "Guru": {
     "title": "ผู้ชี้ทางแห่งปัญญา",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "โปรดเข้าสู่ระบบเพื่อถวายดอกบัวแก่พระวิหาร",
     "signInBtn": "เข้าสู่ระบบ",
     "myDonations": "การถวายของฉัน",
-    "myDonationsEmpty": "ยังไม่มีประวัติการถวาย"
+    "myDonationsEmpty": "ยังไม่มีประวัติการถวาย",
+    "viewAllSupporters": "ผู้สนับสนุนทั้งหมด",
+    "viewAllFounders": "ผู้ก่อตั้งทั้งหมด",
+    "myPillarBadge": "การถวายของฉัน",
+    "makePrivate": "ตั้งเป็นส่วนตัว",
+    "makePublic": "ตั้งเป็นสาธารณะ",
+    "deletePillar": "ลบการถวาย",
+    "confirmDeletePillarTitle": "ยืนยันการลบ",
+    "confirmDeletePillarDesc": "คุณแน่ใจหรือไม่ว่าต้องการลบการถวายนี้? การกระทำนี้ไม่สามารถย้อนกลับได้",
+    "modalCancel": "ยกเลิก",
+    "btnConfirmDelete": "ลบ",
+    "allPillars": "ดูการถวายทั้งหมด"
   },
   "hall": {
     "title": "มหาวิหารแห่งแสงสว่าง",
@@ -349,7 +361,8 @@
     "livingMiracle": "ปาฏิหาริย์แห่งชีวิต · ศาลาเจริญธรรมดิจิทัล",
     "mobileRedirectTitle": "กำลังนำทางไปยัง TikTok",
     "mobileRedirectDesc": "ท่านจะเชื่อมต่อไปยังช่องทางการ @buddha_miracle ในไม่ช้า",
-    "mobileRedirectNote": "อาจมีหน้าจอสีดำปรากฏขึ้นชั่วคราวสองสามวินาทีขณะที่ TikTok กำลังโหลด"
+    "mobileRedirectNote": "อาจมีหน้าจอสีดำปรากฏขึ้นชั่วคราวสองสามวินาทีขณะที่ TikTok กำลังโหลด",
+    "redirectNow": "ไปที่ TikTok ทันที ↗"
   },
   "Profile": {
     "myWishes": "ความปรารถนาของฉัน",

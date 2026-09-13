@@ -53,7 +53,8 @@
     "allLoaded": "វគ្គទាំង {count} ត្រូវបានបង្ហាញទាំងអស់",
     "mayWisdomLight": "សូមឱ្យប្រាជ្ញានេះបំភ្លឺផ្លូវរបស់អ្នក",
     "translating": "កំពុងបកប្រែ...",
-    "passagesFound": "រកឃើញ {count} វគ្គ"
+    "passagesFound": "រកឃើញ {count} វគ្គ",
+    "close": "បិទគម្ពីរ"
   },
   "Guru": {
     "title": "មគ្គុទ្ទេសក៍អ្នកត្រាស់ដឹង",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "សូមចូលគណនីដើម្បីថ្វាយដង្វាយដល់ព្រះវិហារ។",
     "signInBtn": "ចូលគណនី",
     "myDonations": "ការបូជារបស់ខ្ញុំ",
-    "myDonationsEmpty": "មិនទាន់មានការកត់ត្រាការបូជានៅឡើយទេ។"
+    "myDonationsEmpty": "មិនទាន់មានការកត់ត្រាការបូជានៅឡើយទេ។",
+    "viewAllSupporters": "អ្នកគាំទ្រទាំងអស់",
+    "viewAllFounders": "ស្ថាបនិកទាំងអស់",
+    "myPillarBadge": "ការបូជារបស់ខ្ញុំ",
+    "makePrivate": "កំណត់ជាឯកជន",
+    "makePublic": "កំណត់ជាសាធារណៈ",
+    "deletePillar": "លុបការបូជា",
+    "confirmDeletePillarTitle": "បញ្ជាក់ការលុប",
+    "confirmDeletePillarDesc": "តើអ្នកប្រាកដជាចង់លុបការបូជានេះឬ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។",
+    "modalCancel": "បោះបង់",
+    "btnConfirmDelete": "លុប",
+    "allPillars": "មើលការបូជាទាំងអស់"
   },
   "hall": {
     "title": "ទីសក្ការៈនៃពន្លឺ",
@@ -349,7 +361,8 @@
     "livingMiracle": "អព្ភូតហេតុដែលរស់ · ទីសក្ការៈឌីជីថល",
     "mobileRedirectTitle": "កំពុងបញ្ជូនទៅ TikTok",
     "mobileRedirectDesc": "អ្នកនឹងត្រូវបានភ្ជាប់ទៅឆានែលផ្លូវការ @buddha_miracle ក្នុងពេលឆាប់ៗ។",
-    "mobileRedirectNote": "អេក្រង់ខ្មៅអាចលេចឡើងរយៈពេលពីរបីវិនាទីខណៈ TikTok កំពុងផ្ទុក។"
+    "mobileRedirectNote": "អេក្រង់ខ្មៅអាចលេចឡើងរយៈពេលពីរបីវិនាទីខណៈ TikTok កំពុងផ្ទុក។",
+    "redirectNow": "ទៅកាន់ TikTok ឥឡូវនេះ ↗"
   },
   "Profile": {
     "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",

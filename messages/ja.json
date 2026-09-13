@@ -53,7 +53,8 @@
     "allLoaded": "全ての{count}の教えが現れました",
     "mayWisdomLight": "この知恵があなたの道を照らしますように",
     "translating": "翻訳中...",
-    "passagesFound": "{count}の教えが見つかりました"
+    "passagesFound": "{count}の教えが見つかりました",
+    "close": "巻物を閉じる"
   },
   "Guru": {
     "title": "悟りを開いた導師",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "寺院にご供養を捧げるには、まずログインしてください。",
     "signInBtn": "ログイン",
     "myDonations": "私の奉納",
-    "myDonationsEmpty": "まだ奉納の記録がありません。"
+    "myDonationsEmpty": "まだ奉納の記録がありません。",
+    "viewAllSupporters": "すべての後援者",
+    "viewAllFounders": "すべての創設者",
+    "myPillarBadge": "私のお供え",
+    "makePrivate": "非公開にする",
+    "makePublic": "公開にする",
+    "deletePillar": "お供えを削除",
+    "confirmDeletePillarTitle": "お供え削除の確認",
+    "confirmDeletePillarDesc": "このお供えの記録を削除してもよろしいですか？この操作は元に戻せません。",
+    "modalCancel": "キャンセル",
+    "btnConfirmDelete": "削除する",
+    "allPillars": "すべての供養を見る"
   },
   "hall": {
     "title": "光の聖域",
@@ -349,7 +361,8 @@
     "livingMiracle": "生きる奇跡 · デジタル聖域",
     "mobileRedirectTitle": "TikTokへ移動中",
     "mobileRedirectDesc": "まもなく@buddha_miracle公式チャンネルに接続されます。",
-    "mobileRedirectNote": "TikTokの読み込み中に、数秒間黒い画面が表示される場合があります。"
+    "mobileRedirectNote": "TikTokの読み込み中に、数秒間黒い画面が表示される場合があります。",
+    "redirectNow": "今すぐ移動 ↗"
   },
   "Profile": {
     "myWishes": "私の願い",

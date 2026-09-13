@@ -53,7 +53,8 @@
     "allLoaded": "تم الكشف عن جميع المقاطع الـ {count}",
     "mayWisdomLight": "لتنِر هذه الحكمة طريقك",
     "translating": "جاري الترجمة...",
-    "passagesFound": "تم العثور على {count} مقطعًا"
+    "passagesFound": "تم العثور على {count} مقطعًا",
+    "close": "إغلاق اللفافة"
   },
   "Guru": {
     "title": "المرشد المستنير",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "يرجى تسجيل الدخول لتقديم قربان للمعبد.",
     "signInBtn": "تسجيل الدخول",
     "myDonations": "نذوراتي",
-    "myDonationsEmpty": "لا توجد نذور مسجلة حتى الآن."
+    "myDonationsEmpty": "لا توجد نذور مسجلة حتى الآن.",
+    "viewAllSupporters": "جميع الداعمين",
+    "viewAllFounders": "جميع المؤسسين",
+    "myPillarBadge": "قرباني",
+    "makePrivate": "جعله خاصًا",
+    "makePublic": "جعله عامًا",
+    "deletePillar": "حذف القربان",
+    "confirmDeletePillarTitle": "تأكيد الحذف",
+    "confirmDeletePillarDesc": "هل أنت متأكد أنك تريد حذف هذا القربان؟ لا يمكن التراجع عن هذا الإجراء.",
+    "modalCancel": "إلغاء",
+    "btnConfirmDelete": "حذف",
+    "allPillars": "عرض جميع القرابين"
   },
   "hall": {
     "title": "ملاذ النور",
@@ -349,7 +361,8 @@
     "livingMiracle": "معجزة حية · ملاذ رقمي",
     "mobileRedirectTitle": "جارٍ التوجيه إلى تيك توك",
     "mobileRedirectDesc": "ستتصل قريباً بالقناة الرسمية @buddha_miracle.",
-    "mobileRedirectNote": "قد تظهر شاشة سوداء لبضع ثوانٍ أثناء تحميل تيك توك."
+    "mobileRedirectNote": "قد تظهر شاشة سوداء لبضع ثوانٍ أثناء تحميل تيك توك.",
+    "redirectNow": "الانتقال إلى تيك توك الآن ↗"
   },
   "Profile": {
     "myWishes": "أمنياتي",

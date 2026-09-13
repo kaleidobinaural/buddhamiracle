@@ -53,7 +53,8 @@
     "allLoaded": "Tất cả {count} đoạn kinh đã được khai mở",
     "mayWisdomLight": "Nguyện cầu trí tuệ này chiếu sáng con đường bạn đi",
     "translating": "Đang dịch...",
-    "passagesFound": "Tìm thấy {count} đoạn kinh"
+    "passagesFound": "Tìm thấy {count} đoạn kinh",
+    "close": "Đóng cuộn kinh"
   },
   "Guru": {
     "title": "Bậc Dẫn Đường Giác Ngộ",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "Vui lòng đăng nhập để dâng hoa cúng dường lên đền.",
     "signInBtn": "Đăng Nhập",
     "myDonations": "Cúng Dường Của Tôi",
-    "myDonationsEmpty": "Chưa có ghi nhận cúng dường nào."
+    "myDonationsEmpty": "Chưa có ghi nhận cúng dường nào.",
+    "viewAllSupporters": "Tất cả người ủng hộ",
+    "viewAllFounders": "Tất cả người sáng lập",
+    "myPillarBadge": "Cúng dường của tôi",
+    "makePrivate": "Chuyển sang riêng tư",
+    "makePublic": "Chuyển sang công khai",
+    "deletePillar": "Xóa cúng dường",
+    "confirmDeletePillarTitle": "Xác nhận xóa cúng dường",
+    "confirmDeletePillarDesc": "Bạn có chắc chắn muốn xóa bản ghi cúng dường này không? Hành động này không thể hoàn tác.",
+    "modalCancel": "Hủy",
+    "btnConfirmDelete": "Xóa",
+    "allPillars": "Xem tất cả cúng dường"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -349,7 +361,8 @@
     "livingMiracle": "Phép Màu Sống · Thánh Đường Kỹ Thuật Số",
     "mobileRedirectTitle": "Đang chuyển hướng đến TikTok",
     "mobileRedirectDesc": "Bạn sẽ sớm được kết nối với kênh chính thức @buddha_miracle.",
-    "mobileRedirectNote": "Có thể xuất hiện màn hình đen trong vài giây khi TikTok đang tải."
+    "mobileRedirectNote": "Có thể xuất hiện màn hình đen trong vài giây khi TikTok đang tải.",
+    "redirectNow": "Đến TikTok ngay ↗"
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",

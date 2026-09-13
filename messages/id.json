@@ -53,7 +53,8 @@
     "allLoaded": "Semua {count} petikan telah ditampilkan",
     "mayWisdomLight": "Semoga kebijaksanaan ini menerangi jalan Anda",
     "translating": "Menerjemahkan...",
-    "passagesFound": "{count} petikan ditemukan"
+    "passagesFound": "{count} petikan ditemukan",
+    "close": "Tutup Gulungan"
   },
   "Guru": {
     "title": "Pembimbing Tercerah",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "Silakan masuk untuk mempersembahkan ke kuil.",
     "signInBtn": "Masuk",
     "myDonations": "Persembahan Saya",
-    "myDonationsEmpty": "Belum ada persembahan tercatat."
+    "myDonationsEmpty": "Belum ada persembahan tercatat.",
+    "viewAllSupporters": "Semua Pendukung",
+    "viewAllFounders": "Semua Pendiri",
+    "myPillarBadge": "Persembahan Saya",
+    "makePrivate": "Jadikan Pribadi",
+    "makePublic": "Jadikan Publik",
+    "deletePillar": "Hapus Persembahan",
+    "confirmDeletePillarTitle": "Konfirmasi Penghapusan",
+    "confirmDeletePillarDesc": "Apakah Anda yakin ingin menghapus persembahan ini? Tindakan ini tidak dapat dibatalkan.",
+    "modalCancel": "Batal",
+    "btnConfirmDelete": "Hapus",
+    "allPillars": "Lihat Semua Persembahan"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
@@ -349,7 +361,8 @@
     "livingMiracle": "Keajaiban Hidup · Sanctuary Digital",
     "mobileRedirectTitle": "Mengarahkan ke TikTok",
     "mobileRedirectDesc": "Anda akan segera terhubung ke saluran resmi @buddha_miracle.",
-    "mobileRedirectNote": "Layar hitam mungkin muncul selama beberapa detik saat TikTok memuat."
+    "mobileRedirectNote": "Layar hitam mungkin muncul selama beberapa detik saat TikTok memuat.",
+    "redirectNow": "Buka TikTok Sekarang ↗"
   },
   "Profile": {
     "myWishes": "Keinginan Saya",

@@ -53,7 +53,8 @@
     "allLoaded": "Alle {count} Passagen wurden enthüllt",
     "mayWisdomLight": "Möge diese Weisheit deinen Weg erhellen",
     "translating": "Wird übersetzt...",
-    "passagesFound": "{count} Passagen gefunden"
+    "passagesFound": "{count} Passagen gefunden",
+    "close": "Schriftrolle schließen"
   },
   "Guru": {
     "title": "Der erleuchtete Begleiter",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "Bitte melden Sie sich an, um eine Opfergabe darzubringen.",
     "signInBtn": "Anmelden",
     "myDonations": "Meine Gaben",
-    "myDonationsEmpty": "Noch keine Gaben verzeichnet."
+    "myDonationsEmpty": "Noch keine Gaben verzeichnet.",
+    "viewAllSupporters": "Alle Unterstützer",
+    "viewAllFounders": "Alle Gründer",
+    "myPillarBadge": "Meine Opfergabe",
+    "makePrivate": "Privat machen",
+    "makePublic": "Öffentlich machen",
+    "deletePillar": "Opfergabe löschen",
+    "confirmDeletePillarTitle": "Löschung bestätigen",
+    "confirmDeletePillarDesc": "Möchten Sie diese Opfergabe wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "modalCancel": "Abbrechen",
+    "btnConfirmDelete": "Löschen",
+    "allPillars": "Alle Opfergaben ansehen"
   },
   "hall": {
     "title": "Heiligtum des Lichts",
@@ -349,7 +361,8 @@
     "livingMiracle": "Lebendes Wunder · Digitales Heiligtum",
     "mobileRedirectTitle": "Weiterleitung zu TikTok",
     "mobileRedirectDesc": "Sie werden in Kürze mit dem offiziellen Kanal @buddha_miracle verbunden.",
-    "mobileRedirectNote": "Beim Laden von TikTok kann für einige Sekunden ein schwarzer Bildschirm erscheinen."
+    "mobileRedirectNote": "Beim Laden von TikTok kann für einige Sekunden ein schwarzer Bildschirm erscheinen.",
+    "redirectNow": "Jetzt zu TikTok ↗"
   },
   "Profile": {
     "myWishes": "Meine Wünsche",

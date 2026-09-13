@@ -53,7 +53,8 @@
     "allLoaded": "စာပိုဒ် {count} ပိုဒ်လုံး ဖော်ပြပြီးပါပြီ",
     "mayWisdomLight": "ဤပညာတရားက သင့်လမ်းကို အလင်းပြပေးနိုင်ပါစေ",
     "translating": "ဘာသာပြန်ဆိုနေသည်...",
-    "passagesFound": "စာပိုဒ် {count} ပိုဒ် တွေ့ရှိသည်"
+    "passagesFound": "စာပိုဒ် {count} ပိုဒ် တွေ့ရှိသည်",
+    "close": "လိပ်စာကိုပိတ်ပါ"
   },
   "Guru": {
     "title": "အလင်းပြ လမ်းညွှန်သူ",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "အလှူပြုလုပ်ရန် ကျေးဇူးပြု၍ အကောင့်ဝင်ပေးပါ။",
     "signInBtn": "အကောင့်ဝင်ရန်",
     "myDonations": "ကျွန်ုပ်၏အလှူများ",
-    "myDonationsEmpty": "အလှူမှတ်တမ်း မရှိသေးပါ။"
+    "myDonationsEmpty": "အလှူမှတ်တမ်း မရှိသေးပါ။",
+    "viewAllSupporters": "ထောက်ပံ့သူများအားလုံး",
+    "viewAllFounders": "တည်ထောင်သူများအားလုံး",
+    "myPillarBadge": "ငါ့ရဲ့ပူဇော်သက္ကာ",
+    "makePrivate": "သီးသန့်ပြုလုပ်ရန်",
+    "makePublic": "အများမြင်နိုင်အောင်ပြုလုပ်ရန်",
+    "deletePillar": "ပူဇော်သက္ကာကိုဖျက်ပါ",
+    "confirmDeletePillarTitle": "ဖျက်ရန်အတည်ပြုပါ",
+    "confirmDeletePillarDesc": "ဤပူဇော်သက္ကာကို ဖျက်ရန် သေချာပါသလား။ ဤလုပ်ဆောင်ချက်ကို ပြန်ပြင်၍မရပါ။",
+    "modalCancel": "မလုပ်တော့ပါ",
+    "btnConfirmDelete": "ဖျက်ပါ",
+    "allPillars": "ပူဇော်သက္ကာအားလုံးကိုကြည့်ပါ"
   },
   "hall": {
     "title": "အလင်းဗိမာန်",
@@ -349,7 +361,8 @@
     "livingMiracle": "အသက်ရှင်သောအံ့ဩဖွယ် · ဒစ်ဂျစ်တယ်သာသနာ",
     "mobileRedirectTitle": "TikTok သို့ ပြောင်းလဲနေသည်",
     "mobileRedirectDesc": "မကြာမီ @buddha_miracle တရားဝင်ချနယ်သို့ ချိတ်ဆက်မည်ဖြစ်သည်။",
-    "mobileRedirectNote": "TikTok ဖွင့်နေစဉ် မည်းနေသောမျက်နှာပြင် ကျော်ပြောင်းနာရီအနည်းငယ် ပေါ်လာနိုင်သည်။"
+    "mobileRedirectNote": "TikTok ဖွင့်နေစဉ် မည်းနေသောမျက်နှာပြင် ကျော်ပြောင်းနာရီအနည်းငယ် ပေါ်လာနိုင်သည်။",
+    "redirectNow": "ယခု TikTok သို့သွားပါ ↗"
   },
   "Profile": {
     "myWishes": "ကျွန်ုပ်၏ဆန္ဒများ",

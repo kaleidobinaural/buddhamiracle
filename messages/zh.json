@@ -53,7 +53,8 @@
     "allLoaded": "所有 {count} 段经文已全部揭示",
     "mayWisdomLight": "愿此智慧照亮您的道路",
     "translating": "翻译中...",
-    "passagesFound": "找到 {count} 段经文"
+    "passagesFound": "找到 {count} 段经文",
+    "close": "关闭经卷"
   },
   "Guru": {
     "title": "开悟导师",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "请先登录以向寺庙供奉功德。",
     "signInBtn": "登录",
     "myDonations": "我的供养",
-    "myDonationsEmpty": "暂无供养记录。"
+    "myDonationsEmpty": "暂无供养记录。",
+    "viewAllSupporters": "所有赞助者",
+    "viewAllFounders": "所有创始人",
+    "myPillarBadge": "我的供奉",
+    "makePrivate": "设为非公开",
+    "makePublic": "设为公开",
+    "deletePillar": "删除供奉",
+    "confirmDeletePillarTitle": "确认删除供奉",
+    "confirmDeletePillarDesc": "您确定要删除此供奉记录吗？删除后将无法恢复。",
+    "modalCancel": "取消",
+    "btnConfirmDelete": "确认删除",
+    "allPillars": "查看全部供奉"
   },
   "hall": {
     "title": "光明圣殿",
@@ -349,7 +361,8 @@
     "livingMiracle": "活生生的奇迹 · 数字圣殿",
     "mobileRedirectTitle": "正在跳转到TikTok",
     "mobileRedirectDesc": "即将为您连接@buddha_miracle官方频道。",
-    "mobileRedirectNote": "TikTok加载时可能会出现几秒钟的黑屏。"
+    "mobileRedirectNote": "TikTok加载时可能会出现几秒钟的黑屏。",
+    "redirectNow": "立即前往 ↗"
   },
   "Profile": {
     "myWishes": "我的心愿",

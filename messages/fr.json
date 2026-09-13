@@ -53,7 +53,8 @@
     "allLoaded": "Tous les {count} passages ont été révélés",
     "mayWisdomLight": "Que cette sagesse illumine votre chemin",
     "translating": "Traduction en cours...",
-    "passagesFound": "{count} passages trouvés"
+    "passagesFound": "{count} passages trouvés",
+    "close": "Fermer le parchemin"
   },
   "Guru": {
     "title": "Le Guide Éclairé",
@@ -163,7 +164,18 @@
     "loginRequiredDesc": "Veuillez vous connecter pour faire une offrande.",
     "signInBtn": "Se Connecter",
     "myDonations": "Mes Offrandes",
-    "myDonationsEmpty": "Aucune offrande enregistrée pour le moment."
+    "myDonationsEmpty": "Aucune offrande enregistrée pour le moment.",
+    "viewAllSupporters": "Tous les bienfaiteurs",
+    "viewAllFounders": "Tous les fondateurs",
+    "myPillarBadge": "Mon offrande",
+    "makePrivate": "Rendre privé",
+    "makePublic": "Rendre public",
+    "deletePillar": "Supprimer l'offrande",
+    "confirmDeletePillarTitle": "Confirmer la suppression",
+    "confirmDeletePillarDesc": "Êtes-vous sûr de vouloir supprimer cette offrande ? Cette action est irréversible.",
+    "modalCancel": "Annuler",
+    "btnConfirmDelete": "Supprimer",
+    "allPillars": "Voir toutes les offrandes"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -349,7 +361,8 @@
     "livingMiracle": "Miracle Vivant · Sanctuaire Numérique",
     "mobileRedirectTitle": "Redirection vers TikTok",
     "mobileRedirectDesc": "Vous serez connecté sous peu à la chaîne officielle @buddha_miracle.",
-    "mobileRedirectNote": "Un écran noir peut apparaître pendant quelques secondes pendant le chargement de TikTok."
+    "mobileRedirectNote": "Un écran noir peut apparaître pendant quelques secondes pendant le chargement de TikTok.",
+    "redirectNow": "Aller sur TikTok maintenant ↗"
   },
   "Profile": {
     "myWishes": "Mes Vœux",
