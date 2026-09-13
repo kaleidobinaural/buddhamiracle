@@ -345,7 +345,11 @@
     "goToTikTok": "前往 TikTok ↗",
     "noticeTitle": "正在前往官方 TikTok",
     "noticeDesc": "正在新窗口中打开 @buddha_miracle 圣所。您可以随时返回光明寺院。",
-    "noticeTimer": "{sec} 秒后自动关闭（或点击 ✕）"
+    "noticeTimer": "{sec} 秒后自动关闭（或点击 ✕）",
+    "livingMiracle": "活生生的奇迹 · 数字圣殿",
+    "mobileRedirectTitle": "正在跳转到TikTok",
+    "mobileRedirectDesc": "即将为您连接@buddha_miracle官方频道。",
+    "mobileRedirectNote": "TikTok加载时可能会出现几秒钟的黑屏。"
   },
   "Profile": {
     "myWishes": "我的心愿",

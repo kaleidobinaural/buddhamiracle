@@ -345,7 +345,11 @@
     "goToTikTok": "In TikTok öffnen ↗",
     "noticeTitle": "Weiterleitung zum offiziellen TikTok-Kanal",
     "noticeDesc": "Öffnet @buddha_miracle in einem neuen Fenster. Sie können jederzeit zum Tempel zurückkehren.",
-    "noticeTimer": "Schließt in {sec} Sek. (oder auf ✕ klicken)"
+    "noticeTimer": "Schließt in {sec} Sek. (oder auf ✕ klicken)",
+    "livingMiracle": "Lebendes Wunder · Digitales Heiligtum",
+    "mobileRedirectTitle": "Weiterleitung zu TikTok",
+    "mobileRedirectDesc": "Sie werden in Kürze mit dem offiziellen Kanal @buddha_miracle verbunden.",
+    "mobileRedirectNote": "Beim Laden von TikTok kann für einige Sekunden ein schwarzer Bildschirm erscheinen."
   },
   "Profile": {
     "myWishes": "Meine Wünsche",

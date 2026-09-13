@@ -345,7 +345,11 @@
     "goToTikTok": "Abrir en TikTok ↗",
     "noticeTitle": "Redirigiendo al canal oficial de TikTok",
     "noticeDesc": "Abriendo @buddha_miracle en una nueva ventana. Puedes regresar al templo en cualquier momento.",
-    "noticeTimer": "Se cerrará en {sec} s (o haz clic en ✕)"
+    "noticeTimer": "Se cerrará en {sec} s (o haz clic en ✕)",
+    "livingMiracle": "Milagro Vivo · Santuario Digital",
+    "mobileRedirectTitle": "Redirigiendo a TikTok",
+    "mobileRedirectDesc": "Serás conectado pronto al canal oficial @buddha_miracle.",
+    "mobileRedirectNote": "Puede aparecer una pantalla negra durante unos segundos mientras TikTok carga."
   },
   "Profile": {
     "myWishes": "Mis Deseos",

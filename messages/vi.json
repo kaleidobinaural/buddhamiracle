@@ -345,7 +345,11 @@
     "goToTikTok": "Đến TikTok ↗",
     "noticeTitle": "Đang chuyển đến Kênh TikTok Chính Thức",
     "noticeDesc": "Đang mở @buddha_miracle trong cửa sổ mới. Bạn có thể quay lại điện thờ bất kỳ lúc nào.",
-    "noticeTimer": "Tự động đóng sau {sec} giây (hoặc nhấn ✕)"
+    "noticeTimer": "Tự động đóng sau {sec} giây (hoặc nhấn ✕)",
+    "livingMiracle": "Phép Màu Sống · Thánh Đường Kỹ Thuật Số",
+    "mobileRedirectTitle": "Đang chuyển hướng đến TikTok",
+    "mobileRedirectDesc": "Bạn sẽ sớm được kết nối với kênh chính thức @buddha_miracle.",
+    "mobileRedirectNote": "Có thể xuất hiện màn hình đen trong vài giây khi TikTok đang tải."
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",

@@ -345,7 +345,11 @@
     "goToTikTok": "Ouvrir dans TikTok ↗",
     "noticeTitle": "Vers la chaîne TikTok officielle",
     "noticeDesc": "Ouverture de @buddha_miracle dans une nouvelle fenêtre. Vous pouvez revenir au temple à tout moment.",
-    "noticeTimer": "Fermeture dans {sec}s (ou cliquez sur ✕)"
+    "noticeTimer": "Fermeture dans {sec}s (ou cliquez sur ✕)",
+    "livingMiracle": "Miracle Vivant · Sanctuaire Numérique",
+    "mobileRedirectTitle": "Redirection vers TikTok",
+    "mobileRedirectDesc": "Vous serez connecté sous peu à la chaîne officielle @buddha_miracle.",
+    "mobileRedirectNote": "Un écran noir peut apparaître pendant quelques secondes pendant le chargement de TikTok."
   },
   "Profile": {
     "myWishes": "Mes Vœux",

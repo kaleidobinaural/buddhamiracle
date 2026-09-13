@@ -357,7 +357,11 @@
     "goToTikTok": "틱톡 바로가기 ↗",
     "noticeTitle": "틱톡 공식 채널로 이동합니다",
     "noticeDesc": "새 창에서 @buddha_miracle 성소가 열립니다. 사원으로 언제든 다시 돌아오실 수 있습니다.",
-    "noticeTimer": "{sec}초 후 자동으로 닫힙니다 (또는 ✕ 클릭)"
+    "noticeTimer": "{sec}초 후 자동으로 닫힙니다 (또는 ✕ 클릭)",
+    "livingMiracle": "살아있는 기적 · 디지털 성소",
+    "mobileRedirectTitle": "틱톡으로 이동 중",
+    "mobileRedirectDesc": "잠시 후 @buddha_miracle 공식 채널로 연결됩니다.",
+    "mobileRedirectNote": "틱톡이 로드되는 동안 몇 초간 검은 화면이 나타날 수 있습니다."
   },
   "Profile": {
     "myWishes": "내 소원",

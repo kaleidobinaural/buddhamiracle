@@ -345,7 +345,11 @@
     "goToTikTok": "فتح في تيك توك ↗",
     "noticeTitle": "جاري الانتقال إلى قناة تيك توك الرسمية",
     "noticeDesc": "يتم فتح @buddha_miracle في نافذة جديدة. يمكنك العودة إلى المعبد في أي وقت.",
-    "noticeTimer": "يُغلق تلقائيًا خلال {sec} ثوانٍ (أو انقر على ✕)"
+    "noticeTimer": "يُغلق تلقائيًا خلال {sec} ثوانٍ (أو انقر على ✕)",
+    "livingMiracle": "معجزة حية · ملاذ رقمي",
+    "mobileRedirectTitle": "جارٍ التوجيه إلى تيك توك",
+    "mobileRedirectDesc": "ستتصل قريباً بالقناة الرسمية @buddha_miracle.",
+    "mobileRedirectNote": "قد تظهر شاشة سوداء لبضع ثوانٍ أثناء تحميل تيك توك."
   },
   "Profile": {
     "myWishes": "أمنياتي",

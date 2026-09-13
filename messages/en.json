@@ -357,7 +357,11 @@
     "goToTikTok": "Open in TikTok ↗",
     "noticeTitle": "Guiding to Official TikTok",
     "noticeDesc": "Opening @buddha_miracle sanctuary in a new window. You can return to the Temple anytime.",
-    "noticeTimer": "Closing in {sec}s (or click ✕)"
+    "noticeTimer": "Closing in {sec}s (or click ✕)",
+    "livingMiracle": "Living Miracle · Digital Sanctuary",
+    "mobileRedirectTitle": "Redirecting to TikTok",
+    "mobileRedirectDesc": "You will be connected to @buddha_miracle official channel shortly.",
+    "mobileRedirectNote": "A black screen may appear for a few seconds while TikTok loads."
   },
   "Profile": {
     "myWishes": "My Wishes",

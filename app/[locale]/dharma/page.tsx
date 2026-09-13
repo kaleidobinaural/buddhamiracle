@@ -693,23 +693,29 @@ export default function DharmaPage() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          padding: 8px 24px;
-          background: rgba(90, 62, 16, 0.1);
-          border: 1px solid rgba(90, 62, 16, 0.3);
+          padding: 10px 28px;
+          background: #5a3e10;
+          border: 1.5px solid rgba(90, 62, 16, 0.6);
           border-radius: 100px;
-          color: #5a3e10;
+          color: #faf0d8;
           font-family: var(--font-serif);
           font-size: 0.88rem;
-          font-weight: 600;
+          font-weight: 700;
+          letter-spacing: 0.08em;
           cursor: pointer;
-          transition: all 0.15s ease;
+          transition: background 0.1s ease, transform 0.1s ease;
           touch-action: manipulation;
           -webkit-tap-highlight-color: transparent !important;
           outline: none !important;
+          box-shadow: 0 4px 16px rgba(90, 62, 16, 0.25);
         }
         .btn-parchment-bottom-close:hover {
-          background: #5a3e10;
-          color: #faf0d8;
+          background: #3a2808;
+          transform: translateY(-1px);
+        }
+        .btn-parchment-bottom-close:active {
+          transform: scale(0.96);
+          transition: transform 0.05s ease;
         }
 
         .parchment-modal {
@@ -745,34 +751,34 @@ export default function DharmaPage() {
           position: absolute;
           top: 16px;
           right: 18px;
-          width: 38px;
-          height: 38px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
-          border: 1px solid rgba(90, 62, 16, 0.28);
-          background: rgba(250, 240, 216, 0.88);
+          border: 1.5px solid rgba(90, 62, 16, 0.35);
+          background: #f3e3bc;
           color: #5a3e10;
-          font-size: 1.2rem;
+          font-size: 1rem;
           line-height: 1;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           z-index: 30;
-          transition: all 0.2s ease;
+          transition: background 0.1s ease, color 0.1s ease, transform 0.1s ease;
           touch-action: manipulation;
           -webkit-tap-highlight-color: transparent;
-          box-shadow: 0 2px 8px rgba(90, 62, 16, 0.15);
+          box-shadow: 0 1px 6px rgba(90, 62, 16, 0.18);
+          font-weight: 700;
         }
         .parchment-card-close:hover {
           background: #5a3e10;
           color: #faf0d8;
-          transform: rotate(90deg) scale(1.06);
+          transform: scale(1.1);
         }
         .parchment-card-close:active {
-          transform: rotate(90deg) scale(0.95);
+          transform: scale(0.92);
+          transition: transform 0.05s ease;
         }
-        .parchment-close:hover { opacity: 0.85; transform: rotate(90deg); background: rgba(90,62,16,0.08); }
-        .parchment-close:active { opacity: 1; transform: rotate(90deg) scale(0.92); }
 
         .parchment-watermark {
           position: absolute; top: 50%; left: 50%;

@@ -7,7 +7,7 @@ export default function ResonancePage() {
   const t = useTranslations('Resonance');
   const [followerCount, setFollowerCount] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showMobileRedirect, setShowMobileRedirect] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -32,9 +32,16 @@ export default function ResonancePage() {
 
   const handleOpenTikTok = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
-    window.open('https://www.tiktok.com/@buddha_miracle', '_blank', 'noopener,noreferrer');
-    setToastMessage(safeT('noticeTitle', 'Opening @buddha_miracle in a new window… ✨'));
-    setTimeout(() => setToastMessage(null), 3500);
+    if (isMobile) {
+      // Mobile: show fullscreen redirect notice first, then navigate
+      setShowMobileRedirect(true);
+      setTimeout(() => {
+        window.location.href = 'https://www.tiktok.com/@buddha_miracle';
+        setTimeout(() => setShowMobileRedirect(false), 3000);
+      }, 2000);
+    } else {
+      window.open('https://www.tiktok.com/@buddha_miracle', '_blank', 'noopener,noreferrer');
+    }
   };
 
   const safeT = (key: string, fallback: string): string => {
@@ -81,10 +88,10 @@ export default function ResonancePage() {
               src={isMobile ? '/videos/temple_mobile.mp4' : '/videos/Temple_Desktop.mp4'}
             />
             
-            {/* Subtle Divine Watermark Badge */}
+            {/* Subtle Divine Watermark Badge - centered */}
             <div className="video-badge-overlay">
               <span className="badge-sparkle">✦</span>
-              <span>Living Miracle · Digital Sanctuary</span>
+              <span>{safeT('livingMiracle', 'Living Miracle · Digital Sanctuary')}</span>
             </div>
           </div>
         </div>
@@ -141,12 +148,17 @@ export default function ResonancePage() {
         </div>
       </section>
 
-      {/* Gentle Floating Notification Toast (Clean & Non-intrusive) */}
-      {toastMessage && (
-        <div className="serene-toast-wrap">
-          <div className="serene-toast">
-            <span>☸</span>
-            <span>{toastMessage}</span>
+      {/* Mobile Fullscreen Redirect Overlay */}
+      {showMobileRedirect && (
+        <div className="mobile-redirect-overlay">
+          <div className="mobile-redirect-content">
+            <div className="mobile-redirect-icon">🎵</div>
+            <h2 className="mobile-redirect-title">{safeT('mobileRedirectTitle', 'Redirecting to TikTok')}</h2>
+            <p className="mobile-redirect-desc">{safeT('mobileRedirectDesc', 'You will be connected to @buddha_miracle official channel shortly.')}</p>
+            <p className="mobile-redirect-note">{safeT('mobileRedirectNote', 'A black screen may appear for a few seconds while TikTok loads.')}</p>
+            <div className="mobile-redirect-loader">
+              <span /><span /><span />
+            </div>
           </div>
         </div>
       )}
@@ -263,7 +275,8 @@ export default function ResonancePage() {
         .video-badge-overlay {
           position: absolute;
           bottom: 16px;
-          left: 18px;
+          left: 50%;
+          transform: translateX(-50%);
           z-index: 2;
           display: flex;
           align-items: center;
@@ -278,6 +291,7 @@ export default function ResonancePage() {
           color: #ffd700;
           letter-spacing: 0.08em;
           pointer-events: none;
+          white-space: nowrap;
         }
 
         .badge-sparkle {
@@ -299,8 +313,10 @@ export default function ResonancePage() {
 
         .channel-header {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 20px;
+          text-align: center;
+          gap: 16px;
           margin-bottom: 20px;
         }
 
@@ -341,6 +357,7 @@ export default function ResonancePage() {
 
         .channel-meta {
           flex: 1;
+          text-align: center;
         }
 
         .channel-badge {
@@ -368,6 +385,7 @@ export default function ResonancePage() {
         .channel-stats-info {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 12px;
           flex-wrap: wrap;
           font-size: 0.85rem;
@@ -438,41 +456,83 @@ export default function ResonancePage() {
           transform: scale(0.98);
         }
 
-        /* ─── Serene Notification Toast ─── */
-        .serene-toast-wrap {
+        /* ─── Mobile Fullscreen Redirect Overlay ─── */
+        .mobile-redirect-overlay {
           position: fixed;
-          bottom: 36px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 9999;
-          animation: fade-in-toast 0.25s ease;
-        }
-
-        @keyframes fade-in-toast {
-          from { opacity: 0; transform: translate(-50%, 15px); }
-          to { opacity: 1; transform: translate(-50%, 0); }
-        }
-
-        .serene-toast {
+          inset: 0;
+          z-index: 99999;
+          background: #000;
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 12px 24px;
-          background: rgba(18, 16, 12, 0.95);
-          border: 1px solid rgba(212, 160, 23, 0.5);
-          border-radius: 100px;
+          justify-content: center;
+          animation: mobile-redirect-fade-in 0.3s ease;
+        }
+        @keyframes mobile-redirect-fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .mobile-redirect-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 40px 32px;
+          max-width: 340px;
+        }
+
+        .mobile-redirect-icon {
+          font-size: 4rem;
+          margin-bottom: 24px;
+          animation: mobile-redirect-pulse 1s ease-in-out infinite;
+        }
+        @keyframes mobile-redirect-pulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.12); opacity: 0.8; }
+        }
+
+        .mobile-redirect-title {
+          font-family: var(--font-serif);
+          font-size: 1.6rem;
           color: #ffd700;
-          font-size: 0.88rem;
-          font-weight: 600;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          margin-bottom: 16px;
+          font-weight: 700;
+        }
+
+        .mobile-redirect-desc {
+          font-size: 0.95rem;
+          color: rgba(255,255,255,0.75);
+          line-height: 1.7;
+          margin-bottom: 12px;
+        }
+
+        .mobile-redirect-note {
+          font-size: 0.82rem;
+          color: rgba(255,255,255,0.4);
+          line-height: 1.6;
+          margin-bottom: 32px;
+        }
+
+        .mobile-redirect-loader {
+          display: flex;
+          gap: 8px;
+        }
+        .mobile-redirect-loader span {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #d4a017;
+          animation: mobile-redirect-dot 1.2s ease-in-out infinite;
+        }
+        .mobile-redirect-loader span:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-redirect-loader span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes mobile-redirect-dot {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+          40% { transform: scale(1); opacity: 1; }
         }
 
         @media (max-width: 768px) {
           .store-tiktok-section { padding: 12px 16px 60px; }
-          .channel-header { flex-direction: column; text-align: center; gap: 14px; }
-          .channel-stats-info { justify-content: center; }
           .channel-intro { font-size: 0.88rem; text-align: center; border-left: none; border-top: 2px solid rgba(212,160,23,0.5); border-radius: 0 0 12px 12px; }
           .btn-tiktok-gold { font-size: 0.95rem; padding: 14px 24px; }
         }

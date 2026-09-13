@@ -345,7 +345,11 @@
     "goToTikTok": "Buka di TikTok ↗",
     "noticeTitle": "Membuka Saluran Resmi TikTok",
     "noticeDesc": "Membuka @buddha_miracle di jendela baru. Anda dapat kembali ke Kuil kapan saja.",
-    "noticeTimer": "Menutup otomatis dalam {sec} detik (atau klik ✕)"
+    "noticeTimer": "Menutup otomatis dalam {sec} detik (atau klik ✕)",
+    "livingMiracle": "Keajaiban Hidup · Sanctuary Digital",
+    "mobileRedirectTitle": "Mengarahkan ke TikTok",
+    "mobileRedirectDesc": "Anda akan segera terhubung ke saluran resmi @buddha_miracle.",
+    "mobileRedirectNote": "Layar hitam mungkin muncul selama beberapa detik saat TikTok memuat."
   },
   "Profile": {
     "myWishes": "Keinginan Saya",

@@ -345,7 +345,11 @@
     "goToTikTok": "เปิดใน TikTok ↗",
     "noticeTitle": "กำลังไปยังช่อง TikTok ทางการ",
     "noticeDesc": "กำลังเปิด @buddha_miracle ในหน้าต่างใหม่ ท่านสามารถกลับมายังวิหารได้ตลอดเวลา",
-    "noticeTimer": "ปิดอัตโนมัติใน {sec} วินาที (หรือคลิก ✕)"
+    "noticeTimer": "ปิดอัตโนมัติใน {sec} วินาที (หรือคลิก ✕)",
+    "livingMiracle": "ปาฏิหาริย์แห่งชีวิต · ศาลาเจริญธรรมดิจิทัล",
+    "mobileRedirectTitle": "กำลังนำทางไปยัง TikTok",
+    "mobileRedirectDesc": "ท่านจะเชื่อมต่อไปยังช่องทางการ @buddha_miracle ในไม่ช้า",
+    "mobileRedirectNote": "อาจมีหน้าจอสีดำปรากฏขึ้นชั่วคราวสองสามวินาทีขณะที่ TikTok กำลังโหลด"
   },
   "Profile": {
     "myWishes": "ความปรารถนาของฉัน",

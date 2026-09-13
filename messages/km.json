@@ -345,7 +345,11 @@
     "goToTikTok": "បើកក្នុង TikTok ↗",
     "noticeTitle": "កំពុងបញ្ជូនទៅប៉ុស្តិ៍ TikTok ផ្លូវការ",
     "noticeDesc": "កំពុងបើក @buddha_miracle ក្នុងផ្ទាំងថ្មី។ អ្នកអាចត្រឡប់មកកាន់ព្រះវិហារវិញបានគ្រប់ពេល។",
-    "noticeTimer": "បិទដោយស្វ័យប្រវត្តិក្នុ {sec} វិនាទី (ឬចុច ✕)"
+    "noticeTimer": "បិទដោយស្វ័យប្រវត្តិក្នុ {sec} វិនាទី (ឬចុច ✕)",
+    "livingMiracle": "អព្ភូតហេតុដែលរស់ · ទីសក្ការៈឌីជីថល",
+    "mobileRedirectTitle": "កំពុងបញ្ជូនទៅ TikTok",
+    "mobileRedirectDesc": "អ្នកនឹងត្រូវបានភ្ជាប់ទៅឆានែលផ្លូវការ @buddha_miracle ក្នុងពេលឆាប់ៗ។",
+    "mobileRedirectNote": "អេក្រង់ខ្មៅអាចលេចឡើងរយៈពេលពីរបីវិនាទីខណៈ TikTok កំពុងផ្ទុក។"
   },
   "Profile": {
     "myWishes": "បំណងប្រាថ្នារបស់ខ្ញុំ",

@@ -345,7 +345,11 @@
     "goToTikTok": "TikTokを開く ↗",
     "noticeTitle": "公式TikTokへご案内します",
     "noticeDesc": "新しいウィンドウで @buddha_miracle が開きます。いつでも寺院に戻ることができます。",
-    "noticeTimer": "{sec}秒後に自動的に閉じます (または ✕ をクリック)"
+    "noticeTimer": "{sec}秒後に自動的に閉じます (または ✕ をクリック)",
+    "livingMiracle": "生きる奇跡 · デジタル聖域",
+    "mobileRedirectTitle": "TikTokへ移動中",
+    "mobileRedirectDesc": "まもなく@buddha_miracle公式チャンネルに接続されます。",
+    "mobileRedirectNote": "TikTokの読み込み中に、数秒間黒い画面が表示される場合があります。"
   },
   "Profile": {
     "myWishes": "私の願い",
