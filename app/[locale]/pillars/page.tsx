@@ -1229,8 +1229,8 @@ export default function PillarsPage() {
         }
 
         /* Hall Mode (Coverflow Carousel) */
-        .hall-mode { overflow: visible; padding: 16px 0 20px; perspective: 2500px; }
-        .pillars-swiper { width: 100%; padding-top: 40px; padding-bottom: 20px; overflow: visible; background: transparent !important; }
+        .hall-mode { overflow: visible; padding: 6px 0 10px; perspective: 2500px; }
+        .pillars-swiper { width: 100%; padding-top: 14px; padding-bottom: 10px; overflow: visible; background: transparent !important; }
         .pillar-slide { 
           width: 320px; display: flex; justify-content: center; 
           will-change: transform; 
@@ -1260,7 +1260,7 @@ export default function PillarsPage() {
         .sacred-hall-scroll-area {
           height: clamp(500px, 65vh, 720px);
           overflow-y: auto;
-          padding: 32px 24px 40px;
+          padding: 16px 20px 24px;
           box-sizing: border-box;
           scroll-behavior: smooth;
         }
@@ -1532,17 +1532,17 @@ export default function PillarsPage() {
 
         /* ─── Section Headers: Founder / Supporter ─── */
         .pillar-section-header {
-          text-align: center; padding: 20px 24px 28px; width: 100%;
+          text-align: center; padding: 10px 24px 8px; width: 100%;
         }
-        .pillar-section-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+        .pillar-section-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
         .pillar-section-title {
           font-family: var(--font-serif);
-          font-size: clamp(1.6rem, 4vw, 2.5rem);
+          font-size: clamp(1.5rem, 3.5vw, 2.2rem);
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          margin-bottom: 10px;
+          margin-bottom: 6px;
         }
-        .pillar-section-desc { font-size: 0.95rem; color: var(--text-tertiary); letter-spacing: 0.05em; }
+        .pillar-section-desc { font-size: 0.92rem; color: var(--text-tertiary); letter-spacing: 0.05em; }
         .pillar-section-header.founder .pillar-section-title {
           background: linear-gradient(135deg, #FFD700, #D4A017, #FFF0A0);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -1586,8 +1586,8 @@ export default function PillarsPage() {
           justify-content: center;
           gap: 16px;
           flex-wrap: wrap;
-          margin-top: 28px;
-          margin-bottom: 24px;
+          margin-top: 14px;
+          margin-bottom: 16px;
         }
 
         .btn-bottom-pill {

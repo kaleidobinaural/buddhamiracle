@@ -361,7 +361,8 @@
     "livingMiracle": "살아있는 기적 · 디지털 성소",
     "mobileRedirectTitle": "틱톡으로 이동 중",
     "mobileRedirectDesc": "잠시 후 @buddha_miracle 공식 채널로 연결됩니다.",
-    "mobileRedirectNote": "틱톡이 로드되는 동안 몇 초간 검은 화면이 나타날 수 있습니다."
+    "mobileRedirectNote": "틱톡이 로드되는 동안 몇 초간 검은 화면이 나타날 수 있습니다.",
+    "redirectNow": "지금 바로 이동 ↗"
   },
   "Profile": {
     "myWishes": "내 소원",

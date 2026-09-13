@@ -98,7 +98,7 @@ export default function PrivacyPage() {
       <style>{`
         .privacy-page {
           min-height: 100vh;
-          padding: calc(var(--nav-height, 80px) + 4px) 24px 60px;
+          padding: 16px 24px 80px;
           background: #050505;
           position: relative;
           overflow-x: hidden;

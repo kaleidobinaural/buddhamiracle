@@ -33,12 +33,12 @@ export default function ResonancePage() {
   const handleOpenTikTok = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
     if (isMobile) {
-      // Mobile: show fullscreen redirect notice first, then navigate
+      // Mobile: show redirect notice for 3.2s so user can comfortably read it, then navigate
       setShowMobileRedirect(true);
       setTimeout(() => {
         window.location.href = 'https://www.tiktok.com/@buddha_miracle';
         setTimeout(() => setShowMobileRedirect(false), 3000);
-      }, 2000);
+      }, 3200);
     } else {
       window.open('https://www.tiktok.com/@buddha_miracle', '_blank', 'noopener,noreferrer');
     }
@@ -144,14 +144,18 @@ export default function ResonancePage() {
               <span className="tiktok-icon">🎵</span>
               <span className="tiktok-cta-text">{safeT('followBtn', 'Open in TikTok [Follow] ↗')}</span>
             </button>
+            <p className="tiktok-load-notice">
+              <span className="notice-icon">💡</span>
+              <span>{safeT('mobileRedirectNote', 'A black screen may appear for a few seconds while TikTok loads.')}</span>
+            </p>
           </div>
         </div>
       </section>
 
       {/* Mobile Fullscreen Redirect Overlay */}
       {showMobileRedirect && (
-        <div className="mobile-redirect-overlay">
-          <div className="mobile-redirect-content">
+        <div className="mobile-redirect-overlay" onClick={() => { window.location.href = 'https://www.tiktok.com/@buddha_miracle'; }}>
+          <div className="mobile-redirect-content" onClick={e => e.stopPropagation()}>
             <div className="mobile-redirect-icon">🎵</div>
             <h2 className="mobile-redirect-title">{safeT('mobileRedirectTitle', 'Redirecting to TikTok')}</h2>
             <p className="mobile-redirect-desc">{safeT('mobileRedirectDesc', 'You will be connected to @buddha_miracle official channel shortly.')}</p>
@@ -159,6 +163,13 @@ export default function ResonancePage() {
             <div className="mobile-redirect-loader">
               <span /><span /><span />
             </div>
+            <button
+              type="button"
+              className="btn-redirect-now"
+              onClick={() => { window.location.href = 'https://www.tiktok.com/@buddha_miracle'; }}
+            >
+              {safeT('redirectNow', '지금 바로 이동 ↗')}
+            </button>
           </div>
         </div>
       )}
@@ -529,6 +540,44 @@ export default function ResonancePage() {
         @keyframes mobile-redirect-dot {
           0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
           40% { transform: scale(1); opacity: 1; }
+        }
+
+        .tiktok-load-notice {
+          margin-top: 14px;
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.65);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          line-height: 1.5;
+          text-align: center;
+          padding: 8px 18px;
+          background: rgba(212, 160, 23, 0.08);
+          border: 1px solid rgba(212, 160, 23, 0.2);
+          border-radius: 20px;
+          backdrop-filter: blur(8px);
+          max-width: 90%;
+        }
+        .tiktok-load-notice .notice-icon {
+          font-size: 0.95rem;
+        }
+
+        .btn-redirect-now {
+          margin-top: 24px;
+          padding: 10px 24px;
+          background: rgba(212, 160, 23, 0.15);
+          border: 1px solid rgba(212, 160, 23, 0.4);
+          border-radius: 30px;
+          color: var(--primary-gold);
+          font-size: 0.88rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .btn-redirect-now:hover {
+          background: var(--primary-gold);
+          color: #000;
         }
 
         @media (max-width: 768px) {

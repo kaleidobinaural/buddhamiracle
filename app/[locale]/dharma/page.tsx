@@ -458,7 +458,7 @@ export default function DharmaPage() {
             <div className="parchment-body custom-scrollbar">
               {/* Anchored top-right close button right INSIDE the parchment scroll */}
               <button
-                className="parchment-card-close"
+                className="parchment-close"
                 onClick={() => setReadingScripture(null)}
                 aria-label="Close"
               >
@@ -657,36 +657,35 @@ export default function DharmaPage() {
           }
         }
 
-        .parchment-card-close {
+        .parchment-close {
           position: absolute;
-          top: -12px;
-          right: 4px;
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          background: #1c150c;
-          border: 2px solid #d4a017;
-          color: #ffd700;
-          font-size: 1.2rem;
-          font-weight: bold;
+          top: 20px;
+          right: 24px;
+          font-size: 28px;
+          color: #5a3e10;
+          opacity: 0.5;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease, color 0.2s ease;
+          z-index: 30;
+          line-height: 1;
+          padding: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
-          cursor: pointer;
-          z-index: 1000;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 15px rgba(212,160,23,0.4);
-          transition: transform 0.15s ease, background 0.15s ease;
           touch-action: manipulation;
           -webkit-tap-highlight-color: transparent !important;
           outline: none !important;
         }
-        .parchment-card-close:hover {
-          background: #d4a017;
-          color: #000;
-          transform: scale(1.08);
+        .parchment-close:hover {
+          opacity: 0.95;
+          color: #2a1800;
+          transform: rotate(90deg) scale(1.15);
         }
-        .parchment-card-close:active {
-          transform: scale(0.92);
+        .parchment-close:active {
+          opacity: 1;
+          transform: rotate(180deg) scale(0.9);
         }
 
         .btn-parchment-bottom-close {
@@ -747,38 +746,6 @@ export default function DharmaPage() {
           max-height: 70vh;
         }
 
-        .parchment-card-close {
-          position: absolute;
-          top: 16px;
-          right: 18px;
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          border: 1.5px solid rgba(90, 62, 16, 0.35);
-          background: #f3e3bc;
-          color: #5a3e10;
-          font-size: 1rem;
-          line-height: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          z-index: 30;
-          transition: background 0.1s ease, color 0.1s ease, transform 0.1s ease;
-          touch-action: manipulation;
-          -webkit-tap-highlight-color: transparent;
-          box-shadow: 0 1px 6px rgba(90, 62, 16, 0.18);
-          font-weight: 700;
-        }
-        .parchment-card-close:hover {
-          background: #5a3e10;
-          color: #faf0d8;
-          transform: scale(1.1);
-        }
-        .parchment-card-close:active {
-          transform: scale(0.92);
-          transition: transform 0.05s ease;
-        }
 
         .parchment-watermark {
           position: absolute; top: 50%; left: 50%;
@@ -850,9 +817,11 @@ export default function DharmaPage() {
           .parchment-watermark { font-size: 10rem; }
           .parchment-modal .scroll-top::before,
           .parchment-modal .scroll-bottom::before { left: -8px; right: -8px; }
+          .parchment-close { top: 12px; right: 14px; font-size: 24px; }
         }
         @media (max-width: 480px) {
           .parchment-body { padding: 40px 18px 32px; max-height: 65vh; }
+          .parchment-close { top: 10px; right: 10px; font-size: 22px; }
         }
       `}</style>
     </main>
