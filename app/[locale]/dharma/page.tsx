@@ -141,17 +141,30 @@ export default function DharmaPage() {
 
   const inFlightRef = useRef<Set<string>>(new Set());
 
-  // Background Translation logic — todayQuote is ALWAYS translated first
+  // Dynamic resolver: always get the latest translated version of the scripture being read in the modal
+  const currentReadingScripture = useMemo(() => {
+    if (!readingScripture) return null;
+    if (todayQuote?.id === readingScripture.id) return todayQuote;
+    const inList = scriptures.find(s => s.id === readingScripture.id);
+    return inList || readingScripture;
+  }, [readingScripture, todayQuote, scriptures]);
+
+  // Background Translation logic — todayQuote and readingScripture are ALWAYS prioritized
   useEffect(() => {
     if (locale === 'en' || scriptures.length === 0) return;
 
-    // ★ PRIORITY: todayQuote goes to the FRONT of the translation queue
+    // ★ PRIORITY: todayQuote and readingScripture go to the FRONT of the translation queue
     const itemsToCheck: Scripture[] = [];
     if (todayQuote && !todayQuote.translations?.[locale] && !inFlightRef.current.has(todayQuote.id)) {
-      itemsToCheck.push(todayQuote); // highest priority
+      itemsToCheck.push(todayQuote); // highest priority for daily quote
+    }
+    if (readingScripture && !readingScripture.translations?.[locale] && !inFlightRef.current.has(readingScripture.id)) {
+      if (!itemsToCheck.some(i => i.id === readingScripture.id)) {
+        itemsToCheck.push(readingScripture); // instant priority if user opened a modal
+      }
     }
     visibleScriptures.forEach(item => {
-      if (item.id !== todayQuote?.id) itemsToCheck.push(item);
+      if (!itemsToCheck.some(i => i.id === item.id)) itemsToCheck.push(item);
     });
 
     const missing = itemsToCheck.filter(
@@ -180,6 +193,9 @@ export default function DharmaPage() {
           setTodayQuote(prev => 
             prev?.id === item.id ? { ...prev, translations: { ...(prev.translations || {}), [locale]: data.translation } } : prev
           );
+          setReadingScripture(prev => 
+            prev?.id === item.id ? { ...prev, translations: { ...(prev.translations || {}), [locale]: data.translation } } : prev
+          );
         }
       } catch (e) {
         console.error('Translation failed for', item.id, e);
@@ -193,7 +209,7 @@ export default function DharmaPage() {
         });
       }
     });
-  }, [visibleScriptures, todayQuote?.id, locale, scriptures.length, failedIds]);
+  }, [visibleScriptures, todayQuote?.id, readingScripture?.id, locale, scriptures.length, failedIds]);
 
   const getLocalizedContent = (scripture: Scripture | null) => {
     if (!scripture) return { text: '', isTranslating: false };
@@ -439,13 +455,13 @@ export default function DharmaPage() {
       {/* ══════════════════════════════════════════ */}
       {/* ★ PARCHMENT MODAL — Ancient scroll design ★ */}
       {/* ══════════════════════════════════════════ */}
-      {readingScripture && (
+      {readingScripture && currentReadingScripture && (
         <div
           className="parchment-overlay"
           onClick={() => setReadingScripture(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={`Reading: ${readingScripture.source}`}
+          aria-label={`Reading: ${currentReadingScripture.source}`}
         >
           <div
             className="parchment-modal parchment-animate-in"
@@ -471,22 +487,22 @@ export default function DharmaPage() {
               <div className="parchment-inner">
                 {/* Source + chapter */}
                 <div className="parchment-eyebrow">
-                  {readingScripture.source}
+                  {currentReadingScripture.source}
                 </div>
                 <p className="parchment-chapter text-center">
-                  {readingScripture.metadata?.chapter || 'VIRTUAL TEMPLE'}
+                  {currentReadingScripture.metadata?.chapter || 'VIRTUAL TEMPLE'}
                 </p>
                 <div className="parchment-divider" />
                 
                 {/* Full text */}
-                <div className={`relative transition-opacity duration-300 ${getLocalizedContent(readingScripture).isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                  {getLocalizedContent(readingScripture).isTranslating && (
-                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-xs text-primary-gold font-sans font-medium tracking-widest animate-pulse">
+                <div className={`relative transition-opacity duration-300 ${getLocalizedContent(currentReadingScripture).isTranslating ? 'opacity-30' : 'opacity-100'}`}>
+                  {getLocalizedContent(currentReadingScripture).isTranslating && (
+                     <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-primary-gold font-sans font-medium tracking-widest animate-pulse whitespace-nowrap">
                        {t('translating')}
                      </div>
                   )}
                   <p className="parchment-text">
-                    &ldquo;{cleanContent(getLocalizedContent(readingScripture).text)}&rdquo;
+                    &ldquo;{cleanContent(getLocalizedContent(currentReadingScripture).text)}&rdquo;
                   </p>
                 </div>
 
