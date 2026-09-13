@@ -5,7 +5,13 @@ import { useTranslations } from 'next-intl';
 
 export default function ResonancePage() {
   const t = useTranslations('Resonance');
-  const [followerCount, setFollowerCount] = useState<number | null>(null);
+  const [followerCount, setFollowerCount] = useState<number | null>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = localStorage.getItem('cached_tiktok_followers');
+      if (cached && !isNaN(Number(cached))) return Number(cached);
+    }
+    return 636000;
+  });
   const [isMobile, setIsMobile] = useState(false);
   const [showMobileRedirect, setShowMobileRedirect] = useState(false);
 
@@ -19,12 +25,19 @@ export default function ResonancePage() {
   useEffect(() => {
     fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
       .then(res => res.json())
-      .then(data => { if (data.followerCount) setFollowerCount(data.followerCount); })
+      .then(data => {
+        if (data.followerCount) {
+          setFollowerCount(data.followerCount);
+          try {
+            localStorage.setItem('cached_tiktok_followers', String(data.followerCount));
+          } catch {}
+        }
+      })
       .catch(() => {});
   }, []);
 
   const formatFollowers = (count: number | null) => {
-    if (!count) return '1.2M+';
+    if (!count) return '636K+';
     if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M+`;
     if (count >= 1000) return `${Math.floor(count / 1000).toLocaleString()}K+`;
     return `${count.toLocaleString()}+`;
@@ -431,7 +444,10 @@ export default function ResonancePage() {
 
         .portal-cta-wrap {
           display: flex;
-          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          margin-top: 8px;
         }
 
         .btn-tiktok-gold {
@@ -543,7 +559,7 @@ export default function ResonancePage() {
         }
 
         .tiktok-load-notice {
-          margin-top: 14px;
+          margin: 0;
           font-size: 0.85rem;
           color: rgba(255, 255, 255, 0.65);
           display: inline-flex;
