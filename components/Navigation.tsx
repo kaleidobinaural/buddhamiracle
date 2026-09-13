@@ -81,15 +81,26 @@ export default function Navigation() {
 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  // Language change: save menu state → navigate to new locale URL
+  // SPA language change: keep mobile menu open without leaving or page reload
   const handleLanguageChange = (nextLocale: string) => {
     if (nextLocale === locale) return;
-    // Save current menu state so it seamlessly restores on remount
-    sessionStorage.setItem('restore_mobile_menu', mobileOpen ? 'true' : 'false');
+    if (mobileOpen) {
+      sessionStorage.setItem('restore_mobile_menu', 'true');
+    }
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000`;
-    const targetPath = !intlPathname || intlPathname === '/' ? `/${nextLocale}` : `/${nextLocale}${intlPathname}`;
-    window.location.href = targetPath;
+    router.replace(intlPathname as any, { locale: nextLocale, scroll: false });
   };
+
+  // Ensure mobile menu stays open when locale changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('restore_mobile_menu');
+      if (saved === 'true') {
+        sessionStorage.removeItem('restore_mobile_menu');
+        setMobileOpen(true);
+      }
+    }
+  }, [locale]);
 
   // Close mobile menu ONLY on explicit navigation (link click), NOT on locale change
   const closeMobileMenu = () => setMobileOpen(false);
