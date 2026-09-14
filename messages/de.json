@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "Möchten Sie diese Opfergabe wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
     "modalCancel": "Abbrechen",
     "btnConfirmDelete": "Löschen",
-    "allPillars": "Alle Opfergaben ansehen"
+    "allPillars": "Alle Opfergaben ansehen",
+    "btnReturnGrid": "Zurück zur Liste"
   },
   "hall": {
     "title": "Heiligtum des Lichts",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "Meine Wünsche",
-    "myPillars": "Meine Säulen",
+    "myPillars": "Meine Spenden",
     "privacyData": "Datenschutz & Daten",
     "dataPrivacy": "Datenschutz & Datensicherheit",
     "privacyDesc": "Gemäß globaler Datenschutzstandards (DSGVO, CCPA, KR PIPA) haben Sie die volle Kontrolle über Ihren digitalen Fußabdruck im Heiligtum.",

@@ -56,11 +56,9 @@ export async function GET(req: NextRequest) {
     } else if (isAdmin && adminView) {
       // Admin dashboard sees all wishes, no privacy filter applied
     } else {
-      if (userEmail) {
-        query = query.or(`is_public.eq.true,user_email.eq.${userEmail}`);
-      } else {
-        query = query.eq('is_public', true);
-      }
+      // General public feed: ONLY show public wishes!
+      // Private wishes should ONLY appear when 'mine=true' (My Wishes) is selected.
+      query = query.eq('is_public', true);
     }
 
     // Search Logic:
@@ -146,12 +144,12 @@ export async function PATCH(request: Request) {
     const delta = action === 'like' ? 1 : -1;
 
     // Atomic increment via raw SQL — prevents race condition
-    const { data, error } = await supabase.rpc('adjust_wish_likes', {
+    const { error: rpcError } = await supabase.rpc('adjust_wish_likes', {
       p_id: id,
       p_delta: delta,
     });
 
-    if (error) {
+    if (rpcError) {
       // Fallback: if RPC doesn't exist yet, use safe select-then-update
       const { data: wish, error: fetchError } = await supabase
         .from('wishes')
@@ -167,10 +165,18 @@ export async function PATCH(request: Request) {
         .eq('id', id)
         .select();
       if (updateError) throw updateError;
-      return NextResponse.json({ success: true, data: updated });
+      return NextResponse.json({ success: true, likes_count: newCount, data: updated });
     }
 
-    return NextResponse.json({ success: true, data });
+    // Fetch the updated wish to get the accurate likes_count
+    const { data: updatedWish } = await supabase
+      .from('wishes')
+      .select('likes_count')
+      .eq('id', id)
+      .single();
+
+    const newCount = updatedWish?.likes_count ?? 0;
+    return NextResponse.json({ success: true, likes_count: newCount });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

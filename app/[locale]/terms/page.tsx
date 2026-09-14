@@ -69,6 +69,16 @@ export default function TermsPage() {
             </p>
           </section>
 
+          <section className="terms-section">
+            <h2 className="section-heading"><span className="section-num">6.</span> Contact & Inquiries</h2>
+            <p className="section-body">
+              For any questions regarding these Terms, technical assistance, or reporting issues, please contact the Temple Guardians at:
+            </p>
+            <a href="mailto:BuddhaMiracle@proton.me" style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline', fontSize: '0.92rem' }}>
+              BuddhaMiracle@proton.me
+            </a>
+          </section>
+
         </div>
 
         {/* Footer */}

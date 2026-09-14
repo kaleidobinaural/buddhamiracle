@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "¿Estás seguro de que deseas eliminar esta ofrenda? Esta acción no se puede deshacer.",
     "modalCancel": "Cancelar",
     "btnConfirmDelete": "Eliminar",
-    "allPillars": "Ver todas las ofrendas"
+    "allPillars": "Ver todas las ofrendas",
+    "btnReturnGrid": "Volver a la Lista"
   },
   "hall": {
     "title": "Santuario de Luz",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "Mis Deseos",
-    "myPillars": "Mis Pilares",
+    "myPillars": "Mis Donaciones",
     "privacyData": "Privacidad y Datos",
     "dataPrivacy": "Privacidad y Protección de Datos",
     "privacyDesc": "En cumplimiento con estándares globales de privacidad (GDPR, CCPA, KR PIPA), tienes control total sobre tu huella digital en el Santuario.",

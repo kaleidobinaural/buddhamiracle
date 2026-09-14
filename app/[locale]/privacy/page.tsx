@@ -82,8 +82,8 @@ export default function PrivacyPage() {
               If you have any questions about this Privacy Policy or wish to exercise your rights,
               please contact the Temple Administrators at:
             </p>
-            <a href="mailto:KaleidoBinaural@proton.me" className="contact-email">
-              KaleidoBinaural@proton.me
+            <a href="mailto:BuddhaMiracle@proton.me" className="contact-email">
+              BuddhaMiracle@proton.me
             </a>
           </section>
 

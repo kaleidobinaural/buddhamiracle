@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "このお供えの記録を削除してもよろしいですか？この操作は元に戻せません。",
     "modalCancel": "キャンセル",
     "btnConfirmDelete": "削除する",
-    "allPillars": "すべての供養を見る"
+    "allPillars": "すべての供養を見る",
+    "btnReturnGrid": "一覧に戻る"
   },
   "hall": {
     "title": "光の聖域",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "私の願い",
-    "myPillars": "私の柱",
+    "myPillars": "私の奉納",
     "privacyData": "プライバシー & データ",
     "dataPrivacy": "データプライバシー保護",
     "privacyDesc": "グローバルプライバシー基準（GDPR、CCPA、KR PIPA）に準拠し、聖域でのデジタルフットプリントを完全に管理できます。",

@@ -91,8 +91,13 @@ export default function RefundPage() {
           <section className="privacy-section">
             <h2 className="section-heading"><span className="section-num">6.</span> How to Contact Us</h2>
             <p className="section-body">
-              For refund requests, technical issues, or any questions regarding a purchase, please contact us via email.
-              Include your order number (from Lemon Squeezy or PayPal) and a description of the issue.
+              For refund requests, technical issues, or any questions regarding a purchase, please contact our support team at:
+            </p>
+            <a href="mailto:BuddhaMiracle@proton.me" className="contact-email" style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline' }}>
+              BuddhaMiracle@proton.me
+            </a>
+            <p className="section-body" style={{ marginTop: '12px' }}>
+              Please include your order number (from Lemon Squeezy or PayPal) and a description of the issue.
               We aim to respond within 2 business days.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>

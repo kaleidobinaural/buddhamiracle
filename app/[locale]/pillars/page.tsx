@@ -861,7 +861,9 @@ export default function PillarsPage() {
                   )}
                 </div>
               </div>
-              <button className="btn-close-zoom" onClick={() => setSelectedPillar(null)}>✕ {t('btnReturn')}</button>
+              <button className="btn-close-zoom" onClick={() => setSelectedPillar(null)}>
+                ✕ {viewMode === 'hall' ? (t('btnReturn') || '회랑으로 돌아가기') : (t('btnReturnGrid') || '목록으로 돌아가기')}
+              </button>
             </div>
           </div>
         )}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { signOut } from 'next-auth/react';
 
 interface ProfileProps {
   user: {
@@ -27,6 +28,7 @@ export default function ProfileClient({ user }: ProfileProps) {
     }
     const fetchData = async () => {
       setIsLoading(true);
+      setData([]);
       try {
         const res = await fetch(`/api/${activeTab}?mine=true`);
         const result = await res.json();
@@ -55,7 +57,7 @@ export default function ProfileClient({ user }: ProfileProps) {
       const result = await res.json();
       if (result.success) {
         alert(result.message);
-        window.location.href = '/';
+        await signOut({ callbackUrl: '/' });
       } else {
         alert("Error: " + result.error);
       }

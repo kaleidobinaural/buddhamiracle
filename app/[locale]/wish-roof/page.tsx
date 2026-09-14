@@ -167,6 +167,11 @@ export default function WishRoofPage() {
   };
 
   const handleLike = async (id: string) => {
+    if (!session?.user) {
+      setShowLoginModal(true);
+      return;
+    }
+
     if (typeof window !== 'undefined') {
       const likedWishes = JSON.parse(localStorage.getItem('liked_wishes') || '[]');
       const isAlreadyLiked = likedWishes.includes(id);
@@ -190,12 +195,23 @@ export default function WishRoofPage() {
           }
           localStorage.setItem('liked_wishes', JSON.stringify(newLiked));
 
+          // Determine updated likes safely
+          const currentWish = wishes.find(w => w.id === id);
+          const currentCount = currentWish?.likes_count ?? 0;
+          const fallbackCount = action === 'like' ? currentCount + 1 : Math.max(0, currentCount - 1);
+          const updatedLikes = typeof data.likes_count === 'number' 
+            ? data.likes_count 
+            : (data.data?.[0]?.likes_count ?? fallbackCount);
+
           // Update local state
-          const updatedLikes = data.data[0].likes_count;
-          setWishes(wishes.map(w => w.id === id ? { ...w, likes_count: updatedLikes } : w));
+          setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: updatedLikes } : w));
           if (selectedWish?.id === id) {
             setSelectedWish(prev => prev ? { ...prev, likes_count: updatedLikes } : null);
           }
+        } else if (res.status === 401) {
+          setShowLoginModal(true);
+        } else if (data.error) {
+          showMessage(data.error);
         }
       } catch (err) {
         console.error('Error liking wish:', err);
@@ -423,11 +439,11 @@ export default function WishRoofPage() {
                 <span className="search-status-icon">{showOnlyMine ? '👤' : '🔍'}</span>
                 <span className="search-status-text">
                   {showOnlyMine && searchQuery ? (
-                    <>&ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`} ({t('btnMyWishes')})</>
+                    <>&ldquo;{searchQuery}&rdquo; {isLoading ? (t('loading') || '불러오는 중...') : (t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`)} ({t('btnMyWishes')})</>
                   ) : showOnlyMine ? (
-                    <>{t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
+                    <>{isLoading ? (t('loading') || '내 소원을 불러오는 중...') : (t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`)}</>
                   ) : (
-                    <>&ldquo;{searchQuery}&rdquo;{' '}{t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`}</>
+                    <>&ldquo;{searchQuery}&rdquo;{' '}{isLoading ? (t('loading') || '불러오는 중...') : (t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`)}</>
                   )}
                 </span>
               </div>
@@ -568,7 +584,7 @@ export default function WishRoofPage() {
 
       {/* ── Wish Input Modal ── */}
       {isModalOpen && (
-        <div className="ritual-modal-overlay" onClick={() => setIsModalOpen(false)}>
+        <div className="ritual-modal-overlay" onClick={() => { setIsModalOpen(false); setNewWish(''); setErrorMsg(null); }}>
           <div className="modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
               <h2 className="modal-title" style={{ margin: 0 }}>{t('modalTitle')}</h2>
@@ -598,7 +614,7 @@ export default function WishRoofPage() {
                   </label>
                 </div>
                 <div className="modal-actions">
-                  <button type="button" className="btn-ghost" onClick={() => setIsModalOpen(false)}>{t('modalCancel')}</button>
+                  <button type="button" className="btn-ghost" onClick={() => { setIsModalOpen(false); setNewWish(''); setErrorMsg(null); }}>{t('modalCancel')}</button>
                   <button type="submit" className="btn-gold">{t('modalSubmit')}</button>
                 </div>
               </form>

@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "이 공양 기록을 삭제하시겠습니까? 삭제된 기록은 복구할 수 없습니다.",
     "modalCancel": "취소",
     "btnConfirmDelete": "삭제 확인",
-    "allPillars": "전체 후원 보기"
+    "allPillars": "전체 후원 보기",
+    "btnReturnGrid": "목록으로 돌아가기"
   },
   "hall": {
     "title": "빛의 성소",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "내 소원",
-    "myPillars": "내 기둥",
+    "myPillars": "내 후원",
     "privacyData": "개인정보 & 데이터",
     "dataPrivacy": "데이터 개인정보 보호",
     "privacyDesc": "글로벌 개인정보 보호 기준(GDPR, CCPA, KR PIPA)을 준수하여 성소에서의 디지털 흔적을 완전히 통제하실 수 있습니다.",

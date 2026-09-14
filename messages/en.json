@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "Are you sure you want to delete this offering? This action cannot be undone.",
     "modalCancel": "Cancel",
     "btnConfirmDelete": "Delete",
-    "allPillars": "All Offerings"
+    "allPillars": "All Offerings",
+    "btnReturnGrid": "Return to List"
   },
   "hall": {
     "title": "Sanctuary of Light",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "My Wishes",
-    "myPillars": "My Pillars",
+    "myPillars": "My Donations",
     "privacyData": "Privacy & Data",
     "dataPrivacy": "Data Privacy & Protection",
     "privacyDesc": "In compliance with global privacy standards (GDPR, CCPA, KR PIPA), you have full control over your digital footprint in the Sanctuary.",

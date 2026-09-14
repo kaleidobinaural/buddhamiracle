@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "هل أنت متأكد أنك تريد حذف هذا القربان؟ لا يمكن التراجع عن هذا الإجراء.",
     "modalCancel": "إلغاء",
     "btnConfirmDelete": "حذف",
-    "allPillars": "عرض جميع القرابين"
+    "allPillars": "عرض جميع القرابين",
+    "btnReturnGrid": "العودة إلى القائمة"
   },
   "hall": {
     "title": "ملاذ النور",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "أمنياتي",
-    "myPillars": "أعمدتي",
+    "myPillars": "تبرعاتي",
     "privacyData": "الخصوصية والبيانات",
     "dataPrivacy": "خصوصية البيانات وحمايتها",
     "privacyDesc": "وفقاً لمعايير الخصوصية العالمية (GDPR, CCPA, KR PIPA)، لديك السيطرة الكاملة على بصمتك الرقمية في الملاذ.",

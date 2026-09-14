@@ -27,6 +27,23 @@ export default function StorePage() {
   const [videoInteractive, setVideoInteractive] = useState(false);
   const [purchaseError, setPurchaseError] = useState<{ title: string; message: string; isLogin?: boolean } | null>(null);
 
+  const resetForm = () => {
+    setFormData({ name: '', email: session?.user?.email || '', message: '' });
+    setFormStatus('idle');
+    setIsSubmitting(false);
+  };
+
+  const openInquiryModal = (isPremium: boolean) => {
+    resetForm();
+    setIsPremiumModal(isPremium);
+    setIsVvipModalOpen(true);
+  };
+
+  const closeInquiryModal = () => {
+    setIsVvipModalOpen(false);
+    resetForm();
+  };
+
   useEffect(() => {
     // Follower Count Logic
     fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
@@ -397,7 +414,7 @@ export default function StorePage() {
               <li>🎶 {t('premiumF3')}</li>
             </ul>
             {/* Premium inquiry modal */}
-            <button className="store-cta-btn store-cta-outline" onClick={() => { setIsPremiumModal(true); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
+            <button className="store-cta-btn store-cta-outline" onClick={() => openInquiryModal(true)}>
               {t('getPremium')}$1,111
             </button>
           </div>
@@ -426,7 +443,7 @@ export default function StorePage() {
               <li>🗣️ {t('vvipF2')}</li>
               <li>🏛️ {t('vvipF3')}</li>
             </ul>
-            <button className="store-cta-btn store-cta-gold" onClick={() => { setIsPremiumModal(false); setIsVvipModalOpen(true); setFormStatus('idle'); }}>
+            <button className="store-cta-btn store-cta-gold" onClick={() => openInquiryModal(false)}>
               {t('applyVvip')}$11,111
             </button>
           </div>
@@ -435,7 +452,7 @@ export default function StorePage() {
 
       {/* VIP/VVIP Application Modal */}
       {isVvipModalOpen && (
-        <div className="store-modal-overlay" onClick={() => setIsVvipModalOpen(false)}>
+        <div className="store-modal-overlay" onClick={closeInquiryModal}>
           <div className="store-modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
             <h3 className="store-modal-title" style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--primary-gold)' }}>
               {isPremiumModal ? t('premiumModalTitle') : t('vvipModalTitle')}
@@ -446,7 +463,7 @@ export default function StorePage() {
                   {t('modalSuccess')}
                 </p>
                 <p style={{ color: '#aaa' }}>{t('modalSuccessNote')}</p>
-                <button className="store-cta-btn store-cta-gold" style={{ marginTop: '24px' }} onClick={() => setIsVvipModalOpen(false)}>
+                <button className="store-cta-btn store-cta-gold" style={{ marginTop: '24px' }} onClick={closeInquiryModal}>
                   {t('modalClose')}
                 </button>
               </div>
@@ -479,7 +496,7 @@ export default function StorePage() {
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                 />
                 <div className="store-form-actions" style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '24px', width: '100%' }}>
-                  <button type="button" className="store-cta-btn store-cta-outline" style={{ padding: '12px', flex: 1 }} onClick={() => setIsVvipModalOpen(false)}>
+                  <button type="button" className="store-cta-btn store-cta-outline" style={{ padding: '12px', flex: 1 }} onClick={closeInquiryModal}>
                     {t('modalCancel')}
                   </button>
                   <button type="submit" className="store-cta-btn store-cta-gold" style={{ padding: '12px', flex: 1 }} disabled={isSubmitting}>
@@ -543,8 +560,7 @@ export default function StorePage() {
                   style={{ flex: 1, padding: '12px', fontSize: '0.85rem', cursor: 'pointer' }}
                   onClick={() => {
                     setPurchaseError(null);
-                    setIsVvipModalOpen(true);
-                    setFormStatus('idle');
+                    openInquiryModal(false);
                   }}
                 >
                   {t('inquiryBtn') || '문의하기'}

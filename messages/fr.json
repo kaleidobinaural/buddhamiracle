@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "Êtes-vous sûr de vouloir supprimer cette offrande ? Cette action est irréversible.",
     "modalCancel": "Annuler",
     "btnConfirmDelete": "Supprimer",
-    "allPillars": "Voir toutes les offrandes"
+    "allPillars": "Voir toutes les offrandes",
+    "btnReturnGrid": "Retour à la Liste"
   },
   "hall": {
     "title": "Sanctuaire de Lumière",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "Mes Vœux",
-    "myPillars": "Mes Piliers",
+    "myPillars": "Mes Dons",
     "privacyData": "Confidentialité & Données",
     "dataPrivacy": "Confidentialité et Protection des Données",
     "privacyDesc": "Conformément aux normes mondiales de confidentialité (GDPR, CCPA, KR PIPA), vous avez un contrôle total sur votre empreinte numérique dans le Sanctuaire.",

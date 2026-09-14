@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "Apakah Anda yakin ingin menghapus persembahan ini? Tindakan ini tidak dapat dibatalkan.",
     "modalCancel": "Batal",
     "btnConfirmDelete": "Hapus",
-    "allPillars": "Lihat Semua Persembahan"
+    "allPillars": "Lihat Semua Persembahan",
+    "btnReturnGrid": "Kembali ke Daftar"
   },
   "hall": {
     "title": "Tempat Suci Cahaya",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "Keinginan Saya",
-    "myPillars": "Pilar Saya",
+    "myPillars": "Donasi Saya",
     "privacyData": "Privasi & Data",
     "dataPrivacy": "Privasi & Perlindungan Data",
     "privacyDesc": "Sesuai standar privasi global (GDPR, CCPA, KR PIPA), Anda memiliki kendali penuh atas jejak digital Anda di Tempat Suci.",

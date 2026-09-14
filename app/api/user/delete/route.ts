@@ -37,6 +37,16 @@ export async function DELETE(req: NextRequest) {
       .delete()
       .ilike('email', userEmail);
 
+    if (limitsError) console.warn('Limits delete warning:', limitsError);
+
+    // 4. Delete wish likes
+    const { error: likesError } = await supabase
+      .from('wish_likes')
+      .delete()
+      .eq('user_email', userEmail);
+
+    if (likesError) console.warn('Likes delete warning:', likesError);
+
     return NextResponse.json({ 
       success: true, 
       message: 'All your personal data has been permanently removed from the Sanctuary.' 

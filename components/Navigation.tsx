@@ -412,6 +412,46 @@ export default function Navigation() {
                 <option value="my">🌐 မြန်မာ</option>
                 <option value="km">🌐 ខ្មែរ</option>
               </select>
+
+              {/* Bug Report & Support Card */}
+              <div 
+                style={{ 
+                  marginTop: '18px', 
+                  padding: '10px 14px', 
+                  borderRadius: '12px', 
+                  background: 'rgba(255,255,255,0.03)', 
+                  border: '1px solid rgba(212,160,23,0.18)',
+                  textAlign: 'center',
+                  maxWidth: '280px',
+                  margin: '18px auto 0'
+                }}
+              >
+                <div style={{ fontSize: '0.75rem', color: '#999', marginBottom: '5px', lineHeight: 1.4 }}>
+                  {locale === 'ko' 
+                    ? '오류 제보 및 문의사항' 
+                    : 'Bug Report & Inquiries'}
+                </div>
+                <a
+                  href="mailto:BuddhaMiracle@proton.me?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    fontSize: '0.8rem',
+                    color: 'var(--primary-gold)',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    wordBreak: 'break-all'
+                  }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                  <span>BuddhaMiracle@proton.me</span>
+                </a>
+              </div>
             </div>
           </div>
         </nav>

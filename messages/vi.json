@@ -175,7 +175,8 @@
     "confirmDeletePillarDesc": "Bạn có chắc chắn muốn xóa bản ghi cúng dường này không? Hành động này không thể hoàn tác.",
     "modalCancel": "Hủy",
     "btnConfirmDelete": "Xóa",
-    "allPillars": "Xem tất cả cúng dường"
+    "allPillars": "Xem tất cả cúng dường",
+    "btnReturnGrid": "Trở Về Danh Sách"
   },
   "hall": {
     "title": "Chánh Điện Ánh Sáng",
@@ -366,7 +367,7 @@
   },
   "Profile": {
     "myWishes": "Ước Nguyện Của Tôi",
-    "myPillars": "Trụ Cột Của Tôi",
+    "myPillars": "Công Đức Của Tôi",
     "privacyData": "Quyền Riêng Tư & Dữ Liệu",
     "dataPrivacy": "Bảo Mật & Bảo Vệ Dữ Liệu",
     "privacyDesc": "Tuân thủ các tiêu chuẩn quyền riêng tư toàn cầu (GDPR, CCPA, KR PIPA), bạn có toàn quyền kiểm soát dấu vết kỹ thuật số trong Thánh Địa.",

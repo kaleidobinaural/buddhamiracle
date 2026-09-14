@@ -103,6 +103,19 @@ export default async function RootLayout({
                   <Link href="/privacy" className="footer-link">Privacy</Link>
                   <span className="footer-dot">•</span>
                   <Link href="/refund" className="footer-link">Refund</Link>
+                  <span className="footer-dot">•</span>
+                  <a
+                    href="mailto:BuddhaMiracle@proton.me?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry"
+                    className="footer-link footer-email-link"
+                    aria-label="Contact / Bug Report (BuddhaMiracle@proton.me)"
+                    title="Contact / Bug Report: BuddhaMiracle@proton.me"
+                    style={{ display: 'inline-flex', alignItems: 'center', transition: 'color 0.2s' }}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: 'middle' }}>
+                      <rect width="20" height="16" x="2" y="4" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </a>
                   <span className="footer-dot hidden-mobile">•</span>
                   <a
                     href="https://www.tiktok.com/@buddha_miracle"
