@@ -427,9 +427,7 @@ export default function Navigation() {
                 }}
               >
                 <div style={{ fontSize: '0.75rem', color: '#999', marginBottom: '5px', lineHeight: 1.4 }}>
-                  {locale === 'ko' 
-                    ? '오류 제보 및 문의사항' 
-                    : 'Bug Report & Inquiries'}
+                  {t('bugReport') || (locale === 'ko' ? '오류 제보 및 문의사항' : 'Bug Report & Inquiries')}
                 </div>
                 <a
                   href="mailto:BuddhaMiracle@proton.me?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry"
