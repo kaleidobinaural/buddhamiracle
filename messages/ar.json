@@ -46,7 +46,7 @@
     "explore": "استكشف الحكمة",
     "allWisdom": "كل الحِكَم",
     "readMore": "افتح المخطوطة",
-    "searchPlaceholder": "ابحث في النصوص المقدسة أو العناوين...",
+    "searchPlaceholder": "البحث في النصوص أو العناوين (يرجى البحث باللغة الإنجليزية)...",
     "boriMessage": "هناك الكثير من الحكمة هنا! لنستكشف معًا! ✨",
     "loadMore": "اكشف عن المزيد من الحكمة",
     "passagesRemaining": "متبقي {count} مقاطع",
@@ -184,7 +184,7 @@
     "returnToMeditation": "فضاء 2D",
     "writeWish": "تمنى أمنية",
     "eco": "الوضع الاقتصادي",
-    "ecoOn": "ECO ON"
+    "ecoOn": "الوضع الاقتصادي مفعّل"
   },
   "Donate": {
     "eyebrow": "ادعم الملاذ",

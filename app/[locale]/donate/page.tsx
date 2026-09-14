@@ -167,7 +167,7 @@ export default function DonatePage() {
         {/* Bottom Actions */}
         <div className="donate-bottom-actions animate-fade-up animate-delay-400">
           <Link
-            href="/store#lotus-section"
+            href="/store?section=lotus#lotus-section"
             className="donate-action-btn donate-action-btn--gold"
             id="btn-buy-lotus"
             style={{ textDecoration: 'none' }}
@@ -248,7 +248,7 @@ export default function DonatePage() {
               <h2 className="modal-title">{tGuru('upgradeTitle')}</h2>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '28px' }}>{tGuru('upgradeBody')}</p>
               <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-                <Link href="/store#lotus-section" className="btn-gold-glow-v2" style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', textDecoration: 'none' }}>🪷 {tGuru('buyLotus')}</Link>
+                <Link href="/store?section=lotus#lotus-section" className="btn-gold-glow-v2" style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', textDecoration: 'none' }}>🪷 {tGuru('buyLotus')}</Link>
                 <button onClick={() => setShowUpgradeModal(false)} style={{ flex: 1, background: 'none', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', padding: '10px 12px', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', fontSize: '0.9rem' }}>{tGuru('returnToSilence')}</button>
               </div>
             </div>

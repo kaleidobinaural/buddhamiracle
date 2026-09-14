@@ -46,7 +46,7 @@
     "explore": "知恵を探求する",
     "allWisdom": "全ての知恵",
     "readMore": "巻物を開く",
-    "searchPlaceholder": "経典や題名を検索...",
+    "searchPlaceholder": "経典や知恵を検索（英語で検索してください）...",
     "boriMessage": "ここにはたくさんの知恵があります！一緒に探求しましょう！✨",
     "loadMore": "さらなる知恵を現す",
     "passagesRemaining": "残り{count}の教え",
@@ -184,7 +184,7 @@
     "returnToMeditation": "2D空間",
     "writeWish": "願いを書く",
     "eco": "エコモード",
-    "ecoOn": "ECO ON"
+    "ecoOn": "省エネ ON"
   },
   "Donate": {
     "eyebrow": "聖域を支援する",

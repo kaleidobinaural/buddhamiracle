@@ -46,7 +46,7 @@
     "explore": "Explorer la Sagesse",
     "allWisdom": "Toute la Sagesse",
     "readMore": "Dérouler le Parchemin",
-    "searchPlaceholder": "Rechercher des écritures ou des titres...",
+    "searchPlaceholder": "Rechercher des écritures (veuillez chercher en anglais)...",
     "boriMessage": "Il y a tant de sagesse ici ! Explorons ensemble ! ✨",
     "loadMore": "Révéler Plus de Sagesse",
     "passagesRemaining": "{count} passages restants",
@@ -184,7 +184,7 @@
     "returnToMeditation": "Espace 2D",
     "writeWish": "Faire un Vœu",
     "eco": "Mode Éco",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Éco Activé"
   },
   "Donate": {
     "eyebrow": "SOUTENEZ LE SANCTUAIRE",

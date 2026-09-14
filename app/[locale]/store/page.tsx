@@ -84,6 +84,51 @@ export default function StorePage() {
       spotsLeft = 2;
     }
     setVvipSpots(spotsLeft);
+
+    // ★ Smooth auto-scroll to #lotus-section when arriving from "Buy Lotus" links
+    const checkScrollTarget = () => {
+      if (typeof window === 'undefined') return;
+      const hash = window.location.hash;
+      const params = new URLSearchParams(window.location.search);
+      const isLotusTarget = hash === '#lotus-section' || params.get('tab') === 'lotus' || params.get('section') === 'lotus';
+      
+      if (isLotusTarget) {
+        const scrollToTarget = () => {
+          const el = document.getElementById('lotus-section');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        };
+        setTimeout(scrollToTarget, 80);
+        setTimeout(scrollToTarget, 300);
+        setTimeout(scrollToTarget, 700);
+        setTimeout(scrollToTarget, 1200);
+      }
+    };
+
+    const handleAnchorClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement)?.closest('a');
+      if (anchor) {
+        const href = anchor.getAttribute('href') || '';
+        if (href.includes('#lotus-section') || href.includes('section=lotus')) {
+          setTimeout(() => {
+            document.getElementById('lotus-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      }
+    };
+
+    checkScrollTarget();
+    window.addEventListener('hashchange', checkScrollTarget);
+    window.addEventListener('popstate', checkScrollTarget);
+    window.addEventListener('section-navigated', checkScrollTarget);
+    document.addEventListener('click', handleAnchorClick);
+    return () => {
+      window.removeEventListener('hashchange', checkScrollTarget);
+      window.removeEventListener('popstate', checkScrollTarget);
+      window.removeEventListener('section-navigated', checkScrollTarget);
+      document.removeEventListener('click', handleAnchorClick);
+    };
   }, []);
 
   const handleBuyProduct = (e: React.MouseEvent, url: string, productName: string) => {
@@ -547,6 +592,7 @@ export default function StorePage() {
         .store-social-proof { text-align: center; font-size: 1.1rem; color: #aaa; margin-bottom: 16px; }
         .store-count { color: #d4a017; font-weight: 700; font-size: 1.3rem; }
         .store-section-title { text-align: center; font-family: var(--font-serif); font-size: 2.5rem; color: #fff; margin-bottom: 50px; }
+        #lotus-section { scroll-margin-top: calc(var(--nav-height, 80px) + 24px); }
         
         .store-tier-wrap { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
         .store-tier-card { position: relative; flex: 1; min-width: 300px; max-width: 380px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 40px 30px; display: flex; flex-direction: column; transition: transform 0.4s, border-color 0.4s; }

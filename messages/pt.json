@@ -46,7 +46,7 @@
     "explore": "Explorar a Sabedoria",
     "allWisdom": "Toda a Sabedoria",
     "readMore": "Desenrolar Pergaminho",
-    "searchPlaceholder": "Pesquisar escrituras ou títulos...",
+    "searchPlaceholder": "Pesquisar escrituras (pesquise em inglês)...",
     "boriMessage": "Há tanta sabedoria aqui! Vamos explorar juntos! ✨",
     "loadMore": "Revelar Mais Sabedoria",
     "passagesRemaining": "Restam {count} passagens",
@@ -184,7 +184,7 @@
     "returnToMeditation": "Espaço 2D",
     "writeWish": "Fazer um Pedido",
     "eco": "Modo Eco",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Eco Ligado"
   },
   "Donate": {
     "eyebrow": "APOIE O SANTUÁRIO",

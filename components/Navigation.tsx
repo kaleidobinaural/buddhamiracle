@@ -243,16 +243,28 @@ export default function Navigation() {
             </div>
 
             {session?.user && lotusCount !== null && (
-              <div className="nav-lotus-count" title="Your Lotus Petals" style={{ 
-                display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6px', 
-                padding: '6px 12px', background: 'rgba(212,160,23,0.1)', 
-                border: '1px solid rgba(212,160,23,0.2)', borderRadius: '20px',
-                color: 'var(--primary-gold)', fontSize: '0.85rem', fontWeight: 600,
-                whiteSpace: 'nowrap'
-              }}>
+              <Link 
+                href="/store?section=lotus#lotus-section" 
+                className="nav-lotus-count" 
+                title="Purchase Lotus Petals" 
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('section-navigated'));
+                  if (typeof window !== 'undefined' && window.location.pathname.includes('/store')) {
+                    const el = document.getElementById('lotus-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                style={{ 
+                  display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6px', 
+                  padding: '6px 12px', background: 'rgba(212,160,23,0.1)', 
+                  border: '1px solid rgba(212,160,23,0.2)', borderRadius: '20px',
+                  color: 'var(--primary-gold)', fontSize: '0.85rem', fontWeight: 600,
+                  whiteSpace: 'nowrap', textDecoration: 'none', cursor: 'pointer'
+                }}
+              >
                 <span>🪷</span>
                 <span>{lotusCount}</span>
-              </div>
+              </Link>
             )}
 
             <button

@@ -120,13 +120,15 @@ export default function DharmaPage() {
 
   const filteredScriptures = useMemo(() => {
     return scriptures.filter(s => {
+      const translatedText = s?.translations?.[locale] || '';
       const matchSearch =
         (s?.source || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (s?.content || '').toLowerCase().includes(searchTerm.toLowerCase());
+        (s?.content || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        translatedText.toLowerCase().includes(searchTerm.toLowerCase());
       const matchSource = selectedSource === 'all' || s.source === selectedSource;
       return matchSearch && matchSource;
     });
-  }, [scriptures, searchTerm, selectedSource]);
+  }, [scriptures, searchTerm, selectedSource, locale]);
 
   const allSources = useMemo(() => {
     const sources = scriptures.map(s => s.source).filter(Boolean);
@@ -334,14 +336,37 @@ export default function DharmaPage() {
             </div>
 
             {/* ── Search ── */}
-            <div className="search-wrap mb-6">
+            <div className="search-wrap mb-6" style={{ position: 'relative', width: '100%' }}>
               <input
                 type="text"
                 className="dharma-search-input"
                 placeholder={t('searchPlaceholder')}
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
+                style={{ paddingRight: searchTerm ? '48px' : '32px' }}
               />
+              {searchTerm && (
+                <button
+                  type="button"
+                  onClick={() => setSearchTerm('')}
+                  style={{
+                    position: 'absolute',
+                    right: '18px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    color: 'rgba(255,255,255,0.4)',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer',
+                    padding: '4px 8px',
+                    lineHeight: 1
+                  }}
+                  title="Clear search"
+                >
+                  ✕
+                </button>
+              )}
             </div>
 
             {!loading && (

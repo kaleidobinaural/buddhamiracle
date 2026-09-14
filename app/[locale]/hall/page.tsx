@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSession, signIn } from 'next-auth/react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useRouter } from 'next/navigation';
 import BuddhaHall from '@/components/BuddhaHall';
 
@@ -121,7 +121,7 @@ export default function HallPage() {
             <button
               className={`eco-btn ${isEcoMode ? 'active' : ''}`}
               onClick={() => setIsEcoMode(!isEcoMode)}
-              title={isEcoMode ? 'Lite Mode On (Low GPU)' : 'Switch to Lite Mode (Low GPU)'}
+              title={isEcoMode ? t('ecoOn') : t('eco')}
             >
               <span className="btn-icon">{isEcoMode ? '🌿' : '⚡'}</span>
               {isEcoMode ? t('ecoOn') : t('eco')}
@@ -184,13 +184,13 @@ export default function HallPage() {
                 {tGuru('upgradeBody')}
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                <a
-                  href="/store#lotus-section"
+                <Link
+                  href="/store?section=lotus#lotus-section"
                   className="btn-gold"
                   style={{ flex: 1, padding: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {tGuru('buyLotus')}
-                </a>
+                </Link>
                 <button
                   onClick={() => setShowUpgradeModal(false)}
                   style={{

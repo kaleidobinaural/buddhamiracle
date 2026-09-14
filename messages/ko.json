@@ -46,7 +46,7 @@
     "explore": "지혜 탐색하기",
     "allWisdom": "전체 지혜",
     "readMore": "두루마리 펼치기",
-    "searchPlaceholder": "경전 구절 또는 제목 검색...",
+    "searchPlaceholder": "경전 검색 (영문으로 검색해 주세요)...",
     "boriMessage": "여긴 정말 많은 지혜가 담겨 있어요! 저와 같이 찾아볼까요? ✨",
     "loadMore": "더 많은 지혜 불러오기",
     "passagesRemaining": "{count}개의 구절 남음",
@@ -184,7 +184,7 @@
     "returnToMeditation": "2D 공간",
     "writeWish": "소원 쓰기",
     "eco": "에코 모드",
-    "ecoOn": "ECO ON"
+    "ecoOn": "에코 켜짐"
   },
   "Donate": {
     "eyebrow": "성소 후원하기",

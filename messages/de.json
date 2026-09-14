@@ -46,7 +46,7 @@
     "explore": "Weisheit erkunden",
     "allWisdom": "Alle Weisheiten",
     "readMore": "Rolle entfalten",
-    "searchPlaceholder": "Schriften oder Titel suchen...",
+    "searchPlaceholder": "Schriften durchsuchen (bitte auf Englisch suchen)...",
     "boriMessage": "Hier gibt es so viel Weisheit! Lass uns gemeinsam erkunden! ✨",
     "loadMore": "Mehr Weisheit enthüllen",
     "passagesRemaining": "Noch {count} Passagen verbleibend",
@@ -184,7 +184,7 @@
     "returnToMeditation": "2D-Raum",
     "writeWish": "Wunsch äußern",
     "eco": "Eco-Modus",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Sparmodus Ein"
   },
   "Donate": {
     "eyebrow": "UNTERSTÜTZE DAS HEILIGTUM",

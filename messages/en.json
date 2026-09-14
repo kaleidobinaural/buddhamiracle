@@ -46,7 +46,7 @@
     "explore": "Explore Wisdom",
     "allWisdom": "All Wisdom",
     "readMore": "Unfold Scroll",
-    "searchPlaceholder": "Search scriptures or titles...",
+    "searchPlaceholder": "Search scriptures or titles (in English)...",
     "boriMessage": "There's so much wisdom here! Let's explore together! ✨",
     "loadMore": "Reveal More Wisdom",
     "passagesRemaining": "{count} passages remaining",
@@ -184,7 +184,7 @@
     "returnToMeditation": "2D Space",
     "writeWish": "Make a Wish",
     "eco": "Eco Mode",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Eco On"
   },
   "Donate": {
     "eyebrow": "SUPPORT THE SANCTUARY",

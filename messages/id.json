@@ -46,7 +46,7 @@
     "explore": "Jelajahi Kebijaksanaan",
     "allWisdom": "Semua Kebijaksanaan",
     "readMore": "Buka Gulungan",
-    "searchPlaceholder": "Cari kitab suci atau judul...",
+    "searchPlaceholder": "Cari kitab suci atau kebijaksanaan (silakan cari dalam bahasa Inggris)...",
     "boriMessage": "Ada begitu banyak kebijaksanaan di sini! Mari kita jelajahi bersama! ✨",
     "loadMore": "Tampilkan Lebih Banyak Kebijaksanaan",
     "passagesRemaining": "Tersisa {count} petikan",
@@ -184,7 +184,7 @@
     "returnToMeditation": "Ruang 2D",
     "writeWish": "Buat Harapan",
     "eco": "Mode Eco",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Eco Aktif"
   },
   "Donate": {
     "eyebrow": "DUKUNG TEMPAT SUCI",

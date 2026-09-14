@@ -46,7 +46,7 @@
     "explore": "探索智慧",
     "allWisdom": "所有智慧",
     "readMore": "展开经卷",
-    "searchPlaceholder": "搜索经文或标题...",
+    "searchPlaceholder": "搜索经文或智慧（请使用英文搜索）...",
     "boriMessage": "这里有好多智慧呀！我们一起探索吧！✨",
     "loadMore": "揭示更多智慧",
     "passagesRemaining": "尚余 {count} 段经文",
@@ -184,7 +184,7 @@
     "returnToMeditation": "2D空间",
     "writeWish": "许愿",
     "eco": "节能模式",
-    "ecoOn": "ECO ON"
+    "ecoOn": "节能开启"
   },
   "Donate": {
     "eyebrow": "护持圣殿",

@@ -46,7 +46,7 @@
     "explore": "Khám Phá Trí Tuệ",
     "allWisdom": "Tất Cả Trí Tuệ",
     "readMore": "Mở Cuộn Kinh",
-    "searchPlaceholder": "Tìm kiếm kinh điển hoặc tiêu đề...",
+    "searchPlaceholder": "Tìm kiếm kinh văn (vui lòng tìm bằng tiếng Anh)...",
     "boriMessage": "Ở đây có vô vàn trí tuệ! Cùng nhau khám phá nhé! ✨",
     "loadMore": "Khai Mở Thêm Trí Tuệ",
     "passagesRemaining": "Còn lại {count} đoạn kinh",
@@ -184,7 +184,7 @@
     "returnToMeditation": "Không gian 2D",
     "writeWish": "Cầu nguyện",
     "eco": "Chế độ Eco",
-    "ecoOn": "ECO ON"
+    "ecoOn": "Bật Tiết Kiệm"
   },
   "Donate": {
     "eyebrow": "ỦNG HỘ TỊNH XÁ",

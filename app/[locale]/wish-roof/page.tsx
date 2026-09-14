@@ -47,6 +47,7 @@ export default function WishRoofPage() {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const wishSectionRef = useRef<HTMLDivElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
+  const latestFetchIdRef = useRef(0);
 
   const handleTogglePublic = async (wish: Wish) => {
     setIsActionSubmitting(true);
@@ -101,8 +102,35 @@ export default function WishRoofPage() {
     }
   };
 
+  async function fetchWishes(query = '', sort = sortBy, mine = showOnlyMine) {
+    const fetchId = ++latestFetchIdRef.current;
+    setIsLoading(true);
+    try {
+      let url = `/api/wishes?sort=${sort}&mine=${mine}`;
+      if (query) url += `&search=${encodeURIComponent(query)}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      if (fetchId !== latestFetchIdRef.current) return;
+      if (data && !data.error) {
+        setWishes(data);
+      }
+    } catch (err) {
+      console.error('Error fetching wishes:', err);
+    } finally {
+      if (fetchId === latestFetchIdRef.current) {
+        setIsLoading(false);
+        // Scroll to results AFTER data is loaded
+        if (query || mine) {
+          requestAnimationFrame(() => {
+            searchResultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+      }
+    }
+  }
+
   useEffect(() => {
-    fetchWishes(searchQuery, sortBy, showOnlyMine);
+    fetchWishes('', 'date', false);
     setMounted(true);
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -119,36 +147,12 @@ export default function WishRoofPage() {
       .then(r => r.json())
       .then(d => { if (typeof d.lotus_count === 'number') setLotusCount(d.lotus_count); })
       .catch(() => {});
-  }, [sortBy, showOnlyMine]);
+  }, []);
 
-  useEffect(() => {
-    if (searchQuery === '') {
-      fetchWishes('', sortBy, showOnlyMine);
-    }
-  }, [searchQuery]);
-
-  async function fetchWishes(query = '', sort = sortBy, mine = showOnlyMine) {
-    setIsLoading(true);
-    try {
-      let url = `/api/wishes?sort=${sort}&mine=${mine}`;
-      if (query) url += `&search=${encodeURIComponent(query)}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data && !data.error) {
-        setWishes(data);
-      }
-    } catch (err) {
-      console.error('Error fetching wishes:', err);
-    } finally {
-      setIsLoading(false);
-      // Scroll to results AFTER data is loaded (not on fixed timeout)
-      if (query || mine) {
-        requestAnimationFrame(() => {
-          searchResultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-    }
-  }
+  const handleSortChange = (newSort: 'date' | 'likes') => {
+    setSortBy(newSort);
+    fetchWishes(searchQuery, newSort, showOnlyMine);
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -270,7 +274,10 @@ export default function WishRoofPage() {
       setShowLoginModal(true);
       return;
     }
-    setShowOnlyMine(prev => !prev);
+    const nextMine = !showOnlyMine;
+    setShowOnlyMine(nextMine);
+    setSearchQuery(''); // Always clear search input when switching to/from My Wishes
+    fetchWishes('', sortBy, nextMine);
   };
 
   const handleInscribeClick = () => {
@@ -329,11 +336,11 @@ export default function WishRoofPage() {
             <div className="sort-selector">
               <button 
                 className={`btn-sort ${sortBy === 'likes' ? 'active' : ''}`}
-                onClick={() => setSortBy('likes')}
+                onClick={() => handleSortChange('likes')}
               >✨ {t('sortDeep')}</button>
               <button 
                 className={`btn-sort ${sortBy === 'date' ? 'active' : ''}`}
-                onClick={() => setSortBy('date')}
+                onClick={() => handleSortChange('date')}
               >🕒 {t('sortRecent')}</button>
             </div>
           </div>
@@ -345,14 +352,23 @@ export default function WishRoofPage() {
               type="text" 
               placeholder={t('searchPlaceholder')} 
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSearchQuery(val);
+                if (val === '') {
+                  fetchWishes('', sortBy, showOnlyMine);
+                }
+              }}
               className="search-input"
             />
             {searchQuery && (
               <button 
                 type="button" 
                 className="btn-clear-search" 
-                onClick={() => setSearchQuery('')}
+                onClick={() => {
+                  setSearchQuery('');
+                  fetchWishes('', sortBy, showOnlyMine);
+                }}
               >✕</button>
             )}
             <button type="submit" className="btn-search-glow">{t('btnSearch')}</button>
@@ -394,7 +410,9 @@ export default function WishRoofPage() {
               <div className="search-status-chip">
                 <span className="search-status-icon">{showOnlyMine ? '👤' : '🔍'}</span>
                 <span className="search-status-text">
-                  {showOnlyMine ? (
+                  {showOnlyMine && searchQuery ? (
+                    <>&ldquo;{searchQuery}&rdquo; {t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`} ({t('btnMyWishes')})</>
+                  ) : showOnlyMine ? (
                     <>{t('viewingMyWishes', { count: wishes.length }) || `내 소원 (${wishes.length}개)`}</>
                   ) : (
                     <>&ldquo;{searchQuery}&rdquo;{' '}{t('searchResultCount', { count: wishes.length }) || `— 검색 결과 ${wishes.length}개`}</>
@@ -1368,7 +1386,7 @@ export default function WishRoofPage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <Link
-                  href="/store#lotus-section"
+                  href="/store?section=lotus#lotus-section"
                   className="btn-gold-glow-v2"
                   style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import CharacterAvatar from '@/components/CharacterAvatar';
 
 interface Message {
@@ -531,13 +531,13 @@ export default function ChatPage() {
                 {t('upgradeBody') || 'Your lotus petals have blossomed fully for now.\nOffer a new lotus to continue your journey of wisdom.'}
               </p>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '12px', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '24px' }}>
-                <a
-                  href="/store#lotus-section"
+                <Link
+                  href="/store?section=lotus#lotus-section"
                   className="btn-gold-glow-v2"
                   style={{ flex: 1, padding: '10px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '0.9rem', whiteSpace: 'nowrap', textAlign: 'center', textDecoration: 'none' }}
                 >
                   🪷 {t('buyLotus') || 'Offer Lotus Petals'}
-                </a>
+                </Link>
                 <button 
                   onClick={() => setShowUpgradeModal(false)}
                   style={{
