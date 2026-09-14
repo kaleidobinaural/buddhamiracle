@@ -1170,10 +1170,9 @@ export default function WishRoofPage() {
 
         .lantern-content {
           position: relative;
-          z-index: 2;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
+          z-index: 5;
+          width: 100%;
+          transform: translateZ(0);
         }
 
         /* Subtle inner candle light for floating lanterns */
@@ -1188,7 +1187,7 @@ export default function WishRoofPage() {
           border-radius: 50%;
           filter: blur(14px);
           pointer-events: none;
-          z-index: 0;
+          z-index: 1;
           animation: candle-breathe 4s ease-in-out infinite;
           will-change: opacity;
         }
@@ -1262,7 +1261,21 @@ export default function WishRoofPage() {
           to { transform: scale(1); opacity: 1; }
         }
         .animate-sacred-zoom { animation: sacred-zoom 0.6s cubic-bezier(0.2, 0, 0, 1) forwards; }
-        .lantern-text { font-family: var(--font-serif); font-size: 0.9rem; color: #fff; margin-bottom: 12px; font-style: italic; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; text-shadow: 0 2px 10px #000; }
+        .lantern-text {
+          font-family: var(--font-serif);
+          font-size: 0.9rem;
+          line-height: 1.45;
+          color: #fff;
+          margin-bottom: 12px;
+          font-style: italic;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          word-break: break-word;
+          min-height: 1.4em;
+          text-shadow: 0 2px 10px #000;
+        }
         .lantern-author { font-size: 0.65rem; color: var(--primary-gold); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
         .badge-private { font-size: 0.55rem; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-top: 4px; color: var(--text-tertiary); }
         .lantern-tassel { position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); width: 1.5px; height: 35px; background: linear-gradient(to bottom, var(--primary-gold), transparent); }
