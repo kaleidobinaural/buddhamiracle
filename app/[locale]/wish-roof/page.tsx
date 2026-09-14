@@ -293,13 +293,25 @@ export default function WishRoofPage() {
       <div className="roof-atmosphere" />
       {mounted && (
         <div className="particles-container">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="particle" style={{ 
-              left: `${(i * 37) % 100}%`, 
-              top: `${(i * 59) % 100}%`,
-              animationDelay: `${(i % 5)}s`
-            }} />
-          ))}
+          {[...Array(22)].map((_, i) => {
+            const size = 1.8 + ((i * 7) % 5) * 0.4;
+            const duration = 8 + (i % 5) * 1.5;
+            const delay = (i * 0.6) % 7;
+            return (
+              <div 
+                key={i} 
+                className="particle" 
+                style={{ 
+                  left: `${((i * 19 + 7) % 96) + 2}%`, 
+                  top: `${((i * 29 + 13) % 94) + 3}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  animationDuration: `${duration}s`,
+                  animationDelay: `${delay}s`
+                }} 
+              />
+            );
+          })}
         </div>
       )}
 
@@ -503,7 +515,7 @@ export default function WishRoofPage() {
                           } : { cursor: 'zoom-in' }}
                         >
                           <article className={`lantern ${isMyWish ? 'is-mine' : ''} ${viewMode === 'grid' ? 'grid-item' : ''}`}>
-                            <div className="lantern-light" />
+                            <div className="lantern-light" style={{ animationDelay: `${(index % 6) * 0.7}s` }} />
                             {(wish.likes_count || 0) > 0 && <div className="lantern-aura-glow" />}
                             <div className="lantern-content">
                               <p className="lantern-text">“{wish.content}”</p>
@@ -701,22 +713,27 @@ export default function WishRoofPage() {
         /* Time of Day Styles */
         .wish-page.time-night { background: #050505; }
         .wish-page.time-night .roof-atmosphere { background: radial-gradient(circle at 50% -20%, rgba(30, 20, 80, 0.4) 0%, transparent 70%); }
-        .wish-page.time-night .particle { background: #fff; width: 2px; height: 2px; box-shadow: 0 0 4px #fff; }
+        .wish-page.time-night .particle { background: #ffd770; box-shadow: 0 0 5px rgba(255, 215, 0, 0.65); }
 
         .wish-page.time-sunset { background: #1a0f0a; }
         .wish-page.time-sunset .roof-atmosphere { background: radial-gradient(circle at 50% -20%, rgba(212, 80, 23, 0.25) 0%, transparent 70%); }
-        .wish-page.time-sunset .particle { background: #ffaa55; width: 3px; height: 3px; box-shadow: 0 0 6px #ffaa55; }
+        .wish-page.time-sunset .particle { background: #ffaa55; box-shadow: 0 0 6px rgba(255, 170, 85, 0.65); }
 
         .wish-page.time-day { background: #111a1a; }
         .wish-page.time-day .roof-atmosphere { background: radial-gradient(circle at 50% -20%, rgba(100, 200, 255, 0.15) 0%, transparent 80%); }
-        .wish-page.time-day .particle { background: #ffffdd; width: 4px; height: 4px; box-shadow: 0 0 8px #ffffdd; opacity: 0.1; }
+        .wish-page.time-day .particle { background: #ffffdd; box-shadow: 0 0 6px rgba(255, 255, 221, 0.45); opacity: 0.2; }
 
         .roof-atmosphere { position: absolute; inset: 0; pointer-events: none; transition: background 2s ease; }
         
         /* Particles */
-        .particles-container { position: absolute; inset: 0; pointer-events: none; }
-        .particle { position: absolute; border-radius: 50%; animation: particle-float 10s linear infinite; opacity: 0.3; transition: all 2s ease; }
-        @keyframes particle-float { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.6; } 100% { transform: translateY(-100vh); opacity: 0; } }
+        .particles-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .particle { position: absolute; border-radius: 50%; animation: particle-float 10s linear infinite; opacity: 0.4; transition: background 2s ease; pointer-events: none; will-change: transform, opacity; }
+        @keyframes particle-float { 
+          0% { transform: translateY(0); opacity: 0; } 
+          20% { opacity: 0.7; }
+          80% { opacity: 0.6; }
+          100% { transform: translateY(-100vh); opacity: 0; } 
+        }
 
         .wish-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
         .page-header { text-align: center; margin-bottom: 32px; }
@@ -1149,6 +1166,36 @@ export default function WishRoofPage() {
           border-color: var(--primary-gold);
           color: #fff;
           transform: scale(1.1);
+        }
+
+        .lantern-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        /* Subtle inner candle light for floating lanterns */
+        .lantern-light {
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          transform: translate(-50%, -30%);
+          width: 120px;
+          height: 110px;
+          background: radial-gradient(circle, rgba(255, 215, 80, 0.28) 0%, rgba(212, 160, 23, 0.08) 45%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(14px);
+          pointer-events: none;
+          z-index: 0;
+          animation: candle-breathe 4s ease-in-out infinite;
+          will-change: opacity;
+        }
+
+        @keyframes candle-breathe {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.65; }
         }
 
         .zoomed .lantern-content {
