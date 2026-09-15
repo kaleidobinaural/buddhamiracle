@@ -697,10 +697,24 @@ img, video {
   border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 0 15px rgba(212, 160, 23, 0.1); border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   opacity: 0; visibility: hidden; transform: translateY(10px);
-  transition: all 0.3s var(--ease-expo); z-index: 100;
+  transition: all 0.25s var(--ease-expo); z-index: 100;
   display: flex; flex-direction: column;
+  pointer-events: none;
 }
-.profile-menu-wrap:hover .profile-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.profile-dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (hover: hover) and (pointer: fine) {
+  .profile-menu-wrap:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
 
 .dropdown-header { padding: 16px 20px; border-bottom: 1px solid var(--border-glass); }
 .user-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

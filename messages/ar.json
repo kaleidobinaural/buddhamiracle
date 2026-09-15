@@ -102,6 +102,7 @@
     "empty": "لم يتم العثور على أمنيات.",
     "snackbarLike": "لقد أنرت هذه الأمنية بقلبك. 🙏",
     "snackbarUnlike": "عاد نورك إلى قلبك.",
+    "snackbarLikeError": "تعذر مشاركة نور قلبك. يرجى المحاولة مرة أخرى بعد لحظات.",
     "modalTitle": "سجل نيتك",
     "modalPlaceholder": "دع قلبك يتحدث...",
     "modalName": "اسمك",

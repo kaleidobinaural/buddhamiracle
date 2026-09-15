@@ -102,6 +102,7 @@
     "empty": "No se encontraron deseos.",
     "snackbarLike": "Has iluminado este deseo con tu corazón. 🙏",
     "snackbarUnlike": "Tu luz ha regresado a tu corazón.",
+    "snackbarLikeError": "No se pudo compartir la luz de tu corazón. Por favor, inténtalo de nuevo en un momento.",
     "modalTitle": "Inscribe Tu Intención",
     "modalPlaceholder": "Deja que tu corazón hable...",
     "modalName": "Tu Nombre",

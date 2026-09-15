@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter, Link, usePathname as useIntlPathname } from '@/i18n/navigation';
 import { useSession, signOut, signIn } from "next-auth/react";
@@ -15,6 +15,8 @@ export default function Navigation() {
   const locale = useLocale();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
   const [mobileOpen, setMobileOpen] = useState(() => {
     // Restore menu state after locale change (component remounts on locale change)
     if (typeof window !== 'undefined') {
@@ -38,6 +40,26 @@ export default function Navigation() {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Auto-close profile dropdown on route change
+  useEffect(() => {
+    setIsProfileOpen(false);
+  }, [pathname]);
+
+  // Auto-close profile dropdown on click/tap outside
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
   }, []);
 
   // Fetch lotus count & listen for live updates
@@ -279,31 +301,64 @@ export default function Navigation() {
             </button>
 
             {session?.user ? (
-              <div className="profile-menu-wrap">
-                <button className="auth-avatar-btn">
+              <div className="profile-menu-wrap" ref={profileRef}>
+                <button
+                  className="auth-avatar-btn"
+                  onClick={() => setIsProfileOpen(prev => !prev)}
+                  aria-expanded={isProfileOpen}
+                  aria-label="User profile menu"
+                >
                   {session.user.image ? (
                     <Image src={session.user.image} alt="User" width={32} height={32} className="rounded-full" />
                   ) : (
                     <span className="fallback-avatar">{session.user.name?.charAt(0) || "U"}</span>
                   )}
                 </button>
-                <div className="profile-dropdown">
+                <div className={`profile-dropdown ${isProfileOpen ? 'is-open' : ''}`}>
                   <div className="dropdown-header">
                     <p className="user-name">{session.user.name}</p>
                     <p className="user-email">{session.user.email}</p>
                   </div>
-                  <Link href="/profile" className="dropdown-item">
+                  <Link
+                    href="/profile"
+                    className="dropdown-item"
+                    onClick={() => {
+                      setIsProfileOpen(false);
+                      window.dispatchEvent(new CustomEvent('section-navigated'));
+                    }}
+                  >
                     {t('mySanctuary')}
                   </Link>
-                  <Link href="/privacy" className="dropdown-item" style={{ color: '#888' }}>
+                  <Link
+                    href="/privacy"
+                    className="dropdown-item"
+                    style={{ color: '#888' }}
+                    onClick={() => {
+                      setIsProfileOpen(false);
+                      window.dispatchEvent(new CustomEvent('section-navigated'));
+                    }}
+                  >
                     {t('privacyPolicy')}
                   </Link>
                   {isAdmin && (
-                    <Link href="/admin" className="dropdown-item dropdown-item-admin">
+                    <Link
+                      href="/admin"
+                      className="dropdown-item dropdown-item-admin"
+                      onClick={() => {
+                        setIsProfileOpen(false);
+                        window.dispatchEvent(new CustomEvent('section-navigated'));
+                      }}
+                    >
                       ⚙️ Admin Panel
                     </Link>
                   )}
-                  <button onClick={() => signOut({ callbackUrl: `/${locale}` })} className="dropdown-item">
+                  <button
+                    onClick={() => {
+                      setIsProfileOpen(false);
+                      signOut({ callbackUrl: `/${locale}` });
+                    }}
+                    className="dropdown-item"
+                  >
                     {t('signOut')}
                   </button>
                 </div>

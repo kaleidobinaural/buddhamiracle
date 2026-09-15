@@ -102,6 +102,7 @@
     "empty": "Tidak ada harapan ditemukan.",
     "snackbarLike": "Anda telah menerangi harapan ini dengan hati Anda. 🙏",
     "snackbarUnlike": "Cahaya Anda telah kembali ke hati Anda.",
+    "snackbarLikeError": "Tidak dapat membagikan cahaya hati Anda. Silakan coba lagi sebentar lagi.",
     "modalTitle": "Ukirkan Niat Anda",
     "modalPlaceholder": "Biarkan hati Anda berbicara...",
     "modalName": "Nama Anda",

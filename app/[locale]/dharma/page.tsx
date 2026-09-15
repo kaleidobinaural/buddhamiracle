@@ -391,14 +391,53 @@ export default function DharmaPage() {
               <div className="scripture-list">
                 {visibleScriptures.map((scripture, idx) => {
                   const isOpen = expandedId === scripture.id;
-                  const preview = scripture.content.length > 200
-                    ? scripture.content.substring(0, 200) + '…'
-                    : scripture.content;
+                  const isCJK = ['ko', 'ja', 'zh'].includes(locale);
+                  const localized = getLocalizedContent(scripture);
+                  const fullCleanText = cleanContent(localized.text);
+                  // Calibrated short vs long threshold: CJK ~130 chars, others ~220 chars
+                  const isLong = isCJK ? fullCleanText.length > 130 : fullCleanText.length > 220;
 
+                  // ── SHORT SCRIPTURE: Clean single card without accordion toggle or repetition ──
+                  if (!isLong) {
+                    return (
+                      <article key={scripture.id} className="scripture-accordion">
+                        <div className="accordion-header">
+                          <div className="accordion-meta">
+                            <span className="accordion-index">{String(idx + 1).padStart(2, '0')}</span>
+                            <span className="accordion-source">{scripture.source}</span>
+                            {scripture.metadata?.chapter && (
+                              <span className="accordion-chapter">{scripture.metadata.chapter}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className={`accordion-short-text mt-3 transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
+                          {localized.isTranslating && (
+                            <span className="text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse block mb-1">
+                              {t('translating')}
+                            </span>
+                          )}
+                          &ldquo;{fullCleanText}&rdquo;
+                        </div>
+
+                        <div className="accordion-actions" style={{ marginTop: '16px' }}>
+                          <button
+                            className="btn-parchment-read"
+                            onClick={(e) => openModal(e, scripture)}
+                          >
+                            <span className="btn-parchment-icon">📜</span>
+                            {t('readMore')}
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  }
+
+                  // ── LONG SCRIPTURE: Accordion with 3-line preview, preview hidden when expanded ──
                   return (
                     <article
                       key={scripture.id}
-                      className={`scripture-accordion ${isOpen ? 'open' : ''}`}
+                      className={`scripture-accordion ${isOpen ? 'open' : ''} cursor-pointer`}
                       onClick={() => handleAccordion(scripture.id)}
                     >
                       {/* ── Accordion Header ── */}
@@ -413,26 +452,24 @@ export default function DharmaPage() {
                         <span className={`accordion-chevron ${isOpen ? 'rotated' : ''}`}>›</span>
                       </div>
 
-                      {/* ── Preview (always visible) ── */}
-                      <div className={`accordion-preview relative transition-opacity duration-300 ${getLocalizedContent(scripture).isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                        {getLocalizedContent(scripture).isTranslating && (
-                           <span className="absolute -top-5 left-0 text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse">
-                             {t('translating')}
-                           </span>
-                        )}
-                        &ldquo;{cleanContent(
-                          getLocalizedContent(scripture).text.length > 200
-                            ? getLocalizedContent(scripture).text.substring(0, 200) + '…'
-                            : getLocalizedContent(scripture).text
-                        )}&rdquo;
-                      </div>
+                      {/* ── Preview (shown ONLY when NOT open, clamped to 3 lines) ── */}
+                      {!isOpen && (
+                        <div className={`accordion-preview relative transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
+                          {localized.isTranslating && (
+                            <span className="absolute -top-5 left-0 text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse">
+                              {t('translating')}
+                            </span>
+                          )}
+                          &ldquo;{fullCleanText}&rdquo;
+                        </div>
+                      )}
 
-                      {/* ── Expanded Content ── */}
+                      {/* ── Expanded Content (shown ONLY when open, NO duplicate preview above it) ── */}
                       {isOpen && (
                         <div className="accordion-full animate-fade-up">
                           <div className="accordion-divider" />
-                          <p className={`accordion-full-text transition-opacity duration-300 ${getLocalizedContent(scripture).isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                            &ldquo;{cleanContent(getLocalizedContent(scripture).text)}&rdquo;
+                          <p className={`accordion-full-text transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
+                            &ldquo;{fullCleanText}&rdquo;
                           </p>
                           {/* ── READ MORE → opens parchment modal ── */}
                           <div className="accordion-actions">
@@ -473,24 +510,29 @@ export default function DharmaPage() {
       </div>
 
       {/* ── Scroll-to-Top FAB & Character Avatar (hidden when modal is open) ── */}
-      {!readingScripture && (
-        <>
-          <button
-            className={`fab-top ${showFab ? 'visible' : ''}`}
-            onClick={scrollToTop}
-            aria-label="Scroll to top"
-          >
-            ↑
-          </button>
+      {/* ── Scroll-to-Top FAB & Character Avatar (kept mounted, visually hidden during modal to prevent unmount/remount lag) ── */}
+      <button
+        className={`fab-top ${showFab && !readingScripture ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        ↑
+      </button>
 
-          <CharacterAvatar
-            src="/images/bori/bori_tablet.png"
-            message={t('boriMessage')}
-            position="bottom-right"
-            delay={1000}
-          />
-        </>
-      )}
+      <div
+        style={{
+          opacity: readingScripture ? 0 : 1,
+          pointerEvents: readingScripture ? 'none' : 'auto',
+          transition: 'opacity 0.2s ease',
+        }}
+      >
+        <CharacterAvatar
+          src="/images/bori/bori_tablet.png"
+          message={t('boriMessage')}
+          position="bottom-right"
+          delay={1000}
+        />
+      </div>
 
       {/* ══════════════════════════════════════════ */}
       {/* ★ PARCHMENT MODAL — Ancient scroll design ★ */}
@@ -627,7 +669,28 @@ export default function DharmaPage() {
         .accordion-chevron { font-size: 1.6rem; color: rgba(212,160,23,0.4); transition: transform 0.4s var(--ease-expo), color 0.3s; flex-shrink: 0; line-height: 1; }
         .accordion-chevron.rotated { transform: rotate(90deg); color: #d4a017; }
 
-        .accordion-preview { margin-top: 14px; font-family: var(--font-serif); font-style: italic; font-size: clamp(0.85rem, 1.8vw, 1.05rem); color: rgba(255,255,255,0.45); line-height: 1.9; }
+        .accordion-preview {
+          margin-top: 14px;
+          font-family: var(--font-serif);
+          font-style: italic;
+          font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+          color: rgba(255,255,255,0.45);
+          line-height: 1.9;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .accordion-short-text {
+          font-family: var(--font-serif);
+          font-style: italic;
+          font-size: clamp(0.9rem, 1.9vw, 1.08rem);
+          color: rgba(255,255,255,0.72);
+          line-height: 2.0;
+          word-break: break-word;
+        }
 
         .accordion-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(212,160,23,0.2), transparent); margin: 20px 0; }
         .accordion-full-text { font-family: var(--font-serif); font-style: italic; font-size: clamp(0.9rem, 2vw, 1.1rem); color: rgba(255,255,255,0.78); line-height: 2.1; white-space: pre-wrap; word-break: break-word; }
@@ -695,21 +758,24 @@ export default function DharmaPage() {
           display: flex; align-items: flex-start; justify-content: center;
           padding: calc(var(--nav-height, 80px) + 12px) 16px 60px;
           overflow-y: auto; box-sizing: border-box;
-          animation: fade-in-overlay 0.15s ease;
+          animation: fade-in-overlay 0.12s ease;
+          touch-action: manipulation;
+          will-change: opacity;
         }
         @keyframes fade-in-overlay { from { opacity: 0; } to { opacity: 1; } }
 
         .parchment-animate-in {
-          animation: parchmentEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: parchmentEnter 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          will-change: transform, opacity;
         }
         @keyframes parchmentEnter {
-          from { opacity: 0; transform: scale(0.96) translateY(14px); }
+          from { opacity: 0; transform: scale(0.97) translateY(8px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         @media (max-width: 768px) {
           .parchment-overlay {
-            background: rgba(0, 0, 0, 0.95) !important;
+            background: rgba(0, 0, 0, 0.94) !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
             padding: calc(var(--nav-height, 80px) + 8px) 12px 40px;

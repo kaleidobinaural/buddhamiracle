@@ -102,6 +102,7 @@
     "empty": "願いは見つかりませんでした。",
     "snackbarLike": "あなたは心でこの願いに光を灯しました。🙏",
     "snackbarUnlike": "あなたの光は心に戻りました。",
+    "snackbarLikeError": "心に光を灯せませんでした。しばらくしてからもう一度お試しください。",
     "modalTitle": "あなたの意図を刻む",
     "modalPlaceholder": "心に語らせましょう...",
     "modalName": "あなたの名前",

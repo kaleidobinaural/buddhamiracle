@@ -102,6 +102,7 @@
     "empty": "Keine Wünsche gefunden.",
     "snackbarLike": "Du hast diesen Wunsch mit deinem Herzen erleuchtet. 🙏",
     "snackbarUnlike": "Dein Licht ist in dein Herz zurückgekehrt.",
+    "snackbarLikeError": "Das Licht deines Herzens konnte nicht geteilt werden. Bitte versuche es gleich noch einmal.",
     "modalTitle": "Schreibe deine Absicht nieder",
     "modalPlaceholder": "Lass dein Herz sprechen...",
     "modalName": "Dein Name",

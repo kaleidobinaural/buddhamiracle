@@ -102,6 +102,7 @@
     "empty": "Aucun vœu trouvé.",
     "snackbarLike": "Vous avez illuminé ce vœu de votre cœur. 🙏",
     "snackbarUnlike": "Votre lumière est retournée à votre cœur.",
+    "snackbarLikeError": "Impossible de partager la lumière de votre cœur. Veuillez réessayer dans un instant.",
     "modalTitle": "Inscrivez Votre Intention",
     "modalPlaceholder": "Laissez votre cœur parler...",
     "modalName": "Votre Nom",

@@ -48,6 +48,7 @@ export default function WishRoofPage() {
   const wishSectionRef = useRef<HTMLDivElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
   const latestFetchIdRef = useRef(0);
+  const likeInFlightRef = useRef<Set<string>>(new Set());
 
   const handleTogglePublic = async (wish: Wish) => {
     setIsActionSubmitting(true);
@@ -172,10 +173,31 @@ export default function WishRoofPage() {
       return;
     }
 
+    // Debounce / rapid click guard
+    if (likeInFlightRef.current.has(id)) return;
+    likeInFlightRef.current.add(id);
+
     if (typeof window !== 'undefined') {
-      const likedWishes = JSON.parse(localStorage.getItem('liked_wishes') || '[]');
+      const likedWishes: string[] = JSON.parse(localStorage.getItem('liked_wishes') || '[]');
       const isAlreadyLiked = likedWishes.includes(id);
       const action = isAlreadyLiked ? 'unlike' : 'like';
+
+      // ── Optimistic Update (0ms instant reaction) ──────────────────────────
+      const optimisticLiked = action === 'like'
+        ? [...likedWishes, id]
+        : likedWishes.filter((item: string) => item !== id);
+      localStorage.setItem('liked_wishes', JSON.stringify(optimisticLiked));
+
+      const currentWish = wishes.find(w => w.id === id);
+      const currentCount = currentWish?.likes_count ?? 0;
+      const optimisticCount = action === 'like' ? currentCount + 1 : Math.max(0, currentCount - 1);
+
+      setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: optimisticCount } : w));
+      if (selectedWish?.id === id) {
+        setSelectedWish(prev => prev ? { ...prev, likes_count: optimisticCount } : null);
+      }
+      showMessage(action === 'like' ? t('snackbarLike') : t('snackbarUnlike'));
+      // ──────────────────────────────────────────────────────────────────────
 
       try {
         const res = await fetch('/api/wishes', {
@@ -184,37 +206,44 @@ export default function WishRoofPage() {
           body: JSON.stringify({ id, action }),
         });
         const data = await res.json();
+
         if (data.success) {
-          let newLiked;
-          if (action === 'like') {
-            newLiked = [...likedWishes, id];
-            showMessage(t('snackbarLike'));
-          } else {
-            newLiked = likedWishes.filter((item: string) => item !== id);
-            showMessage(t('snackbarUnlike'));
+          // Sync with exact server count if returned
+          const finalCount = typeof data.likes_count === 'number'
+            ? data.likes_count
+            : (data.data?.[0]?.likes_count ?? optimisticCount);
+
+          if (finalCount !== optimisticCount) {
+            setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: finalCount } : w));
+            if (selectedWish?.id === id) {
+              setSelectedWish(prev => prev ? { ...prev, likes_count: finalCount } : null);
+            }
           }
-          localStorage.setItem('liked_wishes', JSON.stringify(newLiked));
-
-          // Determine updated likes safely
-          const currentWish = wishes.find(w => w.id === id);
-          const currentCount = currentWish?.likes_count ?? 0;
-          const fallbackCount = action === 'like' ? currentCount + 1 : Math.max(0, currentCount - 1);
-          const updatedLikes = typeof data.likes_count === 'number' 
-            ? data.likes_count 
-            : (data.data?.[0]?.likes_count ?? fallbackCount);
-
-          // Update local state
-          setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: updatedLikes } : w));
+        } else {
+          // Rollback on server error
+          localStorage.setItem('liked_wishes', JSON.stringify(likedWishes));
+          setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: currentCount } : w));
           if (selectedWish?.id === id) {
-            setSelectedWish(prev => prev ? { ...prev, likes_count: updatedLikes } : null);
+            setSelectedWish(prev => prev ? { ...prev, likes_count: currentCount } : null);
           }
-        } else if (res.status === 401) {
-          setShowLoginModal(true);
-        } else if (data.error) {
-          showMessage(data.error);
+
+          if (res.status === 401) {
+            setShowLoginModal(true);
+          } else {
+            showMessage(t('snackbarLikeError'));
+          }
         }
       } catch (err) {
         console.error('Error liking wish:', err);
+        // Rollback on network failure
+        localStorage.setItem('liked_wishes', JSON.stringify(likedWishes));
+        setWishes(prev => prev.map(w => w.id === id ? { ...w, likes_count: currentCount } : w));
+        if (selectedWish?.id === id) {
+          setSelectedWish(prev => prev ? { ...prev, likes_count: currentCount } : null);
+        }
+        showMessage(t('snackbarLikeError'));
+      } finally {
+        likeInFlightRef.current.delete(id);
       }
     }
   };

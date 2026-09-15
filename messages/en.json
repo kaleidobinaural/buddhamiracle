@@ -102,6 +102,7 @@
     "empty": "No wishes found.",
     "snackbarLike": "You have lit this wish with your heart. 🙏",
     "snackbarUnlike": "Your light has returned to your heart.",
+    "snackbarLikeError": "Could not share the light of your heart. Please try again in a moment.",
     "modalTitle": "Inscribe Your Intention",
     "modalPlaceholder": "Let your heart speak...",
     "modalName": "Your Name",

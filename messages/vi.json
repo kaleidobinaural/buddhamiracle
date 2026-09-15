@@ -102,6 +102,7 @@
     "empty": "Không tìm thấy nguyện ước nào.",
     "snackbarLike": "Bạn đã thắp sáng nguyện ước này bằng tấm lòng của mình. 🙏",
     "snackbarUnlike": "Ánh sáng đã trở về với tâm bạn.",
+    "snackbarLikeError": "Không thể gửi trao ánh sáng từ tâm. Xin vui lòng thử lại sau giây lát.",
     "modalTitle": "Khắc Ghi Tâm Nguyện",
     "modalPlaceholder": "Hãy để tâm bạn lên tiếng...",
     "modalName": "Tên Của Bạn",

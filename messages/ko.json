@@ -102,6 +102,7 @@
     "empty": "소원을 찾을 수 없습니다.",
     "snackbarLike": "이 소원에 마음의 빛을 보탰습니다. 🙏",
     "snackbarUnlike": "마음의 빛을 거두었습니다.",
+    "snackbarLikeError": "마음의 빛을 전하지 못했습니다. 잠시 후 다시 시도해 주세요.",
     "modalTitle": "염원 기록하기",
     "modalPlaceholder": "마음속 이야기를 들려주세요...",
     "modalName": "당신의 이름",
