@@ -227,6 +227,12 @@ img, video {
   text-shadow: 0 0 20px var(--primary-glow);
 }
 
+.nav-logo-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* Dev / Tester Version Badge */
 .nav-dev-badge {
   display: inline-flex;
@@ -275,10 +281,18 @@ img, video {
 
 @media (max-width: 768px) {
   .nav-dev-badge {
-    font-size: 0.62rem;
-    padding: 1px 5px;
-    margin-left: 4px;
+    font-size: 0.58rem;
+    padding: 1px 4px;
+    margin-left: 0;
     gap: 3px;
+    line-height: 1.1;
+    border-radius: 4px;
+    height: 15px;
+  }
+
+  .nav-dev-dot {
+    width: 5px;
+    height: 5px;
   }
 }
 
@@ -543,41 +557,56 @@ img, video {
   }
 
   .nav-inner {
-    padding: 0 16px;
-    gap: 0; 
+    padding: 0 12px;
+    gap: 8px; 
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .nav-logo {
-    gap: 7px;
+    gap: 6px;
     align-items: center;
+    min-width: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
   }
 
   .nav-logo-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
   }
 
   .nav-logo-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: block;
   }
 
   .nav-logo-text {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     letter-spacing: 0.02em;
     line-height: 1;
     display: inline-flex;
     align-items: center;
-    transform: translateY(-1.5px);
+    transform: none;
+    white-space: nowrap;
   }
 
   .nav-actions {
-    gap: 12px;
-    margin-left: 16px;
+    gap: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   /* 모바일에서 언어 전환 버튼 숨김 — 모바일 메뉴에서 제공하면 충분 */
@@ -722,7 +751,7 @@ img, video {
     width: 24px;
     height: 44px;
     justify-content: center;
-    margin-right: 6px; /* 추가 마진으로 우측 가장자리에서 약간 띄워 여유공간 확보 */
+    margin-right: 0 !important;
   }
   .hamburger::after {
     content: '';

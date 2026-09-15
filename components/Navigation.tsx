@@ -208,26 +208,28 @@ export default function Navigation() {
                 <line x1="5.3" y1="18.7" x2="18.7" y2="5.3" strokeWidth="1.5" />
               </svg>
             </span>
-            <span className="nav-logo-text">Temple of Light</span>
-            {isAdminOrTester && (
-              <span
-                className="nav-dev-badge"
-                title={`Git Commit: #${process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}\n배포 시각: ${process.env.NEXT_PUBLIC_BUILD_TIME || 'local'}\n클릭 시 커밋 번호 복사`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  const commit = process.env.NEXT_PUBLIC_BUILD_ID || 'dev';
-                  if (typeof navigator !== 'undefined' && navigator.clipboard) {
-                    navigator.clipboard.writeText(commit).then(() => {
-                      alert(`개발 커밋 번호가 복사되었습니다: #${commit}`);
-                    }).catch(() => {});
-                  }
-                }}
-              >
-                <span className="nav-dev-dot" aria-hidden="true" />
-                <span className="nav-dev-label">#{process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}</span>
-              </span>
-            )}
+            <div className="nav-logo-copy">
+              <span className="nav-logo-text">Temple of Light</span>
+              {isAdminOrTester && (
+                <span
+                  className="nav-dev-badge"
+                  title={`Git Commit: #${process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}\n배포 시각: ${process.env.NEXT_PUBLIC_BUILD_TIME || 'local'}\n클릭 시 커밋 번호 복사`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const commit = process.env.NEXT_PUBLIC_BUILD_ID || 'dev';
+                    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+                      navigator.clipboard.writeText(commit).then(() => {
+                        alert(`개발 커밋 번호가 복사되었습니다: #${commit}`);
+                      }).catch(() => {});
+                    }
+                  }}
+                >
+                  <span className="nav-dev-dot" aria-hidden="true" />
+                  <span className="nav-dev-label">#{process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}</span>
+                </span>
+              )}
+            </div>
           </Link>
 
           {/* Desktop Nav Links */}
