@@ -39,8 +39,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, user }) {
       if (user) {
-        const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [];
-        token.role = adminEmails.includes(user.email || '') ? 'admin' : 'free';
+        const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+        const testerEmails = (process.env.TESTER_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+        const email = (user.email || '').trim().toLowerCase();
+        if (adminEmails.includes(email)) {
+          token.role = 'admin';
+        } else if (testerEmails.includes(email)) {
+          token.role = 'tester';
+        } else {
+          token.role = 'free';
+        }
       }
       return token;
     }

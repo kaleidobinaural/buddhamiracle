@@ -31,10 +31,14 @@ export default function Navigation() {
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean);
+  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
+  const testerEmails = (process.env.NEXT_PUBLIC_TESTER_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const isAdmin = (session?.user as any)?.role === 'admin' ||
-    (session?.user?.email ? adminEmails.includes(session.user.email) : false);
+  const userRole = (session?.user as any)?.role;
+  const userEmail = (session?.user?.email || '').trim().toLowerCase();
+  const isAdmin = userRole === 'admin' || (userEmail ? adminEmails.includes(userEmail) : false);
+  const isTester = userRole === 'tester' || (userEmail ? testerEmails.includes(userEmail) : false);
+  const isAdminOrTester = isAdmin || isTester;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -207,6 +211,25 @@ export default function Navigation() {
               </svg>
             </span>
             <span className="nav-logo-text">Temple of Light</span>
+            {isAdminOrTester && (
+              <span
+                className="nav-dev-badge"
+                title={`Git Commit: #${process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}\n배포 시각: ${process.env.NEXT_PUBLIC_BUILD_TIME || 'local'}\n클릭 시 커밋 번호 복사`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  const commit = process.env.NEXT_PUBLIC_BUILD_ID || 'dev';
+                  if (typeof navigator !== 'undefined' && navigator.clipboard) {
+                    navigator.clipboard.writeText(commit).then(() => {
+                      alert(`개발 커밋 번호가 복사되었습니다: #${commit}`);
+                    }).catch(() => {});
+                  }
+                }}
+              >
+                <span className="nav-dev-dot" aria-hidden="true" />
+                <span className="nav-dev-label">#{process.env.NEXT_PUBLIC_BUILD_ID || 'dev'}</span>
+              </span>
+            )}
           </Link>
 
           {/* Desktop Nav Links */}

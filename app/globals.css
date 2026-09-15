@@ -227,6 +227,61 @@ img, video {
   text-shadow: 0 0 20px var(--primary-glow);
 }
 
+/* Dev / Tester Version Badge */
+.nav-dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(212, 160, 23, 0.12);
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  color: var(--primary-gold);
+  line-height: 1.4;
+  margin-left: 6px;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-dev-badge:hover {
+  background: rgba(212, 160, 23, 0.24);
+  border-color: rgba(212, 160, 23, 0.65);
+  box-shadow: 0 0 10px rgba(212, 160, 23, 0.25);
+}
+
+.nav-dev-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4CAF50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.85);
+  display: inline-block;
+  flex-shrink: 0;
+  animation: nav-dev-pulse 2s infinite ease-in-out;
+}
+
+@keyframes nav-dev-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+@media (max-width: 768px) {
+  .nav-dev-badge {
+    font-size: 0.62rem;
+    padding: 1px 5px;
+    margin-left: 4px;
+    gap: 3px;
+  }
+}
+
 /* Nav Links */
 .nav-links {
   display: flex;
