@@ -38,10 +38,25 @@ export async function POST(req: NextRequest) {
     // ★ Dual-save to Google Apps Script (backup)
     if (GAS_URL) {
       try {
+        const isVvip = type.toLowerCase() === 'vvip' || type.toLowerCase().includes('vvip');
+        const isPremium = type.toLowerCase().includes('premium');
+        const subject = isVvip
+          ? 'VVIP Private Journey'
+          : isPremium
+            ? 'Premium Collection'
+            : (type === 'Support' ? 'Quiesan Support' : (type || '일반 문의'));
+
+        const params = new URLSearchParams();
+        params.append('subject', subject);
+        params.append('name', name);
+        params.append('email', email);
+        params.append('message', message);
+        params.append('amount', '');
+
         await fetch(GAS_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message, type }),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString(),
         });
       } catch (gasErr) {
         console.warn('[Inquiry] GAS save failed (non-fatal):', gasErr);

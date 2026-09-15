@@ -195,7 +195,7 @@ export default function StorePage() {
       const res = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, type: 'vvip' }),
+        body: JSON.stringify({ ...formData, type: isPremiumModal ? 'Premium' : 'VVIP' }),
       });
       if (res.ok) setFormStatus('success');
       else setFormStatus('error');
