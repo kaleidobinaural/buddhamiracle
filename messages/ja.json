@@ -127,7 +127,9 @@
     "loginRequired": "ログインが必要です。ご自身が残した願い事を見るには、まずログインしてください。",
     "loginRequiredTitle": "ログインが必要です",
     "loginRequiredDesc": "願い事を刻む、またはご自身の願いを見るにはログインしてください。",
-    "signInBtn": "ログイン"
+    "signInBtn": "ログイン",
+    "wishTogglePublicError": "公開設定の変更に失敗しました。もう一度お試しください。",
+    "wishDeleteError": "願いの削除に失敗しました。もう一度お試しください。"
   },
   "Pillars": {
     "eyebrow": "永遠の礎",

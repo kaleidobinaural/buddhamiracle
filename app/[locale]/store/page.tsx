@@ -454,7 +454,7 @@ export default function StorePage() {
       {isVvipModalOpen && (
         <div className="store-modal-overlay" onClick={closeInquiryModal}>
           <div className="store-modal-content glass-card animate-fade-up" onClick={e => e.stopPropagation()}>
-            <h3 className="store-modal-title" style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--primary-gold)' }}>
+            <h3 className="store-modal-title" style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--primary-gold)', textAlign: 'center', width: '100%' }}>
               {isPremiumModal ? t('premiumModalTitle') : t('vvipModalTitle')}
             </h3>
             {formStatus === 'success' ? (
@@ -469,7 +469,7 @@ export default function StorePage() {
               </div>
             ) : (
               <form onSubmit={handleVvipSubmit} className="store-form">
-                <p style={{ color: '#aaa', marginBottom: '24px', fontSize: '0.9rem' }}>
+                <p style={{ color: '#aaa', marginBottom: '24px', fontSize: '0.9rem', textAlign: 'center' }}>
                   {t('modalDesc')}
                 </p>
                 <input

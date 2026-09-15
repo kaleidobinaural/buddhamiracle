@@ -75,44 +75,62 @@ export default function PillarsPage() {
   };
 
   const handleTogglePublic = async (pillar: Pillar) => {
+    if (isActionSubmitting) return;
     setIsActionSubmitting(true);
+    const previousStatus = pillar.is_public;
+    const nextStatus = !previousStatus;
+
+    // ── Optimistic Update (0ms instant reaction) ──
+    setPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: nextStatus } : p));
+    setMyPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: nextStatus } : p));
+    if (selectedPillar?.id === pillar.id) {
+      setSelectedPillar({ ...selectedPillar, is_public: nextStatus });
+    }
+
     try {
       const res = await fetch('/api/pillars', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: pillar.id, is_public: !pillar.is_public }),
+        body: JSON.stringify({ id: pillar.id, is_public: nextStatus }),
       });
-      if (res.ok) {
-        const nextStatus = !pillar.is_public;
-        setPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: nextStatus } : p));
-        setMyPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: nextStatus } : p));
-        if (selectedPillar?.id === pillar.id) {
-          setSelectedPillar({ ...selectedPillar, is_public: nextStatus });
-        }
-      }
+      if (!res.ok) throw new Error('Failed to toggle public status');
     } catch (e) {
       console.error('Failed to toggle public status:', e);
+      // ── Rollback on failure ──
+      setPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: previousStatus } : p));
+      setMyPillars(prev => prev.map(p => p.id === pillar.id ? { ...p, is_public: previousStatus } : p));
+      if (selectedPillar?.id === pillar.id) {
+        setSelectedPillar({ ...selectedPillar, is_public: previousStatus });
+      }
     } finally {
       setIsActionSubmitting(false);
     }
   };
 
   const handleDeletePillar = async (id: string) => {
+    if (isActionSubmitting) return;
     setIsActionSubmitting(true);
+    const prevPillars = [...pillars];
+    const prevMyPillars = [...myPillars];
+
+    // ── Optimistic Update (0ms instant reaction) ──
+    setPillars(prev => prev.filter(p => p.id !== id));
+    setMyPillars(prev => prev.filter(p => p.id !== id));
+    setSelectedPillar(null);
+    setDeleteConfirmOpen(false);
+
     try {
       const res = await fetch('/api/pillars', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
       });
-      if (res.ok) {
-        setPillars(prev => prev.filter(p => p.id !== id));
-        setMyPillars(prev => prev.filter(p => p.id !== id));
-        setSelectedPillar(null);
-        setDeleteConfirmOpen(false);
-      }
+      if (!res.ok) throw new Error('Failed to delete pillar');
     } catch (e) {
       console.error('Failed to delete pillar:', e);
+      // ── Rollback on failure ──
+      setPillars(prevPillars);
+      setMyPillars(prevMyPillars);
     } finally {
       setIsActionSubmitting(false);
     }
@@ -184,7 +202,11 @@ export default function PillarsPage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchPillars(searchQuery, sortBy, role, activeTab);
+    const targetTab = activeTab === 'mine' ? (role === 'founder' ? 'founders' : 'supporters') : activeTab;
+    if (activeTab === 'mine') {
+      setActiveTab(targetTab);
+    }
+    fetchPillars(searchQuery, sortBy, role, targetTab);
   };
 
   const handleDonateClick = () => {
@@ -285,11 +307,7 @@ export default function PillarsPage() {
                 className={`btn-mine-v2 ${activeTab === 'mine' ? 'active' : ''}`}
                 onClick={() => {
                   setSearchQuery('');
-                  if (activeTab === 'mine') {
-                    setActiveTab('supporters');
-                  } else {
-                    setActiveTab('mine');
-                  }
+                  setActiveTab('mine');
                 }}
               >
                 🪷 {t('myDonations') || '내 후원'}

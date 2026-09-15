@@ -127,7 +127,9 @@
     "loginRequired": "Anmeldung erforderlich. Bitte melden Sie sich an, um Ihre hinterlassenen Wünsche zu sehen.",
     "loginRequiredTitle": "Anmeldung Erforderlich",
     "loginRequiredDesc": "Melden Sie sich an, um Wünsche einzutragen oder einzusehen.",
-    "signInBtn": "Anmelden"
+    "signInBtn": "Anmelden",
+    "wishTogglePublicError": "Sichtbarkeit des Wunsches konnte nicht geändert werden. Bitte erneut versuchen.",
+    "wishDeleteError": "Wunsch konnte nicht gelöscht werden. Bitte erneut versuchen."
   },
   "Pillars": {
     "eyebrow": "Das ewige Fundament",

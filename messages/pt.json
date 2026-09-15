@@ -127,7 +127,9 @@
     "loginRequired": "Login necessário. Por favor, faça login para ver seus desejos inscritos.",
     "loginRequiredTitle": "Login Necessário",
     "loginRequiredDesc": "Faça login para registrar ou ver seus desejos.",
-    "signInBtn": "Entrar"
+    "signInBtn": "Entrar",
+    "wishTogglePublicError": "Falha ao alterar a visibilidade do desejo. Tente novamente.",
+    "wishDeleteError": "Falha ao excluir o desejo. Tente novamente."
   },
   "Pillars": {
     "eyebrow": "A Fundação Eterna",

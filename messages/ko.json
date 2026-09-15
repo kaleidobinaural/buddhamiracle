@@ -127,7 +127,9 @@
     "loginRequired": "로그인이 필요한 기능입니다. 내가 남긴 소원을 확인하려면 먼저 로그인해 주세요.",
     "loginRequiredTitle": "로그인이 필요합니다",
     "loginRequiredDesc": "소원을 남기거나 내 소원을 확인하려면 먼저 로그인해 주세요.",
-    "signInBtn": "로그인하기"
+    "signInBtn": "로그인하기",
+    "wishTogglePublicError": "공개 상태 전환에 실패했습니다. 다시 시도해 주세요.",
+    "wishDeleteError": "소원 삭제에 실패했습니다. 다시 시도해 주세요."
   },
   "Pillars": {
     "eyebrow": "영원의 주춧돌",

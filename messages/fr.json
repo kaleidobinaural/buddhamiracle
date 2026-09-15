@@ -127,7 +127,9 @@
     "loginRequired": "Connexion requise. Veuillez vous connecter pour voir vos vœux inscrits.",
     "loginRequiredTitle": "Connexion Requise",
     "loginRequiredDesc": "Connectez-vous pour inscrire ou consulter vos vœux.",
-    "signInBtn": "Se Connecter"
+    "signInBtn": "Se Connecter",
+    "wishTogglePublicError": "Impossible de modifier la visibilité du vœu. Veuillez réessayer.",
+    "wishDeleteError": "Échec de la suppression du vœu. Veuillez réessayer."
   },
   "Pillars": {
     "eyebrow": "La Fondation Éternelle",

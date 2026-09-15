@@ -121,7 +121,14 @@ export default function ChatPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isTyping) return;
+    if (isTyping) return;
+
+    if (lotusCount !== null && lotusCount < 1) {
+      setShowUpgradeModal(true);
+      return;
+    }
+
+    if (!input.trim()) return;
 
     const userMessage: Message = { id: 'usr-' + Date.now(), role: 'user', content: input.trim() };
     setMessages(prev => [...prev, userMessage]);
@@ -339,9 +346,14 @@ export default function ChatPage() {
               <input
                 type="text"
                 className="chat-input"
-                placeholder={t('inputPlaceholder')}
+                placeholder={lotusCount === 0 ? (t('lotusExhaustedPlaceholder') || '연꽃이 부족합니다. 연꽃을 충전해 대화를 이어가세요.') : t('inputPlaceholder')}
                 value={input}
                 onChange={e => setInput(e.target.value)}
+                onClick={() => {
+                  if (lotusCount !== null && lotusCount < 1) {
+                    setShowUpgradeModal(true);
+                  }
+                }}
                 disabled={isTyping}
               />
               <button type="submit" className="btn-send" disabled={!input.trim() || isTyping}>

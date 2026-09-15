@@ -127,7 +127,9 @@
     "loginRequired": "Sign in required. Please log in to view your inscribed wishes.",
     "loginRequiredTitle": "Sign In Required",
     "loginRequiredDesc": "Please sign in first to inscribe or view your wishes.",
-    "signInBtn": "Sign In"
+    "signInBtn": "Sign In",
+    "wishTogglePublicError": "Failed to update wish visibility. Please try again.",
+    "wishDeleteError": "Failed to delete wish. Please try again."
   },
   "Pillars": {
     "eyebrow": "The Eternal Foundation",

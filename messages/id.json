@@ -127,7 +127,9 @@
     "loginRequired": "Diperlukan masuk. Silakan masuk untuk melihat doa yang Anda tinggalkan.",
     "loginRequiredTitle": "Diperlukan Masuk",
     "loginRequiredDesc": "Silakan masuk untuk menulis atau melihat doa Anda.",
-    "signInBtn": "Masuk"
+    "signInBtn": "Masuk",
+    "wishTogglePublicError": "Gagal mengubah visibilitas doa. Silakan coba lagi.",
+    "wishDeleteError": "Gagal menghapus doa. Silakan coba lagi."
   },
   "Pillars": {
     "eyebrow": "Fondasi Abadi",

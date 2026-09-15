@@ -105,6 +105,10 @@ export default function HallPage() {
             </button>
             <button className="offering-btn" onClick={() => {
               if (status !== 'authenticated') { setShowLoginModal(true); return; }
+              if (lotusCount !== null && lotusCount < 3) {
+                setShowUpgradeModal(true);
+                return;
+              }
               setIsModalOpen(true);
             }}>
               <span className="btn-icon">🕯️</span>

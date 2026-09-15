@@ -51,44 +51,62 @@ export default function WishRoofPage() {
   const likeInFlightRef = useRef<Set<string>>(new Set());
 
   const handleTogglePublic = async (wish: Wish) => {
+    if (isActionSubmitting) return;
     setIsActionSubmitting(true);
+    const previousStatus = wish.is_public;
+    const nextStatus = !previousStatus;
+
+    // ── Optimistic Update (0ms instant reaction) ──
+    setWishes(prev => prev.map(w => w.id === wish.id ? { ...w, is_public: nextStatus } : w));
+    if (selectedWish?.id === wish.id) {
+      setSelectedWish(prev => prev ? { ...prev, is_public: nextStatus } : null);
+    }
+    showMessage(nextStatus ? (t('wishMadePublic') || '공개 소원으로 전환되었습니다.') : (t('wishMadePrivate') || '비공개 소원으로 전환되었습니다.'));
+
     try {
       const res = await fetch('/api/wishes', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: wish.id, action: 'toggle_public' }),
       });
-      if (res.ok) {
-        const updatedStatus = !wish.is_public;
-        setWishes(prev => prev.map(w => w.id === wish.id ? { ...w, is_public: updatedStatus } : w));
-        if (selectedWish?.id === wish.id) {
-          setSelectedWish({ ...selectedWish, is_public: updatedStatus });
-        }
-        showMessage(updatedStatus ? (t('wishMadePublic') || '공개 소원으로 전환되었습니다.') : (t('wishMadePrivate') || '비공개 소원으로 전환되었습니다.'));
-      }
+      if (!res.ok) throw new Error('Failed to toggle public status');
     } catch {
-      showMessage('오류가 발생했습니다.');
+      // ── Rollback on failure ──
+      setWishes(prev => prev.map(w => w.id === wish.id ? { ...w, is_public: previousStatus } : w));
+      if (selectedWish?.id === wish.id) {
+        setSelectedWish(prev => prev ? { ...prev, is_public: previousStatus } : null);
+      }
+      showMessage(t('wishTogglePublicError') || '공개 상태 전환에 실패했습니다. 다시 시도해 주세요.');
     } finally {
       setIsActionSubmitting(false);
     }
   };
 
   const handleDeleteWish = async (id: string) => {
+    if (isActionSubmitting) return;
     setIsActionSubmitting(true);
+    const prevWishes = [...wishes];
+    const wishToDelete = wishes.find(w => w.id === id);
+
+    // ── Optimistic Update (0ms instant reaction) ──
+    setWishes(prev => prev.filter(w => w.id !== id));
+    setSelectedWish(null);
+    setDeleteConfirmOpen(false);
+    showMessage(t('wishDeleted') || '소원이 하늘로 회향되어 삭제되었습니다.');
+
     try {
       const res = await fetch('/api/wishes', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
       });
-      if (res.ok) {
-        setWishes(prev => prev.filter(w => w.id !== id));
-        setSelectedWish(null);
-        setDeleteConfirmOpen(false);
-        showMessage(t('wishDeleted') || '소원이 삭제되었습니다.');
-      }
+      if (!res.ok) throw new Error('Failed to delete wish');
     } catch {
-      showMessage('삭제 중 오류가 발생했습니다.');
+      // ── Rollback on failure ──
+      if (wishToDelete) {
+        setWishes(prevWishes);
+      }
+      showMessage(t('wishDeleteError') || '소원 삭제에 실패했습니다. 다시 시도해 주세요.');
     } finally {
       setIsActionSubmitting(false);
     }
@@ -157,7 +175,10 @@ export default function WishRoofPage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchWishes(searchQuery, sortBy, showOnlyMine);
+    if (showOnlyMine) {
+      setShowOnlyMine(false);
+    }
+    fetchWishes(searchQuery, sortBy, false);
     // Scroll is now handled inside fetchWishes finally block
   };
 
@@ -328,6 +349,10 @@ export default function WishRoofPage() {
   const handleInscribeClick = () => {
     if (!session?.user) {
       setShowLoginModal(true);
+      return;
+    }
+    if (lotusCount !== null && lotusCount < 3) {
+      setShowUpgradeModal(true);
       return;
     }
     setIsModalOpen(true);

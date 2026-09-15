@@ -127,7 +127,9 @@
     "loginRequired": "Yêu cầu đăng nhập. Vui lòng đăng nhập để xem những lời nguyện của bạn.",
     "loginRequiredTitle": "Yêu Cầu Đăng Nhập",
     "loginRequiredDesc": "Vui lòng đăng nhập để viết hoặc xem lời nguyện.",
-    "signInBtn": "Đăng Nhập"
+    "signInBtn": "Đăng Nhập",
+    "wishTogglePublicError": "Không thể thay đổi chế độ hiển thị ước nguyện. Vui lòng thử lại.",
+    "wishDeleteError": "Xóa ước nguyện thất bại. Vui lòng thử lại."
   },
   "Pillars": {
     "eyebrow": "Nền Tảng Vĩnh Hằng",

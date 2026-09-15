@@ -66,16 +66,25 @@ export async function POST(request: Request) {
     const { name, amount, message, is_public, pillar_type } = body;
     const supabase = getSupabaseAdmin();
 
+    const numericAmount = Number(amount) || 0;
+    let resolvedPillarType = pillar_type;
+    if (!resolvedPillarType) {
+      if (numericAmount >= 10000) resolvedPillarType = 'gold';
+      else if (numericAmount >= 5000) resolvedPillarType = 'marble';
+      else if (numericAmount >= 3000) resolvedPillarType = 'stone';
+      else resolvedPillarType = 'donor';
+    }
+
     const { data, error } = await supabase
       .from('pillars')
       .insert([
         {
           name,
-          amount: amount || 0,
+          amount: numericAmount,
           message,
           user_email: session?.user?.email || null,
           is_public: is_public ?? true,
-          pillar_type: pillar_type || 'stone',
+          pillar_type: resolvedPillarType,
         },
       ])
       .select();

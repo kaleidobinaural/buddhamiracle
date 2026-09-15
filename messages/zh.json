@@ -127,7 +127,9 @@
     "loginRequired": "需要登录。请先登录以查看您留下的心愿。",
     "loginRequiredTitle": "需要登录",
     "loginRequiredDesc": "请先登录以许愿或查看您的心愿。",
-    "signInBtn": "登录"
+    "signInBtn": "登录",
+    "wishTogglePublicError": "更改心愿可见性失败，请重试。",
+    "wishDeleteError": "删除心愿失败，请重试。"
   },
   "Pillars": {
     "eyebrow": "永恒基石",
