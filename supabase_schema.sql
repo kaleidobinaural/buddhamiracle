@@ -149,3 +149,34 @@ create policy "Service role can manage inquiries"
   on quiesan_inquiries
   using (true)
   with check (true);
+
+-- ==========================================
+-- ★ 8. Performance Indexes for 1M+ Scale (Essential)
+-- ==========================================
+-- Run in Supabase SQL editor to prevent slow full-table scans under high traffic.
+create index if not exists idx_wishes_user_email on wishes(user_email);
+create index if not exists idx_wishes_public_created on wishes(is_public, created_at desc);
+create index if not exists idx_wishes_likes_count on wishes(likes_count desc);
+create index if not exists idx_wish_likes_user_email on wish_likes(user_email);
+create index if not exists idx_inquiries_created on quiesan_inquiries(created_at desc);
+
+-- ==========================================
+-- ★ 9. Atomic Translation Merge Function
+-- ==========================================
+-- Merges new translations into scriptures.translations jsonb column atomically.
+-- Prevents lost updates when multiple users in different languages access concurrently.
+create or replace function save_scripture_translation(
+  p_id uuid,
+  p_locale text,
+  p_translation text
+)
+returns void
+language plpgsql
+as $$
+begin
+  update scriptures
+  set translations = coalesce(translations, '{}'::jsonb) || jsonb_build_object(p_locale, p_translation)
+  where id = p_id;
+end;
+$$;
+

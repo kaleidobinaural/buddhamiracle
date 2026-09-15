@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getSupabaseAdmin } from '@/lib/supabase';
 
 // Helper to sanitize quotes, just in case
@@ -58,33 +59,37 @@ export async function POST(req: NextRequest) {
        return NextResponse.json({ error: 'Empty translation returned' }, { status: 500 });
     }
 
-    // 2. Cache it in Supabase using the admin key so it bypasses RLS
+    // 2. Cache it in Supabase atomically via RPC to avoid race conditions
     const supabaseAdmin = getSupabaseAdmin();
     
-    // Fetch current translations first to merge
-    const { data: currentData, error: fetchError } = await supabaseAdmin
-      .from('scriptures')
-      .select('translations')
-      .eq('id', id)
-      .single();
+    // Attempt atomic RPC merge first
+    const { error: rpcError } = await supabaseAdmin.rpc('save_scripture_translation', {
+      p_id: id,
+      p_locale: targetLocale,
+      p_translation: translatedText,
+    });
 
-    if (fetchError) {
-      console.error('Supabase Fetch Error:', fetchError);
-      return NextResponse.json({ error: 'Database error' }, { status: 500 });
+    if (rpcError) {
+      // Fallback: If RPC function hasn't been run yet in Supabase SQL editor
+      console.warn('RPC save_scripture_translation fallback:', rpcError.message);
+      const { data: currentData } = await supabaseAdmin
+        .from('scriptures')
+        .select('translations')
+        .eq('id', id)
+        .single();
+      const currentTranslations = currentData?.translations || {};
+      const updatedTranslations = { ...currentTranslations, [targetLocale]: translatedText };
+      await supabaseAdmin
+        .from('scriptures')
+        .update({ translations: updatedTranslations })
+        .eq('id', id);
     }
 
-    const currentTranslations = currentData.translations || {};
-    const updatedTranslations = { ...currentTranslations, [targetLocale]: translatedText };
-
-    // Update with new merged JSON
-    const { error: updateError } = await supabaseAdmin
-      .from('scriptures')
-      .update({ translations: updatedTranslations })
-      .eq('id', id);
-
-    if (updateError) {
-      console.error('Supabase Update Error:', updateError);
-      return NextResponse.json({ error: 'Failed to cache translation' }, { status: 500 });
+    // Refresh Edge CDN cache for /api/scriptures
+    try {
+      revalidatePath('/api/scriptures');
+    } catch {
+      // Non-fatal if revalidatePath is unavailable
     }
 
     // Return the successfully translated text

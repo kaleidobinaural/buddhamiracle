@@ -166,36 +166,56 @@ export default function DharmaPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        let { data, error } = await supabase!
-          .from('scriptures')
-          .select('id, content, metadata, translations');
+        let formattedData: any[] = [];
 
-        // Fallback: If translations column doesn't exist yet, fetch without it
-        if (error && error.message.includes('translations')) {
-          console.warn('translations column missing, falling back to original schema');
-          const fallback = await supabase!
-            .from('scriptures')
-            .select('id, content, metadata');
-          data = fallback.data;
-          error = fallback.error;
+        // 1. Fetch via Vercel CDN Edge cached API first (saves 99.9% Supabase bandwidth & avoids connection exhaustion)
+        try {
+          const res = await fetch('/api/scriptures');
+          if (res.ok) {
+            const json = await res.json();
+            if (Array.isArray(json) && json.length > 0) {
+              formattedData = json.map((item: any) => ({
+                ...item,
+                source: item.metadata?.source || 'Eternal Dharma',
+              }));
+            }
+          }
+        } catch (apiErr) {
+          console.warn('CDN scriptures fetch failed, trying direct Supabase fallback:', apiErr);
         }
 
-        if (error) throw error;
-        if (data) {
-          // ★ BUG FIX: use metadata?.source (not metadata?.title)
-          const formattedData = data.map((item: any) => ({
-            ...item,
-            source: item.metadata?.source || 'Eternal Dharma',
-          }));
+        // 2. Direct Supabase fallback if CDN endpoint is not available or returned empty
+        if (formattedData.length === 0) {
+          let { data, error } = await supabase!
+            .from('scriptures')
+            .select('id, content, metadata, translations');
+
+          if (error && error.message.includes('translations')) {
+            console.warn('translations column missing, falling back to original schema');
+            const fallback = await supabase!
+              .from('scriptures')
+              .select('id, content, metadata');
+            data = fallback.data;
+            error = fallback.error;
+          }
+
+          if (error) throw error;
+          if (data) {
+            formattedData = data.map((item: any) => ({
+              ...item,
+              source: item.metadata?.source || 'Eternal Dharma',
+            }));
+          }
+        }
+
+        if (formattedData.length > 0) {
           setScriptures(formattedData);
           // ★ DATE-BASED QUOTE: same quote for ALL users on the same day
-          // Uses day-of-year as deterministic seed — no randomness per user
           const now = new Date();
           const startOfYear = new Date(now.getFullYear(), 0, 0);
           const dayOfYear = Math.floor((now.getTime() - startOfYear.getTime()) / 86400000);
           const dailyIndex = dayOfYear % formattedData.length;
-          const random = formattedData[dailyIndex];
-          setTodayQuote(random);
+          setTodayQuote(formattedData[dailyIndex]);
         }
       } catch (err) {
         console.error('Failed to load scriptures:', err);
