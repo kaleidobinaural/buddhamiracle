@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { FOLLOWER_COUNT_API_URL } from '@/lib/config';
 
 interface Props {
   channelLabel?: string;
@@ -18,7 +19,7 @@ export default function HeroFollowerBadge({
   const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
-    fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
+    fetch(`${FOLLOWER_COUNT_API_URL}?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
         if (data?.followerCount && typeof data.followerCount === 'number') {

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useTranslations, useLocale } from 'next-intl';
+import { FOLLOWER_COUNT_API_URL } from '@/lib/config';
 
 const PRODUCTS = {
   omMani: process.env.NEXT_PUBLIC_LEMONSQUEEZY_URL_OMMANI || "#",
@@ -46,7 +47,7 @@ export default function StorePage() {
 
   useEffect(() => {
     // Follower Count Logic
-    fetch('https://script.google.com/macros/s/AKfycby0kLrjrJjKnjMyJvyjzecSgocdN6_PXNp-LjgfGSnrE0xNSvYF_kA-bGsp4d0Ec5vH/exec?t=' + Date.now())
+    fetch(`${FOLLOWER_COUNT_API_URL}?t=${Date.now()}`)
       .then(res => res.json())
       .then(data => { if (data.followerCount) setFollowerCount(data.followerCount); })
       .catch(() => {});
