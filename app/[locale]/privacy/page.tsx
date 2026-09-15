@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CONTACT_EMAIL } from '@/lib/config';
 
 export default function PrivacyPage() {
   return (
@@ -82,8 +83,8 @@ export default function PrivacyPage() {
               If you have any questions about this Privacy Policy or wish to exercise your rights,
               please contact the Temple Administrators at:
             </p>
-            <a href="mailto:BuddhaMiracle@proton.me" className="contact-email">
-              BuddhaMiracle@proton.me
+            <a href={`mailto:${CONTACT_EMAIL}`} className="contact-email">
+              {CONTACT_EMAIL}
             </a>
           </section>
 

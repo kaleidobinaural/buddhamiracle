@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CONTACT_EMAIL } from '@/lib/config';
 
 export default function TermsPage() {
   return (
@@ -74,8 +75,8 @@ export default function TermsPage() {
             <p className="section-body">
               For any questions regarding these Terms, technical assistance, or reporting issues, please contact the Temple Guardians at:
             </p>
-            <a href="mailto:BuddhaMiracle@proton.me" style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline', fontSize: '0.92rem' }}>
-              BuddhaMiracle@proton.me
+            <a href={`mailto:${CONTACT_EMAIL}`} style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline', fontSize: '0.92rem' }}>
+              {CONTACT_EMAIL}
             </a>
           </section>
 

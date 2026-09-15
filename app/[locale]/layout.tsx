@@ -10,6 +10,7 @@ import { locales } from '@/i18n/config';
 import CustomCursor from '@/components/CustomCursor';
 import AmbientAudio from '@/components/AmbientAudio';
 import ScrollToTop from '@/components/ScrollToTop';
+import { CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
@@ -105,10 +106,10 @@ export default async function RootLayout({
                   <Link href="/refund" className="footer-link">Refund</Link>
                   <span className="footer-dot">•</span>
                   <a
-                    href="mailto:BuddhaMiracle@proton.me?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry"
+                    href={`mailto:${CONTACT_EMAIL}?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry`}
                     className="footer-link footer-email-link"
-                    aria-label="Contact / Bug Report (BuddhaMiracle@proton.me)"
-                    title="Contact / Bug Report: BuddhaMiracle@proton.me"
+                    aria-label={`Contact / Bug Report (${CONTACT_EMAIL})`}
+                    title={`Contact / Bug Report: ${CONTACT_EMAIL}`}
                     style={{ display: 'inline-flex', alignItems: 'center', transition: 'color 0.2s' }}
                   >
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: 'middle' }}>

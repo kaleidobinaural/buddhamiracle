@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata = {
   title: 'Refund Policy – Temple of Light',
@@ -93,8 +94,8 @@ export default function RefundPage() {
             <p className="section-body">
               For refund requests, technical issues, or any questions regarding a purchase, please contact our support team at:
             </p>
-            <a href="mailto:BuddhaMiracle@proton.me" className="contact-email" style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline' }}>
-              BuddhaMiracle@proton.me
+            <a href={`mailto:${CONTACT_EMAIL}`} className="contact-email" style={{ display: 'inline-block', marginTop: '10px', color: 'var(--primary-gold)', textDecoration: 'underline' }}>
+              {CONTACT_EMAIL}
             </a>
             <p className="section-body" style={{ marginTop: '12px' }}>
               Please include your order number (from Lemon Squeezy or PayPal) and a description of the issue.

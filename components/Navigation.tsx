@@ -6,6 +6,7 @@ import { useRouter, Link, usePathname as useIntlPathname } from '@/i18n/navigati
 import { useSession, signOut, signIn } from "next-auth/react";
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import { CONTACT_EMAIL } from '@/lib/config';
 
 export default function Navigation() {
   const pathname = usePathname(); // includes locale prefix — for active link detection
@@ -31,13 +32,10 @@ export default function Navigation() {
   const [lotusCount, setLotusCount] = useState<number | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
-  const testerEmails = (process.env.NEXT_PUBLIC_TESTER_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const userRole = (session?.user as any)?.role;
-  const userEmail = (session?.user?.email || '').trim().toLowerCase();
-  const isAdmin = userRole === 'admin' || (userEmail ? adminEmails.includes(userEmail) : false);
-  const isTester = userRole === 'tester' || (userEmail ? testerEmails.includes(userEmail) : false);
+  const isAdmin = userRole === 'admin';
+  const isTester = userRole === 'tester';
   const isAdminOrTester = isAdmin || isTester;
 
   useEffect(() => {
@@ -508,7 +506,7 @@ export default function Navigation() {
                   {t('bugReport') || (locale === 'ko' ? '오류 제보 및 문의사항' : 'Bug Report & Inquiries')}
                 </div>
                 <a
-                  href="mailto:BuddhaMiracle@proton.me?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry"
+                  href={`mailto:${CONTACT_EMAIL}?subject=[Temple%20of%20Light]%20Bug%20Report%20%2F%20Inquiry`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -525,7 +523,7 @@ export default function Navigation() {
                     <rect width="20" height="16" x="2" y="4" rx="2"/>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
-                  <span>BuddhaMiracle@proton.me</span>
+                  <span>{CONTACT_EMAIL}</span>
                 </a>
               </div>
             </div>
