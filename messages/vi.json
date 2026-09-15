@@ -81,7 +81,8 @@
     "unauthMessage": "Bước vào ánh sáng để nói chuyện với Guru.",
     "signIn": "Đăng nhập để tìm kiếm trí tuệ",
     "ebookTip": "※ Vui lòng không đóng hoặc rời khỏi màn hình trong khi câu chuyện đang được tạo (~10–15 giây). Rời sớm có thể làm mất hoa sen mà không nhận được truyện.",
-    "ebookDontLeave": "Vui lòng không rời màn hình khi đang tạo truyện."
+    "ebookDontLeave": "Vui lòng không rời màn hình khi đang tạo truyện.",
+    "lotusExhaustedPlaceholder": "Không đủ hoa sen. Vui lòng nạp thêm hoa sen để tiếp tục trò chuyện."
   },
   "WishRoof": {
     "eyebrow": "Thánh Địa Vĩnh Hằng",

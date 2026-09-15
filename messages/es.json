@@ -81,7 +81,8 @@
     "unauthMessage": "Entra en la luz para hablar con el Guru.",
     "signIn": "Inicia sesión para buscar sabiduría",
     "ebookTip": "※ No cierre ni salga de esta pantalla mientras se crea la historia (~10-15s). Salir antes de tiempo puede consumir pétalos de loto sin completar la historia.",
-    "ebookDontLeave": "Por favor, no salga de la pantalla durante la creación."
+    "ebookDontLeave": "Por favor, no salga de la pantalla durante la creación.",
+    "lotusExhaustedPlaceholder": "Lotos insuficientes. Por favor, recarga lotos para continuar la conversación."
   },
   "WishRoof": {
     "eyebrow": "El Santuario Eterno",

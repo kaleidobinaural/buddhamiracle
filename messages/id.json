@@ -81,7 +81,8 @@
     "unauthMessage": "Masuki cahaya untuk berbicara dengan Guru.",
     "signIn": "Masuk untuk mencari kebijaksanaan",
     "ebookTip": "※ Jangan tutup atau tinggalkan layar ini saat cerita sedang dirangkai (~10-15 detik). Meninggalkan layar dapat menggunakan teratai tanpa menyelesaikan cerita.",
-    "ebookDontLeave": "Harap jangan tinggalkan layar ini selama proses berlangsung."
+    "ebookDontLeave": "Harap jangan tinggalkan layar ini selama proses berlangsung.",
+    "lotusExhaustedPlaceholder": "Teratai tidak mencukupi. Silakan isi ulang teratai untuk melanjutkan percakapan."
   },
   "WishRoof": {
     "eyebrow": "Tempat Suci Abadi",

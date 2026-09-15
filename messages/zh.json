@@ -81,7 +81,8 @@
     "unauthMessage": "踏入光明，与大师交流。",
     "signIn": "登录以寻求智慧",
     "ebookTip": "※ 故事生成期间（约10-15秒）请勿关闭或离开当前页面。（离开可能导致莲花被消耗且故事无法生成）",
-    "ebookDontLeave": "生成期间请勿离开此页面。"
+    "ebookDontLeave": "生成期间请勿离开此页面。",
+    "lotusExhaustedPlaceholder": "莲花不足，请充值莲花以继续对话。"
   },
   "WishRoof": {
     "eyebrow": "永恒圣所",

@@ -81,7 +81,8 @@
     "unauthMessage": "Step into the light to speak with the Guru.",
     "signIn": "Sign In to Seek Wisdom",
     "ebookTip": "※ Please do not close or leave this screen while the story is being woven (~10–15s). Leaving early may consume lotus petals without delivering your story.",
-    "ebookDontLeave": "Do not leave the screen while weaving is in progress."
+    "ebookDontLeave": "Do not leave the screen while weaving is in progress.",
+    "lotusExhaustedPlaceholder": "Lotus required. Please recharge to continue the conversation."
   },
   "WishRoof": {
     "eyebrow": "The Eternal Sanctuary",

@@ -81,7 +81,8 @@
     "unauthMessage": "Tritt ins Licht, um mit dem Guru zu sprechen.",
     "signIn": "Anmelden, um Weisheit zu suchen",
     "ebookTip": "※ Bitte schließen oder verlassen Sie diesen Bildschirm nicht, während die Geschichte gewoben wird (~10–15 Sek.). Vorzeitiges Verlassen kann Lotosblüten verbrauchen.",
-    "ebookDontLeave": "Bitte verlassen Sie diesen Bildschirm während der Erstellung nicht."
+    "ebookDontLeave": "Bitte verlassen Sie diesen Bildschirm während der Erstellung nicht.",
+    "lotusExhaustedPlaceholder": "Nicht genügend Lotus. Bitte aufladen, um das Gespräch fortzusetzen."
   },
   "WishRoof": {
     "eyebrow": "Das ewige Heiligtum",

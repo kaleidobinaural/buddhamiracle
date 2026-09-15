@@ -81,7 +81,8 @@
     "unauthMessage": "Entrez dans la lumière pour parler au Guru.",
     "signIn": "Connectez-vous pour chercher la sagesse",
     "ebookTip": "※ Veuillez ne pas fermer ni quitter cet écran pendant le tissage de l'histoire (~10-15s). Quitter prématurément peut consommer des lotus sans finaliser l'histoire.",
-    "ebookDontLeave": "Veuillez ne pas quitter cet écran pendant la génération."
+    "ebookDontLeave": "Veuillez ne pas quitter cet écran pendant la génération.",
+    "lotusExhaustedPlaceholder": "Lotus insuffisants. Veuillez recharger vos lotus pour continuer la conversation."
   },
   "WishRoof": {
     "eyebrow": "Le Sanctuaire Éternel",

@@ -205,6 +205,11 @@ export default function ChatPage() {
     }
     if (isGeneratingEbook) return;
 
+    if (lotusCount !== null && lotusCount < 5) {
+      setShowUpgradeModal(true);
+      return;
+    }
+
     setEbookError(null);
     setIsGeneratingEbook(true);
     try {
@@ -346,7 +351,16 @@ export default function ChatPage() {
               <input
                 type="text"
                 className="chat-input"
-                placeholder={lotusCount === 0 ? (t('lotusExhaustedPlaceholder') || '연꽃이 부족합니다. 연꽃을 충전해 대화를 이어가세요.') : t('inputPlaceholder')}
+                placeholder={(() => {
+                  if (lotusCount === 0) {
+                    try {
+                      const val = t('lotusExhaustedPlaceholder');
+                      if (val && !val.includes('lotusExhaustedPlaceholder')) return val;
+                    } catch {}
+                    return locale === 'ko' ? '연꽃이 부족합니다. 연꽃을 충전해 대화를 이어가세요.' : 'Lotus required. Please recharge to continue.';
+                  }
+                  return t('inputPlaceholder');
+                })()}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onClick={() => {
