@@ -233,6 +233,7 @@
     "inquiryClose": "ပိတ်မည်",
     "inquiryCancel": "မလုပ်တော့ပါ",
     "inquirySubmit": "ပို့မည်",
+    "inquirySending": "ပို့ဆောင်နေသည်...",
     "inquiryError": "အမှားတစ်ခု ဖြစ်ပေါ်ခဲ့သည်။ ထပ်မံကြိုးစားပါ။",
     "paypalTitle": "စေတနာအလျောက် အလှူ",
     "paypalFreeAmount": "သင့်စေတနာရှိသလောက်",

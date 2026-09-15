@@ -233,6 +233,7 @@
     "inquiryClose": "Fermer",
     "inquiryCancel": "Annuler",
     "inquirySubmit": "Envoyer la Demande",
+    "inquirySending": "Envoi en cours...",
     "inquiryError": "Une erreur est survenue. Veuillez réessayer.",
     "paypalTitle": "Offrande Libre",
     "paypalFreeAmount": "Selon votre cœur",

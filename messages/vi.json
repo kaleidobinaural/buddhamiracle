@@ -233,6 +233,7 @@
     "inquiryClose": "Đóng",
     "inquiryCancel": "Hủy",
     "inquirySubmit": "Gửi Yêu Cầu",
+    "inquirySending": "Đang gửi...",
     "inquiryError": "Đã xảy ra lỗi. Vui lòng thử lại.",
     "paypalTitle": "Tùy Tâm Cúng Dường",
     "paypalFreeAmount": "Tùy tâm lượng của bạn",

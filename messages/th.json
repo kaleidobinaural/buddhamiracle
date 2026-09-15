@@ -233,6 +233,7 @@
     "inquiryClose": "ปิด",
     "inquiryCancel": "ยกเลิก",
     "inquirySubmit": "ส่งคำถาม",
+    "inquirySending": "กำลังส่ง...",
     "inquiryError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
     "paypalTitle": "ทำบุญตามศรัทธา",
     "paypalFreeAmount": "ตามแต่ใจศรัทธา",

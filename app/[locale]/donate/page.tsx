@@ -328,7 +328,7 @@ export default function DonatePage() {
                     style={{ width: '100%', padding: '14px', justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '1rem', fontWeight: 600 }} 
                     disabled={inquiryStatus === 'submitting'}
                   >
-                    {inquiryStatus === 'submitting' ? '...' : tDonate('inquirySubmit')}
+                    {inquiryStatus === 'submitting' ? tDonate('inquirySending') : tDonate('inquirySubmit')}
                   </button>
                   <button 
                     type="button" 

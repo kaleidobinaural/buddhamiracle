@@ -233,6 +233,7 @@
     "inquiryClose": "关闭",
     "inquiryCancel": "取消",
     "inquirySubmit": "发送咨询",
+    "inquirySending": "发送中...",
     "inquiryError": "发生错误，请重试。",
     "paypalTitle": "随喜乐捐",
     "paypalFreeAmount": "随心奉献",

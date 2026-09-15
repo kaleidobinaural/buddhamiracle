@@ -233,6 +233,7 @@
     "inquiryClose": "Cerrar",
     "inquiryCancel": "Cancelar",
     "inquirySubmit": "Enviar Consulta",
+    "inquirySending": "Enviando...",
     "inquiryError": "Ocurrió un error. Inténtalo de nuevo.",
     "paypalTitle": "Ofrenda Libre",
     "paypalFreeAmount": "Lo que dicte tu corazón",

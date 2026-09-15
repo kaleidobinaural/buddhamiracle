@@ -233,6 +233,7 @@
     "inquiryClose": "Schließen",
     "inquiryCancel": "Abbrechen",
     "inquirySubmit": "Anfrage Senden",
+    "inquirySending": "Senden...",
     "inquiryError": "Ein Fehler ist aufgetreten. Bitte erneut versuchen.",
     "paypalTitle": "Freie Gabe",
     "paypalFreeAmount": "Was dein Herz gibt",

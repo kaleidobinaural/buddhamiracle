@@ -233,6 +233,7 @@
     "inquiryClose": "إغلاق",
     "inquiryCancel": "إلغاء",
     "inquirySubmit": "إرسال الاستفسار",
+    "inquirySending": "جارٍ الإرسال...",
     "inquiryError": "حدث خطأ. يرجى المحاولة مرة أخرى.",
     "paypalTitle": "عطاء مفتوح",
     "paypalFreeAmount": "بقدر ما يجود به قلبكم",

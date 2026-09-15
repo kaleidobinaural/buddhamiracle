@@ -233,6 +233,7 @@
     "inquiryClose": "閉じる",
     "inquiryCancel": "キャンセル",
     "inquirySubmit": "送信する",
+    "inquirySending": "送信中...",
     "inquiryError": "エラーが発生しました。もう一度お試しください。",
     "paypalTitle": "自由供養",
     "paypalFreeAmount": "お心のおもむくままに",

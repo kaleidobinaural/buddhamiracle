@@ -233,6 +233,7 @@
     "inquiryClose": "닫기",
     "inquiryCancel": "취소",
     "inquirySubmit": "문의 보내기",
+    "inquirySending": "전송 중...",
     "inquiryError": "오류가 발생했습니다. 다시 시도해 주세요.",
     "paypalTitle": "자유로운 공양",
     "paypalFreeAmount": "마음이 이끄는 만큼",

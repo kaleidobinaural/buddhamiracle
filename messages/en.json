@@ -233,6 +233,7 @@
     "inquiryClose": "Close",
     "inquiryCancel": "Cancel",
     "inquirySubmit": "Send Inquiry",
+    "inquirySending": "Sending...",
     "inquiryError": "An error occurred. Please try again.",
     "paypalTitle": "Open Offering",
     "paypalFreeAmount": "As much as your heart gives",

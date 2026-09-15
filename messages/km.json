@@ -233,6 +233,7 @@
     "inquiryClose": "បិទ",
     "inquiryCancel": "បោះបង់",
     "inquirySubmit": "ផ្ញើសំណួរ",
+    "inquirySending": "កំពុងផ្ញើ...",
     "inquiryError": "មានកំហុសបានកើតឡើង សូមព្យាយាមម្តងទៀត។",
     "paypalTitle": "ការបូជាតាមសទ្ធា",
     "paypalFreeAmount": "តាមកម្លាំងសទ្ធារបស់អ្នក",
