@@ -31,17 +31,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     // Add user id and role to session
     async session({ session, token }) {
-      if (session.user && token.sub) {
-        session.user.id = token.sub;
-        session.user.role = token.role as string;
+      if (session.user) {
+        if (token.sub) session.user.id = token.sub;
+        session.user.role = (token.role as string) || 'free';
       }
       return session;
     },
     async jwt({ token, user }) {
-      if (user) {
+      const email = (user?.email || (token.email as string) || '').trim().toLowerCase();
+      if (email) {
         const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
         const testerEmails = (process.env.TESTER_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
-        const email = (user.email || '').trim().toLowerCase();
         if (adminEmails.includes(email)) {
           token.role = 'admin';
         } else if (testerEmails.includes(email)) {
