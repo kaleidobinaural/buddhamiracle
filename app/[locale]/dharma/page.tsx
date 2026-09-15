@@ -23,6 +23,100 @@ interface Scripture {
   };
 }
 
+interface ScriptureCardItemProps {
+  scripture: Scripture;
+  idx: number;
+  isOpen: boolean;
+  onToggle: (id: string) => void;
+  onOpenModal: (e: React.MouseEvent, scripture: Scripture) => void;
+  localized: { text: string; isTranslating: boolean };
+  cleanText: string;
+  t: any;
+}
+
+function ScriptureCardItem({
+  scripture,
+  idx,
+  isOpen,
+  onToggle,
+  onOpenModal,
+  localized,
+  cleanText,
+  t,
+}: ScriptureCardItemProps) {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [canExpand, setCanExpand] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    const measureLines = () => {
+      if (!el) return;
+      const lh = parseFloat(window.getComputedStyle(el).lineHeight);
+      if (lh > 0) {
+        // Physical browser calculation: does unconstrained text height exceed 3 lines on this device?
+        setCanExpand(el.scrollHeight > lh * 3.1);
+      }
+    };
+
+    measureLines();
+    window.addEventListener('resize', measureLines);
+    return () => window.removeEventListener('resize', measureLines);
+  }, [cleanText]);
+
+  return (
+    <article
+      className={`scripture-accordion ${isOpen ? 'open' : ''} ${canExpand ? 'cursor-pointer' : ''}`}
+      onClick={() => {
+        if (canExpand) onToggle(scripture.id);
+      }}
+    >
+      {/* ── Accordion Header ── */}
+      <div className="accordion-header">
+        <div className="accordion-meta">
+          <span className="accordion-index">{String(idx + 1).padStart(2, '0')}</span>
+          <span className="accordion-source">{scripture.source}</span>
+          {scripture.metadata?.chapter && (
+            <span className="accordion-chapter">{scripture.metadata.chapter}</span>
+          )}
+        </div>
+        {canExpand && (
+          <span className={`accordion-chevron ${isOpen ? 'rotated' : ''}`}>›</span>
+        )}
+      </div>
+
+      {/* ── Single Content: 3-line clamped when closed, fully expanded when open (NO DUPLICATE) ── */}
+      <div className="relative mt-3">
+        {localized.isTranslating && (
+          <span className="absolute -top-5 left-0 text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse">
+            {t('translating')}
+          </span>
+        )}
+        <p
+          ref={textRef}
+          className={`accordion-text-body transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'} ${!isOpen && canExpand ? 'clamped' : 'expanded'}`}
+        >
+          &ldquo;{cleanText}&rdquo;
+        </p>
+      </div>
+
+      {/* ── Action: [📜 두루마리 펼치기] shown when expanded OR when scripture is short (<= 3 lines) ── */}
+      {(isOpen || !canExpand) && (
+        <div className="accordion-actions animate-fade-up" style={{ marginTop: '20px' }}>
+          <button
+            className="btn-parchment-read"
+            onClick={(e) => onOpenModal(e, scripture)}
+          >
+            <span className="btn-parchment-icon">📜</span>
+            {t('readMore')}
+          </button>
+        </div>
+      )}
+    </article>
+  );
+}
+
 export default function DharmaPage() {
   const t = useTranslations('Dharma');
   const locale = useLocale();
@@ -390,100 +484,21 @@ export default function DharmaPage() {
             <>
               <div className="scripture-list">
                 {visibleScriptures.map((scripture, idx) => {
-                  const isOpen = expandedId === scripture.id;
-                  const isCJK = ['ko', 'ja', 'zh'].includes(locale);
                   const localized = getLocalizedContent(scripture);
-                  const fullCleanText = cleanContent(localized.text);
-                  // Calibrated short vs long threshold: CJK ~130 chars, others ~220 chars
-                  const isLong = isCJK ? fullCleanText.length > 130 : fullCleanText.length > 220;
+                  const cleanText = cleanContent(localized.text);
 
-                  // ── SHORT SCRIPTURE: Clean single card without accordion toggle or repetition ──
-                  if (!isLong) {
-                    return (
-                      <article key={scripture.id} className="scripture-accordion">
-                        <div className="accordion-header">
-                          <div className="accordion-meta">
-                            <span className="accordion-index">{String(idx + 1).padStart(2, '0')}</span>
-                            <span className="accordion-source">{scripture.source}</span>
-                            {scripture.metadata?.chapter && (
-                              <span className="accordion-chapter">{scripture.metadata.chapter}</span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className={`accordion-short-text mt-3 transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                          {localized.isTranslating && (
-                            <span className="text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse block mb-1">
-                              {t('translating')}
-                            </span>
-                          )}
-                          &ldquo;{fullCleanText}&rdquo;
-                        </div>
-
-                        <div className="accordion-actions" style={{ marginTop: '16px' }}>
-                          <button
-                            className="btn-parchment-read"
-                            onClick={(e) => openModal(e, scripture)}
-                          >
-                            <span className="btn-parchment-icon">📜</span>
-                            {t('readMore')}
-                          </button>
-                        </div>
-                      </article>
-                    );
-                  }
-
-                  // ── LONG SCRIPTURE: Accordion with 3-line preview, preview hidden when expanded ──
                   return (
-                    <article
+                    <ScriptureCardItem
                       key={scripture.id}
-                      className={`scripture-accordion ${isOpen ? 'open' : ''} cursor-pointer`}
-                      onClick={() => handleAccordion(scripture.id)}
-                    >
-                      {/* ── Accordion Header ── */}
-                      <div className="accordion-header">
-                        <div className="accordion-meta">
-                          <span className="accordion-index">{String(idx + 1).padStart(2, '0')}</span>
-                          <span className="accordion-source">{scripture.source}</span>
-                          {scripture.metadata?.chapter && (
-                            <span className="accordion-chapter">{scripture.metadata.chapter}</span>
-                          )}
-                        </div>
-                        <span className={`accordion-chevron ${isOpen ? 'rotated' : ''}`}>›</span>
-                      </div>
-
-                      {/* ── Preview (shown ONLY when NOT open, clamped to 3 lines) ── */}
-                      {!isOpen && (
-                        <div className={`accordion-preview relative transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                          {localized.isTranslating && (
-                            <span className="absolute -top-5 left-0 text-[10px] text-primary-gold opacity-80 tracking-widest uppercase animate-pulse">
-                              {t('translating')}
-                            </span>
-                          )}
-                          &ldquo;{fullCleanText}&rdquo;
-                        </div>
-                      )}
-
-                      {/* ── Expanded Content (shown ONLY when open, NO duplicate preview above it) ── */}
-                      {isOpen && (
-                        <div className="accordion-full animate-fade-up">
-                          <div className="accordion-divider" />
-                          <p className={`accordion-full-text transition-opacity duration-300 ${localized.isTranslating ? 'opacity-30' : 'opacity-100'}`}>
-                            &ldquo;{fullCleanText}&rdquo;
-                          </p>
-                          {/* ── READ MORE → opens parchment modal ── */}
-                          <div className="accordion-actions">
-                            <button
-                              className="btn-parchment-read"
-                              onClick={(e) => openModal(e, scripture)}
-                            >
-                              <span className="btn-parchment-icon">📜</span>
-                              {t('readMore')}
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </article>
+                      scripture={scripture}
+                      idx={idx}
+                      isOpen={expandedId === scripture.id}
+                      onToggle={handleAccordion}
+                      onOpenModal={openModal}
+                      localized={localized}
+                      cleanText={cleanText}
+                      t={t}
+                    />
                   );
                 })}
               </div>
@@ -669,31 +684,28 @@ export default function DharmaPage() {
         .accordion-chevron { font-size: 1.6rem; color: rgba(212,160,23,0.4); transition: transform 0.4s var(--ease-expo), color 0.3s; flex-shrink: 0; line-height: 1; }
         .accordion-chevron.rotated { transform: rotate(90deg); color: #d4a017; }
 
-        .accordion-preview {
-          margin-top: 14px;
+        .accordion-text-body {
           font-family: var(--font-serif);
           font-style: italic;
-          font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-          color: rgba(255,255,255,0.45);
-          line-height: 1.9;
+          font-size: clamp(0.9rem, 1.9vw, 1.08rem);
+          line-height: 2.0;
+          word-break: break-word;
+          white-space: pre-wrap;
+          margin: 0;
+          transition: color 0.3s ease;
+        }
+        .accordion-text-body.clamped {
           display: -webkit-box;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
+          color: rgba(255, 255, 255, 0.48);
         }
-
-        .accordion-short-text {
-          font-family: var(--font-serif);
-          font-style: italic;
-          font-size: clamp(0.9rem, 1.9vw, 1.08rem);
-          color: rgba(255,255,255,0.72);
-          line-height: 2.0;
-          word-break: break-word;
+        .accordion-text-body.expanded {
+          display: block;
+          color: rgba(255, 255, 255, 0.82);
         }
-
-        .accordion-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(212,160,23,0.2), transparent); margin: 20px 0; }
-        .accordion-full-text { font-family: var(--font-serif); font-style: italic; font-size: clamp(0.9rem, 2vw, 1.1rem); color: rgba(255,255,255,0.78); line-height: 2.1; white-space: pre-wrap; word-break: break-word; }
 
         /* ── Read More (parchment trigger) button ── */
         .accordion-actions { display: flex; justify-content: flex-end; margin-top: 24px; }
